@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Евгения & Алексей | Свадебное приглашение</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preload" as="image" href="/images/couple-photo.jpg">
+    <link rel="preload" as="image" href="/images/location.jpg">
+</head>
+<body>
+    <!-- Аудио -->
+    <audio id="weddingMusic" loop>
+        <source src="audio/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Кнопка музыки -->
+    <div class="music-control" id="musicControl">
+        <span class="music-icon">🎵</span>
+    </div>
+
+    <!-- Секция 1: Приветствие -->
+    <section class="section hero-section active" id="section1">
+        <div class="content-wrapper">
+            <div class="fade-in">
+                <h1 class="main-title">ВЫ ПОЛУЧИЛИ</h1>
+                <h2 class="subtitle">Приглашение!</h2>
+                <div class="heart-icon clickable" onclick="changeSection(1)">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                <p class="tap-hint">нажмите на сердце, чтобы открыть<br>приглашение</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 2: Имена и дата -->
+    <section class="section names-section slide-section" id="section2">
+        <div class="content-wrapper">
+            <p class="top-text">ПРИГЛАШЕНИЕ НА СВАДЬБУ</p>
+            <h1 class="couple-names">
+                <span class="name">ЕВГЕНИЯ</span>
+                <span class="ampersand">&</span>
+                <span class="name">АЛЕКСЕЙ</span>
+            </h1>
+            <div class="wedding-date">
+                <p class="month">СЕНТЯБРЬ</p>
+                <p class="day">12</p>
+                <p class="year">2026</p>
+            </div>
+            <div class="scroll-indicator" onclick="showSection(2)">
+                <svg width="30" height="20" viewBox="0 0 30 20" fill="none">
+                    <path d="M5 5L15 15L25 5" stroke="#1a1a1a" stroke-width="1.5"/>
+                    <path d="M5 10L15 20L25 10" stroke="#1a1a1a" stroke-width="1.5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 3: Фото и текст -->
+    <section class="section photo-section slide-section" id="section3">
+        <div class="content-wrapper">
+            <div class="photo-container">
+                <img src="/images/couple-photo.jpg" 
+                     alt="Евгения и Алексей" 
+                     class="couple-photo"
+                     loading="eager"
+                     fetchpriority="high">
+            </div>
+            <h2 class="dear-text">РОДНЫЕ И БЛИЗКИЕ!</h2>
+            <h3 class="we-marry">Мы женимся!</h3>
+            <div class="invitation-text">
+                <p>Самое волшебное время для нас – это сейчас, когда в нашей жизни зажглась безграничная любовь.</p>
+                <p>Вместе мы решили сделать следующий шаг и обещать друг другу вечную привязанность нашими сердцами.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 4: Локация -->
+    <section class="section location-section slide-section" id="section4">
+        <div class="content-wrapper">
+            <h2 class="location-title">ЛОКАЦИЯ</h2>
+            <p class="location-subtitle">Место проведения</p>
+            <div class="location-text">
+                <p>Выездная церемония и праздничный банкет будут проходить в банкетном зале "MAGIC LOFT"</p>
+            </div>
+            <a href="https://yandex.ru/maps/org/region_57/28154525632/?ll=36.146796%2C52.938666&utm_source=ntp_chrome&z=17.375 страница)" target="_blank" rel="noopener noreferrer" class="map-button">НА КАРТЕ</a>
+            <div class="location-photo-container">
+                <img src="/images/location_page.jpg" alt="Вилла Ротонда" class="location-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 5: Тайминг (Время) -->
+<section class="section timeline-section slide-section" id="section5">
+    <div class="content-wrapper">
+        <h2 class="timeline-main-title">ВРЕМЯ</h2>
+        <p class="timeline-subtitle">Программа дня</p>
+        
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <span class="timeline-time">16:00</span>
+                <div class="timeline-desc">
+                    <p>Сбор гостей. Встречаемся, наслаждаемся фуршетом, настраиваемся на веселую свадьбу.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-time">16:30</span>
+                <div class="timeline-desc">
+                    <p>Немного радостных трогательных формальностей.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-time">17:00</span>
+                <div class="timeline-desc">
+                    <p>Время вкусной еды, музыки, приятных пожеланий и танцев.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="monogram">
+            <span>Е</span><span class="ampersand">&</span><span>А</span>
+        </div>
+    </div>
+</section>
+
+<!-- Секция 6: Dress Code -->
+<section class="section dresscode-section slide-section" id="section6">
+    <div class="content-wrapper">
+        <h2 class="dresscode-title">DRESS <span class="dresscode-code">Code</span></h2>
+        <p class="dresscode-main-text">Для нас главное — Ваше присутствие!</p>
+        <p class="dresscode-text">
+            Но мы будем очень признательны, если Вы поддержите стилистику нашего мероприятия в своих образах.
+        </p>
+        <p class="dresscode-text">
+            Подберите их в соответствии с данной цветовой гаммой:
+        </p>
+        <div class="color-palette">
+            <div class="color-swatch" style="background: linear-gradient(135deg, #E8DFD0, #D4C4B0);"></div>
+            <div class="color-swatch" style="background: linear-gradient(135deg, #4A5568, #2D3748);"></div>
+            <div class="color-swatch" style="background: linear-gradient(135deg, #A0AEC0, #718096);"></div>
+            <div class="color-swatch" style="background: linear-gradient(135deg, #3E2723, #1A1A1A);"></div>
+            <div class="color-swatch" style="background: linear-gradient(135deg, #F5F1EB, #E8DFD0);"></div>
+            <div class="color-swatch" style="background: linear-gradient(135deg, #D4A5A5, #B88A8A);"></div>
+            <!-- <div class="color-swatch" style="background: url('/images/fabric1.jpg') center/cover;"></div> -->
+        </div>
+        <div class="dresscode-photos">
+            <img src="/images/dress1.jpg" alt="Образ 1" class="dresscode-photo">
+            <img src="/images/dress2.jpg" alt="Образ 2" class="dresscode-photo">
+            <img src="/images/dress3.jpg" alt="Образ 3" class="dresscode-photo">
+        </div>
+    </div>
+</section>
+
+<!-- Секция 7: Подсказки / FAQ -->
+<section class="section faq-section slide-section" id="section7">
+    <div class="content-wrapper">
+        <h2 class="faq-title">Подсказки</h2>
+        <p class="faq-subtitle">МЫ РЕШИЛИ СОБРАТЬ ИНФОРМАЦИЮ — ОТВЕТЫ НА САМЫЕ ПОПУЛЯРНЫЕ ВОПРОСЫ</p>
+        
+        <div class="faq-block">
+            <h3 class="faq-block-title">ЧТО ДАРИТЬ?</h3>
+            <p class="faq-block-text">
+                Ваша улыбка и хорошее настроение — главное для нас в этот вечер!
+            </p>
+            <p class="faq-block-text">
+                Если вы захотите сделать нам ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет нашей молодой семьи.
+            </p>
+        </div>
+        
+        <div class="faq-block">
+            <h3 class="faq-block-title">ЦВЕТЫ</h3>
+            <p class="faq-block-text">
+                Наш праздник будет окружён изобилием цветов, поэтому приятным комплиментом для нас вместо букета будет бутылка вашего любимого вина, которую мы откроем на ближайшем совместном празднике.
+            </p>
+        </div>
+        
+        <div class="faq-block">
+            <h3 class="faq-block-title">КОНТАКТЫ</h3>
+            <p class="faq-block-text">
+                Если вы заблудились по дороге или у вас возникли вопросы, не стесняйтесь обращаться к нашему организатору, она обязательно поможет!
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Секция 8: Обратный отсчёт -->
+<section class="section countdown-section slide-section" id="section8">
+    <div class="content-wrapper">
+        <div class="countdown-photo-container">
+            <img src="/images/couple-photo2.jpg" alt="Евгения и Алексей" class="countdown-photo">
+            <div class="countdown-overlay">
+                <p class="countdown-text">Мы станем семьёй через:</p>
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Дней</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Часов</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Минут</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Секунд</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Секция 9: Анкета гостя -->
+<section class="section rsvp-section slide-section" id="section9">
+    <div class="content-wrapper">
+        <h2 class="rsvp-title">АНКЕТА</h2>
+        <p class="rsvp-subtitle">Анкета гостя</p>
+        <p class="rsvp-intro">
+            Будем очень признательны, если Вы подтвердите своё присутствие и заполните анкету до 15 августа.
+        </p>
+        
+        <form class="rsvp-form" id="rsvpForm" onsubmit="sendToServer(event)">
+            <div class="form-group">
+                <label class="form-label">Имя и фамилия</label>
+                <p class="form-hint">Если Вы будете со своей парой, укажите оба имени</p>
+                <input type="text" class="form-input" placeholder="Иван Иванов/Мария Иванова" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Подтвердите своё присутствие:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="yes" required>
+                        <span>Да, с удовольствием!</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="no">
+                        <span>К сожалению, не смогу</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Ваши предпочтения в напитках:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="drinks" value="white-wine">
+                        <span>Вино белое</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="drinks" value="red-wine">
+                        <span>Вино красное</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="drinks" value="sparkling">
+                        <span>Игристое</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="drinks" value="strong">
+                        <span>Крепкий алкоголь</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="drinks" value="non-alcoholic">
+                        <span>Безалкогольные напитки</span>
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-button" id="submitBtn">ОТПРАВИТЬ</button>
+            <p class="form-success" id="formSuccess" style="display: none; text-align: center; color: #4CAF50; margin-top: 15px; font-family: 'Montserrat', sans-serif; font-size: 13px;">
+                ✓ Спасибо! Анкета отправлена.
+            </p>
+        </form>
+        <!-- Завершающая фраза -->
+        <div class="rsvp-footer">
+            <p class="footer-main">С НЕТЕРПЕНИЕМ</p>
+            <p class="footer-sub">ждём Вас!</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Навигация -->
+    <div class="navigation">
+        <button class="nav-btn prev-btn" id="prevBtn" onclick="changeSection(-1)">←</button>
+        <button class="nav-btn next-btn" id="nextBtn" onclick="changeSection(1)">→</button>
+    </div>
+
+    <!-- Индикаторы секций -->
+    <div class="section-indicators">
+        <div class="indicator active" data-section="0"></div>
+        <div class="indicator" data-section="1"></div>
+        <div class="indicator" data-section="2"></div>
+        <div class="indicator" data-section="3"></div>
+        <div class="indicator" data-section="4"></div>
+        <div class="indicator" data-section="5"></div>
+        <div class="indicator" data-section="6"></div>
+        <div class="indicator" data-section="7"></div>
+        <div class="indicator" data-section="8"></div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

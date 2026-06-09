@@ -1,0 +1,4 @@
+node_modules/
+.env
+rsvp.db
+.DS_Store

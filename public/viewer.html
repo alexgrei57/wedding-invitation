@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр анкет гостей</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #F5F1EB;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #D4C4B0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .login-form button {
+            padding: 12px 30px;
+            background: #8B7355;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #D4C4B0;
+        }
+        th {
+            background: #F5F1EB;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .yes { color: #4CAF50; font-weight: 600; }
+        .no { color: #f44336; font-weight: 600; }
+        .error { color: #f44336; text-align: center; margin-top: 10px; }
+        #guestsTable { display: none; }
+        .logout-btn {
+            float: right;
+            padding: 8px 15px;
+            background: #8B7355;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .info-box {
+            background: #E3F2FD;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            color: #1976D2;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loginSection" class="login-form">
+            <h1>👁️ Просмотр анкет</h1>
+            <input type="password" id="passwordInput" placeholder="Введите пароль">
+            <button onclick="login()">Войти</button>
+            <p id="loginError" class="error"></p>
+        </div>
+        
+        <div id="guestsTable">
+            <h1>📋 Анкеты гостей (Только просмотр)</h1>
+            <button onclick="logout()" class="logout-btn">Выйти</button>
+            <div class="info-box">
+                ℹ️ Режим только для просмотра. Редактирование и удаление недоступны.
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Имя</th>
+                        <th>Присутствие</th>
+                        <th>Напитки</th>
+                        <th>Дата</th>
+                    </tr>
+                </thead>
+                <tbody id="guestsBody"></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        const VIEWER_PASSWORD = 'lSru@g8H*#7%'; // Замените на свой!
+        let currentPassword = '';
+        
+        function login() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === VIEWER_PASSWORD) {
+                currentPassword = input;
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('guestsTable').style.display = 'block';
+                loadGuests();
+            } else {
+                document.getElementById('loginError').textContent = 'Неверный пароль!';
+            }
+        }
+        
+        function logout() {
+            location.reload();
+        }
+        
+        async function loadGuests() {
+            try {
+                const response = await fetch('/api/guests', {
+                    headers: { 'x-password': currentPassword }
+                });
+                
+                if (!response.ok) throw new Error('Ошибка авторизации');
+                
+                const guests = await response.json();
+                const tbody = document.getElementById('guestsBody');
+                tbody.innerHTML = '';
+                
+                if (guests.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                    return;
+                }
+                
+                guests.forEach(guest => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${guest.id}</td>
+                        <td>${guest.name}</td>
+                        <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${guest.attendance}</td>
+                        <td>${guest.drinks}</td>
+                        <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Ошибка загрузки данных');
+            }
+        }
+    </script>
+</body>
+</html>
