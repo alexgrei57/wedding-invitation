@@ -74,14 +74,8 @@ app.post('/api/rsvp', async (req, res) => {
     }
 });
 
-// API для просмотра всех анкет
-app.get('/api/guests', async (req, res) => {
-    const password = req.headers['x-password'];
-    
-    if (password !== ADMIN_PASSWORD && password !== VIEWER_PASSWORD) {
-        return res.status(403).json({ error: 'Неверный пароль' });
-    }
-    
+// API для просмотра всех анкет (для обеих ролей)
+app.get('/api/guests', verifyToken, async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM guests ORDER BY created_at DESC');
         res.json(result.rows);
@@ -91,10 +85,8 @@ app.get('/api/guests', async (req, res) => {
 });
 
 // API для редактирования (только админ)
-app.put('/api/admin/guests/:id', async (req, res) => {
-    const password = req.headers['x-admin-password'];
-    
-    if (password !== ADMIN_PASSWORD) {
+app.put('/api/admin/guests/:id', verifyToken, async (req, res) => {
+    if (req.userRole !== 'admin') {
         return res.status(403).json({ error: 'Доступ запрещён' });
     }
     
@@ -118,17 +110,15 @@ app.put('/api/admin/guests/:id', async (req, res) => {
 });
 
 // API для удаления (только админ)
-app.delete('/api/admin/guests/:id', async (req, res) => {
-    const password = req.headers['x-admin-password'];
-    
-    if (password !== ADMIN_PASSWORD) {
+app.delete('/api/admin/guests/:id', verifyToken, async (req, res) => {
+    if (req.userRole !== 'admin') {
         return res.status(403).json({ error: 'Доступ запрещён' });
     }
     
     const { id } = req.params;
     
     try {
-        const result = await pool.query('DELETE FROM guests WHERE id = $1 RETURNING *');
+        const result = await pool.query('DELETE FROM guests WHERE id = $1 RETURNING *', [id]);
         
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Анкета не найдена' });
@@ -139,6 +129,45 @@ app.delete('/api/admin/guests/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+// API для проверки пароля (логин)
+app.post('/api/login', (req, res) => {
+    const { password, role } = req.body;
+    
+    if (role === 'admin' && password === ADMIN_PASSWORD) {
+        // Генерируем простой токен (можно использовать JWT для продакшена)
+        const token = Buffer.from(`admin:${Date.now()}`).toString('base64');
+        res.json({ success: true, token });
+    } else if (role === 'viewer' && password === VIEWER_PASSWORD) {
+        const token = Buffer.from(`viewer:${Date.now()}`).toString('base64');
+        res.json({ success: true, token });
+    } else {
+        res.status(401).json({ success: false, error: 'Неверный пароль' });
+    }
+});
+
+// Middleware для проверки токена
+function verifyToken(req, res, next) {
+    const token = req.headers['x-auth-token'];
+    
+    if (!token) {
+        return res.status(401).json({ error: 'Неавторизован' });
+    }
+    
+    try {
+        const decoded = Buffer.from(token, 'base64').toString('utf8');
+        const [role] = decoded.split(':');
+        
+        if (role === 'admin' || role === 'viewer') {
+            req.userRole = role;
+            next();
+        } else {
+            res.status(403).json({ error: 'Неверный токен' });
+        }
+    } catch (err) {
+        res.status(403).json({ error: 'Неверный токен' });
+    }
+}
 
 // Страницы
 app.get('/admin', (req, res) => {

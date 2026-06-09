@@ -117,29 +117,68 @@
     </div>
     
     <script>
-        const VIEWER_PASSWORD = 'lSru@g8H*#7%'; // Замените на свой!
-        let currentPassword = '';
+        let authToken = localStorage.getItem('viewerToken') || '';
         
-        function login() {
+        // Проверка токена при загрузке
+        if (authToken) {
+            checkAuth();
+        }
+        
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/guests', {
+                    headers: { 'x-auth-token': authToken }
+                });
+                
+                if (response.ok) {
+                    document.getElementById('loginSection').style.display = 'none';
+                    document.getElementById('guestsTable').style.display = 'block';
+                    loadGuests();
+                } else {
+                    localStorage.removeItem('viewerToken');
+                    authToken = '';
+                }
+            } catch (error) {
+                console.error('Ошибка проверки токена:', error);
+            }
+        }
+        
+        async function login() {
             const input = document.getElementById('passwordInput').value;
-            if (input === VIEWER_PASSWORD) {
-                currentPassword = input;
-                document.getElementById('loginSection').style.display = 'none';
-                document.getElementById('guestsTable').style.display = 'block';
-                loadGuests();
-            } else {
-                document.getElementById('loginError').textContent = 'Неверный пароль!';
+            
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password: input, role: 'viewer' })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    authToken = data.token;
+                    localStorage.setItem('viewerToken', authToken);
+                    document.getElementById('loginSection').style.display = 'none';
+                    document.getElementById('guestsTable').style.display = 'block';
+                    loadGuests();
+                } else {
+                    document.getElementById('loginError').textContent = 'Неверный пароль!';
+                }
+            } catch (error) {
+                console.error('Ошибка входа:', error);
+                document.getElementById('loginError').textContent = 'Ошибка подключения';
             }
         }
         
         function logout() {
+            localStorage.removeItem('viewerToken');
             location.reload();
         }
         
         async function loadGuests() {
             try {
                 const response = await fetch('/api/guests', {
-                    headers: { 'x-password': currentPassword }
+                    headers: { 'x-auth-token': authToken }
                 });
                 
                 if (!response.ok) throw new Error('Ошибка авторизации');
