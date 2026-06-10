@@ -130,12 +130,11 @@ app.delete('/api/admin/guests/:id', verifyToken, async (req, res) => {
     }
 });
 
-// API для проверки пароля (логин)
+// ===== API для проверки пароля (логин) =====
 app.post('/api/login', (req, res) => {
     const { password, role } = req.body;
     
     if (role === 'admin' && password === ADMIN_PASSWORD) {
-        // Генерируем простой токен (можно использовать JWT для продакшена)
         const token = Buffer.from(`admin:${Date.now()}`).toString('base64');
         res.json({ success: true, token });
     } else if (role === 'viewer' && password === VIEWER_PASSWORD) {
@@ -146,7 +145,7 @@ app.post('/api/login', (req, res) => {
     }
 });
 
-// Middleware для проверки токена
+// ===== Middleware для проверки токена =====
 function verifyToken(req, res, next) {
     const token = req.headers['x-auth-token'];
     
@@ -169,10 +168,47 @@ function verifyToken(req, res, next) {
     }
 }
 
-// Страницы
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
+
+// ===== API для проверки пароля (логин) =====
+app.post('/api/login', (req, res) => {
+    const { password, role } = req.body;
+    
+    if (role === 'admin' && password === ADMIN_PASSWORD) {
+        const token = Buffer.from(`admin:${Date.now()}`).toString('base64');
+        res.json({ success: true, token });
+    } else if (role === 'viewer' && password === VIEWER_PASSWORD) {
+        const token = Buffer.from(`viewer:${Date.now()}`).toString('base64');
+        res.json({ success: true, token });
+    } else {
+        res.status(401).json({ success: false, error: 'Неверный пароль' });
+    }
+});
+
+// ===== Middleware для проверки токена =====
+function verifyToken(req, res, next) {
+    const token = req.headers['x-auth-token'];
+    
+    if (!token) {
+        return res.status(401).json({ error: 'Неавторизован' });
+    }
+    
+    try {
+        const decoded = Buffer.from(token, 'base64').toString('utf8');
+        const [role] = decoded.split(':');
+        
+        if (role === 'admin' || role === 'viewer') {
+            req.userRole = role;
+            next();
+        } else {
+            res.status(403).json({ error: 'Неверный токен' });
+        }
+    } catch (err) {
+        res.status(403).json({ error: 'Неверный токен' });
+    }
+}
 
 app.get('/viewer', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'viewer.html'));
