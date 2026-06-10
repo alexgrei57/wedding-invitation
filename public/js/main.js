@@ -154,9 +154,9 @@ function startCountdown() {
 }
 
 // ===== Глобальная функция для клика по сердцу =====
-window.changeSection = function(targetIndex) {
+function changeSection(targetIndex) {
     showSection(targetIndex);
-};
+}
 
 // ===== Обработка формы анкеты =====
 function submitForm(event) {
