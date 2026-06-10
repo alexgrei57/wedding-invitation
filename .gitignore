@@ -32,3 +32,6 @@ yarn-error.log*
 # Temporary files
 *.tmp
 *.temp
+
+# Old server file (using netlify/functions instead)
+server.js
