@@ -3,17 +3,11 @@
   functions = "netlify/functions"
   publish = "public"
 
+# API запросы идут в функцию
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/server"
+  to = "/.netlify/functions/:splat"
   status = 200
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+# Статические файлы (HTML, CSS, JS, картинки) обслуживаются напрямую
+# Без редиректа на функцию!
