@@ -159,25 +159,39 @@ function changeSection(targetIndex) {
 }
 
 // ===== Обработка формы анкеты =====
-function submitForm(event) {
+async function submitForm(event) {
     event.preventDefault();
     
     const form = document.getElementById('rsvpForm');
     const formData = new FormData(form);
     
-    // Собираем данные
     const data = {
         name: form.querySelector('input[type="text"]').value,
-        attendance: form.querySelector('input[name="attendance"]:checked')?.value,
+        attendance: form.querySelector('input[name="attendance"]:checked').value,
         drinks: Array.from(form.querySelectorAll('input[name="drinks"]:checked')).map(cb => cb.value)
     };
     
-    // Здесь можно отправить данные на сервер
-    console.log('Данные анкеты:', data);
-    
-    // Показываем сообщение об успехе
-    alert('Спасибо! Ваша анкета отправлена.');
-    form.reset();
+    try {
+        const response = await fetch('/api/rsvp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            alert('Анкета успешно отправлена!');
+            form.reset();
+        } else {
+            alert('Произошла ошибка при отправке.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Произошла ошибка при отправке.');
+    }
 }
 
 // ===== Отправка формы в Telegram =====
