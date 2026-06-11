@@ -1,6 +1,12 @@
 let currentSection = 0;
 const totalSections = 9;
 
+// ===== Глобальная функция для клика по сердцу =====
+// Объявляем в самом начале чтобы была доступна везде
+function changeSection(targetIndex) {
+    showSection(targetIndex);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     updateNavigation();
     
@@ -151,11 +157,6 @@ function startCountdown() {
     // Обновляем каждую секунду
     setInterval(updateCountdown, 1000);
     updateCountdown(); // Первый запуск
-}
-
-// ===== Глобальная функция для клика по сердцу =====
-function changeSection(targetIndex) {
-    showSection(targetIndex);
 }
 
 // ===== Обработка формы анкеты =====
