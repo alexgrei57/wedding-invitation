@@ -92,7 +92,7 @@ body {
     left: -10%;
     width: 120%;
     height: 120%;
-    background: url('/images/start_page.jpg') center center no-repeat;
+    background: url('/images/start_page.webp') center center no-repeat;
     background-size: cover;
     animation: silkAnimation 20s ease-in-out infinite;
     z-index: 1;
@@ -218,7 +218,7 @@ body {
     left: -10%;
     width: 120%;
     height: 120%;
-    background: url('/images/start_page.jpg') center center no-repeat;
+    background: url('/images/start_page.webp') center center no-repeat;
     background-size: cover;
     animation: silkAnimation 20s ease-in-out infinite;
     z-index: 1;
