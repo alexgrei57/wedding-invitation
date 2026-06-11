@@ -17,7 +17,11 @@ app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
+    ssl: {
+        rejectUnauthorized: false
+    },
+    connectionTimeoutMillis: 5000,
+    idleTimeoutMillis: 30000
 });
 
 async function initializeDatabase() {
@@ -73,16 +77,29 @@ app.get('/api/guests', verifyToken, async (req, res) => {
 });
 
 app.post('/api/rsvp', async (req, res) => {
+    console.log('=== RSVP START ===');
+    console.log('DATABASE_URL set:', !!process.env.DATABASE_URL);
+    console.log('Body:', req.body);
+    
     const { name, attendance, drinks } = req.body;
+    
     try {
+        console.log('Initializing database...');
         await initializeDatabase();
+        console.log('Database ready');
+        
         const result = await pool.query(
             'INSERT INTO guests (name, attendance, drinks) VALUES ($1, $2, $3) RETURNING *',
             [name, attendance, drinks ? drinks.join(', ') : '']
         );
+        
+        console.log('Inserted:', result.rows[0]);
         res.json({ message: 'Анкета сохранена!', id: result.rows[0].id });
     } catch (err) {
-        res.status(500).json({ error: 'Ошибка сервера' });
+        console.error('=== RSVP ERROR ===');
+        console.error('Error:', err.message);
+        console.error('Stack:', err.stack);
+        res.status(500).json({ error: err.message });
     }
 });
 
