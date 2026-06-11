@@ -10,6 +10,11 @@ function changeSection(targetIndex) {
 document.addEventListener('DOMContentLoaded', () => {
     updateNavigation();
     
+        // Клик по сердцу
+    document.querySelector('.heart-icon')?.addEventListener('click', () => {
+        showSection(1);
+    });
+    
     // Клик по подсказке
     document.querySelector('.tap-hint')?.addEventListener('click', () => {
         changeSection(1);
