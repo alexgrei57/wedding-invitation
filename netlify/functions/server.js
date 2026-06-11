@@ -25,15 +25,22 @@ const pool = new Pool({
 });
 
 async function initializeDatabase() {
-    await pool.query(`
-        CREATE TABLE IF NOT EXISTS guests (
-            id SERIAL PRIMARY KEY,
-            name TEXT NOT NULL,
-            attendance TEXT NOT NULL,
-            drinks TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    `);
+    try {
+        console.log('Creating table if not exists...');
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS guests (
+                id SERIAL PRIMARY KEY,
+                name TEXT NOT NULL,
+                attendance TEXT NOT NULL,
+                drinks TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+        console.log('Table ready');
+    } catch (err) {
+        console.error('Error creating table:', err.message);
+        throw err;
+    }
 }
 
 app.post('/api/login', (req, res) => {
