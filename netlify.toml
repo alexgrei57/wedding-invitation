@@ -6,8 +6,6 @@
 # API запросы идут в функцию
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  to = "/.netlify/functions/server"
   status = 200
-
-# Статические файлы (HTML, CSS, JS, картинки) обслуживаются напрямую
-# Без редиректа на функцию!
+  force = true
