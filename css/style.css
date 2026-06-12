@@ -70,8 +70,8 @@ body {
 .hero-section {
     position: relative;
     overflow: hidden;
-    background: url('images/start_page.webp') center center no-repeat;
-    background-size: cover;
+    background: url('images/start_page.webp') center center no-repeat !important;
+    background-size: cover !important;
     background-color: #F5F1EB;
     transform: translateY(0);
     z-index: 10;
