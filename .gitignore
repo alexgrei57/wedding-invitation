@@ -35,7 +35,3 @@ yarn-error.log*
 
 # Old server file (using netlify/functions instead)
 server.js
-
-# Backup script with secret key
-backup.js
-guests_backup_*.json
