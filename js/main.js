@@ -235,7 +235,7 @@ async function sendToServer(event) {
 
     try {
         // Используем Supabase клиент (он уже инициализирован в index.html)
-        const { data, error } = await supabase
+        const { data, error } = await supabaseClient
             .from('guests')
             .insert([formData])
             .select();

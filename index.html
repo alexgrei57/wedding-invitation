@@ -20,7 +20,7 @@
     <script>
         const SUPABASE_URL = 'https://htcrttlarrvnuldbpewk.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     </script>
     <!-- ============================================ -->
 
@@ -402,7 +402,7 @@
                     .join(', ');
                 
                 // Отправляем в Supabase
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('guests')
                     .insert([{ 
                         name: name, 
