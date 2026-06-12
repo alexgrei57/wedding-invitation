@@ -196,6 +196,7 @@ function startCountdown() {
     updateCountdown();
 }
 
+/*
 // ===== Отправка формы в Supabase (ЕДИНСТВЕННАЯ ФУНКЦИЯ) =====
 async function sendToServer(event) {
     event.preventDefault();
@@ -277,3 +278,4 @@ async function sendToServer(event) {
     
     console.log('=== КОНЕЦ ОТПРАВКИ ===');
 }
+    */
