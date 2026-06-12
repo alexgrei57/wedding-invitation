@@ -66,26 +66,31 @@ body::before {
     -webkit-transform-style: preserve-3d;
     background: transparent;
     padding: 40px 0;
+    visibility: hidden; /* ✅ Скрываем неактивные секции */
 }
 
 .section.active {
     transform: translateY(0);
     z-index: 10;
+    visibility: visible; /* ✅ Показываем активную секцию */
 }
 
 .section:not(.active) {
     transform: translateY(100%);
     z-index: 1;
+    visibility: hidden; /* ✅ Полностью скрываем */
 }
 
 .section.go-up {
     transform: translateY(-100%);
     z-index: 5;
+    visibility: visible; /* ✅ Видима во время анимации */
 }
 
 .section.go-down {
     transform: translateY(100%);
     z-index: 5;
+    visibility: visible; /* ✅ Видима во время анимации */
 }
 
 /* ✅ Прозрачный контейнер для контента */
@@ -104,7 +109,7 @@ body::before {
     margin: 0 15px;
 }
 
-/* Hero секция - полностью прозрачная */
+/* Hero секция */
 .hero-section {
     position: fixed;
     top: 0;
@@ -113,20 +118,36 @@ body::before {
     height: 100vh;
     overflow: hidden;
     background: transparent;
-    transform: translateY(0);
-    z-index: 10;
+    transform: translateY(100%); /* ✅ Скрыта по умолчанию */
+    z-index: 1;
     border: none;
     padding: 0;
+    visibility: hidden; /* ✅ Скрыта */
+}
+
+.hero-section.active {
+    transform: translateY(0);
+    z-index: 10;
+    visibility: visible; /* ✅ Показана когда активна */
 }
 
 .hero-section::before {
-    display: none;
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: url('../images/start_page.webp') center center no-repeat;
+    background-size: cover;
+    animation: silkAnimation 20s ease-in-out infinite;
+    z-index: 1;
 }
 
 .hero-section:not(.active) {
-    transform: translateY(0);
+    transform: translateY(100%);
     z-index: 1;
-    opacity: 0;
+    visibility: hidden; /* ✅ Полностью скрыта */
     pointer-events: none;
 }
 
@@ -242,26 +263,31 @@ body::before {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     padding: 40px 0;
+    visibility: hidden; /* ✅ Скрыта по умолчанию */
 }
 
 .slide-section.active {
     transform: translateY(0);
     z-index: 10;
+    visibility: visible; /* ✅ Показана когда активна */
 }
 
 .slide-section:not(.active) {
     transform: translateY(100%);
     z-index: 1;
+    visibility: hidden; /* ✅ Полностью скрыта */
 }
 
 .slide-section.go-up {
     transform: translateY(-100%);
     z-index: 5;
+    visibility: visible; /* ✅ Видима во время анимации */
 }
 
 .slide-section.go-down {
     transform: translateY(100%);
     z-index: 5;
+    visibility: visible; /* ✅ Видима во время анимации */
 }
 
 /* ✅ Прозрачный фон с белой рамкой для выделения границ страницы */
