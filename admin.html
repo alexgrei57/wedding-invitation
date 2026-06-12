@@ -190,32 +190,116 @@
     </div>
     
     <script>
-        let authToken = localStorage.getItem('adminToken') || '';
+        // ===== Управление токенами =====
+        let accessToken = localStorage.getItem('adminAccessToken') || '';
+        let refreshToken = localStorage.getItem('adminRefreshToken') || '';
         
         // Проверка токена при загрузке
-        if (authToken) {
+        if (accessToken && refreshToken) {
             checkAuth();
         }
         
-        async function checkAuth() {
+        // ===== API запрос с автоматическим обновлением токена =====
+        async function apiRequest(url, options = {}) {
+            // Добавляем accessToken в заголовки
+            options.headers = {
+                ...options.headers,
+                'x-auth-token': accessToken,
+                'Content-Type': 'application/json'
+            };
+            
             try {
-                const response = await fetch('/api/guests', {
-                    headers: { 'x-auth-token': authToken }
+                let response = await fetch(url, options);
+                
+                // Если токен истек - пробуем обновить
+                if (response.status === 401) {
+                    const data = await response.json();
+                    
+                    if (data.code === 'TOKEN_EXPIRED') {
+                        // Пытаемся обновить accessToken
+                        const newToken = await refreshAccessToken();
+                        
+                        if (newToken) {
+                            // Повторяем запрос с новым токеном
+                            options.headers['x-auth-token'] = newToken;
+                            response = await fetch(url, options);
+                        } else {
+                            // Refresh token тоже истек - нужно логиниться заново
+                            alert('Сессия истекла. Пожалуйста, войдите снова.');
+                            logout();
+                            return null;
+                        }
+                    } else if (data.code === 'REFRESH_TOKEN_EXPIRED') {
+                        alert('Сессия истекла. Пожалуйста, войдите снова.');
+                        logout();
+                        return null;
+                    }
+                }
+                
+                return response;
+            } catch (err) {
+                console.error('Ошибка API запроса:', err);
+                throw err;
+            }
+        }
+        
+        // ===== Обновление accessToken =====
+        async function refreshAccessToken() {
+            if (!refreshToken) {
+                return null;
+            }
+            
+            try {
+                const response = await fetch('/api/refresh-token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ refreshToken })
                 });
                 
-                if (response.ok) {
+                const data = await response.json();
+                
+                if (data.success) {
+                    accessToken = data.accessToken;
+                    localStorage.setItem('adminAccessToken', accessToken);
+                    return accessToken;
+                } else {
+                    return null;
+                }
+            } catch (err) {
+                console.error('Ошибка обновления токена:', err);
+                return null;
+            }
+        }
+        
+        // ===== Проверка авторизации =====
+        async function checkAuth() {
+            try {
+                const response = await apiRequest('/api/guests');
+                
+                if (response && response.ok) {
                     document.getElementById('loginSection').style.display = 'none';
                     document.getElementById('guestsTable').style.display = 'block';
                     loadGuests();
                 } else {
-                    localStorage.removeItem('adminToken');
-                    authToken = '';
+                    clearTokens();
                 }
             } catch (error) {
                 console.error('Ошибка проверки токена:', error);
+                clearTokens();
             }
         }
         
+        // ===== Очистка токенов =====
+        function clearTokens() {
+            accessToken = '';
+            refreshToken = '';
+            localStorage.removeItem('adminAccessToken');
+            localStorage.removeItem('adminRefreshToken');
+        }
+        
+        // ===== Логин =====
         async function login() {
             const input = document.getElementById('passwordInput').value;
             
@@ -229,8 +313,12 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    authToken = data.token;
-                    localStorage.setItem('adminToken', authToken);
+                    // Сохраняем оба токена
+                    accessToken = data.accessToken;
+                    refreshToken = data.refreshToken;
+                    localStorage.setItem('adminAccessToken', accessToken);
+                    localStorage.setItem('adminRefreshToken', refreshToken);
+                    
                     document.getElementById('loginSection').style.display = 'none';
                     document.getElementById('guestsTable').style.display = 'block';
                     loadGuests();
@@ -243,18 +331,18 @@
             }
         }
         
+        // ===== Logout =====
         function logout() {
-            localStorage.removeItem('adminToken');
+            clearTokens();
             location.reload();
         }
         
+        // ===== Загрузка гостей =====
         async function loadGuests() {
             try {
-                const response = await fetch('/api/guests', {
-                    headers: { 'x-auth-token': authToken }
-                });
+                const response = await apiRequest('/api/guests');
                 
-                if (!response.ok) throw new Error('Ошибка авторизации');
+                if (!response || !response.ok) throw new Error('Ошибка авторизации');
                 
                 const guests = await response.json();
                 const tbody = document.getElementById('guestsBody');
@@ -286,6 +374,7 @@
             }
         }
         
+        // ===== Редактирование =====
         function editGuest(id, name, attendance, drinks) {
             document.getElementById('editId').value = id;
             document.getElementById('editName').value = name;
@@ -305,16 +394,12 @@
             const drinks = document.getElementById('editDrinks').value.split(',').map(d => d.trim());
             
             try {
-                const response = await fetch(`/api/admin/guests/${id}`, {
+                const response = await apiRequest(`/api/admin/guests/${id}`, {
                     method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-auth-token': authToken
-                    },
                     body: JSON.stringify({ name, attendance, drinks })
                 });
                 
-                if (response.ok) {
+                if (response && response.ok) {
                     closeEditModal();
                     loadGuests();
                     alert('Анкета обновлена!');
@@ -326,16 +411,16 @@
             }
         }
         
+        // ===== Удаление =====
         async function deleteGuest(id) {
             if (!confirm('Вы уверены, что хотите удалить эту анкету?')) return;
             
             try {
-                const response = await fetch(`/api/admin/guests/${id}`, {
-                    method: 'DELETE',
-                    headers: { 'x-auth-token': authToken }
+                const response = await apiRequest(`/api/admin/guests/${id}`, {
+                    method: 'DELETE'
                 });
                 
-                if (response.ok) {
+                if (response && response.ok) {
                     loadGuests();
                     alert('Анкета удалена!');
                 } else {
