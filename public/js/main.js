@@ -8,13 +8,26 @@ function changeSection(targetIndex) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Скрываем loader и показываем контент
+    document.body.classList.add('loaded');
+    const loader = document.getElementById('pageLoader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            setTimeout(() => {
+                loader.remove();
+            }, 500);
+        }, 300); // Небольшая задержка чтобы CSS точно загрузился
+    }
+    
+    // Остальной код...
     updateNavigation();
     
         // Клик по сердцу
     document.querySelector('.heart-icon')?.addEventListener('click', () => {
         showSection(1);
     });
-    
+
     // Клик по подсказке
     document.querySelector('.tap-hint')?.addEventListener('click', () => {
         changeSection(1);
