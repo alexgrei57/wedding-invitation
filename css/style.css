@@ -65,7 +65,6 @@ body::before {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     background: transparent;
-    /* ✅ Отступы чтобы между секциями был виден фон */
     padding: 40px 0;
 }
 
@@ -99,14 +98,13 @@ body::before {
     padding: 30px 20px;
     position: relative;
     z-index: 2;
-    /* ✅ Прозрачный фон */
     background: transparent;
     border: none;
     box-shadow: none;
     margin: 0 15px;
 }
 
-/* Hero секция с анимированным фоном */
+/* Hero секция - полностью прозрачная */
 .hero-section {
     position: fixed;
     top: 0;
@@ -121,18 +119,8 @@ body::before {
     padding: 0;
 }
 
-/* ✅ Анимированный фон для первой страницы */
 .hero-section::before {
-    content: '';
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    background: url('../images/start_page.webp') center center no-repeat;
-    background-size: cover;
-    animation: silkAnimation 20s ease-in-out infinite;
-    z-index: 1;
+    display: none;
 }
 
 .hero-section:not(.active) {
@@ -142,10 +130,9 @@ body::before {
     pointer-events: none;
 }
 
-
 .hero-section .content-wrapper {
     position: relative;
-    z-index: 2; /* Контент выше фона */
+    z-index: 2;
     background: transparent;
     border: none;
     box-shadow: none;
@@ -254,7 +241,6 @@ body::before {
     background: transparent;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    /* ✅ Отступы чтобы между секциями был виден фон */
     padding: 40px 0;
 }
 
@@ -278,6 +264,7 @@ body::before {
     z-index: 5;
 }
 
+/* ✅ Прозрачный фон с белой рамкой для выделения границ страницы */
 .slide-section .content-wrapper {
     position: relative;
     z-index: 10;
@@ -291,7 +278,9 @@ body::before {
     overflow-y: auto;
     /* ✅ Прозрачный фон */
     background: transparent;
-    border: none;
+    /* ✅ Белая рамка для выделения границ страницы */
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
     box-shadow: none;
     margin: 0 15px;
 }
