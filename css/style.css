@@ -129,7 +129,16 @@ body::before {
 }
 
 .hero-section::before {
-    display: none;
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: url('../images/start_page.webp') center center no-repeat;
+    background-size: cover;
+    animation: silkAnimation 20s ease-in-out infinite;
+    z-index: 1;
 }
 
 .hero-section .content-wrapper {
@@ -139,8 +148,8 @@ body::before {
     border: none;
     box-shadow: none;
     margin: 0;
-    padding: 0; /* Убрали padding */
-    height: 100vh; /* Явная высота на весь экран */
+    padding: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
