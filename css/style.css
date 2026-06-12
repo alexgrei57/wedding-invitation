@@ -17,7 +17,6 @@
     --white: #FFFFFF;
 }
 
-/* Убираем фон у body, добавляем общий фон */
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-dark);
@@ -90,7 +89,7 @@ body::before {
     z-index: 5;
 }
 
-/* ✅ Белый контейнер для контента (по умолчанию) */
+/* ✅ Прозрачный контейнер для контента */
 .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -100,15 +99,14 @@ body::before {
     padding: 30px 20px;
     position: relative;
     z-index: 2;
-    /* ✅ Белый фон с рамкой */
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    /* ✅ Прозрачный фон */
+    background: transparent;
+    border: none;
+    box-shadow: none;
     margin: 0 15px;
 }
 
-/* Hero секция - без белого фона */
+/* Hero секция */
 .hero-section {
     position: relative;
     overflow: hidden;
@@ -116,7 +114,7 @@ body::before {
     transform: translateY(0);
     z-index: 10;
     border: none;
-    padding: 0; /* Убираем отступы */
+    padding: 0;
 }
 
 .hero-section:not(.active) {
@@ -133,24 +131,26 @@ body::before {
 .hero-section .content-wrapper {
     position: relative;
     z-index: 2;
-    background: transparent; /* Убираем белый фон */
+    background: transparent;
     border: none;
     box-shadow: none;
     margin: 0;
     padding: 20px;
+    height: 100%;
 }
 
-/* Names секция - тоже без белого фона */
+/* Names секция */
 .names-section {
-    padding: 0; /* Убираем отступы */
+    padding: 0;
 }
 
 .names-section .content-wrapper {
-    background: transparent; /* Убираем белый фон */
+    background: transparent;
     border: none;
     box-shadow: none;
     margin: 0;
     padding: 20px;
+    height: 100%;
 }
 
 .fade-in {
@@ -270,11 +270,10 @@ body::before {
     padding: 30px 20px;
     text-align: center;
     overflow-y: auto;
-    /* ✅ Белый фон с рамкой для всех секций кроме первых двух */
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    /* ✅ Прозрачный фон */
+    background: transparent;
+    border: none;
+    box-shadow: none;
     margin: 0 15px;
 }
 
@@ -1056,7 +1055,6 @@ body::before {
     .location-title { font-size: 32px; letter-spacing: 5px; }
     .location-subtitle { font-size: 22px; }
     
-    /* Мобильная адаптация для белых карточек */
     .content-wrapper {
         padding: 20px 15px;
         margin: 0 10px;
