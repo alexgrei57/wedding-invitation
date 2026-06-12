@@ -331,14 +331,18 @@ async function sendToServer(event) {
     }
     
     try {
-        const response = await fetch('https://htcrtllarrvnuldbpewk.supabase.co/functions/v1/rsvp', {
+        const response = await fetch('https://htcrtllarrvnuldbpewk.supabase.co/rest/v1/guests', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k',  // Вставь свой ANON key
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k'  // Тот же ANON key
+        'Authorization': 'Bearer sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH',  // Вставь свой ANON key
+        'apikey': 'sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH' 
     },
-    body: JSON.stringify(formData)
+        body: JSON.stringify({
+        name: formData.name,
+        attendance: formData.attendance,
+        drinks: formData.drinks ? formData.drinks.join(', ') : null
+    })
 });
         
         const result = await response.json();
