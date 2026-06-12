@@ -303,12 +303,12 @@ body::before {
     text-align: center;
     overflow-y: auto;
     /* ✅ Фон на 90% непрозрачный (почти белый, но фон слегка просвечивает) */
-    background: rgba(245, 241, 235, 0.9);
+    background: rgba(245, 241, 235, 0.2);
     /* ✅ Сильное размытие фона за рамкой */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     /* Белая рамка */
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.7);
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     margin: 0 15px;
