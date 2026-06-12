@@ -48,21 +48,66 @@
             cursor: pointer;
             font-size: 14px;
         }
-        table {
+        
+        /* Таблица для десктопа */
+        .desktop-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-        th, td {
+        .desktop-table th, .desktop-table td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #D4C4B0;
         }
-        th {
+        .desktop-table th {
             background: #F5F1EB;
             font-weight: 600;
             color: #1a1a1a;
         }
+        
+        /* Карточки для мобильных */
+        .mobile-cards {
+            display: none;
+            margin-top: 20px;
+        }
+        .guest-card {
+            background: #F5F1EB;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .guest-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #D4C4B0;
+        }
+        .guest-number {
+            font-weight: 600;
+            color: #8B7355;
+            font-size: 14px;
+        }
+        .guest-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            flex: 1;
+            margin-left: 10px;
+        }
+        .guest-info {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .guest-info-label {
+            font-weight: 600;
+            color: #8B7355;
+            margin-right: 5px;
+        }
+        
         .yes { color: #4CAF50; font-weight: 600; }
         .no { color: #f44336; font-weight: 600; }
         .error { color: #f44336; text-align: center; margin-top: 10px; }
@@ -84,6 +129,27 @@
             color: #1976D2;
             text-align: center;
         }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .desktop-table {
+                display: none;
+            }
+            .mobile-cards {
+                display: block;
+            }
+            .logout-btn {
+                float: none;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -102,9 +168,12 @@
             <div class="info-box">
                 ℹ️ Режим только для просмотра. Редактирование и удаление недоступны.
             </div>
-            <table>
+            
+            <!-- Таблица для десктопа -->
+            <table class="desktop-table">
                 <thead>
                     <tr>
+                        <th>№</th>
                         <th>Имя</th>
                         <th>Присутствие</th>
                         <th>Напитки</th>
@@ -113,19 +182,19 @@
                 </thead>
                 <tbody id="guestsBody"></tbody>
             </table>
+            
+            <!-- Карточки для мобильных -->
+            <div class="mobile-cards" id="mobileCards"></div>
         </div>
     </div>
     
-    <!-- Подключаем Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <script>
-        // ===== Инициализация Supabase =====
         const SUPABASE_URL = 'https://htcrttlarrvnuldbpewk.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
-        // Проверка сессии при загрузке
         supabaseClient.auth.getSession().then(({ data: { session } }) => {
             if (session) {
                 showViewerPanel();
@@ -133,7 +202,6 @@
             }
         });
         
-        // Логин
         async function login() {
             const email = document.getElementById('emailInput').value;
             const password = document.getElementById('passwordInput').value;
@@ -151,19 +219,16 @@
             }
         }
         
-        // Показать панель viewer
         function showViewerPanel() {
             document.getElementById('loginSection').style.display = 'none';
             document.getElementById('guestsTable').style.display = 'block';
         }
         
-        // Logout
         async function logout() {
             await supabaseClient.auth.signOut();
             location.reload();
         }
         
-        // Загрузка гостей
         async function loadGuests() {
             const { data: guests, error } = await supabaseClient
                 .from('guests')
@@ -179,20 +244,49 @@
             const tbody = document.getElementById('guestsBody');
             tbody.innerHTML = '';
             
+            const mobileCards = document.getElementById('mobileCards');
+            mobileCards.innerHTML = '';
+            
             if (guests.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                mobileCards.innerHTML = '<p style="text-align: center; color: #999;">Пока нет анкет</p>';
                 return;
             }
             
-            guests.forEach(guest => {
+            guests.forEach((guest, index) => {
+                // Таблица (десктоп)
                 const row = document.createElement('tr');
                 row.innerHTML = `
+                    <td>${guest.number || index + 1}</td>
                     <td>${guest.name}</td>
                     <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${guest.attendance}</td>
                     <td>${guest.drinks || '-'}</td>
                     <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
                 `;
                 tbody.appendChild(row);
+                
+                // Карточка (мобильная)
+                const card = document.createElement('div');
+                card.className = 'guest-card';
+                card.innerHTML = `
+                    <div class="guest-card-header">
+                        <span class="guest-number">№${guest.number || index + 1}</span>
+                        <span class="guest-name">${guest.name}</span>
+                    </div>
+                    <div class="guest-info">
+                        <span class="guest-info-label">Присутствие:</span>
+                        <span class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${guest.attendance}</span>
+                    </div>
+                    <div class="guest-info">
+                        <span class="guest-info-label">Напитки:</span>
+                        <span>${guest.drinks || '-'}</span>
+                    </div>
+                    <div class="guest-info">
+                        <span class="guest-info-label">Дата:</span>
+                        <span>${new Date(guest.created_at).toLocaleString('ru-RU')}</span>
+                    </div>
+                `;
+                mobileCards.appendChild(card);
             });
         }
     </script>

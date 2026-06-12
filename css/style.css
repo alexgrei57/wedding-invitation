@@ -65,10 +65,10 @@ body::before {
     overflow: hidden;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    /* Полупрозрачный фон с рамкой */
-    background: rgba(245, 241, 235, 0.85);
-    border-top: 1px solid rgba(212, 196, 176, 0.5);
-    border-bottom: 1px solid rgba(212, 196, 176, 0.5);
+    /* ✅ Убрали фон - секция прозрачная */
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .section.active {
@@ -207,9 +207,10 @@ body::before {
     will-change: transform;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    background: rgba(245, 241, 235, 0.85);
-    border-top: 1px solid rgba(212, 196, 176, 0.5);
-    border-bottom: 1px solid rgba(212, 196, 176, 0.5);
+    /* ✅ Убрали фон - секция прозрачная */
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
 }
