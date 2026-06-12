@@ -592,24 +592,28 @@ body {
 
 /* Цветовая палитра */
 .color-palette {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    max-width: 320px;
-    margin: 20px 0 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    max-width: 340px;
+    margin: 25px 0 30px;
     padding: 0 10px;
+    flex-wrap: wrap;
 }
 
 .color-swatch {
-    width: 100%;
-    aspect-ratio: 1;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .color-swatch:hover {
-    transform: scale(1.05);
+    transform: scale(1.15);
 }
 
 /* Фото образов */
