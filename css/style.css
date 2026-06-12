@@ -20,7 +20,7 @@
 /* Убираем белый фон body */
 body {
     font-family: 'Montserrat', sans-serif;
-    background: var(--beige-light); /* Добавили фон */
+    background: transparent; /* Изменили на прозрачный */
     color: var(--text-dark);
     overflow: hidden;
     margin: 0;
@@ -33,7 +33,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 101%;
+    height: 100%;
     transform: translateY(100%);
     transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
     z-index: 1;
@@ -43,6 +43,7 @@ body {
     overflow: hidden;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    background: var(--beige-light); /* Добавили фон для всех секций */
 }
 
 .section.active {
@@ -52,7 +53,12 @@ body {
 
 .section:not(.active) {
     transform: translateY(100%);
-    /*visibility: hidden;*/
+}
+
+/* Новый класс для секций, уходящих вниз при обратном переходе */
+.section.go-down {
+    transform: translateY(100%);
+    z-index: 5;
 }
 
 .content-wrapper {
@@ -176,13 +182,13 @@ body {
     pointer-events: none;
 }
 
-/* ===== Общие стили для скользящих секций (2, 3, 4) ===== */
+/* ===== Общие стили для скользящих секций ===== */
 .slide-section {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 101%;
+    height: 100%; /* Исправили с 101% на 100% */
     overflow: hidden;
     transform: translateY(100%);
     transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
@@ -198,17 +204,20 @@ body {
 .slide-section.active {
     transform: translateY(0);
     z-index: 10;
-    visibility: visible;
 }
 
 .slide-section:not(.active) {
     transform: translateY(100%);
-    /*visibility: hidden;*/
 }
 
 .slide-section.go-up {
     transform: translateY(-100%);
-    /*visibility: visible;*/
+    z-index: 5;
+}
+
+.slide-section.go-down {
+    transform: translateY(100%);
+    z-index: 5;
 }
 
 .slide-section::before {

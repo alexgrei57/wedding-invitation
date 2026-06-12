@@ -80,10 +80,10 @@ function showSection(index) {
     // Переход 2→1
     if (currentSection === 1 && index === 0) {
         sections[1].classList.remove('active');
-        sections[1].classList.add('go-up');
+        sections[1].classList.add('go-down'); // Уходит вниз
         sections[0].classList.add('active');
         setTimeout(() => {
-            sections[1].classList.remove('go-up');
+            sections[1].classList.remove('go-down');
         }, 1200);
         currentSection = index;
         updateNavigation();
@@ -91,28 +91,25 @@ function showSection(index) {
         return;
     }
     
-    // Переход вперёд
+    // Переход вперёд (2→3, 3→4, и т.д.)
     if (index > currentSection) {
         sections[currentSection].classList.remove('active');
-        sections[currentSection].classList.add('go-up');
-        sections[index].classList.remove('go-up');
-        sections[index].classList.add('active');
+        sections[currentSection].classList.add('go-up'); // Текущая уходит вверх
+        sections[index].classList.remove('go-down');
+        sections[index].classList.add('active'); // Новая приходит снизу
         currentSection = index;
         updateNavigation();
         updateIndicators();
     }
-    // Переход назад
+    // Переход назад (8→7, 7→6, и т.д.)
     else if (index < currentSection) {
         sections[currentSection].classList.remove('active');
-        sections[currentSection].classList.remove('go-up');
-        sections[index].classList.add('go-up');
-        setTimeout(() => {
-            sections[index].classList.remove('go-up');
-            sections[index].classList.add('active');
-            currentSection = index;
-            updateNavigation();
-            updateIndicators();
-        }, 50);
+        sections[currentSection].classList.add('go-down'); // Текущая уходит вниз
+        sections[index].classList.remove('go-up');
+        sections[index].classList.add('active'); // Новая приходит снизу
+        currentSection = index;
+        updateNavigation();
+        updateIndicators();
     }
 }
 
