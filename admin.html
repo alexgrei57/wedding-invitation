@@ -193,14 +193,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <script>
-        // Конфигурация Supabase
+        // ===== Инициализация Supabase =====
         const SUPABASE_URL = 'https://htcrttlarrvnuldbpewk.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k';
-        
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
         // Проверка сессии при загрузке
-        supabase.auth.getSession().then(({ data: { session } }) => {
+        supabaseClient.auth.getSession().then(({ data: { session } }) => {
             if (session) {
                 showAdminPanel();
                 loadGuests();
@@ -212,7 +211,7 @@
             const email = document.getElementById('emailInput').value;
             const password = document.getElementById('passwordInput').value;
             
-            const { data, error } = await supabase.auth.signInWithPassword({
+            const { data, error } = await supabaseClient.auth.signInWithPassword({
                 email: email,
                 password: password
             });
@@ -233,13 +232,13 @@
         
         // Logout
         async function logout() {
-            await supabase.auth.signOut();
+            await supabaseClient.auth.signOut();
             location.reload();
         }
         
         // Загрузка гостей
         async function loadGuests() {
-            const { data: guests, error } = await supabase
+            const { data: guests, error } = await supabaseClient
                 .from('guests')
                 .select('*')
                 .order('created_at', { ascending: false });
@@ -293,7 +292,7 @@
             const attendance = document.getElementById('editAttendance').value;
             const drinks = document.getElementById('editDrinks').value;
             
-            const { error } = await supabase
+            const { error } = await supabaseClient
                 .from('guests')
                 .update({ name, attendance, drinks })
                 .eq('id', id);
@@ -311,7 +310,7 @@
         async function deleteGuest(id) {
             if (!confirm('Вы уверены, что хотите удалить эту анкету?')) return;
             
-            const { error } = await supabase
+            const { error } = await supabaseClient
                 .from('guests')
                 .delete()
                 .eq('id', id);
