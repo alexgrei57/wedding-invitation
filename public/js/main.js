@@ -20,6 +20,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300); // Небольшая задержка чтобы CSS точно загрузился
     }
     
+    // ===== ⬅️ СЮДА ДОБАВЬ КОД МУЗЫКИ =====
+    const music = document.getElementById('weddingMusic');
+    let musicStarted = false;
+    
+    function startMusic() {
+        if (music && !musicStarted) {
+            music.volume = 0.3;  // Громкость 30%
+            music.play().then(() => {
+                musicStarted = true;
+                console.log('🎵 Музыка запущена');
+            }).catch(err => {
+                console.log('Music autoplay blocked:', err);
+            });
+        }
+    }
+    
+    // Запуск при первом взаимодействии
+    document.addEventListener('click', startMusic, { once: true });
+    document.addEventListener('touchstart', startMusic, { once: true });
+    document.addEventListener('keydown', startMusic, { once: true });
+    // ===== КОНЕЦ КОДА МУЗЫКИ =====
+
     // Остальной код...
     updateNavigation();
     
