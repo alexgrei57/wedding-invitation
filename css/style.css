@@ -290,7 +290,7 @@ body::before {
     visibility: visible; /* ✅ Видима во время анимации */
 }
 
-/* ✅ Прозрачный фон с белой рамкой для выделения границ страницы */
+/* ✅ Полупрозрачный фон с размытием для страниц 2+ */
 .slide-section .content-wrapper {
     position: relative;
     z-index: 10;
@@ -302,12 +302,15 @@ body::before {
     padding: 30px 20px;
     text-align: center;
     overflow-y: auto;
-    /* ✅ Прозрачный фон */
-    background: transparent;
-    /* ✅ Белая рамка для выделения границ страницы */
+    /* ✅ Фон на 90% непрозрачный (почти белый, но фон слегка просвечивает) */
+    background: rgba(245, 241, 235, 0.9);
+    /* ✅ Сильное размытие фона за рамкой */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* Белая рамка */
     border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
-    box-shadow: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     margin: 0 15px;
 }
 
