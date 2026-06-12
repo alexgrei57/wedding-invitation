@@ -80,7 +80,7 @@ function showSection(index) {
     // Переход 2→1
     if (currentSection === 1 && index === 0) {
         sections[1].classList.remove('active');
-        sections[1].classList.add('go-down'); // Уходит вниз
+        sections[1].classList.add('go-down');
         sections[0].classList.add('active');
         setTimeout(() => {
             sections[1].classList.remove('go-down');
@@ -91,22 +91,22 @@ function showSection(index) {
         return;
     }
     
-    // Переход вперёд (2→3, 3→4, и т.д.)
+    // Переход вперёд
     if (index > currentSection) {
         sections[currentSection].classList.remove('active');
-        sections[currentSection].classList.add('go-up'); // Текущая уходит вверх
+        sections[currentSection].classList.add('go-up');
         sections[index].classList.remove('go-down');
-        sections[index].classList.add('active'); // Новая приходит снизу
+        sections[index].classList.add('active');
         currentSection = index;
         updateNavigation();
         updateIndicators();
     }
-    // Переход назад (8→7, 7→6, и т.д.)
+    // Переход назад
     else if (index < currentSection) {
         sections[currentSection].classList.remove('active');
-        sections[currentSection].classList.add('go-down'); // Текущая уходит вниз
+        sections[currentSection].classList.add('go-down');
         sections[index].classList.remove('go-up');
-        sections[index].classList.add('active'); // Новая приходит снизу
+        sections[index].classList.add('active');
         currentSection = index;
         updateNavigation();
         updateIndicators();
@@ -192,6 +192,24 @@ function startCountdown() {
     setInterval(updateCountdown, 1000);
     updateCountdown();
 }
+
+// Запрет контекстного меню на изображениях
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Запрет перетаскивания
+document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+    }
+});
+
+
 
 /*
 // ===== Отправка формы в Supabase (ЕДИНСТВЕННАЯ ФУНКЦИЯ) =====
