@@ -108,7 +108,11 @@ body::before {
 
 /* Hero секция */
 .hero-section {
-    position: relative;
+    position: fixed; /* Явно fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Явная высота */
     overflow: hidden;
     background: transparent;
     transform: translateY(0);
@@ -135,8 +139,12 @@ body::before {
     border: none;
     box-shadow: none;
     margin: 0;
-    padding: 20px;
-    height: 100%;
+    padding: 0; /* Убрали padding */
+    height: 100vh; /* Явная высота на весь экран */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Names секция */
