@@ -331,7 +331,7 @@ async function sendToServer(event) {
     }
     
     try {
-        const response = await fetch('https://htcrtllarrvnuldbpewk.supabase.co/rest/v1/guests', {
+        const response = await fetch('https://htcrttlarrvnuldbpewk.supabase.co/rest/v1/guests', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
