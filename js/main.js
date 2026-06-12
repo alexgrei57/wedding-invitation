@@ -67,13 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
 function showSection(index) {
     const sections = document.querySelectorAll('.section');
     
-    // Переход 1→2 (клик по сердцу)
+    // Переход 1→2 (клик по сердцу) - плавное исчезновение
     if (currentSection === 0 && index === 1) {
-        sections[0].classList.remove('active');
-        sections[index].classList.add('active');
-        currentSection = index;
-        updateNavigation();
-        updateIndicators();
+        sections[0].style.transition = 'opacity 0.8s ease';
+        sections[0].style.opacity = '0';
+        
+        setTimeout(() => {
+            sections[0].classList.remove('active');
+            sections[0].style.opacity = '1';
+            sections[0].style.transition = '';
+            sections[index].classList.add('active');
+            currentSection = index;
+            updateNavigation();
+            updateIndicators();
+        }, 800);
+        
         return;
     }
     
@@ -141,7 +149,11 @@ document.addEventListener('touchstart', function(e) {
 document.addEventListener('touchend', function(e) {
     if (currentSection >= 1 && currentSection <= 8) {
         touchEndY = e.changedTouches[0].screenY;
-        handleSwipe();
+        
+        // Небольшая задержка для плавности
+        setTimeout(() => {
+            handleSwipe();
+        }, 50);
     }
 }, false);
 
