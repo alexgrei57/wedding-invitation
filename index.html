@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=7">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -14,6 +14,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- ===== ДОБАВЛЕНО: Подключение Supabase ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://htcrttlarrvnuldbpewk.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
+    <!-- ============================================ -->
 
     <style>
     /* Скрываем контент до полной загрузки */
@@ -199,7 +208,7 @@
             <div class="color-swatch" style="background: #8B7355;" title="Коричневый"></div>
             <div class="color-swatch" style="background: #C4B5A0;" title="Бежевый"></div>
             <div class="color-swatch" style="background: #E8DFD0;" title="Светло-бежевый"></div>
-            <div class="color-swatch" style="background: #B5C4B1;" title="Светло-зелёный"></div>
+            <div class="color-swatch" style="background: #B5C4B1" title="Светло-зелёный"></div>
             <div class="color-swatch" style="background: #6B7F5E;" title="Тёмно-зелёный"></div>
        </div>
 <!--      <div class="dresscode-photos">
@@ -282,22 +291,23 @@
             Будем очень признательны, если Вы подтвердите своё присутствие и заполните анкету до 15 августа.
         </p>
         
+        <!-- ===== ОБНОВЛЕНО: форма с id для полей ===== -->
         <form class="rsvp-form" id="rsvpForm" onsubmit="sendToServer(event)">
             <div class="form-group">
                 <label class="form-label">Имя и фамилия</label>
                 <p class="form-hint">Если Вы будете со своей парой, укажите оба имени</p>
-                <input type="text" class="form-input" placeholder="Иван Иванов/Мария Иванова" required>
+                <input type="text" id="guestName" class="form-input" placeholder="Иван Иванов/Мария Иванова" required>
             </div>
             
             <div class="form-group">
                 <label class="form-label">Подтвердите своё присутствие:</label>
                 <div class="radio-group">
                     <label class="radio-label">
-                        <input type="radio" name="attendance" value="yes" required>
+                        <input type="radio" name="attendance" value="Да, с удовольствием!" required>
                         <span>Да, с удовольствием!</span>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="attendance" value="no">
+                        <input type="radio" name="attendance" value="К сожалению, не смогу">
                         <span>К сожалению, не смогу</span>
                     </label>
                 </div>
@@ -307,23 +317,23 @@
                 <label class="form-label">Ваши предпочтения в напитках:</label>
                 <div class="checkbox-group">
                     <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="white-wine">
+                        <input type="checkbox" name="drinks" value="Вино белое">
                         <span>Вино белое</span>
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="red-wine">
+                        <input type="checkbox" name="drinks" value="Вино красное">
                         <span>Вино красное</span>
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="sparkling">
+                        <input type="checkbox" name="drinks" value="Игристое">
                         <span>Игристое</span>
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="strong">
+                        <input type="checkbox" name="drinks" value="Крепкий алкоголь">
                         <span>Крепкий алкоголь</span>
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="non-alcoholic">
+                        <input type="checkbox" name="drinks" value="Безалкогольные напитки">
                         <span>Безалкогольные напитки</span>
                     </label>
                 </div>
@@ -333,7 +343,12 @@
             <p class="form-success" id="formSuccess" style="display: none; text-align: center; color: #4CAF50; margin-top: 15px; font-family: 'Montserrat', sans-serif; font-size: 13px;">
                 ✓ Спасибо! Анкета отправлена.
             </p>
+            <p class="form-error" id="formError" style="display: none; text-align: center; color: #f44336; margin-top: 15px; font-family: 'Montserrat', sans-serif; font-size: 13px;">
+                ✗ Ошибка отправки. Попробуйте позже.
+            </p>
         </form>
+        <!-- ========================================== -->
+        
         <!-- Завершающая фраза -->
         <div class="rsvp-footer">
             <p class="footer-main">С НЕТЕРПЕНИЕМ</p>
@@ -360,6 +375,64 @@
         <div class="indicator" data-section="7"></div>
         <div class="indicator" data-section="8"></div>
     </div>
+
+    <!-- ===== ДОБАВЛЕНО: Функция отправки формы в Supabase ===== -->
+    <script>
+        async function sendToServer(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const formSuccess = document.getElementById('formSuccess');
+            const formError = document.getElementById('formError');
+            
+            // Скрываем предыдущие сообщения
+            formSuccess.style.display = 'none';
+            formError.style.display = 'none';
+            
+            // Блокируем кнопку на время отправки
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'ОТПРАВКА...';
+            
+            try {
+                // Собираем данные из формы
+                const name = document.getElementById('guestName').value.trim();
+                const attendance = document.querySelector('input[name="attendance"]:checked').value;
+                const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
+                    .map(cb => cb.value)
+                    .join(', ');
+                
+                // Отправляем в Supabase
+                const { data, error } = await supabase
+                    .from('guests')
+                    .insert([{ 
+                        name: name, 
+                        attendance: attendance, 
+                        drinks: drinks || 'Не выбрано' 
+                    }]);
+                
+                if (error) {
+                    throw error;
+                }
+                
+                // Успех
+                formSuccess.style.display = 'block';
+                document.getElementById('rsvpForm').reset();
+                
+                // Прокручиваем к сообщению об успехе
+                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+            } catch (error) {
+                console.error('Ошибка отправки анкеты:', error);
+                formError.style.display = 'block';
+                formError.textContent = '✗ Ошибка отправки: ' + error.message;
+            } finally {
+                // Разблокируем кнопку
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'ОТПРАВИТЬ';
+            }
+        }
+    </script>
+    <!-- ======================================================= -->
 
     <script src="js/main.js"></script>
 </body>

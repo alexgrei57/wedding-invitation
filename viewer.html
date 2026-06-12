@@ -90,7 +90,8 @@
     <div class="container">
         <div id="loginSection" class="login-form">
             <h1>👁️ Просмотр анкет</h1>
-            <input type="password" id="passwordInput" placeholder="Введите пароль">
+            <input type="email" id="emailInput" placeholder="Email">
+            <input type="password" id="passwordInput" placeholder="Пароль">
             <button onclick="login()">Войти</button>
             <p id="loginError" class="error"></p>
         </div>
@@ -104,7 +105,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Имя</th>
                         <th>Присутствие</th>
                         <th>Напитки</th>
@@ -116,185 +116,85 @@
         </div>
     </div>
     
+    <!-- Подключаем Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <script>
-        // ===== Управление токенами =====
-        let accessToken = localStorage.getItem('viewerAccessToken') || '';
-        let refreshToken = localStorage.getItem('viewerRefreshToken') || '';
+        // Конфигурация Supabase
+        const SUPABASE_URL = 'https://htcrttlarrvnuldbpewk.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k';
         
-        // Проверка токена при загрузке
-        if (accessToken && refreshToken) {
-            checkAuth();
-        }
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
-        // ===== API запрос с автоматическим обновлением токена =====
-        async function apiRequest(url, options = {}) {
-            // Добавляем accessToken в заголовки
-            options.headers = {
-                ...options.headers,
-                'x-auth-token': accessToken,
-                'Content-Type': 'application/json'
-            };
-            
-            try {
-                let response = await fetch(url, options);
-                
-                // Если токен истек - пробуем обновить
-                if (response.status === 401) {
-                    const data = await response.json();
-                    
-                    if (data.code === 'TOKEN_EXPIRED') {
-                        // Пытаемся обновить accessToken
-                        const newToken = await refreshAccessToken();
-                        
-                        if (newToken) {
-                            // Повторяем запрос с новым токеном
-                            options.headers['x-auth-token'] = newToken;
-                            response = await fetch(url, options);
-                        } else {
-                            // Refresh token тоже истек - нужно логиниться заново
-                            alert('Сессия истекла. Пожалуйста, войдите снова.');
-                            logout();
-                            return null;
-                        }
-                    } else if (data.code === 'REFRESH_TOKEN_EXPIRED') {
-                        alert('Сессия истекла. Пожалуйста, войдите снова.');
-                        logout();
-                        return null;
-                    }
-                }
-                
-                return response;
-            } catch (err) {
-                console.error('Ошибка API запроса:', err);
-                throw err;
+        // Проверка сессии при загрузке
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (session) {
+                showViewerPanel();
+                loadGuests();
             }
-        }
+        });
         
-        // ===== Обновление accessToken =====
-        async function refreshAccessToken() {
-            if (!refreshToken) {
-                return null;
-            }
-            
-            try {
-                const response = await fetch('/api/refresh-token', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ refreshToken })
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    accessToken = data.accessToken;
-                    localStorage.setItem('viewerAccessToken', accessToken);
-                    return accessToken;
-                } else {
-                    return null;
-                }
-            } catch (err) {
-                console.error('Ошибка обновления токена:', err);
-                return null;
-            }
-        }
-        
-        // ===== Проверка авторизации =====
-        async function checkAuth() {
-            try {
-                const response = await apiRequest('/api/guests');
-                
-                if (response && response.ok) {
-                    document.getElementById('loginSection').style.display = 'none';
-                    document.getElementById('guestsTable').style.display = 'block';
-                    loadGuests();
-                } else {
-                    clearTokens();
-                }
-            } catch (error) {
-                console.error('Ошибка проверки токена:', error);
-                clearTokens();
-            }
-        }
-        
-        // ===== Очистка токенов =====
-        function clearTokens() {
-            accessToken = '';
-            refreshToken = '';
-            localStorage.removeItem('viewerAccessToken');
-            localStorage.removeItem('viewerRefreshToken');
-        }
-        
-        // ===== Логин =====
+        // Логин
         async function login() {
-            const input = document.getElementById('passwordInput').value;
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
             
-            try {
-                const response = await fetch('/api/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ password: input, role: 'viewer' })
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    // Сохраняем оба токена
-                    accessToken = data.accessToken;
-                    refreshToken = data.refreshToken;
-                    localStorage.setItem('viewerAccessToken', accessToken);
-                    localStorage.setItem('viewerRefreshToken', refreshToken);
-                    
-                    document.getElementById('loginSection').style.display = 'none';
-                    document.getElementById('guestsTable').style.display = 'block';
-                    loadGuests();
-                } else {
-                    document.getElementById('loginError').textContent = 'Неверный пароль!';
-                }
-            } catch (error) {
-                console.error('Ошибка входа:', error);
-                document.getElementById('loginError').textContent = 'Ошибка подключения';
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+            
+            if (error) {
+                document.getElementById('loginError').textContent = 'Неверный email или пароль!';
+            } else {
+                showViewerPanel();
+                loadGuests();
             }
         }
         
-        // ===== Logout =====
-        function logout() {
-            clearTokens();
+        // Показать панель viewer
+        function showViewerPanel() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('guestsTable').style.display = 'block';
+        }
+        
+        // Logout
+        async function logout() {
+            await supabase.auth.signOut();
             location.reload();
         }
         
-        // ===== Загрузка гостей =====
+        // Загрузка гостей
         async function loadGuests() {
-            try {
-                const response = await apiRequest('/api/guests');
-                
-                if (!response || !response.ok) throw new Error('Ошибка авторизации');
-                
-                const guests = await response.json();
-                const tbody = document.getElementById('guestsBody');
-                tbody.innerHTML = '';
-                
-                if (guests.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
-                    return;
-                }
-                
-                guests.forEach(guest => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${guest.id}</td>
-                        <td>${guest.name}</td>
-                        <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${guest.attendance}</td>
-                        <td>${guest.drinks}</td>
-                        <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            } catch (error) {
-                console.error('Ошибка:', error);
+            const { data: guests, error } = await supabase
+                .from('guests')
+                .select('*')
+                .order('created_at', { ascending: false });
+            
+            if (error) {
+                console.error('Ошибка загрузки:', error);
                 alert('Ошибка загрузки данных');
+                return;
             }
+            
+            const tbody = document.getElementById('guestsBody');
+            tbody.innerHTML = '';
+            
+            if (guests.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                return;
+            }
+            
+            guests.forEach(guest => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${guest.name}</td>
+                    <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${guest.attendance}</td>
+                    <td>${guest.drinks || '-'}</td>
+                    <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
+                `;
+                tbody.appendChild(row);
+            });
         }
     </script>
 </body>

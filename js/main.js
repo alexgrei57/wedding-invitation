@@ -2,7 +2,6 @@ let currentSection = 0;
 const totalSections = 9;
 
 // ===== Глобальная функция для клика по сердцу =====
-// Объявляем в самом начале чтобы была доступна везде
 function changeSection(targetIndex) {
     showSection(targetIndex);
 }
@@ -17,16 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 loader.remove();
             }, 500);
-        }, 300); // Небольшая задержка чтобы CSS точно загрузился
+        }, 300);
     }
     
-    // ===== ⬅️ СЮДА ДОБАВЬ КОД МУЗЫКИ =====
+    // ===== КОД МУЗЫКИ =====
     const music = document.getElementById('weddingMusic');
     let musicStarted = false;
     
     function startMusic() {
         if (music && !musicStarted) {
-            music.volume = 0.3;  // Громкость 30%
+            music.volume = 0.3;
             music.play().then(() => {
                 musicStarted = true;
                 console.log('🎵 Музыка запущена');
@@ -40,12 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', startMusic, { once: true });
     document.addEventListener('touchstart', startMusic, { once: true });
     document.addEventListener('keydown', startMusic, { once: true });
-    // ===== КОНЕЦ КОДА МУЗЫКИ =====
 
-    // Остальной код...
+    // Остальной код
     updateNavigation();
     
-        // Клик по сердцу
+    // Клик по сердцу
     document.querySelector('.heart-icon')?.addEventListener('click', () => {
         showSection(1);
     });
@@ -93,7 +91,7 @@ function showSection(index) {
         return;
     }
     
-    // Переход вперёд (2→3, 3→4, 4→5, 5→6, 6→7, 7→8)
+    // Переход вперёд
     if (index > currentSection) {
         sections[currentSection].classList.remove('active');
         sections[currentSection].classList.add('go-up');
@@ -103,7 +101,7 @@ function showSection(index) {
         updateNavigation();
         updateIndicators();
     }
-    // Переход назад (8→7, 7→6, 6→5, 5→4, 4→3, 3→2)
+    // Переход назад
     else if (index < currentSection) {
         sections[currentSection].classList.remove('active');
         sections[currentSection].classList.remove('go-up');
@@ -194,139 +192,29 @@ function startCountdown() {
         }
     }
     
-    // Обновляем каждую секунду
     setInterval(updateCountdown, 1000);
-    updateCountdown(); // Первый запуск
+    updateCountdown();
 }
 
-// ===== Обработка формы анкеты =====
-async function submitForm(event) {
-    event.preventDefault();
-    
-    const form = document.getElementById('rsvpForm');
-    const formData = new FormData(form);
-    
-    const data = {
-        name: form.querySelector('input[type="text"]').value,
-        attendance: form.querySelector('input[name="attendance"]:checked').value,
-        drinks: Array.from(form.querySelectorAll('input[name="drinks"]:checked')).map(cb => cb.value)
-    };
-    
-    try {
-        const response = await fetch('/api/rsvp', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok) {
-            alert('Анкета успешно отправлена!');
-            form.reset();
-        } else {
-            alert('Произошла ошибка при отправке.');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Произошла ошибка при отправке.');
-    }
-}
-
-// ===== Отправка формы в Telegram =====
-async function sendToTelegram(event) {
-    event.preventDefault();
-    
-    const form = document.getElementById('rsvpForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const successMsg = document.getElementById('formSuccess');
-    
-    // Ваши данные из шагов 1-2
-    const BOT_TOKEN = '8800836918:AAGSZVQXDmr-Uvhaw1zT_FUK7_7lFc2Cemo';
-    const CHAT_ID = '1481688749';
-    
-    // Собираем данные формы
-    const formData = new FormData(form);
-    const name = form.querySelector('input[type="text"]').value;
-    const attendance = form.querySelector('input[name="attendance"]:checked')?.value;
-    const drinks = Array.from(form.querySelectorAll('input[name="drinks"]:checked'))
-        .map(cb => cb.nextElementSibling.textContent)
-        .join(', ') || 'Не указано';
-    
-    // Формируем сообщение
-    const message = `
-🎊 <b>НОВАЯ АНКЕТА ГОСТЯ!</b>
-
-👤 <b>Имя:</b> ${name}
-✅ <b>Присутствие:</b> ${attendance === 'yes' ? 'Да, с удовольствием!' : 'К сожалению, не смогу'}
-🥂 <b>Напитки:</b> ${drinks}
-
-📅 <b>Дата:</b> ${new Date().toLocaleDateString('ru-RU')}
-    `.trim();
-    
-    // Блокируем кнопку (добавили ?., чтобы не было ошибки, если кнопки нет)
-    if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'ОТПРАВКА...';
-    }
-    
-    try {
-        // Отправляем в Telegram
-        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                chat_id: CHAT_ID,
-                text: message,
-                parse_mode: 'HTML'
-            })
-        });
-        
-        if (response.ok) {
-            // Успех
-            form.reset();
-            if (successMsg) successMsg.style.display = 'block';
-            if (submitBtn) submitBtn.textContent = 'ОТПРАВЛЕНО ✓';
-            
-            setTimeout(() => {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'ОТПРАВИТЬ';
-                }
-                if (successMsg) successMsg.style.display = 'none';
-            }, 3000);
-        } else {
-            throw new Error('Ошибка Telegram API');
-        }
-    } catch (error) {
-        console.error('Ошибка:', error);
-        alert('Произошла ошибка при отправке. Попробуйте ещё раз.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'ОТПРАВИТЬ';
-    }
-}
-
-// ===== Отправка формы на сервер =====
+// ===== Отправка формы в Supabase (ЕДИНСТВЕННАЯ ФУНКЦИЯ) =====
 async function sendToServer(event) {
     event.preventDefault();
     
-    console.log('=== НАЧАЛО ОТПРАВКИ ===');
+    console.log('=== НАЧАЛО ОТПРАВКИ В SUPABASE ===');
     
+    const form = document.getElementById('rsvpForm');
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('formSuccess');
+    const errorMsg = document.getElementById('formError');
+    
+    // Скрываем предыдущие сообщения
+    if (successMsg) successMsg.style.display = 'none';
+    if (errorMsg) errorMsg.style.display = 'none';
     
     // Получаем данные формы
-    const nameInput = document.querySelector('input[type="text"]');
+    const nameInput = document.getElementById('guestName');
     const attendanceInput = document.querySelector('input[name="attendance"]:checked');
     const drinksInputs = document.querySelectorAll('input[name="drinks"]:checked');
-    
-    console.log('Name input:', nameInput);
-    console.log('Attendance input:', attendanceInput);
-    console.log('Drinks inputs:', drinksInputs);
     
     if (!nameInput || !attendanceInput) {
         alert('Пожалуйста, заполните имя и подтвердите присутствие');
@@ -336,7 +224,7 @@ async function sendToServer(event) {
     const formData = {
         name: nameInput.value.trim(),
         attendance: attendanceInput.value,
-        drinks: Array.from(drinksInputs).map(cb => cb.value).join(', ')
+        drinks: Array.from(drinksInputs).map(cb => cb.value).join(', ') || 'Не выбрано'
     };
     
     console.log('Form data:', formData);
@@ -346,48 +234,45 @@ async function sendToServer(event) {
     submitBtn.textContent = 'ОТПРАВКА...';
 
     try {
-        console.log('Отправляем запрос...');
+        // Используем Supabase клиент (он уже инициализирован в index.html)
+        const { data, error } = await supabase
+            .from('guests')
+            .insert([formData])
+            .select();
         
-        const response = await fetch('https://htcrttlarrvnuldbpewk.supabase.co/rest/v1/guests', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': 'sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH',
-                'Authorization': 'Bearer sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH',
-                'Prefer': 'return=representation'
-            },
-            body: JSON.stringify(formData)
-        });
-
-        console.log('Response status:', response.status);
-        console.log('Response ok:', response.ok);
-        
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('Error response:', errorText);
-            throw new Error('Ошибка сервера: ' + response.status);
+        if (error) {
+            console.error('Supabase error:', error);
+            throw error;
         }
-
-        const result = await response.json();
-        console.log('Success:', result);
+        
+        console.log('✅ Успешно сохранено:', data);
         
         // Показываем сообщение об успехе
-        successMsg.style.display = 'block';
+        if (successMsg) successMsg.style.display = 'block';
         
         // Очищаем форму
-        nameInput.value = '';
-        document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-        document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
+        form.reset();
         
         // Прокручиваем к сообщению
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
+        // Меняем текст кнопки на время
+        submitBtn.textContent = 'ОТПРАВЛЕНО ✓';
+        setTimeout(() => {
+            submitBtn.textContent = 'ОТПРАВИТЬ';
+        }, 3000);
+        
     } catch (error) {
-        console.error('Catch error:', error);
-        alert('Произошла ошибка при отправке: ' + error.message);
+        console.error('❌ Ошибка отправки:', error);
+        
+        if (errorMsg) {
+            errorMsg.style.display = 'block';
+            errorMsg.textContent = '✗ Ошибка отправки: ' + error.message;
+        } else {
+            alert('Произошла ошибка при отправке: ' + error.message);
+        }
     } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'ОТПРАВИТЬ';
     }
     
     console.log('=== КОНЕЦ ОТПРАВКИ ===');
