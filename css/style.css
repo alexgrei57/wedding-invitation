@@ -596,16 +596,15 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    max-width: 340px;
+    gap: 10px;
+    max-width: 320px;
     margin: 25px 0 30px;
     padding: 0 10px;
-    flex-wrap: wrap;
 }
 
 .color-swatch {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     transition: transform 0.3s ease;

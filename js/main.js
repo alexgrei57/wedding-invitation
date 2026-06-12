@@ -332,13 +332,14 @@ async function sendToServer(event) {
     
     try {
         const response = await fetch('https://htcrtllarrvnuldbpewk.supabase.co/functions/v1/rsvp', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH'  // Вставь свой ANON key!
-            },
-            body: JSON.stringify(formData)
-        });
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH',  // Вставь свой ANON key
+        'apikey': 'sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH'  // Тот же ANON key
+    },
+    body: JSON.stringify(formData)
+});
         
         const result = await response.json();
         
