@@ -331,11 +331,16 @@ async function sendToServer(event) {
     }
     
     try {
-        const response = await fetch('/api/rsvp', {
+        const response = await fetch('https://htcrtllarrvnuldbpewk.supabase.co/functions/v1/rsvp', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH'  // Вставь свой ANON key!
+            },
             body: JSON.stringify(formData)
         });
+        
+        const result = await response.json();
         
         if (response.ok) {
             form.reset();
@@ -350,11 +355,11 @@ async function sendToServer(event) {
                 if (successMsg) successMsg.style.display = 'none';
             }, 3000);
         } else {
-            throw new Error('Ошибка сервера');
+            throw new Error(result.error || 'Ошибка сервера');
         }
     } catch (error) {
         console.error('Ошибка:', error);
-        alert('Произошла ошибка при отправке.');
+        alert('Произошла ошибка при отправке: ' + error.message);
         if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = 'ОТПРАВИТЬ';
