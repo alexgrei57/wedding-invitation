@@ -36,7 +36,7 @@ body::before {
     height: 100%;
     background: url('../images/start_page.webp') center center no-repeat;
     background-size: cover;
-    animation: silkAnimation 20s ease-in-out infinite;
+    animation: silkAnimation 15s ease-in-out infinite;
     z-index: 0;
 }
 

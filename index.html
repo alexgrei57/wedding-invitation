@@ -7,8 +7,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="css/style.css?v=9">
     <link rel="preload" as="image" href="images/start_page.webp">
-    <link rel="preload" as="image" href="images/couple-photo.webp">
-    <link rel="preload" as="image" href="images/couple-photo2.webp">
+    <link rel="preload" as="image" href="images/couple-photo.jpg">
+    <link rel="preload" as="image" href="images/couple-photo2.jpg">
     <link rel="preload" as="image" href="images/location_page.webp">
     <title>Евгения & Алексей | Свадебное приглашение</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,7 +127,7 @@
     <section class="section photo-section slide-section" id="section3">
         <div class="content-wrapper">
             <div class="photo-container">
-                <img src="images/couple-photo.webp" 
+                <img src="images/couple-photo.jpg" 
                      alt="Евгения и Алексей" 
                      class="couple-photo"
                      loading="lazy"
@@ -256,7 +256,7 @@
 <section class="section countdown-section slide-section" id="section8">
     <div class="content-wrapper">
         <div class="countdown-photo-container">
-            <img src="images/couple-photo2.webp" alt="Евгения и Алексей" class="countdown-photo">
+            <img src="images/couple-photo2.jpg" alt="Евгения и Алексей" class="countdown-photo">
             <div class="countdown-overlay">
                 <p class="countdown-text">Мы станем семьёй через:</p>
                 <div class="countdown-timer">
@@ -378,59 +378,69 @@
 
     <!-- ===== ДОБАВЛЕНО: Функция отправки формы в Supabase ===== -->
     <script>
-        async function sendToServer(event) {
-            event.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const formSuccess = document.getElementById('formSuccess');
-            const formError = document.getElementById('formError');
-            
-            // Скрываем предыдущие сообщения
-            formSuccess.style.display = 'none';
-            formError.style.display = 'none';
-            
-            // Блокируем кнопку на время отправки
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'ОТПРАВКА...';
-            
-            try {
-                // Собираем данные из формы
-                const name = document.getElementById('guestName').value.trim();
-                const attendance = document.querySelector('input[name="attendance"]:checked').value;
-                const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
-                    .map(cb => cb.value)
-                    .join(', ');
-                
-                // Отправляем в Supabase
-                const { data, error } = await supabaseClient
-                    .from('guests')
-                    .insert([{ 
-                        name: name, 
-                        attendance: attendance, 
-                        drinks: drinks || 'Не выбрано' 
-                    }]);
-                
-                if (error) {
-                    throw error;
-                }
-                
-                // Успех
-                formSuccess.style.display = 'block';
-                document.getElementById('rsvpForm').reset();
-                
-                // Прокручиваем к сообщению об успехе
-                //formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-            } catch (error) {
-                console.error('Ошибка отправки анкеты:', error);
-                formError.style.display = 'block';
-                formError.textContent = '✗ Ошибка отправки: ' + error.message;
-            } finally {
-                // Разблокируем кнопку
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'ОТПРАВИТЬ';
-            }
+async function sendToServer(event) {
+    event.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+    const form = document.getElementById('rsvpForm');
+    
+    // Скрываем предыдущие сообщения
+    formSuccess.style.display = 'none';
+    formError.style.display = 'none';
+    
+    // Блокируем кнопку и показываем загрузку
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = '⏳ Отправка...';
+    submitBtn.style.opacity = '0.7';
+    
+    try {
+        const name = document.getElementById('guestName').value.trim();
+        const attendance = document.querySelector('input[name="attendance"]:checked').value;
+        const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
+            .map(cb => cb.value)
+            .join(', ');
+        
+        // ⏱ Добавляем таймаут 30 секунд
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000);
+        
+        const { data, error } = await supabaseClient
+            .from('guests')
+            .insert([{ 
+                name: name, 
+                attendance: attendance, 
+                drinks: drinks || 'Не выбрано' 
+            }])
+            .abortSignal(controller.signal);
+        
+        clearTimeout(timeoutId);
+        
+        if (error) throw error;
+        
+        // Успех
+        formSuccess.style.display = 'block';
+        form.reset();
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+    } catch (error) {
+        console.error('Ошибка отправки:', error);
+        
+        if (error.name === 'AbortError') {
+            formError.textContent = '⏱ Превышено время ожидания. Попробуйте ещё раз.';
+        } else {
+            formError.textContent = '✗ Ошибка: ' + error.message;
         }
+        formError.style.display = 'block';
+    } finally {
+        // Возвращаем кнопку
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+        submitBtn.style.opacity = '1';
+    }
+}
     </script>
     <!-- ======================================================= -->
 
