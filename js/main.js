@@ -335,8 +335,8 @@ async function sendToServer(event) {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH',  // Вставь свой ANON key
-        'apikey': 'sb_publishable_GJ2XLsO4uCAF0HPajueP8g_LmO0H6aH'  // Тот же ANON key
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k',  // Вставь свой ANON key
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh0Y3J0dGxhcnJ2bnVsZGJwZXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTUwNzMsImV4cCI6MjA5NjY5MTA3M30.28t3LPpFLDxa1BmbCFLeofN8zR4wJtx9JS625cLxU0k'  // Тот же ANON key
     },
     body: JSON.stringify(formData)
 });
