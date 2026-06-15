@@ -302,7 +302,7 @@ body::before {
     padding: 30px 20px;
     text-align: center;
     overflow-y: auto;
-    background: rgba(245, 241, 235, 0.9);
+    background: rgba(245, 241, 235, 0.3);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 2px solid rgba(255, 255, 255, 0.6);
