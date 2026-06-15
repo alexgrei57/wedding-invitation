@@ -135,18 +135,43 @@ function updateIndicators() {
     });
 }
 
-// ===== Swipe (свайпы) между страницами 2-8 =====
+// ===== Swipe (свайпы) между страницами 2-8 с проверкой скролла =====
 let touchStartY = 0;
 let touchEndY = 0;
 const minSwipeDistance = 50;
 
+// Функция проверки, есть ли скролл внутри секции
+function hasScrollableContent() {
+    const sections = document.querySelectorAll('.section');
+    const currentSectionEl = sections[currentSection];
+    
+    if (!currentSectionEl) return false;
+    
+    const contentWrapper = currentSectionEl.querySelector('.content-wrapper');
+    
+    if (!contentWrapper) return false;
+    
+    // Проверяем, превышает ли контент высоту контейнера
+    return contentWrapper.scrollHeight > contentWrapper.clientHeight;
+}
+
 document.addEventListener('touchstart', function(e) {
+    // Если есть скролл внутри секции — не перехватываем свайп
+    if (hasScrollableContent()) {
+        return;
+    }
+    
     if (currentSection >= 1 && currentSection <= 8) {
         touchStartY = e.changedTouches[0].screenY;
     }
-}, false);
+}, { passive: true });
 
 document.addEventListener('touchend', function(e) {
+    // Если есть скролл внутри секции — не обрабатываем свайп
+    if (hasScrollableContent()) {
+        return;
+    }
+    
     if (currentSection >= 1 && currentSection <= 8) {
         touchEndY = e.changedTouches[0].screenY;
         
@@ -155,7 +180,7 @@ document.addEventListener('touchend', function(e) {
             handleSwipe();
         }, 50);
     }
-}, false);
+}, { passive: true });
 
 function handleSwipe() {
     const swipeDistance = touchStartY - touchEndY;

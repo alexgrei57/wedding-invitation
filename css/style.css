@@ -107,6 +107,9 @@ body::before {
     border: none;
     box-shadow: none;
     margin: 0 15px;
+    /* ✅ Добавлено: разрешаем скролл если контент не помещается */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
 }
 
 /* Hero секция */
@@ -164,6 +167,9 @@ body::before {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* ✅ Добавлено: разрешаем скролл */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Names секция */
@@ -178,8 +184,9 @@ body::before {
     margin: 0;
     padding: 20px;
     height: 100%;
-    overflow-y: auto; /* ← Добавь это */
-    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+    /* ✅ Добавлено: разрешаем скролл */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .fade-in {
@@ -303,14 +310,13 @@ body::before {
     height: 100%;
     padding: 30px 20px;
     text-align: center;
+    /* ✅ Изменено: auto вместо скрытия */
     overflow-y: auto;
-    /* ✅ Фон на 90% непрозрачный (почти белый, но фон слегка просвечивает) */
-    background: rgba(245, 241, 235, 0.2);
-    /* ✅ Сильное размытие фона за рамкой */
+    -webkit-overflow-scrolling: touch;
+    background: rgba(245, 241, 235, 0.9);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    /* Белая рамка */
-    border: 2px solid rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     margin: 0 15px;
@@ -319,10 +325,10 @@ body::before {
 /* ===== Names секция ===== */
 .names-section .top-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    letter-spacing: 6px;
+    font-size: clamp(12px, 3.5vw, 14px); /* Адаптивный размер */
+    letter-spacing: clamp(4px, 1.5vw, 6px);
     color: #000000;
-    margin-bottom: 60px;
+    margin-bottom: clamp(30px, 8vh, 60px);
     text-transform: uppercase;
     text-align: center !important;
     width: 100%;
@@ -331,7 +337,7 @@ body::before {
 
 .names-section .couple-names {
     text-align: center !important;
-    margin-bottom: 60px;
+    margin-bottom: clamp(30px, 8vh, 60px);
     width: 100%;
     display: block;
 }
@@ -339,9 +345,9 @@ body::before {
 .names-section .name {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
+    font-size: clamp(36px, 12vw, 52px); /* Адаптивный размер */
     font-weight: 300;
-    letter-spacing: 8px;
+    letter-spacing: clamp(4px, 2vw, 8px);
     color: #000000;
     margin: 0;
     text-transform: uppercase;
@@ -352,7 +358,7 @@ body::before {
 .names-section .ampersand {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 44px;
+    font-size: clamp(32px, 10vw, 44px);
     font-weight: 300;
     color: #1a1a1a;
     margin: 5px 0;
@@ -362,21 +368,21 @@ body::before {
 
 .names-section .wedding-date {
     text-align: center !important;
-    margin: 50px 0 30px;
+    margin: clamp(30px, 6vh, 50px) 0 clamp(20px, 4vh, 30px);
     display: block;
 }
 
 .names-section .month {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    letter-spacing: 5px;
+    font-size: clamp(14px, 4vw, 16px);
+    letter-spacing: clamp(3px, 1.5vw, 5px);
     color: #000000;
     text-transform: uppercase;
 }
 
 .names-section .day {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 100px;
+    font-size: clamp(60px, 20vw, 100px);
     font-weight: 300;
     color: #000000;
     line-height: 1;
@@ -385,14 +391,14 @@ body::before {
 
 .names-section .year {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
+    font-size: clamp(14px, 4vw, 18px);
     font-weight: 300;
-    letter-spacing: 6px;
+    letter-spacing: clamp(4px, 1.5vw, 6px);
     color: #000000;
 }
 
 .names-section .scroll-indicator {
-    margin-top: 50px;
+    margin-top: clamp(30px, 6vh, 50px);
     animation: bounce 2s infinite;
     cursor: pointer;
     transition: opacity 0.3s ease;
