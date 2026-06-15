@@ -100,7 +100,7 @@ body::before {
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding: 30px 20px;
+    padding: 0 20px;
     position: relative;
     z-index: 2;
     background: transparent;
@@ -301,7 +301,7 @@ body::before {
     justify-content: flex-start;
     height: auto;
     min-height: calc(100vh - 120px);
-    padding: 30px 20px;
+    padding: 0 20px 30px 20px; /* ← Убрать верхний padding (было 30px 20px) */
     text-align: center;
     overflow: visible;
     background: rgba(245, 241, 235, 0.2);
@@ -1153,12 +1153,12 @@ body::before {
     .location-subtitle { font-size: 22px; }
     
     .content-wrapper {
-        padding: 20px 15px;
+        padding: 0 15px;
         margin: 0 10px;
     }
     
     .section, .slide-section {
-        padding: 30px 0;
+        padding: 0 0 60px 0; /* ← Убрать верхний padding (было 30px 0) */
     }
 }
 
@@ -1198,18 +1198,7 @@ img.clickable {
     -webkit-transform: translateZ(0);
 }
 
-/* Первая секция без нижнего отступа */
-#section1.slide-section .content-wrapper {
-    margin-bottom: 0;
-}
-
 /* Последняя секция без нижнего отступа */
 #section9.slide-section .content-wrapper {
     margin-bottom: 0;
-}
-
-/* Отступы между секциями (чтобы было видно фон) */
-.section + .section,
-.slide-section + .slide-section {
-    margin-top: 40px; /* ← Отступ между рамками */
 }
