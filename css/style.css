@@ -251,8 +251,8 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100vh; /* ← ИЗМЕНИТЬ с height на min-height */
+    overflow: visible; /* ← ИЗМЕНИТЬ с hidden на visible */
     transform: translateY(100%);
     transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
     z-index: 1;
@@ -263,7 +263,7 @@ body::before {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     padding: 40px 0;
-    visibility: hidden; /* ✅ Скрыта по умолчанию */
+    visibility: hidden;
 }
 
 .slide-section.active {
@@ -297,11 +297,10 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100%;
+    justify-content: flex-start; /* ← ИЗМЕНИТЬ с center на flex-start */
+    min-height: 100vh; /* ← ИЗМЕНИТЬ с height на min-height */
     padding: 30px 20px;
     text-align: center;
-    overflow-y: auto;
     background: rgba(245, 241, 235, 0.3);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -416,7 +415,7 @@ body::before {
     max-width: 350px;
     margin-bottom: 30px;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: visible; /* ← УБРАТЬ или изменить на visible */
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     will-change: transform;
     transform: translateZ(0);
