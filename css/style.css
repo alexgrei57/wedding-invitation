@@ -251,8 +251,9 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100vh; /* ← ИЗМЕНИТЬ с height на min-height */
-    overflow: visible; /* ← ИЗМЕНИТЬ с hidden на visible */
+    height: auto; /* ← АВТО под контент */
+    min-height: 100vh; /* ← Но не меньше высоты экрана */
+    overflow: visible; /* ← Видимый overflow */
     transform: translateY(100%);
     transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
     z-index: 1;
@@ -262,7 +263,7 @@ body::before {
     background: transparent;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    padding: 40px 0;
+    padding: 60px 0 60px 0; /* ← Отступы сверху и снизу */
     visibility: hidden;
 }
 
@@ -297,17 +298,19 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* ← ИЗМЕНИТЬ с center на flex-start */
-    min-height: calc(100vh - 120px); /* ← Высота минус отступы */
+    justify-content: flex-start;
+    height: auto; /* ← АВТО под контент */
+    min-height: calc(100vh - 120px); /* ← Минимум, но может быть больше */
     padding: 30px 20px;
     text-align: center;
+    overflow: visible; /* ← Убрать скролл */
     background: rgba(245, 241, 235, 0.3);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    margin: 0 15px 60px 15px; /* ← ДОБАВИТЬ margin-bottom для отступа между рамками */
+    margin: 0 15px;
 }
 
 /* ===== Names секция ===== */
@@ -1196,4 +1199,10 @@ img.clickable {
 /* Последняя секция без нижнего отступа */
 #section9.slide-section .content-wrapper {
     margin-bottom: 0;
+}
+
+/* Отступы между секциями (чтобы было видно фон) */
+.section + .section,
+.slide-section + .slide-section {
+    margin-top: 40px; /* ← Отступ между рамками */
 }
