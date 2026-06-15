@@ -65,7 +65,7 @@ body::before {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     background: transparent;
-    padding: 60px 0;
+    padding: 0 0 60px 0; /* ← Только нижний отступ */
     visibility: hidden; /* ✅ Скрываем неактивные секции */
 }
 
@@ -263,7 +263,7 @@ body::before {
     background: transparent;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    padding: 60px 0 60px 0; /* ← Отступы сверху и снизу */
+    padding: 0 0 60px 0; /* ← Только нижний отступ */
     visibility: hidden;
 }
 
