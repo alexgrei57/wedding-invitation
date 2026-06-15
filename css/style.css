@@ -291,19 +291,19 @@ body::before {
     visibility: visible; /* ✅ Видима во время анимации */
 }
 
-/* ✅ Полупрозрачный фон с размытием для страниц 2+ */
-.slide-section .content-wrapper {
+/* Белая рамка для всех секций КРОМЕ names-section */
+.slide-section:not(.names-section) .content-wrapper {
     position: relative;
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: auto; /* ← АВТО под контент */
-    min-height: calc(100vh - 120px); /* ← Минимум, но может быть больше */
+    height: auto;
+    min-height: calc(100vh - 120px);
     padding: 30px 20px;
     text-align: center;
-    overflow: visible; /* ← Убрать скролл */
+    overflow: visible;
     background: rgba(245, 241, 235, 0.3);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -1194,6 +1194,11 @@ img.clickable {
 .section, .slide-section {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+}
+
+/* Первая секция без нижнего отступа */
+#section1.slide-section .content-wrapper {
+    margin-bottom: 0;
 }
 
 /* Последняя секция без нижнего отступа */
