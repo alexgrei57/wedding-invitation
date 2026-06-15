@@ -178,6 +178,8 @@ body::before {
     margin: 0;
     padding: 20px;
     height: 100%;
+    overflow-y: auto; /* ← Добавь это */
+    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
 }
 
 .fade-in {
