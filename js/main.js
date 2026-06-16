@@ -65,7 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function showSection(index) {
+    const sectionsContainer = document.getElementById('sectionsContainer');
     const sections = document.querySelectorAll('.section');
+    
+    // Активируем контейнер для страниц 3-9
+    if (index >= 2) {
+        sectionsContainer.classList.add('active');
+    } else {
+        sectionsContainer.classList.remove('active');
+    }
     
     // Переход 1→2 (клик по сердцу) - плавное исчезновение
     if (currentSection === 0 && index === 1) {
