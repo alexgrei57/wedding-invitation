@@ -300,10 +300,11 @@ body::before {
     align-items: center;
     justify-content: flex-start;
     height: auto;
-    min-height: calc(100vh - 120px);
-    padding: 20px 20px 30px 20px; /* ← Вернуть небольшой отступ (было 0 20px 30px 20px) */
+    min-height: calc(100vh - 60px); /* ← Уменьшить с 120px до 60px */
+    padding: 30px 20px 30px 20px; /* ← Добавить отступ сверху 30px */
     text-align: center;
-    overflow: visible;
+    overflow-y: auto; /* ← ДОБАВИТЬ скролл */
+    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
     background: rgba(245, 241, 235, 0.2);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -1201,4 +1202,14 @@ img.clickable {
 /* Последняя секция без нижнего отступа */
 #section9.slide-section .content-wrapper {
     margin-bottom: 0;
+}
+
+/* Скрыть скроллбар внутри content-wrapper */
+.slide-section:not(.names-section) .content-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.slide-section:not(.names-section) .content-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
