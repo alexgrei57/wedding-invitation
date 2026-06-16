@@ -26,6 +26,29 @@ body {
     position: relative;
 }
 
+/* Общий контейнер для страниц 3-9 с прокруткой */
+#sectionsContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 5;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Скрыть скроллбар */
+#sectionsContainer::-webkit-scrollbar {
+    display: none;
+}
+#sectionsContainer {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 /* Общий фон для всего сайта с анимацией */
 body::before {
     content: '';
@@ -247,48 +270,43 @@ body::before {
 
 /* ===== Общие стили для скользящих секций ===== */
 .slide-section {
-    position: fixed;
+    position: relative; /* ← ИЗМЕНИТЬ с fixed на relative */
     top: 0;
     left: 0;
     width: 100%;
-    height: auto; /* ← АВТО под контент */
-    min-height: 100vh; /* ← Но не меньше высоты экрана */
-    overflow: visible; /* ← Видимый overflow */
-    transform: translateY(100%);
+    height: auto; /* ← Оставить auto */
+    min-height: auto; /* ← Убрать min-height */
+    overflow: visible;
+    transform: translateY(0); /* ← Убрать translateY */
     transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
     z-index: 1;
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    will-change: auto; /* ← Убрать will-change */
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
     background: transparent;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    padding: 0 0 30px 0; /* ← Уменьшить с 60px до 30px */
-    visibility: hidden;
+    transform-style: none;
+    -webkit-transform-style: none;
+    padding: 0 0 30px 0;
+    visibility: visible; /* ← Всегда visible */
 }
 
 .slide-section.active {
     transform: translateY(0);
     z-index: 10;
-    visibility: visible; /* ✅ Показана когда активна */
+    visibility: visible;
 }
 
 .slide-section:not(.active) {
-    transform: translateY(100%);
+    transform: translateY(0); /* ← Убрать скрытие */
     z-index: 1;
-    visibility: hidden; /* ✅ Полностью скрыта */
+    visibility: visible; /* ← Всегда visible */
 }
 
-.slide-section.go-up {
-    transform: translateY(-100%);
-    z-index: 5;
-    visibility: visible; /* ✅ Видима во время анимации */
-}
-
+.slide-section.go-up,
 .slide-section.go-down {
-    transform: translateY(100%);
+    transform: translateY(0); /* ← Убрать анимацию */
     z-index: 5;
-    visibility: visible; /* ✅ Видима во время анимации */
+    visibility: visible;
 }
 
 /* Белая рамка для всех секций КРОМЕ names-section */
@@ -299,18 +317,17 @@ body::before {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    max-height: calc(100vh - 100px); /* ← Максимальная высота */
-    padding: 30px 20px 30px 20px;
+    min-height: auto; /* ← Убрать calc */
+    padding: 30px 20px;
     text-align: center;
-    overflow-y: auto; /* ← Разрешаем скролл */
-    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+    overflow: visible; /* ← Убрать скролл */
     background: rgba(245, 241, 235, 0.2);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    margin: 0 15px;
+    margin: 20px 15px; /* ← Добавить отступы между рамками */
 }
 
 /* ===== Names секция ===== */
