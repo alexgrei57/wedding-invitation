@@ -164,7 +164,7 @@ function updateIndicators() {
     });
 }
 
-// ===== Swipe (свайпы) между страницами 2-8 с поддержкой скролла =====
+// ===== Swipe (свайпы) между страницами с поддержкой скролла =====
 let touchStartY = 0;
 let touchEndY = 0;
 const minSwipeDistance = 50;
@@ -179,19 +179,23 @@ function isScrolledToBottom(element) {
     return element.scrollHeight - element.scrollTop - element.clientHeight < 5;
 }
 
-// Получить скроллящийся элемент внутри текущей секции
+// Получить скроллящийся элемент
 function getScrollableElement() {
+    // Если мы на секциях 3-9, возвращаем контейнер
+    if (currentSection >= 2) {
+        return document.getElementById('sectionsContainer');
+    }
+    
+    // Иначе ищем content-wrapper внутри текущей секции
     const sections = document.querySelectorAll('.section');
     const currentSectionEl = sections[currentSection];
     
     if (!currentSectionEl) return null;
     
-    // Ищем content-wrapper с overflow-y: auto
     const contentWrapper = currentSectionEl.querySelector('.content-wrapper');
     
     if (!contentWrapper) return null;
     
-    // Проверяем, действительно ли контент больше контейнера
     if (contentWrapper.scrollHeight > contentWrapper.clientHeight + 5) {
         return contentWrapper;
     }
@@ -216,7 +220,7 @@ document.addEventListener('touchend', function(e) {
         if (scrollableEl) {
             // Свайп вверх (хотим на следующую страницу)
             if (swipeDistance > minSwipeDistance) {
-                // Если НЕ в конце скролла — не переключаем страницу, даём доскроллить
+                // Если НЕ в конце скролла — не переключаем страницу
                 if (!isScrolledToBottom(scrollableEl)) {
                     return;
                 }
@@ -224,7 +228,7 @@ document.addEventListener('touchend', function(e) {
             
             // Свайп вниз (хотим на предыдущую страницу)
             if (swipeDistance < -minSwipeDistance) {
-                // Если НЕ в начале скролла — не переключаем страницу, даём доскроллить
+                // Если НЕ в начале скролла — не переключаем страницу
                 if (!isScrolledToTop(scrollableEl)) {
                     return;
                 }

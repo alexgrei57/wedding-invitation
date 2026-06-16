@@ -1153,7 +1153,7 @@ body::before {
 }
 
 .wishes-divider {
-    margin: 15px 0; /* Уменьшено */
+    margin: 0; /* Уменьшено */
     display: flex;
     justify-content: center;
     align-items: center;
