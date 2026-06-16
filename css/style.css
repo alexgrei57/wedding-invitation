@@ -65,7 +65,7 @@ body::before {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     background: transparent;
-    padding: 0 0 60px 0; /* ← Только нижний отступ */
+    padding: 0 0 30px 0; /* ← Уменьшить с 60px до 30px */
     visibility: hidden; /* ✅ Скрываем неактивные секции */
 }
 
@@ -176,7 +176,7 @@ body::before {
     border: none;
     box-shadow: none;
     margin: 0;
-    padding: 0;
+    padding: 30px 0 0 0; /* ← Добавить небольшой отступ сверху */
     height: 100%;
 }
 
@@ -263,7 +263,7 @@ body::before {
     background: transparent;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    padding: 0 0 60px 0; /* ← Только нижний отступ */
+    padding: 0 0 30px 0; /* ← Уменьшить с 60px до 30px */
     visibility: hidden;
 }
 
@@ -361,7 +361,7 @@ body::before {
 
 .names-section .wedding-date {
     text-align: center !important;
-    margin: clamp(30px, 6vh, 50px) 0 clamp(20px, 4vh, 30px);
+    margin: clamp(20px, 4vh, 30px) 0 clamp(10px, 2vh, 15px); /* ← Уменьшить отступы */
     display: block;
 }
 
