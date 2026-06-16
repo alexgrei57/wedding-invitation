@@ -135,27 +135,79 @@ function updateIndicators() {
     });
 }
 
-// ===== Swipe (свайпы) между страницами 2-8 =====
+// ===== Swipe (свайпы) между страницами 2-8 с поддержкой скролла =====
 let touchStartY = 0;
 let touchEndY = 0;
 const minSwipeDistance = 50;
+
+// Функция проверки, находится ли элемент в начале скролла
+function isScrolledToTop(element) {
+    return element.scrollTop <= 1;
+}
+
+// Функция проверки, находится ли элемент в конце скролла
+function isScrolledToBottom(element) {
+    return element.scrollHeight - element.scrollTop - element.clientHeight < 5;
+}
+
+// Получить скроллящийся элемент внутри текущей секции
+function getScrollableElement() {
+    const sections = document.querySelectorAll('.section');
+    const currentSectionEl = sections[currentSection];
+    
+    if (!currentSectionEl) return null;
+    
+    // Ищем content-wrapper с overflow-y: auto
+    const contentWrapper = currentSectionEl.querySelector('.content-wrapper');
+    
+    if (!contentWrapper) return null;
+    
+    // Проверяем, действительно ли контент больше контейнера
+    if (contentWrapper.scrollHeight > contentWrapper.clientHeight + 5) {
+        return contentWrapper;
+    }
+    
+    return null;
+}
 
 document.addEventListener('touchstart', function(e) {
     if (currentSection >= 1 && currentSection <= 8) {
         touchStartY = e.changedTouches[0].screenY;
     }
-}, false);
+}, { passive: true });
 
 document.addEventListener('touchend', function(e) {
     if (currentSection >= 1 && currentSection <= 8) {
         touchEndY = e.changedTouches[0].screenY;
+        
+        const swipeDistance = touchStartY - touchEndY;
+        const scrollableEl = getScrollableElement();
+        
+        // Если есть скроллящийся элемент
+        if (scrollableEl) {
+            // Свайп вверх (хотим на следующую страницу)
+            if (swipeDistance > minSwipeDistance) {
+                // Если НЕ в конце скролла — не переключаем страницу, даём доскроллить
+                if (!isScrolledToBottom(scrollableEl)) {
+                    return;
+                }
+            }
+            
+            // Свайп вниз (хотим на предыдущую страницу)
+            if (swipeDistance < -minSwipeDistance) {
+                // Если НЕ в начале скролла — не переключаем страницу, даём доскроллить
+                if (!isScrolledToTop(scrollableEl)) {
+                    return;
+                }
+            }
+        }
         
         // Небольшая задержка для плавности
         setTimeout(() => {
             handleSwipe();
         }, 50);
     }
-}, false);
+}, { passive: true });
 
 function handleSwipe() {
     const swipeDistance = touchStartY - touchEndY;
@@ -220,89 +272,3 @@ document.addEventListener('dragstart', function(e) {
         return false;
     }
 });
-
-
-
-/*
-// ===== Отправка формы в Supabase (ЕДИНСТВЕННАЯ ФУНКЦИЯ) =====
-async function sendToServer(event) {
-    event.preventDefault();
-    
-    console.log('=== НАЧАЛО ОТПРАВКИ В SUPABASE ===');
-    
-    const form = document.getElementById('rsvpForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const successMsg = document.getElementById('formSuccess');
-    const errorMsg = document.getElementById('formError');
-    
-    // Скрываем предыдущие сообщения
-    if (successMsg) successMsg.style.display = 'none';
-    if (errorMsg) errorMsg.style.display = 'none';
-    
-    // Получаем данные формы
-    const nameInput = document.getElementById('guestName');
-    const attendanceInput = document.querySelector('input[name="attendance"]:checked');
-    const drinksInputs = document.querySelectorAll('input[name="drinks"]:checked');
-    
-    if (!nameInput || !attendanceInput) {
-        alert('Пожалуйста, заполните имя и подтвердите присутствие');
-        return;
-    }
-    
-    const formData = {
-        name: nameInput.value.trim(),
-        attendance: attendanceInput.value,
-        drinks: Array.from(drinksInputs).map(cb => cb.value).join(', ') || 'Не выбрано'
-    };
-    
-    console.log('Form data:', formData);
-    
-    // Блокируем кнопку
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'ОТПРАВКА...';
-
-    try {
-        // Используем Supabase клиент (он уже инициализирован в index.html)
-        const { data, error } = await supabaseClient
-            .from('guests')
-            .insert([formData])
-            .select();
-        
-        if (error) {
-            console.error('Supabase error:', error);
-            throw error;
-        }
-        
-        console.log('✅ Успешно сохранено:', data);
-        
-        // Показываем сообщение об успехе
-        if (successMsg) successMsg.style.display = 'block';
-        
-        // Очищаем форму
-        form.reset();
-        
-        // Прокручиваем к сообщению
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Меняем текст кнопки на время
-        submitBtn.textContent = 'ОТПРАВЛЕНО ✓';
-        setTimeout(() => {
-            submitBtn.textContent = 'ОТПРАВИТЬ';
-        }, 3000);
-        
-    } catch (error) {
-        console.error('❌ Ошибка отправки:', error);
-        
-        if (errorMsg) {
-            errorMsg.style.display = 'block';
-            errorMsg.textContent = '✗ Ошибка отправки: ' + error.message;
-        } else {
-            alert('Произошла ошибка при отправке: ' + error.message);
-        }
-    } finally {
-        submitBtn.disabled = false;
-    }
-    
-    console.log('=== КОНЕЦ ОТПРАВКИ ===');
-}
-    */
