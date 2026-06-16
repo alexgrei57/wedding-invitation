@@ -189,11 +189,6 @@ body::before {
     justify-content: center;
 }
 
-/* Names секция */
-.names-section {
-    padding: 0;
-}
-
 .names-section .content-wrapper {
     background: transparent;
     border: none;
@@ -201,6 +196,18 @@ body::before {
     margin: 0;
     padding: 30px 0 0 0; /* ← Добавить небольшой отступ сверху */
     height: 100%;
+    position: relative;
+    z-index: 20; /* ← Добавить высокий z-index */
+}
+
+/* Names секция */
+.names-section {
+    padding: 0;
+    z-index: 15; /* ← Добавить: выше чем slide-section.active (10) */
+}
+
+.names-section.active {
+    z-index: 20; /* ← Добавить: ещё выше когда активна */
 }
 
 .fade-in {
@@ -270,24 +277,24 @@ body::before {
 
 /* ===== Общие стили для скользящих секций ===== */
 .slide-section {
-    position: relative; /* ← ИЗМЕНИТЬ с fixed на relative */
+    position: fixed; /* ← Вернуть fixed */
     top: 0;
     left: 0;
     width: 100%;
-    height: auto; /* ← Оставить auto */
-    min-height: auto; /* ← Убрать min-height */
+    height: auto;
+    min-height: 100vh;
     overflow: visible;
-    transform: translateY(0); /* ← Убрать translateY */
+    transform: translateY(100%); /* ← Вернуть */
     transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
     z-index: 1;
-    will-change: auto; /* ← Убрать will-change */
-    backface-visibility: visible;
-    -webkit-backface-visibility: visible;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     background: transparent;
-    transform-style: none;
-    -webkit-transform-style: none;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     padding: 0 0 30px 0;
-    visibility: visible; /* ← Всегда visible */
+    visibility: hidden;
 }
 
 .slide-section.active {
@@ -297,14 +304,19 @@ body::before {
 }
 
 .slide-section:not(.active) {
-    transform: translateY(0); /* ← Убрать скрытие */
+    transform: translateY(100%); /* ← Вернуть скрытие */
     z-index: 1;
-    visibility: visible; /* ← Всегда visible */
+    visibility: hidden; /* ← Вернуть скрытие */
 }
 
-.slide-section.go-up,
+.slide-section.go-up {
+    transform: translateY(-100%);
+    z-index: 5;
+    visibility: visible;
+}
+
 .slide-section.go-down {
-    transform: translateY(0); /* ← Убрать анимацию */
+    transform: translateY(100%);
     z-index: 5;
     visibility: visible;
 }
