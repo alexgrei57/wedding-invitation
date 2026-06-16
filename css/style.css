@@ -56,6 +56,40 @@
     background: rgba(139, 115, 85, 0.8);
 }
 
+/* Скрываем контейнер 3-9 по умолчанию */
+#sectionsContainer {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#sectionsContainer.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Секции внутри контейнера — без фиксированного позиционирования */
+#sectionsContainer .slide-section {
+    position: relative !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 20px;
+}
+
+/* Показываем только активную секцию 2 */
+.names-section.active {
+    display: block !important;
+    z-index: 20;
+}
+
+/* Скрываем неактивную секцию 2 */
+.names-section:not(.active) {
+    display: none !important;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-dark);

@@ -67,12 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
 function showSection(index) {
     const sectionsContainer = document.getElementById('sectionsContainer');
     const sections = document.querySelectorAll('.section');
+    const namesSection = document.querySelector('.names-section');
     
-    // Активируем контейнер для страниц 3-9
+    // Управляем видимостью контейнера 3-9
     if (index >= 2) {
+        // Показываем контейнер с секциями 3-9
         sectionsContainer.classList.add('active');
+        if (namesSection) {
+            namesSection.classList.remove('active');
+        }
     } else {
+        // Скрываем контейнер, показываем секцию 2
         sectionsContainer.classList.remove('active');
+        if (namesSection && index === 1) {
+            namesSection.classList.add('active');
+        }
     }
     
     // Переход 1→2 (клик по сердцу) - плавное исчезновение
@@ -84,7 +93,12 @@ function showSection(index) {
             sections[0].classList.remove('active');
             sections[0].style.opacity = '1';
             sections[0].style.transition = '';
-            sections[index].classList.add('active');
+            
+            // Показываем секцию 2
+            if (namesSection) {
+                namesSection.classList.add('active');
+            }
+            
             currentSection = index;
             updateNavigation();
             updateIndicators();
@@ -95,37 +109,44 @@ function showSection(index) {
     
     // Переход 2→1
     if (currentSection === 1 && index === 0) {
-        sections[1].classList.remove('active');
-        sections[1].classList.add('go-down');
+        if (namesSection) {
+            namesSection.classList.remove('active');
+        }
         sections[0].classList.add('active');
-        setTimeout(() => {
-            sections[1].classList.remove('go-down');
-        }, 1200);
         currentSection = index;
         updateNavigation();
         updateIndicators();
         return;
     }
     
-    // Переход вперёд
-    if (index > currentSection) {
-        sections[currentSection].classList.remove('active');
-        sections[currentSection].classList.add('go-up');
-        sections[index].classList.remove('go-down');
-        sections[index].classList.add('active');
+    // Переход со 2-й на 3-ю
+    if (currentSection === 1 && index === 2) {
+        // Прокручиваем к началу контейнера
+        sectionsContainer.scrollTop = 0;
         currentSection = index;
         updateNavigation();
         updateIndicators();
+        return;
     }
-    // Переход назад
-    else if (index < currentSection) {
-        sections[currentSection].classList.remove('active');
-        sections[currentSection].classList.add('go-down');
-        sections[index].classList.remove('go-up');
-        sections[index].classList.add('active');
+    
+    // Для остальных переходов внутри 3-9
+    if (currentSection >= 2 && index >= 2) {
         currentSection = index;
         updateNavigation();
         updateIndicators();
+        return;
+    }
+    
+    // Переход с 3-й и выше на 2-ю
+    if (currentSection >= 2 && index === 1) {
+        sectionsContainer.classList.remove('active');
+        if (namesSection) {
+            namesSection.classList.add('active');
+        }
+        currentSection = index;
+        updateNavigation();
+        updateIndicators();
+        return;
     }
 }
 
