@@ -195,7 +195,7 @@ body::before {
     transform: translateY(0);
     z-index: 10;
     visibility: visible;
-    transition: opacity 1.2s ease;
+    transition: opacity 1.5s ease-in-out; /* ← Увеличить время и плавность */
 }
 
 .hero-section::before {
