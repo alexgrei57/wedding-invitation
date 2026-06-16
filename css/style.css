@@ -61,7 +61,7 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 1s ease, visibility 1s ease; /* ← Увеличить время */
 }
 
 #sectionsContainer.active {
@@ -76,7 +76,7 @@
     transform: none !important;
     visibility: visible !important;
     opacity: 1 !important;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* ← Уменьшить с 20px до 10px */
 }
 
 /* Показываем только активную секцию 2 */
@@ -203,6 +203,7 @@ body::before {
     transform: translateY(0);
     z-index: 10;
     visibility: visible; /* ✅ Показана когда активна */
+    transition: opacity 1.2s ease; /* ← Добавить плавность */
 }
 
 .hero-section::before {
@@ -390,7 +391,7 @@ body::before {
     border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    margin: 20px 15px;
+    margin: 10px 15px; /* ← Уменьшить с 20px 15px до 10px 15px */
 }
 
 /* ===== Names секция ===== */
@@ -1139,12 +1140,12 @@ body::before {
     font-style: italic;
     font-weight: 400;
     color: #8B7355;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* ← Уменьшить с 40px до 20px */
     letter-spacing: 2px;
 }
 
 .wishes-block {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     max-width: 320px;
 }
 
@@ -1160,7 +1161,7 @@ body::before {
 }
 
 .wishes-divider {
-    margin: 25px 0;
+    margin: 15px 0; /* ← Уменьшить с 25px 0 до 15px 0 */
     display: flex;
     justify-content: center;
     align-items: center;
