@@ -17,6 +17,14 @@
     --white: #FFFFFF;
 }
 
+@font-face {
+    font-family: 'Sloop Script Pro';
+    src: url('../fonts/SloopScriptPro.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* Общий контейнер для страниц 2-9 */
 #sectionsContainer {
     position: fixed;
@@ -316,13 +324,13 @@ body::before {
 }
 
 .subtitle {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive; /* ← Новый шрифт */
     font-size: 60px;
-    font-style: italic;
+    font-style: normal; /* ← Для рукописных шрифтов italic обычно не нужен */
     font-weight: 400;
     color: #5a4a3a;
     margin-bottom: 15px;
-    letter-spacing: 3px;
+    letter-spacing: 2px; /* ← Чуть уменьшил, чтобы рукописный текст смотрелся естественнее */
 }
 
 .heart-icon {

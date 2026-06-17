@@ -61,10 +61,23 @@ if (musicToggle) {
     // Остальной код
     updateNavigation();
     
-    // Клик по сердцу
-    document.querySelector('.heart-icon')?.addEventListener('click', () => {
-        showSection(1);
-    });
+// Клик по сердцу
+document.querySelector('.heart-icon')?.addEventListener('click', () => {
+    // 🎵 Запускаем музыку СРАЗУ при клике (user gesture)
+    if (music && !musicStarted) {
+        music.volume = 0.3;
+        music.play().then(() => {
+            musicStarted = true;
+            if (musicToggle) musicToggle.classList.add('playing');
+            console.log('🎵 Музыка запущена при клике');
+        }).catch(err => {
+            console.log('Music autoplay blocked:', err);
+            // Если заблокировано - иконка останется в состоянии "включить"
+        });
+    }
+    
+    showSection(1);
+});
 
     // Клик по подсказке
     document.querySelector('.tap-hint')?.addEventListener('click', () => {
@@ -114,9 +127,6 @@ if (currentSection === 0 && index === 1) {
         // Показываем контейнер со скроллом (секция 2 внутри контейнера)
         sectionsContainer.classList.add('active');
         sectionsContainer.scrollTop = 0;
-        
-        // 🎵 Запускаем музыку автоматически
-        startMusic();
         
         currentSection = index;
         updateNavigation();
