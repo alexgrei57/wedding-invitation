@@ -747,11 +747,11 @@ body::before {
 .dresscode-title .dresscode-code {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
     font-style: normal;
-    font-size: 40px;
+    font-size: 42px;
     color: #5a4a3a;
     letter-spacing: 1px;
     text-transform: none;
-    margin-left: 5px;
+    margin-left: -6px;
 }
 
 .dresscode-main-text {
@@ -933,21 +933,23 @@ body::before {
 
 /* ===== RSVP секция (Анкета) ===== */
 .rsvp-title {
-    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 36px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
     font-weight: 400;
-    letter-spacing: 2px;
-    color: #5a4a3a;
+    letter-spacing: 8px;
+    color: #000000;
     margin-bottom: 5px;
-    text-transform: none;
+    text-transform: uppercase;
 }
 
 .rsvp-subtitle {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-style: italic;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 400;
     color: #5a4a3a;
     margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
 .rsvp-intro {
@@ -1144,7 +1146,7 @@ body::before {
 
 .wishes-title {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 44px;
+    font-size: 58px;
     font-style: normal;
     font-weight: 400;
     color: #8B7355;
@@ -1348,7 +1350,7 @@ body::before {
     }
     
     .dresscode-title { font-size: 38px; letter-spacing: 4px; }
-    .dresscode-title .dresscode-code { font-size: 30px; }
+    .dresscode-title .dresscode-code { font-size: 42px; }
     .dresscode-main-text { font-size: 18px; }
     .dresscode-text { font-size: 12px; }
     .dresscode-photo { height: 150px; }
@@ -1366,10 +1368,10 @@ body::before {
     .countdown-item { min-width: 50px; }
     
     .rsvp-title { 
-        font-size: 30px; 
-        letter-spacing: 1px; 
+        font-size: 32px; 
+        letter-spacing: 5px; 
     }
-    .rsvp-subtitle { font-size: 22px; }
+    .rsvp-subtitle { font-size: 42px; }
     .rsvp-intro { font-size: 11px; }
     .form-label { font-size: 14px; }
     .form-input { font-size: 12px; }
@@ -1379,7 +1381,7 @@ body::before {
     .footer-sub { font-size: 26px; }
     
     .wishes-title {
-        font-size: 34px;
+        font-size: 58px;
         margin-bottom: 15px;
     }
     
