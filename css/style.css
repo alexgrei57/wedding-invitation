@@ -1422,7 +1422,7 @@ img.clickable {
     border-color: rgba(139, 115, 85, 0.5);
 }
 
-/* Отступ снизу для секции 2, чтобы скрыть рамку 3-й страницы */
+/* Отступ снизу для секции 2, чтобы скрыть рамку 3-й страницы 
 #sectionsContainer .names-section {
-    padding-bottom: 60px !important; /* ← Добавить отступ снизу */
-}
+    padding-bottom: 60px !important;
+}*/
