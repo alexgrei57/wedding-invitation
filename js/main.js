@@ -224,6 +224,11 @@ document.addEventListener('touchend', function(e) {
 function handleSwipe() {
     const swipeDistance = touchStartY - touchEndY;
     
+    // 🚫 ЗАПРЕТ свайпа вверх на первой странице (currentSection === 0)
+    if (currentSection === 0 && swipeDistance > minSwipeDistance) {
+        return; // Просто выходим, не делаем ничего
+    }
+    
     // 🚫 ЗАПРЕТ свайпа вниз на второй странице (currentSection === 1)
     if (currentSection === 1 && swipeDistance < -minSwipeDistance) {
         return; // Просто выходим, не делаем ничего
