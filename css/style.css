@@ -437,14 +437,14 @@ body::before {
     margin: 20px 15px;
 }
 
-/* ===== Names секция - АДАПТИВНЫЕ РАЗМЕРЫ ===== */
+/* ===== Names секция - АДАПТИВНЫЕ РАЗМЕРЫ (УВЕЛИЧЕНО) ===== */
 .names-section .top-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(10px, 2.8vw, 14px);
-    letter-spacing: clamp(2px, 1vw, 6px);
+    font-size: clamp(12px, 3.5vw, 16px); /* ↑ было 10px-14px */
+    letter-spacing: clamp(3px, 1.5vw, 8px); /* ↑ было 2px-6px */
     color: #000000;
     margin-top: 0;
-    margin-bottom: clamp(15px, 4vh, 40px);
+    margin-bottom: clamp(20px, 5vh, 50px); /* ↑ было 15px-40px */
     text-transform: uppercase;
     text-align: center !important;
     width: 100%;
@@ -454,7 +454,7 @@ body::before {
 .names-section .couple-names {
     text-align: center !important;
     margin-top: 0;
-    margin-bottom: clamp(15px, 4vh, 40px);
+    margin-bottom: clamp(20px, 5vh, 50px); /* ↑ было 15px-40px */
     width: 100%;
     display: block;
 }
@@ -462,9 +462,9 @@ body::before {
 .names-section .name {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 9vw, 52px);
+    font-size: clamp(36px, 11vw, 56px); /* ↑ было 28px-52px */
     font-weight: 300;
-    letter-spacing: clamp(2px, 1.5vw, 8px);
+    letter-spacing: clamp(3px, 2vw, 10px); /* ↑ было 2px-8px */
     color: #000000;
     margin: 0;
     text-transform: uppercase;
@@ -475,24 +475,24 @@ body::before {
 .names-section .ampersand {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(24px, 8vw, 44px);
+    font-size: clamp(32px, 10vw, 48px); /* ↑ было 24px-44px */
     font-weight: 300;
     color: #1a1a1a;
-    margin: 5px 0;
+    margin: 8px 0; /* ↑ было 5px */
     text-align: center;
     line-height: 1;
 }
 
 .names-section .wedding-date {
     text-align: center !important;
-    margin: clamp(10px, 2vh, 20px) 0 clamp(10px, 2vh, 15px);
+    margin: clamp(15px, 3vh, 25px) 0 clamp(15px, 3vh, 20px); /* ↑ было 10px-20px */
     display: block;
 }
 
 .names-section .month {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(12px, 3.2vw, 16px);
-    letter-spacing: clamp(2px, 1vw, 5px);
+    font-size: clamp(14px, 4vw, 18px); /* ↑ было 12px-16px */
+    letter-spacing: clamp(3px, 1.5vw, 6px); /* ↑ было 2px-5px */
     color: #000000;
     text-transform: uppercase;
     margin-bottom: 0;
@@ -500,7 +500,7 @@ body::before {
 
 .names-section .day {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(48px, 16vw, 100px);
+    font-size: clamp(60px, 20vw, 120px); /* ↑ было 48px-100px */
     font-weight: 300;
     color: #000000;
     line-height: 0.7;
@@ -509,9 +509,9 @@ body::before {
 
 .names-section .year {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(12px, 3vw, 18px);
+    font-size: clamp(14px, 4vw, 20px); /* ↑ было 12px-18px */
     font-weight: 300;
-    letter-spacing: clamp(2px, 1vw, 6px);
+    letter-spacing: clamp(3px, 1.5vw, 8px); /* ↑ было 2px-6px */
     color: #000000;
 }
 
@@ -1341,15 +1341,15 @@ body::before {
 
 @media (max-width: 768px) {
     .main-title { 
-        font-size: 26px;
+        font-size: 32px; /* ↑ было 26px */
         letter-spacing: 6px;
     }
     .subtitle { 
-        font-size: 68px;
+        font-size: 72px; /* ↑ было 68px */
     }
-    .name { font-size: 36px; }
-    .wedding-date .day { font-size: 80px; }
-    .location-title { 
+    .name { font-size: 44px; } /* ↑ было 36px */
+    .wedding-date .day { font-size: 100px; } /* ↑ было 80px */
+        .location-title { 
         font-size: 32px; 
         letter-spacing: 5px; 
 }
@@ -1422,34 +1422,34 @@ body::before {
 /* Для очень маленьких экранов (iPhone SE, старые Android) */
 @media (max-width: 375px) {
     .names-section .top-text {
-        font-size: 10px !important;
-        letter-spacing: 2px !important;
-        margin-bottom: 15px !important;
+        font-size: 13px !important; /* ↑ было 10px */
+        letter-spacing: 3px !important; /* ↑ было 2px */
+        margin-bottom: 20px !important; /* ↑ было 15px */
     }
     
     .names-section .name {
-        font-size: 28px !important;
-        letter-spacing: 2px !important;
+        font-size: 38px !important; /* ↑ было 28px */
+        letter-spacing: 3px !important; /* ↑ было 2px */
     }
     
     .names-section .ampersand {
-        font-size: 24px !important;
+        font-size: 32px !important; /* ↑ было 24px */
     }
     
     .names-section .couple-names {
-        margin-bottom: 15px !important;
+        margin-bottom: 20px !important; /* ↑ было 15px */
     }
     
     .names-section .month {
-        font-size: 12px !important;
+        font-size: 15px !important; /* ↑ было 12px */
     }
     
     .names-section .day {
-        font-size: 48px !important;
+        font-size: 70px !important; /* ↑ было 48px */
     }
     
     .names-section .year {
-        font-size: 12px !important;
+        font-size: 15px !important; /* ↑ было 12px */
     }
     
     .names-section .wedding-date {
