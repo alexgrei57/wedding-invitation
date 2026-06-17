@@ -116,17 +116,6 @@
     z-index: 20;
 }
 
-/* Показываем только активную секцию 2 */
-.names-section.active {
-    display: block !important;
-    z-index: 20;
-}
-
-/* Скрываем неактивную секцию 2 */
-.names-section:not(.active) {
-    display: none !important;
-}
-
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-dark);
