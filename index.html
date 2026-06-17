@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="css/style.css?v=84">
+    <link rel="stylesheet" href="css/style.css?v=86">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -105,49 +105,61 @@
         </defs>
         
         <g clip-path="url(#heartClip)">
-            <!-- ЛЕВЫЙ овальный отпечаток (наклонен вправо) -->
+            <!-- ЛЕВЫЙ овальный отпечаток с реалистичными узорами -->
             <g transform="translate(30, 48) rotate(-25)" clip-path="url(#fingerprintOval)">
-                <g stroke="#ffffff" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.9">
-                    <!-- Папиллярные дуги отпечатка -->
-                    <path d="M-18 -28 Q0 -32 18 -28"/>
-                    <path d="M-18 -24 Q0 -28 18 -24"/>
-                    <path d="M-18 -20 Q0 -24 18 -20"/>
-                    <path d="M-18 -16 Q0 -20 18 -16"/>
-                    <path d="M-18 -12 Q0 -16 18 -12"/>
-                    <path d="M-18 -8 Q0 -12 18 -8"/>
-                    <path d="M-18 -4 Q0 -8 18 -4"/>
-                    <path d="M-18 0 Q0 -4 18 0"/>
-                    <path d="M-18 4 Q0 0 18 4"/>
-                    <path d="M-18 8 Q0 4 18 8"/>
-                    <path d="M-18 12 Q0 8 18 12"/>
-                    <path d="M-18 16 Q0 12 18 16"/>
-                    <path d="M-18 20 Q0 16 18 20"/>
-                    <path d="M-18 24 Q0 20 18 24"/>
-                    <path d="M-18 28 Q0 24 18 28"/>
-                    <path d="M-18 32 Q0 28 18 32"/>
+                <g stroke="#ffffff" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.9">
+                    <!-- Внешние дуги -->
+                    <path d="M-15 -30 Q-5 -32 5 -30"/>
+                    <path d="M-18 -26 Q-5 -29 8 -26"/>
+                    <path d="M-20 -22 Q-5 -26 10 -22"/>
+                    <path d="M-20 -18 Q-5 -23 12 -18"/>
+                    
+                    <!-- Средние изогнутые линии с завитком -->
+                    <path d="M-18 -14 Q-8 -18 0 -15 Q8 -18 15 -14"/>
+                    <path d="M-18 -10 Q-8 -14 0 -11 Q8 -14 15 -10"/>
+                    <path d="M-18 -6 Q-8 -10 0 -7 Q8 -10 15 -6"/>
+                    <path d="M-18 -2 Q-8 -6 0 -3 Q8 -6 15 -2"/>
+                    <path d="M-18 2 Q-8 -2 0 1 Q8 -2 15 2"/>
+                    
+                    <!-- Центральная петля (ядро отпечатка) -->
+                    <path d="M-5 6 Q0 3 5 6 Q8 9 5 12 Q0 15 -5 12 Q-8 9 -5 6"/>
+                    <path d="M-3 7 Q0 5 3 7 Q5 9 3 11 Q0 13 -3 11 Q-5 9 -3 7"/>
+                    
+                    <!-- Нижние линии -->
+                    <path d="M-15 10 Q-5 7 5 10 Q10 13 8 16"/>
+                    <path d="M-15 14 Q-5 11 5 14 Q10 17 8 20"/>
+                    <path d="M-12 18 Q-3 15 5 18 Q8 21 6 24"/>
+                    <path d="M-10 22 Q-2 19 5 22 Q7 25 5 28"/>
+                    <path d="M-8 26 Q0 23 5 26 Q6 29 4 32"/>
                 </g>
             </g>
             
-            <!-- ПРАВЫЙ овальный отпечаток (наклонен влево) -->
+            <!-- ПРАВЫЙ овальный отпечаток с реалистичными узорами -->
             <g transform="translate(70, 48) rotate(25)" clip-path="url(#fingerprintOval)">
-                <g stroke="#ffffff" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.9">
-                    <!-- Папиллярные дуги отпечатка -->
-                    <path d="M-18 -28 Q0 -32 18 -28"/>
-                    <path d="M-18 -24 Q0 -28 18 -24"/>
-                    <path d="M-18 -20 Q0 -24 18 -20"/>
-                    <path d="M-18 -16 Q0 -20 18 -16"/>
-                    <path d="M-18 -12 Q0 -16 18 -12"/>
-                    <path d="M-18 -8 Q0 -12 18 -8"/>
-                    <path d="M-18 -4 Q0 -8 18 -4"/>
-                    <path d="M-18 0 Q0 -4 18 0"/>
-                    <path d="M-18 4 Q0 0 18 4"/>
-                    <path d="M-18 8 Q0 4 18 8"/>
-                    <path d="M-18 12 Q0 8 18 12"/>
-                    <path d="M-18 16 Q0 12 18 16"/>
-                    <path d="M-18 20 Q0 16 18 20"/>
-                    <path d="M-18 24 Q0 20 18 24"/>
-                    <path d="M-18 28 Q0 24 18 28"/>
-                    <path d="M-18 32 Q0 28 18 32"/>
+                <g stroke="#ffffff" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.9">
+                    <!-- Внешние дуги -->
+                    <path d="M15 -30 Q5 -32 -5 -30"/>
+                    <path d="M18 -26 Q5 -29 -8 -26"/>
+                    <path d="M20 -22 Q5 -26 -10 -22"/>
+                    <path d="M20 -18 Q5 -23 -12 -18"/>
+                    
+                    <!-- Средние изогнутые линии с завитком -->
+                    <path d="M18 -14 Q8 -18 0 -15 Q-8 -18 -15 -14"/>
+                    <path d="M18 -10 Q8 -14 0 -11 Q-8 -14 -15 -10"/>
+                    <path d="M18 -6 Q8 -10 0 -7 Q-8 -10 -15 -6"/>
+                    <path d="M18 -2 Q8 -6 0 -3 Q-8 -6 -15 -2"/>
+                    <path d="M18 2 Q8 -2 0 1 Q-8 -2 -15 2"/>
+                    
+                    <!-- Центральная петля (ядро отпечатка) -->
+                    <path d="M5 6 Q0 3 -5 6 Q-8 9 -5 12 Q0 15 5 12 Q8 9 5 6"/>
+                    <path d="M3 7 Q0 5 -3 7 Q-5 9 -3 11 Q0 13 3 11 Q5 9 3 7"/>
+                    
+                    <!-- Нижние линии -->
+                    <path d="M15 10 Q5 7 -5 10 Q-10 13 -8 16"/>
+                    <path d="M15 14 Q5 11 -5 14 Q-10 17 -8 20"/>
+                    <path d="M12 18 Q3 15 -5 18 Q-8 21 -6 24"/>
+                    <path d="M10 22 Q2 19 -5 22 Q-7 25 -5 28"/>
+                    <path d="M8 26 Q0 23 -5 26 Q-6 29 -4 32"/>
                 </g>
             </g>
         </g>
