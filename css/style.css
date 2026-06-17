@@ -1074,11 +1074,12 @@ body::before {
 }
 
 .footer-sub {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-style: italic;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 16px; /* Чуть увеличил для лучшей читаемости рукописного шрифта */
+    font-style: normal; /* Убрал italic, так как шрифт уже курсивный */
     color: #5a4a3a;
     font-weight: 400;
+    letter-spacing: 1px;
 }
 
 /* ===== Навигация ===== */
