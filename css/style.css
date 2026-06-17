@@ -429,7 +429,7 @@ body::before {
     border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    margin: 10px 15px;
+    margin: 20px 15px;
 }
 
 /* ===== Names секция ===== */
@@ -1330,14 +1330,4 @@ img.clickable {
     visibility: visible !important;
     z-index: 1;
     margin: 0;
-}
-
-/* Увеличенный верхний отступ для 3-й страницы */
-#section3 .content-wrapper {
-    padding-top: 50px !important; /* Увеличить с 20px до 50px */
-}
-
-/* Или если нужно увеличить margin */
-#section3 .photo-container {
-    margin-top: 30px; /* Добавить отступ сверху */
 }
