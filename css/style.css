@@ -569,6 +569,7 @@ body::before {
     color: #5a4a3a;
     margin-bottom: 10px;
     text-transform: none;
+    line-height: 1.1; /* ← Добавлено: уменьшает отступ между строками */
 }
 
 .we-marry {
@@ -757,7 +758,7 @@ body::before {
     font-weight: 400;
     letter-spacing: 6px;
     color: #5a4a3a;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     text-transform: uppercase;
     line-height: 1;
 }
@@ -1169,7 +1170,7 @@ body::before {
     font-style: normal;
     font-weight: 400;
     color: #5a4a3a;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
     letter-spacing: 1px;
 }
 
@@ -1401,7 +1402,7 @@ body::before {
     
     .wishes-title {
         font-size: 58px;
-        margin-bottom: 15px;
+        margin-bottom: 2px;
     }
     
     .wishes-text {

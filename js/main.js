@@ -128,13 +128,19 @@ if (currentSection === 0 && index === 1) {
         sections[0].style.opacity = '1';
         sections[0].style.transition = '';
         
-        // Показываем контейнер со скроллом (секция 2 внутри контейнера)
-        sectionsContainer.classList.add('active');
-        sectionsContainer.scrollTop = 0;
-        
-        currentSection = index;
-        updateNavigation();
-        updateIndicators();
+// Показываем контейнер со скроллом (секция 2 внутри контейнера)
+sectionsContainer.classList.add('active');
+sectionsContainer.scrollTop = 0;
+
+// Сбрасываем анимацию тайминга (чтобы работала при повторном открытии)
+setTimeout(() => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach(item => item.classList.remove('visible'));
+}, 100);
+
+currentSection = index;
+updateNavigation();
+updateIndicators();
     }, 1500);
     
     return;
@@ -171,33 +177,55 @@ if (currentSection === 0 && index === 1) {
 
 // ===== АНИМАЦИЯ ТАЙМИНГА =====
 function animateTimeline() {
-    const timelineSection = document.querySelector('.timeline-section');
     const timelineItems = document.querySelectorAll('.timeline-item');
     
-    if (!timelineSection || timelineItems.length === 0) return;
+    if (!timelineItems || timelineItems.length === 0) return;
     
-    // Используем Intersection Observer для отслеживания видимости
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Добавляем класс visible каждому элементу с задержкой
-                timelineItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('visible');
-                    }, index * 300); // 300ms между каждым элементом
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.3 // Срабатывает когда 30% секции видно
+    // Сбрасываем все элементы (на случай повторного вызова)
+    timelineItems.forEach(item => {
+        item.classList.remove('visible');
     });
     
-    observer.observe(timelineSection);
+    // Добавляем класс visible каждому элементу с задержкой
+    timelineItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('visible');
+        }, index * 300); // 300ms между каждым элементом
+    });
 }
 
-// Запускаем после загрузки страницы
-document.addEventListener('DOMContentLoaded', animateTimeline);
+// Запускаем анимацию тайминга при переходе на страницу с таймингом
+function checkAndAnimateTimeline() {
+    const sectionsContainer = document.getElementById('sectionsContainer');
+    const timelineSection = document.getElementById('section5');
+    
+    if (!sectionsContainer || !timelineSection) return;
+    
+    // Проверяем, видима ли секция тайминга (прокручена ли она в viewport)
+    const containerRect = sectionsContainer.getBoundingClientRect();
+    const timelineRect = timelineSection.getBoundingClientRect();
+    
+    // Если секция тайминга находится в видимой области контейнера
+    if (timelineRect.top < containerRect.bottom && timelineRect.bottom > containerRect.top) {
+        const visibleItems = document.querySelectorAll('.timeline-item.visible');
+        if (visibleItems.length === 0) {
+            animateTimeline();
+        }
+    }
+}
+
+// Слушаем скролл в контейнере
+document.addEventListener('DOMContentLoaded', function() {
+    const sectionsContainer = document.getElementById('sectionsContainer');
+    
+    if (sectionsContainer) {
+        sectionsContainer.addEventListener('scroll', function() {
+            // Небольшая задержка для производительности
+            clearTimeout(window.timelineScrollTimeout);
+            window.timelineScrollTimeout = setTimeout(checkAndAnimateTimeline, 100);
+        });
+    }
+});
 
 function updateNavigation() {
     const prevBtn = document.getElementById('prevBtn');
