@@ -265,7 +265,7 @@ body::before {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start; /* ← Изменить с center на flex-start */
-    padding-top: 25vh; /* ← Добавить отступ сверху (было 0) */
+    padding-top: 20vh; /* ← Добавить отступ сверху (было 0) */
 }
 
 /* Секция 2 без белой рамки */
