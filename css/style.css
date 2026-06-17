@@ -105,17 +105,6 @@
     padding: 0 !important;
 }
 
-#sectionsContainer .names-section .content-wrapper {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    margin: 0;
-    padding: 30px 0 0 0;
-    height: auto;
-    position: relative;
-    z-index: 20;
-}
-
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-dark);
@@ -165,7 +154,7 @@ body::before {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     background: transparent;
-    padding: 0; /* Убираем padding */
+    padding: 0;
     visibility: hidden;
 }
 
@@ -229,7 +218,7 @@ body::before {
     transform: translateY(0);
     z-index: 10;
     visibility: visible;
-    transition: opacity 2s ease-in-out; /* ← Увеличить время и плавность */
+    transition: opacity 2s ease-in-out;
 }
 
 .hero-section::before {
@@ -264,20 +253,39 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* ← Изменить с center на flex-start */
-    padding-top: 20vh; /* ← Добавить отступ сверху (было 0) */
+    justify-content: flex-start;
+    padding-top: 20vh;
 }
 
-/* Секция 2 без белой рамки */
+/* ===== Names секция - АДАПТИВНАЯ ===== */
 .names-section .content-wrapper {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     margin: 0;
-    padding: 30px 0 0 0;
-    height: auto;
+    padding: clamp(15px, 3vh, 30px) 15px !important;
+    min-height: 100vh !important;
+    height: auto !important;
     position: relative;
     z-index: 20;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+/* Верхняя часть с текстом - не сжимается */
+.names-section .top-text,
+.names-section .couple-names,
+.names-section .wedding-date {
+    flex-shrink: 0;
+}
+
+/* Иконка музыки прижата к низу */
+.music-toggle {
+    margin-top: auto !important;
+    margin-bottom: clamp(10px, 2vh, 20px) !important;
+    flex-shrink: 0;
 }
 
 /* Names секция */
@@ -379,7 +387,7 @@ body::before {
     background: transparent;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    padding: 0; /* Убираем padding */
+    padding: 0;
     visibility: hidden;
 }
 
@@ -428,14 +436,14 @@ body::before {
     margin: 20px 15px;
 }
 
-/* ===== Names секция ===== */
+/* ===== Names секция - АДАПТИВНЫЕ РАЗМЕРЫ ===== */
 .names-section .top-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(12px, 3.5vw, 14px);
-    letter-spacing: clamp(4px, 1.5vw, 6px);
+    font-size: clamp(10px, 2.8vw, 14px);
+    letter-spacing: clamp(2px, 1vw, 6px);
     color: #000000;
     margin-top: 0;
-    margin-bottom: clamp(40px, 10vh, 80px);
+    margin-bottom: clamp(15px, 4vh, 40px);
     text-transform: uppercase;
     text-align: center !important;
     width: 100%;
@@ -445,7 +453,7 @@ body::before {
 .names-section .couple-names {
     text-align: center !important;
     margin-top: 0;
-    margin-bottom: clamp(40px, 10vh, 80px);
+    margin-bottom: clamp(15px, 4vh, 40px);
     width: 100%;
     display: block;
 }
@@ -453,9 +461,9 @@ body::before {
 .names-section .name {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 12vw, 52px);
+    font-size: clamp(28px, 9vw, 52px);
     font-weight: 300;
-    letter-spacing: clamp(4px, 2vw, 8px);
+    letter-spacing: clamp(2px, 1.5vw, 8px);
     color: #000000;
     margin: 0;
     text-transform: uppercase;
@@ -466,7 +474,7 @@ body::before {
 .names-section .ampersand {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 10vw, 44px);
+    font-size: clamp(24px, 8vw, 44px);
     font-weight: 300;
     color: #1a1a1a;
     margin: 5px 0;
@@ -476,33 +484,33 @@ body::before {
 
 .names-section .wedding-date {
     text-align: center !important;
-    margin: clamp(10px, 2vh, 15px) 0 clamp(10px, 2vh, 15px); /* ← Уменьшить верхний отступ */
+    margin: clamp(10px, 2vh, 20px) 0 clamp(10px, 2vh, 15px);
     display: block;
 }
 
 .names-section .month {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(14px, 4vw, 16px);
-    letter-spacing: clamp(3px, 1.5vw, 5px);
+    font-size: clamp(12px, 3.2vw, 16px);
+    letter-spacing: clamp(2px, 1vw, 5px);
     color: #000000;
     text-transform: uppercase;
-    margin-bottom: 0; /* ← Добавить небольшой отступ */
+    margin-bottom: 0;
 }
 
 .names-section .day {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(60px, 20vw, 100px);
+    font-size: clamp(48px, 16vw, 100px);
     font-weight: 300;
     color: #000000;
     line-height: 0.7;
-    margin: 0; /* ← Убрать верхний margin */
+    margin: 0;
 }
 
 .names-section .year {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(14px, 4vw, 18px);
+    font-size: clamp(12px, 3vw, 18px);
     font-weight: 300;
-    letter-spacing: clamp(4px, 1.5vw, 6px);
+    letter-spacing: clamp(2px, 1vw, 6px);
     color: #000000;
 }
 
@@ -803,14 +811,6 @@ body::before {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-@media (max-width: 768px) {
-    .dresscode-title { font-size: 38px; letter-spacing: 4px; }
-    .dresscode-title .dresscode-code { font-size: 30px; }
-    .dresscode-main-text { font-size: 18px; }
-    .dresscode-text { font-size: 12px; }
-    .dresscode-photo { height: 150px; }
-}
-
 /* ===== FAQ секция (Подсказки) ===== */
 .faq-title {
     font-family: 'Playfair Display', serif;
@@ -858,13 +858,6 @@ body::before {
     color: #3a3a3a;
     font-weight: 300;
     margin-bottom: 8px;
-}
-
-@media (max-width: 768px) {
-    .faq-title { font-size: 40px; }
-    .faq-subtitle { font-size: 11px; letter-spacing: 2px; }
-    .faq-block-title { font-size: 18px; letter-spacing: 3px; }
-    .faq-block-text { font-size: 11px; }
 }
 
 /* ===== Countdown секция (Обратный отсчёт) ===== */
@@ -933,15 +926,6 @@ body::before {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 300;
-}
-
-@media (max-width: 768px) {
-    .countdown-photo-container { height: 70vh; }
-    .countdown-text { font-size: 18px; }
-    .countdown-number { font-size: 36px; }
-    .countdown-label { font-size: 10px; }
-    .countdown-timer { gap: 10px; }
-    .countdown-item { min-width: 50px; }
 }
 
 /* ===== RSVP секция (Анкета) ===== */
@@ -1069,15 +1053,6 @@ body::before {
     background: #6d5a42;
 }
 
-@media (max-width: 768px) {
-    .rsvp-title { font-size: 32px; letter-spacing: 5px; }
-    .rsvp-subtitle { font-size: 22px; }
-    .rsvp-intro { font-size: 11px; }
-    .form-label { font-size: 14px; }
-    .form-input { font-size: 12px; }
-    .radio-label, .checkbox-label { font-size: 12px; }
-}
-
 .rsvp-footer {
     margin-top: 30px;
     text-align: center;
@@ -1099,11 +1074,6 @@ body::before {
     font-style: italic;
     color: #5a4a3a;
     font-weight: 400;
-}
-
-@media (max-width: 768px) {
-    .footer-main { font-size: 22px; letter-spacing: 4px; }
-    .footer-sub { font-size: 26px; }
 }
 
 /* ===== Навигация ===== */
@@ -1175,12 +1145,12 @@ body::before {
     font-style: italic;
     font-weight: 400;
     color: #8B7355;
-    margin-bottom: 15px; /* Уменьшено */
+    margin-bottom: 15px;
     letter-spacing: 2px;
 }
 
 .wishes-block {
-    margin-bottom: 15px; /* Уменьшено */
+    margin-bottom: 15px;
     max-width: 320px;
 }
 
@@ -1196,7 +1166,7 @@ body::before {
 }
 
 .wishes-divider {
-    margin: 0; /* Уменьшено */
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1204,23 +1174,6 @@ body::before {
 
 .wishes-divider svg {
     opacity: 0.6;
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    .wishes-title {
-        font-size: 36px;
-        margin-bottom: 15px;
-    }
-    
-    .wishes-text {
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-    
-    .wishes-block {
-        max-width: 280px;
-    }
 }
 
 /* ===== Музыка ===== */
@@ -1260,93 +1213,15 @@ body::before {
     50% { transform: translateY(10px); }
 }
 
-@media (max-width: 768px) {
-    .main-title { 
-        font-size: 24px; /* ← Увеличить с 24px до 32px */
-        letter-spacing: 5px; /* ← Увеличить с 4px до 6px */
-    }
-    .subtitle { 
-        font-size: 36px; /* ← Увеличить с 36px до 44px */
-    }
-    .name { font-size: 36px; }
-    .wedding-date .day { font-size: 80px; }
-    .location-title { font-size: 32px; letter-spacing: 5px; }
-    .location-subtitle { font-size: 22px; }
-    
-    .content-wrapper {
-        padding: 15px 15px;
-        margin: 0 10px;
-    }
-    
-    /* Убираем padding у секций */
-    .section, .slide-section {
-        padding: 0 !important;
-    }
-}
-
-.music-control, .navigation, .section-indicators {
-    display: none !important;
-}
-
-html, body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
-
-* {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-*::-webkit-scrollbar {
-    display: none;
-}
-
-img {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    pointer-events: none;
-}
-
-img.clickable {
-    pointer-events: auto;
-}
-
-.section, .slide-section {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-}
-
-/* Последняя секция без нижнего отступа */
-#section9.slide-section {
-    margin-bottom: 0 !important;
-}
-
-/* Страницы 3-9 — без фиксированного позиционирования, в потоке */
-.slide-section.section-3-9 {
-    position: relative !important;
-    transform: none !important;
-    visibility: visible !important;
-    z-index: 1;
-    margin: 0;
-}
-
 /* ===== Плавное появление текста на 2-й странице ===== */
-
-/* По умолчанию все элементы невидимы */
 #sectionsContainer .names-section .content-wrapper > * {
     opacity: 0;
 }
 
-/* Когда контейнер активен - запускаем анимацию */
 #sectionsContainer.active .names-section .content-wrapper > * {
     animation: fadeInOpacity 1.5s ease-out forwards;
 }
 
-/* Анимация плавного появления через opacity */
 @keyframes fadeInOpacity {
     from {
         opacity: 0;
@@ -1424,4 +1299,198 @@ img.clickable {
 .music-toggle.playing .music-toggle-icon {
     background: rgba(139, 115, 85, 0.3);
     border-color: rgba(139, 115, 85, 0.5);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+@media (max-width: 768px) {
+    .main-title { 
+        font-size: 32px;
+        letter-spacing: 6px;
+    }
+    .subtitle { 
+        font-size: 44px;
+    }
+    .name { font-size: 36px; }
+    .wedding-date .day { font-size: 80px; }
+    .location-title { font-size: 32px; letter-spacing: 5px; }
+    .location-subtitle { font-size: 22px; }
+    
+    .content-wrapper {
+        padding: 15px 15px;
+        margin: 0 10px;
+    }
+    
+    .section, .slide-section {
+        padding: 0 !important;
+    }
+    
+    .dresscode-title { font-size: 38px; letter-spacing: 4px; }
+    .dresscode-title .dresscode-code { font-size: 30px; }
+    .dresscode-main-text { font-size: 18px; }
+    .dresscode-text { font-size: 12px; }
+    .dresscode-photo { height: 150px; }
+    
+    .faq-title { font-size: 40px; }
+    .faq-subtitle { font-size: 11px; letter-spacing: 2px; }
+    .faq-block-title { font-size: 18px; letter-spacing: 3px; }
+    .faq-block-text { font-size: 11px; }
+    
+    .countdown-photo-container { height: 70vh; }
+    .countdown-text { font-size: 18px; }
+    .countdown-number { font-size: 36px; }
+    .countdown-label { font-size: 10px; }
+    .countdown-timer { gap: 10px; }
+    .countdown-item { min-width: 50px; }
+    
+    .rsvp-title { font-size: 32px; letter-spacing: 5px; }
+    .rsvp-subtitle { font-size: 22px; }
+    .rsvp-intro { font-size: 11px; }
+    .form-label { font-size: 14px; }
+    .form-input { font-size: 12px; }
+    .radio-label, .checkbox-label { font-size: 12px; }
+    
+    .footer-main { font-size: 22px; letter-spacing: 4px; }
+    .footer-sub { font-size: 26px; }
+    
+    .wishes-title {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+    
+    .wishes-text {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    .wishes-block {
+        max-width: 280px;
+    }
+}
+
+/* Для очень маленьких экранов (iPhone SE, старые Android) */
+@media (max-width: 375px) {
+    .names-section .top-text {
+        font-size: 10px !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .names-section .name {
+        font-size: 28px !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 24px !important;
+    }
+    
+    .names-section .couple-names {
+        margin-bottom: 15px !important;
+    }
+    
+    .names-section .month {
+        font-size: 12px !important;
+    }
+    
+    .names-section .day {
+        font-size: 48px !important;
+    }
+    
+    .names-section .year {
+        font-size: 12px !important;
+    }
+    
+    .names-section .wedding-date {
+        margin: 10px 0 !important;
+    }
+    
+    .music-toggle {
+        margin-top: auto !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .music-toggle-icon {
+        width: 42px !important;
+        height: 42px !important;
+    }
+    
+    .music-toggle-text {
+        font-size: 9px !important;
+    }
+    
+    .swipe-hint svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
+/* Для экранов 360px и меньше */
+@media (max-width: 360px) {
+    .names-section .name {
+        font-size: 26px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 22px !important;
+    }
+    
+    .names-section .day {
+        font-size: 44px !important;
+    }
+    
+    .music-toggle-icon {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+.music-control, .navigation, .section-indicators {
+    display: none !important;
+}
+
+html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+* {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+img.clickable {
+    pointer-events: auto;
+}
+
+.section, .slide-section {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* Последняя секция без нижнего отступа */
+#section9.slide-section {
+    margin-bottom: 0 !important;
+}
+
+/* Страницы 3-9 — без фиксированного позиционирования, в потоке */
+.slide-section.section-3-9 {
+    position: relative !important;
+    transform: none !important;
+    visibility: visible !important;
+    z-index: 1;
+    margin: 0;
 }
