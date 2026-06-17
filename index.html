@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="css/style.css?v=82">
+    <link rel="stylesheet" href="css/style.css?v=83">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -92,50 +92,57 @@
                 <h2 class="subtitle">Приглашение!</h2>
 <div class="heart-icon clickable">
     <svg width="85" height="85" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- ЛЕВЫЙ отпечаток пальца (наклонен вправо, формирует левую половину сердца) -->
-        <g transform="translate(25, 50) rotate(-35)" stroke="#ffffff" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.9">
-            <!-- Папиллярные линии отпечатка -->
-            <path d="M-20 -25 Q0 -28 20 -25"/>
-            <path d="M-20 -22 Q0 -25 20 -22"/>
-            <path d="M-20 -19 Q0 -22 20 -19"/>
-            <path d="M-20 -16 Q0 -19 20 -16"/>
-            <path d="M-20 -13 Q0 -16 20 -13"/>
-            <path d="M-20 -10 Q0 -13 20 -10"/>
-            <path d="M-20 -7 Q0 -10 20 -7"/>
-            <path d="M-20 -4 Q0 -7 20 -4"/>
-            <path d="M-20 -1 Q0 -4 20 -1"/>
-            <path d="M-20 2 Q0 -1 20 2"/>
-            <path d="M-20 5 Q0 2 20 5"/>
-            <path d="M-20 8 Q0 5 20 8"/>
-            <path d="M-20 11 Q0 8 20 11"/>
-            <path d="M-20 14 Q0 11 20 14"/>
-            <path d="M-20 17 Q0 14 20 17"/>
-            <path d="M-20 20 Q0 17 20 20"/>
-            <path d="M-20 23 Q0 20 20 23"/>
-            <path d="M-20 26 Q0 23 20 26"/>
-        </g>
+        <defs>
+            <!-- Форма сердца для обрезки -->
+            <clipPath id="heartClip">
+                <path d="M50 92 C50 92 10 65 10 38 C10 20 22 10 35 10 C43 10 48 15 50 20 C52 15 57 10 65 10 C78 10 90 20 90 38 C90 65 50 92 50 92 Z"/>
+            </clipPath>
+        </defs>
         
-        <!-- ПРАВЫЙ отпечаток пальца (наклонен влево, формирует правую половину сердца) -->
-        <g transform="translate(75, 50) rotate(35)" stroke="#ffffff" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.9">
-            <!-- Папиллярные линии отпечатка -->
-            <path d="M-20 -25 Q0 -28 20 -25"/>
-            <path d="M-20 -22 Q0 -25 20 -22"/>
-            <path d="M-20 -19 Q0 -22 20 -19"/>
-            <path d="M-20 -16 Q0 -19 20 -16"/>
-            <path d="M-20 -13 Q0 -16 20 -13"/>
-            <path d="M-20 -10 Q0 -13 20 -10"/>
-            <path d="M-20 -7 Q0 -10 20 -7"/>
-            <path d="M-20 -4 Q0 -7 20 -4"/>
-            <path d="M-20 -1 Q0 -4 20 -1"/>
-            <path d="M-20 2 Q0 -1 20 2"/>
-            <path d="M-20 5 Q0 2 20 5"/>
-            <path d="M-20 8 Q0 5 20 8"/>
-            <path d="M-20 11 Q0 8 20 11"/>
-            <path d="M-20 14 Q0 11 20 14"/>
-            <path d="M-20 17 Q0 14 20 17"/>
-            <path d="M-20 20 Q0 17 20 20"/>
-            <path d="M-20 23 Q0 20 20 23"/>
-            <path d="M-20 26 Q0 23 20 26"/>
+        <g clip-path="url(#heartClip)">
+            <!-- ЛЕВЫЙ отпечаток - линии изгибаются от левого края к центру -->
+            <g stroke="#ffffff" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.9">
+                <path d="M5 15 Q25 18 45 25"/>
+                <path d="M5 19 Q25 22 45 29"/>
+                <path d="M5 23 Q25 26 45 33"/>
+                <path d="M5 27 Q25 30 45 37"/>
+                <path d="M5 31 Q25 34 45 41"/>
+                <path d="M5 35 Q25 38 45 45"/>
+                <path d="M5 39 Q25 42 45 49"/>
+                <path d="M5 43 Q25 46 45 53"/>
+                <path d="M5 47 Q25 50 45 57"/>
+                <path d="M5 51 Q25 54 45 61"/>
+                <path d="M5 55 Q25 58 45 65"/>
+                <path d="M5 59 Q25 62 45 69"/>
+                <path d="M5 63 Q25 66 45 73"/>
+                <path d="M5 67 Q25 70 45 77"/>
+                <path d="M5 71 Q25 74 45 81"/>
+                <path d="M5 75 Q25 78 45 85"/>
+                <path d="M5 79 Q25 82 45 89"/>
+                <path d="M5 83 Q25 86 45 93"/>
+            </g>
+            
+            <!-- ПРАВЫЙ отпечаток - линии изгибаются от правого края к центру -->
+            <g stroke="#ffffff" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.9">
+                <path d="M95 15 Q75 18 55 25"/>
+                <path d="M95 19 Q75 22 55 29"/>
+                <path d="M95 23 Q75 26 55 33"/>
+                <path d="M95 27 Q75 30 55 37"/>
+                <path d="M95 31 Q75 34 55 41"/>
+                <path d="M95 35 Q75 38 55 45"/>
+                <path d="M95 39 Q75 42 55 49"/>
+                <path d="M95 43 Q75 46 55 53"/>
+                <path d="M95 47 Q75 50 55 57"/>
+                <path d="M95 51 Q75 54 55 61"/>
+                <path d="M95 55 Q75 58 55 65"/>
+                <path d="M95 59 Q75 62 55 69"/>
+                <path d="M95 63 Q75 66 55 73"/>
+                <path d="M95 67 Q75 70 55 77"/>
+                <path d="M95 71 Q75 74 55 81"/>
+                <path d="M95 75 Q75 78 55 85"/>
+                <path d="M95 79 Q75 82 55 89"/>
+                <path d="M95 83 Q75 86 55 93"/>
+            </g>
         </g>
     </svg>
 </div>
