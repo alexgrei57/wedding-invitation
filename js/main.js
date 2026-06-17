@@ -169,6 +169,36 @@ if (currentSection === 0 && index === 1) {
     }
 }
 
+// ===== АНИМАЦИЯ ТАЙМИНГА =====
+function animateTimeline() {
+    const timelineSection = document.querySelector('.timeline-section');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    if (!timelineSection || timelineItems.length === 0) return;
+    
+    // Используем Intersection Observer для отслеживания видимости
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Добавляем класс visible каждому элементу с задержкой
+                timelineItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, index * 300); // 300ms между каждым элементом
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3 // Срабатывает когда 30% секции видно
+    });
+    
+    observer.observe(timelineSection);
+}
+
+// Запускаем после загрузки страницы
+document.addEventListener('DOMContentLoaded', animateTimeline);
+
 function updateNavigation() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
