@@ -19,26 +19,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
     
-    // ===== КОД МУЗЫКИ =====
-    const music = document.getElementById('weddingMusic');
-    let musicStarted = false;
-    
-    function startMusic() {
+// ===== КОД МУЗЫКИ =====
+const music = document.getElementById('weddingMusic');
+const musicToggle = document.getElementById('musicToggle');
+let musicStarted = false;
+
+// Запуск музыки по клику на иконку
+if (musicToggle) {
+    musicToggle.addEventListener('click', function() {
         if (music && !musicStarted) {
             music.volume = 0.3;
             music.play().then(() => {
                 musicStarted = true;
+                musicToggle.classList.add('playing');
                 console.log('🎵 Музыка запущена');
             }).catch(err => {
-                console.log('Music autoplay blocked:', err);
+                console.log('Music play failed:', err);
             });
+        } else if (music && musicStarted) {
+            // Если музыка уже играет - ставим на паузу
+            if (music.paused) {
+                music.play();
+                musicToggle.classList.add('playing');
+            } else {
+                music.pause();
+                musicToggle.classList.remove('playing');
+            }
         }
-    }
-    
-    // Запуск при первом взаимодействии
-    document.addEventListener('click', startMusic, { once: true });
-    document.addEventListener('touchstart', startMusic, { once: true });
-    document.addEventListener('keydown', startMusic, { once: true });
+    });
+}
 
     // Остальной код
     updateNavigation();

@@ -1322,25 +1322,31 @@ img.clickable {
 }
 
 /* ===== Плавное появление текста на 2-й странице ===== */
+
+/* По умолчанию все элементы невидимы */
 #sectionsContainer .names-section .content-wrapper > * {
     opacity: 0;
+}
+
+/* Когда контейнер активен - запускаем анимацию */
+#sectionsContainer.active .names-section .content-wrapper > * {
     animation: fadeInOpacity 1.5s ease-out forwards;
 }
 
 /* Задержка для каждого элемента */
-#sectionsContainer .names-section .top-text {
+#sectionsContainer.active .names-section .top-text {
     animation-delay: 0.2s;
 }
 
-#sectionsContainer .names-section .couple-names {
+#sectionsContainer.active .names-section .couple-names {
     animation-delay: 0.5s;
 }
 
-#sectionsContainer .names-section .wedding-date {
+#sectionsContainer.active .names-section .wedding-date {
     animation-delay: 0.9s;
 }
 
-#sectionsContainer .names-section .scroll-indicator {
+#sectionsContainer.active .names-section .scroll-indicator {
     animation-delay: 1.3s;
 }
 
@@ -1352,4 +1358,63 @@ img.clickable {
     to {
         opacity: 1;
     }
+}
+
+/* ===== Иконка включения музыки на 2-й странице ===== */
+.music-toggle {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeInOpacity 1.5s ease-out forwards;
+    animation-delay: 1.6s;
+    z-index: 30;
+}
+
+.music-toggle-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5a4a3a;
+    transition: all 0.3s ease;
+}
+
+.music-toggle:hover .music-toggle-icon {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.music-toggle-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: #6a5a4a;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* Скрываем иконку когда музыка играет */
+.music-toggle.playing .music-toggle-icon {
+    background: rgba(139, 115, 85, 0.3);
+    border-color: rgba(139, 115, 85, 0.5);
+}
+
+/* Скрываем текст когда музыка играет */
+.music-toggle.playing .music-toggle-text {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
