@@ -1397,7 +1397,7 @@ img.clickable {
 .music-toggle-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
-    color: #6a5a4a;
+    color: #55483b;
     letter-spacing: 1px;
     text-align: center;
     pointer-events: none;
@@ -1407,7 +1407,7 @@ img.clickable {
 .swipe-hint {
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
-    color: #8a7a6a;
+    color: #7c6c5d;
     letter-spacing: 1px;
     opacity: 0.7;
 }
