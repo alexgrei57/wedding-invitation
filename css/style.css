@@ -264,7 +264,8 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* ← Изменить с center на flex-start */
+    padding-top: 25vh; /* ← Добавить отступ сверху (было 0) */
 }
 
 /* Секция 2 без белой рамки */
@@ -298,7 +299,7 @@ body::before {
 
 .main-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
+    font-size: 44px;
     font-weight: 600;
     letter-spacing: 14px;
     color: #1a1a1a;
@@ -308,7 +309,7 @@ body::before {
 
 .subtitle {
     font-family: 'Playfair Display', serif;
-    font-size: 52px;
+    font-size: 60px;
     font-style: italic;
     font-weight: 400;
     color: #5a4a3a;
@@ -613,7 +614,7 @@ body::before {
 .map-button {
     display: inline-block;
     padding: 14px 40px;
-    background: #8B7355;
+    background: #D4C4B0;
     color: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
@@ -1254,8 +1255,13 @@ body::before {
 }
 
 @media (max-width: 768px) {
-    .main-title { font-size: 24px; letter-spacing: 4px; }
-    .subtitle { font-size: 36px; }
+    .main-title { 
+        font-size: 32px; /* ← Увеличить с 24px до 32px */
+        letter-spacing: 6px; /* ← Увеличить с 4px до 6px */
+    }
+    .subtitle { 
+        font-size: 44px; /* ← Увеличить с 36px до 44px */
+    }
     .name { font-size: 36px; }
     .wedding-date .day { font-size: 80px; }
     .location-title { font-size: 32px; letter-spacing: 5px; }
