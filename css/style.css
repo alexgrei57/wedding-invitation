@@ -59,8 +59,8 @@
     background: rgba(139, 115, 85, 0.8);
 }
 
-/* Секции внутри контейнера — высота по содержимому */
-#sectionsContainer .slide-section.section-2-9 {
+/* ВСЕ секции внутри контейнера — высота по содержимому */
+#sectionsContainer .slide-section {
     position: relative !important;
     transform: none !important;
     visibility: visible !important;
@@ -1330,4 +1330,14 @@ img.clickable {
     visibility: visible !important;
     z-index: 1;
     margin: 0;
+}
+
+/* Увеличенный верхний отступ для 3-й страницы */
+#section3 .content-wrapper {
+    padding-top: 50px !important; /* Увеличить с 20px до 50px */
+}
+
+/* Или если нужно увеличить margin */
+#section3 .photo-container {
+    margin-top: 30px; /* Добавить отступ сверху */
 }
