@@ -24,9 +24,10 @@ const music = document.getElementById('weddingMusic');
 const musicToggle = document.getElementById('musicToggle');
 let musicStarted = false;
 
-// Запуск музыки по клику на иконку
+// Запуск музыки только по клику на иконку
 if (musicToggle) {
-    musicToggle.addEventListener('click', function() {
+    musicToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         if (music && !musicStarted) {
             music.volume = 0.3;
             music.play().then(() => {
@@ -37,7 +38,6 @@ if (musicToggle) {
                 console.log('Music play failed:', err);
             });
         } else if (music && musicStarted) {
-            // Если музыка уже играет - ставим на паузу
             if (music.paused) {
                 music.play();
                 musicToggle.classList.add('playing');

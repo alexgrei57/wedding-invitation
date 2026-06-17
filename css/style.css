@@ -1362,10 +1362,7 @@ img.clickable {
 
 /* ===== Иконка включения музыки на 2-й странице ===== */
 .music-toggle {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1402,19 +1399,25 @@ img.clickable {
     font-size: 10px;
     color: #6a5a4a;
     letter-spacing: 1px;
-    text-transform: lowercase;
     text-align: center;
     pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
-/* Скрываем иконку когда музыка играет */
+.swipe-hint {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: #8a7a6a;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* Когда музыка играет */
+.music-toggle.playing .music-toggle-text {
+    opacity: 0;
+}
+
 .music-toggle.playing .music-toggle-icon {
     background: rgba(139, 115, 85, 0.3);
     border-color: rgba(139, 115, 85, 0.5);
-}
-
-/* Скрываем текст когда музыка играет */
-.music-toggle.playing .music-toggle-text {
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
