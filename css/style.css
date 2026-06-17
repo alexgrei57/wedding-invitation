@@ -338,9 +338,9 @@ body::before {
 }
 
 .heart-icon svg {
-    width: 90px;
-    height: 90px;
-    filter: drop-shadow(0 2px 5px rgba(139, 115, 85, 0.2));
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(0 2px 4px rgba(139, 115, 85, 0.15));
 }
 
 .tap-hint {
@@ -1396,11 +1396,19 @@ img.clickable {
 }
 
 .swipe-hint {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    color: #181512;
-    letter-spacing: 1px;
-    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8B7355;
+    opacity: 0.7;
+    animation: fadeInOpacity 1.5s ease-out forwards;
+    animation-delay: 1.8s;
+}
+
+.swipe-hint svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
 }
 
 /* Когда музыка играет */
