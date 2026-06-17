@@ -17,7 +17,7 @@
     --white: #FFFFFF;
 }
 
-/* Общий контейнер для страниц 3-9 */
+/* Общий контейнер для страниц 2-9 */
 #sectionsContainer {
     position: fixed;
     top: 0;
@@ -60,15 +60,37 @@
 }
 
 /* Секции внутри контейнера — высота по содержимому */
-#sectionsContainer .slide-section {
+#sectionsContainer .slide-section.section-2-9 {
     position: relative !important;
     transform: none !important;
     visibility: visible !important;
     opacity: 1 !important;
-    min-height: auto !important; /* ← Убрать min-height: 100vh */
-    height: auto !important; /* ← Высота по содержимому */
+    min-height: auto !important;
+    height: auto !important;
     margin-bottom: 40px !important;
     padding: 0 !important;
+}
+
+/* Скроллбар появляется только при прокрутке */
+#sectionsContainer {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 115, 85, 0) transparent;
+    transition: scrollbar-color 0.3s ease;
+}
+
+#sectionsContainer:hover,
+#sectionsContainer.scrolling {
+    scrollbar-color: rgba(139, 115, 85, 0.5) rgba(255, 255, 255, 0.1);
+}
+
+#sectionsContainer::-webkit-scrollbar-thumb {
+    background: rgba(139, 115, 85, 0);
+    transition: background 0.3s ease;
+}
+
+#sectionsContainer:hover::-webkit-scrollbar-thumb,
+#sectionsContainer.scrolling::-webkit-scrollbar-thumb {
+    background: rgba(139, 115, 85, 0.5);
 }
 
 /* Показываем только активную секцию 2 */
@@ -365,8 +387,8 @@ body::before {
     visibility: visible;
 }
 
-/* Белая рамка для всех секций КРОМЕ names-section */
-.slide-section:not(.names-section) .content-wrapper {
+/* Белая рамка для секций 3-9 (не для names-section) */
+.slide-section.section-2-9:not(.names-section) .content-wrapper {
     position: relative;
     z-index: 10;
     display: flex;

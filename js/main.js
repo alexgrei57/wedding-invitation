@@ -60,6 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
+    // ===== Показывать скроллбар при прокрутке =====
+    const sectionsContainer = document.getElementById('sectionsContainer');
+    let scrollTimeout;
+    
+    sectionsContainer.addEventListener('scroll', function() {
+        sectionsContainer.classList.add('scrolling');
+        
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            sectionsContainer.classList.remove('scrolling');
+        }, 1000); // Скрыть через 1 секунду после остановки скролла
+    });
+    
     // Запускаем обратный отсчёт
     startCountdown();
 });
@@ -67,26 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function showSection(index) {
     const sectionsContainer = document.getElementById('sectionsContainer');
     const sections = document.querySelectorAll('.section');
-    const namesSection = document.querySelector('.names-section');
     
-    // Управляем видимостью контейнера 3-9
-    if (index >= 2) {
-        // Показываем контейнер с секциями 3-9
-        sectionsContainer.classList.add('active');
-        if (namesSection) {
-            namesSection.classList.remove('active');
-        }
-    } else {
-        // Скрываем контейнер, показываем секцию 2
-        sectionsContainer.classList.remove('active');
-        if (namesSection && index === 1) {
-            namesSection.classList.add('active');
-        }
-    }
-    
-    // Переход 1→2 (клик по сердцу) - плавное исчезновение
+    // Переход 1→2 (клик по сердцу) - плавное появление контейнера
     if (currentSection === 0 && index === 1) {
-        sections[0].style.transition = 'opacity 0.8s ease';
+        sections[0].style.transition = 'opacity 1.5s ease-in-out';
         sections[0].style.opacity = '0';
         
         setTimeout(() => {
@@ -94,24 +91,21 @@ function showSection(index) {
             sections[0].style.opacity = '1';
             sections[0].style.transition = '';
             
-            // Показываем секцию 2
-            if (namesSection) {
-                namesSection.classList.add('active');
-            }
+            // Показываем контейнер со скроллом (секция 2 внутри контейнера)
+            sectionsContainer.classList.add('active');
+            sectionsContainer.scrollTop = 0;
             
             currentSection = index;
             updateNavigation();
             updateIndicators();
-        }, 800);
+        }, 1500);
         
         return;
     }
     
-    // Переход 2→1
+    // Переход 2→1 (возврат на главную)
     if (currentSection === 1 && index === 0) {
-        if (namesSection) {
-            namesSection.classList.remove('active');
-        }
+        sectionsContainer.classList.remove('active');
         sections[0].classList.add('active');
         currentSection = index;
         updateNavigation();
@@ -119,30 +113,18 @@ function showSection(index) {
         return;
     }
     
-    // Переход со 2-й на 3-ю
-    if (currentSection === 1 && index === 2) {
-        // Прокручиваем к началу контейнера
-        sectionsContainer.scrollTop = 0;
-        currentSection = index;
-        updateNavigation();
-        updateIndicators();
-        return;
-    }
-    
-    // Для остальных переходов внутри 3-9
-    if (currentSection >= 2 && index >= 2) {
-        currentSection = index;
-        updateNavigation();
-        updateIndicators();
-        return;
-    }
-    
-    // Переход с 3-й и выше на 2-ю
-    if (currentSection >= 2 && index === 1) {
+    // Переход с любой секции (2-9) на главную (0)
+    if (currentSection >= 2 && index === 0) {
         sectionsContainer.classList.remove('active');
-        if (namesSection) {
-            namesSection.classList.add('active');
-        }
+        sections[0].classList.add('active');
+        currentSection = index;
+        updateNavigation();
+        updateIndicators();
+        return;
+    }
+    
+    // Для всех переходов внутри контейнера (1-8)
+    if (currentSection >= 1 && index >= 1) {
         currentSection = index;
         updateNavigation();
         updateIndicators();
@@ -181,42 +163,28 @@ function isScrolledToBottom(element) {
 
 // Получить скроллящийся элемент
 function getScrollableElement() {
-    // Если мы на секциях 3-9, возвращаем контейнер
-    if (currentSection >= 2) {
+    // Если мы на секциях 2-9 (внутри контейнера), возвращаем контейнер
+    if (currentSection >= 1) {
         return document.getElementById('sectionsContainer');
-    }
-    
-    // Иначе ищем content-wrapper внутри текущей секции
-    const sections = document.querySelectorAll('.section');
-    const currentSectionEl = sections[currentSection];
-    
-    if (!currentSectionEl) return null;
-    
-    const contentWrapper = currentSectionEl.querySelector('.content-wrapper');
-    
-    if (!contentWrapper) return null;
-    
-    if (contentWrapper.scrollHeight > contentWrapper.clientHeight + 5) {
-        return contentWrapper;
     }
     
     return null;
 }
 
 document.addEventListener('touchstart', function(e) {
-    if (currentSection >= 1 && currentSection <= 8) {
+    if (currentSection >= 0 && currentSection <= 8) {
         touchStartY = e.changedTouches[0].screenY;
     }
 }, { passive: true });
 
 document.addEventListener('touchend', function(e) {
-    if (currentSection >= 1 && currentSection <= 8) {
+    if (currentSection >= 0 && currentSection <= 8) {
         touchEndY = e.changedTouches[0].screenY;
         
         const swipeDistance = touchStartY - touchEndY;
         const scrollableEl = getScrollableElement();
         
-        // Если есть скроллящийся элемент
+        // Если есть скроллящийся элемент (контейнер)
         if (scrollableEl) {
             // Свайп вверх (хотим на следующую страницу)
             if (swipeDistance > minSwipeDistance) {
@@ -254,7 +222,7 @@ function handleSwipe() {
     
     // Свайп вниз → предыдущая страница
     if (swipeDistance < -minSwipeDistance) {
-        if (currentSection > 1) {
+        if (currentSection > 0) {
             showSection(currentSection - 1);
         }
     }
