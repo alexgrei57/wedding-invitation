@@ -224,6 +224,11 @@ document.addEventListener('touchend', function(e) {
 function handleSwipe() {
     const swipeDistance = touchStartY - touchEndY;
     
+    // 🚫 ЗАПРЕТ свайпа вниз на второй странице (currentSection === 1)
+    if (currentSection === 1 && swipeDistance < -minSwipeDistance) {
+        return; // Просто выходим, не делаем ничего
+    }
+    
     // Свайп вверх → следующая страница
     if (swipeDistance > minSwipeDistance) {
         if (currentSection < totalSections - 1) {
@@ -231,12 +236,12 @@ function handleSwipe() {
         }
     }
     
-    // Свайп вниз → предыдущая страница
-if (swipeDistance < -minSwipeDistance) {
-    if (currentSection > 1) { // ← Изменили с > 0 на > 1
-        showSection(currentSection - 1);
+    // Свайп вниз → предыдущая страница (только если не на второй странице)
+    if (swipeDistance < -minSwipeDistance) {
+        if (currentSection > 1) {
+            showSection(currentSection - 1);
+        }
     }
-}
 }
 
 // ===== Обратный отсчёт до свадьбы =====
