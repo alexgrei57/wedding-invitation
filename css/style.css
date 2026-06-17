@@ -311,7 +311,7 @@ body::before {
     font-size: 44px;
     font-weight: 600;
     letter-spacing: 14px;
-    color: #1a1a1a;
+    color: #5a4a3a;
     margin-bottom: 0;
     text-transform: uppercase;
 }
@@ -600,7 +600,7 @@ body::before {
     font-size: 42px;
     font-weight: 400;
     letter-spacing: 8px;
-    color: #000000;
+    color: #5a4a3a;
     margin-bottom: 0;
     text-transform: uppercase;
 }
@@ -738,7 +738,7 @@ body::before {
     font-size: 48px;
     font-weight: 400;
     letter-spacing: 6px;
-    color: #000000;
+    color: #5a4a3a;
     margin-bottom: 25px;
     text-transform: uppercase;
     line-height: 1;
@@ -820,7 +820,7 @@ body::before {
     font-size: 52px;
     font-style: italic;
     font-weight: 400;
-    color: #1a1a1a;
+    color: #5a4a3a;
     margin-bottom: 15px;
     letter-spacing: 2px;
 }
@@ -830,7 +830,7 @@ body::before {
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 3px;
-    color: #000000;
+    color: #5a4a3a;
     text-transform: uppercase;
     margin-bottom: 30px;
     text-align: center;
@@ -849,7 +849,7 @@ body::before {
     font-size: 22px;
     font-weight: 400;
     letter-spacing: 4px;
-    color: #000000;
+    color: #5a4a3a;
     text-transform: uppercase;
     margin-bottom: 12px;
 }
@@ -937,7 +937,7 @@ body::before {
     font-size: 42px;
     font-weight: 400;
     letter-spacing: 8px;
-    color: #000000;
+    color: #5a4a3a;
     margin-bottom: 5px;
     text-transform: uppercase;
 }
@@ -1041,7 +1041,7 @@ body::before {
 .submit-button {
     width: 100%;
     padding: 14px;
-    background: #8B7355;
+    background: #d4c9bb;
     color: #6d5a42;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
@@ -1065,9 +1065,9 @@ body::before {
 
 .footer-main {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 400;
-    letter-spacing: 6px;
+    letter-spacing: 3px;
     color: #000000;
     text-transform: uppercase;
     margin-bottom: 5px;
@@ -1075,7 +1075,7 @@ body::before {
 
 .footer-sub {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 16px; /* Чуть увеличил для лучшей читаемости рукописного шрифта */
+    font-size: 22px; /* Чуть увеличил для лучшей читаемости рукописного шрифта */
     font-style: normal; /* Убрал italic, так как шрифт уже курсивный */
     color: #5a4a3a;
     font-weight: 400;
@@ -1150,7 +1150,7 @@ body::before {
     font-size: 58px;
     font-style: normal;
     font-weight: 400;
-    color: #8B7355;
+    color: #5a4a3a;
     margin-bottom: 15px;
     letter-spacing: 1px;
 }
@@ -1378,8 +1378,8 @@ body::before {
     .form-input { font-size: 12px; }
     .radio-label, .checkbox-label { font-size: 12px; }
     
-    .footer-main { font-size: 16px; letter-spacing: 4px; }
-    .footer-sub { font-size: 16px; }
+    .footer-main { font-size: 12px; letter-spacing: 3px; }
+    .footer-sub { font-size: 22px; }
     
     .wishes-title {
         font-size: 58px;
