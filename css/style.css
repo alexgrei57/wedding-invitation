@@ -1320,3 +1320,36 @@ img.clickable {
     z-index: 1;
     margin: 0;
 }
+
+/* ===== Плавное появление текста на 2-й странице ===== */
+#sectionsContainer .names-section .content-wrapper > * {
+    opacity: 0;
+    animation: fadeInOpacity 1.5s ease-out forwards;
+}
+
+/* Задержка для каждого элемента */
+#sectionsContainer .names-section .top-text {
+    animation-delay: 0.2s;
+}
+
+#sectionsContainer .names-section .couple-names {
+    animation-delay: 0.5s;
+}
+
+#sectionsContainer .names-section .wedding-date {
+    animation-delay: 0.9s;
+}
+
+#sectionsContainer .names-section .scroll-indicator {
+    animation-delay: 1.3s;
+}
+
+/* Анимация плавного появления через opacity */
+@keyframes fadeInOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
