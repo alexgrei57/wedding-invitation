@@ -666,7 +666,7 @@ body::before {
 /* ===== Timeline секция (Время) ===== */
 .timeline-main-title {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 38px;
+    font-size: 52px;
     font-weight: 400;
     letter-spacing: 2px;
     color: #5a4a3a;
@@ -944,11 +944,11 @@ body::before {
 
 .rsvp-subtitle {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 42px;
+    font-size: 52px;
     font-style: normal;
     font-weight: 400;
     color: #5a4a3a;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     letter-spacing: 1px;
 }
 
@@ -960,7 +960,7 @@ body::before {
     font-weight: 300;
     text-align: center;
     max-width: 320px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .rsvp-form {
@@ -970,7 +970,7 @@ body::before {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .form-label {
@@ -1059,13 +1059,13 @@ body::before {
 }
 
 .rsvp-footer {
-    margin-top: 30px;
+    margin-top: 12px;
     text-align: center;
 }
 
 .footer-main {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
+    font-size: 16px;
     font-weight: 400;
     letter-spacing: 6px;
     color: #000000;
@@ -1075,7 +1075,7 @@ body::before {
 
 .footer-sub {
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-size: 16px;
     font-style: italic;
     color: #5a4a3a;
     font-weight: 400;
@@ -1336,7 +1336,7 @@ body::before {
     .location-subtitle { font-size: 42px; }
     
     .timeline-main-title { 
-        font-size: 30px; 
+        font-size: 52px; 
         letter-spacing: 1px; 
 }
 
@@ -1371,14 +1371,14 @@ body::before {
         font-size: 32px; 
         letter-spacing: 5px; 
     }
-    .rsvp-subtitle { font-size: 42px; }
+    .rsvp-subtitle { font-size: 52px; }
     .rsvp-intro { font-size: 11px; }
     .form-label { font-size: 14px; }
     .form-input { font-size: 12px; }
     .radio-label, .checkbox-label { font-size: 12px; }
     
-    .footer-main { font-size: 22px; letter-spacing: 4px; }
-    .footer-sub { font-size: 26px; }
+    .footer-main { font-size: 16px; letter-spacing: 4px; }
+    .footer-sub { font-size: 16px; }
     
     .wishes-title {
         font-size: 58px;
