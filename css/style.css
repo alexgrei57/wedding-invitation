@@ -322,24 +322,25 @@ body::before {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 5px 0 !important;
-    opacity: 0.5;
+    margin: 20px 0 !important;
+    opacity: 0.85;
     animation: heartbeat 2s infinite;
 }
 
 .heart-icon.clickable {
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .heart-icon.clickable:hover {
-    opacity: 0.5;
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .heart-icon svg {
-    width: 70px;
-    height: 70px;
-    fill: #E8DFD0;
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0 3px 6px rgba(139, 115, 85, 0.25));
 }
 
 .tap-hint {

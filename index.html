@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="css/style.css?v=69">
+    <link rel="stylesheet" href="css/style.css?v=70">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -90,12 +90,42 @@
             <div class="fade-in">
                 <h1 class="main-title">ВЫ ПОЛУЧИЛИ</h1>
                 <h2 class="subtitle">Приглашение!</h2>
-                <div class="heart-icon clickable">
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    </svg>
-                </div>
-                <p class="tap-hint">нажмите на сердце, чтобы открыть<br>приглашение</p>
+<div class="heart-icon clickable">
+    <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Контур сердца -->
+        <path d="M50 88 C50 88, 15 60, 15 35 C15 22, 25 15, 35 15 C42 15, 47 19, 50 24 C53 19, 58 15, 65 15 C75 15, 85 22, 85 35 C85 60, 50 88, 50 88 Z" 
+              fill="rgba(139, 115, 85, 0.15)" 
+              stroke="#8B7355" 
+              stroke-width="1.5"
+              opacity="0.8"/>
+        
+        <!-- Отпечаток пальца внутри сердца -->
+        <g stroke="#8B7355" stroke-width="1.2" fill="none" opacity="0.7" stroke-linecap="round">
+            <!-- Верхние дуги -->
+            <path d="M50 35 C45 35, 42 38, 42 42"/>
+            <path d="M50 35 C55 35, 58 38, 58 42"/>
+            <path d="M50 38 C47 38, 45 40, 45 43"/>
+            <path d="M50 38 C53 38, 55 40, 55 43"/>
+            
+            <!-- Средние дуги -->
+            <path d="M50 42 C44 42, 40 45, 40 50"/>
+            <path d="M50 42 C56 42, 60 45, 60 50"/>
+            <path d="M50 45 C46 45, 43 47, 43 51"/>
+            <path d="M50 45 C54 45, 57 47, 57 51"/>
+            
+            <!-- Нижние дуги -->
+            <path d="M50 50 C46 50, 43 52, 43 56"/>
+            <path d="M50 50 C54 50, 57 52, 57 56"/>
+            <path d="M50 53 C48 53, 46 54, 46 57"/>
+            <path d="M50 53 C52 53, 54 54, 54 57"/>
+            
+            <!-- Центральные линии -->
+            <path d="M50 56 C49 56, 48 57, 48 59"/>
+            <path d="M50 56 C51 56, 52 57, 52 59"/>
+        </g>
+    </svg>
+</div>
+                <p class="tap-hint">нажмите на сердечко, чтобы открыть<br>приглашение</p>
             </div>
         </div>
     </section>
