@@ -40,19 +40,23 @@ function startMusic() {
     }
 }
 
-// Управление музыкой по клику на иконку
-if (musicToggle) {
-    musicToggle.addEventListener('click', function(e) {
+// Управление музыкой — ТОЛЬКО по клику на иконку
+const musicToggleIcon = document.querySelector('.music-toggle-icon');
+
+if (musicToggleIcon) {
+    musicToggleIcon.addEventListener('click', function(e) {
         e.stopPropagation();
-        if (music && musicStarted) {
+        e.preventDefault();
+        
+        if (music) {
             if (music.paused) {
-                // Возобновить
                 music.play();
                 musicToggle.classList.add('playing');
+                musicToggle.querySelector('.music-toggle-text').textContent = 'нажмите, чтобы выключить музыку';
             } else {
-                // Пауза
                 music.pause();
                 musicToggle.classList.remove('playing');
+                musicToggle.querySelector('.music-toggle-text').textContent = 'нажмите, чтобы включить музыку';
             }
         }
     });

@@ -636,8 +636,8 @@ body::before {
 .map-button {
     display: inline-block;
     padding: 14px 40px;
-    background: #D4C4B0;
-    color: #FFFFFF;
+    background: #d4c9bb;
+    color: #6d5a42;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
@@ -1285,6 +1285,29 @@ body::before {
     transition: opacity 0.3s ease;
 }
 
+/* Отключаем клики по тексту и стрелке */
+.music-toggle-text,
+.swipe-hint {
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Курсор-pointer только на иконке */
+.music-toggle-icon {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+/* Сам контейнер не должен реагировать на клики */
+.music-toggle {
+    pointer-events: none;
+}
+
+/* Но иконка внутри — должна */
+.music-toggle .music-toggle-icon {
+    pointer-events: auto;
+}
+
 .swipe-hint {
     display: flex;
     align-items: center;
@@ -1323,11 +1346,11 @@ body::before {
 
 @media (max-width: 768px) {
     .main-title { 
-        font-size: 32px;
+        font-size: 26px;
         letter-spacing: 6px;
     }
     .subtitle { 
-        font-size: 44px;
+        font-size: 68px;
     }
     .name { font-size: 36px; }
     .wedding-date .day { font-size: 80px; }
