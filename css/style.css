@@ -323,7 +323,7 @@ body::before {
     align-items: center;
     width: 100%;
     margin: 20px 0 !important;
-    opacity: 1;
+    opacity: 0.9;
     animation: heartbeat 2s infinite;
 }
 
@@ -336,10 +336,10 @@ body::before {
     transform: scale(1.05);
 }
 
-.heart-icon svg {
+.fingerprint-heart {
     width: 85px;
     height: 85px;
-    filter: drop-shadow(0 3px 6px rgba(240, 188, 129, 0.2));
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .tap-hint {
