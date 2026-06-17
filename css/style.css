@@ -1231,9 +1231,10 @@ body::before {
     }
 }
 
-/* ===== Иконка включения музыки на 2-й странице ===== */
+/* ===== Иконка управления музыкой на 2-й странице ===== */
 .music-toggle {
-    margin-top: 70px;
+    margin-top: auto !important;
+    margin-bottom: clamp(10px, 2vh, 20px) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1243,6 +1244,7 @@ body::before {
     animation: fadeInOpacity 1.5s ease-out forwards;
     animation-delay: 1.6s;
     z-index: 30;
+    flex-shrink: 0;
 }
 
 .music-toggle-icon {
@@ -1291,14 +1293,22 @@ body::before {
     stroke: currentColor;
 }
 
-/* Когда музыка играет */
-.music-toggle.playing .music-toggle-text {
-    opacity: 0;
-}
-
+/* Когда музыка играет - иконка стоп */
 .music-toggle.playing .music-toggle-icon {
     background: rgba(139, 115, 85, 0.3);
     border-color: rgba(139, 115, 85, 0.5);
+    color: #8B7355;
+}
+
+/* Когда музыка на паузе - иконка play */
+.music-toggle:not(.playing) .music-toggle-icon {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #5a4a3a;
+}
+
+.music-toggle:not(.playing) .music-toggle-text {
+    content: 'нажмите, чтобы включить музыку';
 }
 
 /* ===== АДАПТИВНОСТЬ ===== */

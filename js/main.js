@@ -24,24 +24,33 @@ const music = document.getElementById('weddingMusic');
 const musicToggle = document.getElementById('musicToggle');
 let musicStarted = false;
 
-// Запуск музыки только по клику на иконку
+// Функция запуска музыки
+function startMusic() {
+    if (music && !musicStarted) {
+        music.volume = 0.3;
+        music.play().then(() => {
+            musicStarted = true;
+            musicToggle.classList.add('playing');
+            console.log(' Музыка запущена автоматически');
+        }).catch(err => {
+            console.log('Music autoplay blocked:', err);
+            // Если автозапуск заблокирован, показываем иконку включения
+            musicToggle.classList.remove('playing');
+        });
+    }
+}
+
+// Управление музыкой по клику на иконку
 if (musicToggle) {
     musicToggle.addEventListener('click', function(e) {
         e.stopPropagation();
-        if (music && !musicStarted) {
-            music.volume = 0.3;
-            music.play().then(() => {
-                musicStarted = true;
-                musicToggle.classList.add('playing');
-                console.log('🎵 Музыка запущена');
-            }).catch(err => {
-                console.log('Music play failed:', err);
-            });
-        } else if (music && musicStarted) {
+        if (music && musicStarted) {
             if (music.paused) {
+                // Возобновить
                 music.play();
                 musicToggle.classList.add('playing');
             } else {
+                // Пауза
                 music.pause();
                 musicToggle.classList.remove('playing');
             }
@@ -92,27 +101,30 @@ function showSection(index) {
     const sectionsContainer = document.getElementById('sectionsContainer');
     const sections = document.querySelectorAll('.section');
     
-    // Переход 1→2 (клик по сердцу) - плавное появление контейнера
-    if (currentSection === 0 && index === 1) {
-        sections[0].style.transition = 'opacity 1.5s ease-in-out';
-        sections[0].style.opacity = '0';
+// Переход 1→2 (клик по сердцу) - плавное появление контейнера
+if (currentSection === 0 && index === 1) {
+    sections[0].style.transition = 'opacity 1.5s ease-in-out';
+    sections[0].style.opacity = '0';
+    
+    setTimeout(() => {
+        sections[0].classList.remove('active');
+        sections[0].style.opacity = '1';
+        sections[0].style.transition = '';
         
-        setTimeout(() => {
-            sections[0].classList.remove('active');
-            sections[0].style.opacity = '1';
-            sections[0].style.transition = '';
-            
-            // Показываем контейнер со скроллом (секция 2 внутри контейнера)
-            sectionsContainer.classList.add('active');
-            sectionsContainer.scrollTop = 0;
-            
-            currentSection = index;
-            updateNavigation();
-            updateIndicators();
-        }, 1500);
+        // Показываем контейнер со скроллом (секция 2 внутри контейнера)
+        sectionsContainer.classList.add('active');
+        sectionsContainer.scrollTop = 0;
         
-        return;
-    }
+        // 🎵 Запускаем музыку автоматически
+        startMusic();
+        
+        currentSection = index;
+        updateNavigation();
+        updateIndicators();
+    }, 1500);
+    
+    return;
+}
     
     // Переход 2→1 (возврат на главную)
     if (currentSection === 1 && index === 0) {
