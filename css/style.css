@@ -453,7 +453,7 @@ body::before {
 
 .names-section .couple-names {
     text-align: center !important;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: clamp(20px, 5vh, 50px); /* ↑ было 15px-40px */
     width: 100%;
     display: block;
@@ -495,7 +495,7 @@ body::before {
     letter-spacing: clamp(3px, 1.5vw, 6px); /* ↑ было 2px-5px */
     color: #000000;
     text-transform: uppercase;
-    margin-bottom: 0;
+    margin-bottom: -6px;
 }
 
 .names-section .day {
@@ -1422,13 +1422,13 @@ body::before {
 /* Для очень маленьких экранов (iPhone SE, старые Android) */
 @media (max-width: 375px) {
     .names-section .top-text {
-        font-size: 13px !important; /* ↑ было 10px */
+        font-size: 16px !important; /* ↑ было 10px */
         letter-spacing: 3px !important; /* ↑ было 2px */
         margin-bottom: 20px !important; /* ↑ было 15px */
     }
     
     .names-section .name {
-        font-size: 38px !important; /* ↑ было 28px */
+        font-size: 52px !important; /* ↑ было 28px */
         letter-spacing: 3px !important; /* ↑ было 2px */
     }
     
@@ -1441,7 +1441,7 @@ body::before {
     }
     
     .names-section .month {
-        font-size: 15px !important; /* ↑ было 12px */
+        font-size: 17px !important; /* ↑ было 12px */
     }
     
     .names-section .day {
@@ -1449,11 +1449,11 @@ body::before {
     }
     
     .names-section .year {
-        font-size: 15px !important; /* ↑ было 12px */
+        font-size: 22px !important; /* ↑ было 12px */
     }
     
     .names-section .wedding-date {
-        margin: 30px 0 !important;
+        margin: 20px 0 !important;
     }
     
     .music-toggle {
@@ -1479,7 +1479,7 @@ body::before {
 /* Для экранов 360px и меньше */
 @media (max-width: 360px) {
     .names-section .name {
-        font-size: 26px !important;
+        font-size: 52px !important;
     }
     
     .names-section .ampersand {
