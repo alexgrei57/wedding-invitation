@@ -1333,23 +1333,6 @@ img.clickable {
     animation: fadeInOpacity 1.5s ease-out forwards;
 }
 
-/* Задержка для каждого элемента */
-#sectionsContainer.active .names-section .top-text {
-    animation-delay: 0.5s;
-}
-
-#sectionsContainer.active .names-section .couple-names {
-    animation-delay: 0.5s;
-}
-
-#sectionsContainer.active .names-section .wedding-date {
-    animation-delay: 0.5s;
-}
-
-#sectionsContainer.active .names-section .scroll-indicator {
-    animation-delay: 0.5s;
-}
-
 /* Анимация плавного появления через opacity */
 @keyframes fadeInOpacity {
     from {
@@ -1421,8 +1404,3 @@ img.clickable {
     background: rgba(139, 115, 85, 0.3);
     border-color: rgba(139, 115, 85, 0.5);
 }
-
-/* Отступ снизу для секции 2, чтобы скрыть рамку 3-й страницы 
-#sectionsContainer .names-section {
-    padding-bottom: 60px !important;
-}*/
