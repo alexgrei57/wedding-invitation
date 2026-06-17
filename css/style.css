@@ -601,7 +601,7 @@ body::before {
     font-weight: 400;
     letter-spacing: 8px;
     color: #000000;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     text-transform: uppercase;
 }
 
@@ -665,13 +665,13 @@ body::before {
 
 /* ===== Timeline секция (Время) ===== */
 .timeline-main-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 38px;
     font-weight: 400;
-    letter-spacing: 6px;
-    color: #000000;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #5a4a3a;
+    margin-bottom: 10px;
+    text-transform: none;
 }
 
 .timeline-subtitle {
@@ -745,11 +745,11 @@ body::before {
 }
 
 .dresscode-title .dresscode-code {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 38px;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-style: normal;
+    font-size: 40px;
     color: #5a4a3a;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: none;
     margin-left: 5px;
 }
@@ -933,13 +933,13 @@ body::before {
 
 /* ===== RSVP секция (Анкета) ===== */
 .rsvp-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 36px;
     font-weight: 400;
-    letter-spacing: 8px;
-    color: #000000;
+    letter-spacing: 2px;
+    color: #5a4a3a;
     margin-bottom: 5px;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .rsvp-subtitle {
@@ -1143,13 +1143,13 @@ body::before {
 }
 
 .wishes-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    font-style: italic;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 44px;
+    font-style: normal;
     font-weight: 400;
     color: #8B7355;
     margin-bottom: 15px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .wishes-block {
@@ -1331,8 +1331,13 @@ body::before {
         font-size: 32px; 
         letter-spacing: 5px; 
 }
-    .location-subtitle { font-size: 26px; }
+    .location-subtitle { font-size: 42px; }
     
+    .timeline-main-title { 
+        font-size: 30px; 
+        letter-spacing: 1px; 
+}
+
     .content-wrapper {
         padding: 15px 15px;
         margin: 0 10px;
@@ -1360,7 +1365,10 @@ body::before {
     .countdown-timer { gap: 10px; }
     .countdown-item { min-width: 50px; }
     
-    .rsvp-title { font-size: 32px; letter-spacing: 5px; }
+    .rsvp-title { 
+        font-size: 30px; 
+        letter-spacing: 1px; 
+    }
     .rsvp-subtitle { font-size: 22px; }
     .rsvp-intro { font-size: 11px; }
     .form-label { font-size: 14px; }
@@ -1371,7 +1379,7 @@ body::before {
     .footer-sub { font-size: 26px; }
     
     .wishes-title {
-        font-size: 36px;
+        font-size: 34px;
         margin-bottom: 15px;
     }
     
