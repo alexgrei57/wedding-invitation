@@ -289,13 +289,6 @@ body::before {
     flex-shrink: 0;
 }
 
-/* Иконка музыки прижата к низу */
-.music-toggle {
-    margin-top: auto !important;
-    margin-bottom: clamp(10px, 2vh, 20px) !important;
-    flex-shrink: 0;
-}
-
 /* Names секция */
 .names-section {
     padding: 0;
@@ -324,13 +317,13 @@ body::before {
 }
 
 .subtitle {
-    font-family: 'Sloop Script Pro', 'Playfair Display', cursive; /* ← Новый шрифт */
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
     font-size: 60px;
-    font-style: normal; /* ← Для рукописных шрифтов italic обычно не нужен */
+    font-style: normal;
     font-weight: 400;
     color: #5a4a3a;
     margin-bottom: 15px;
-    letter-spacing: 2px; /* ← Чуть уменьшил, чтобы рукописный текст смотрелся естественнее */
+    letter-spacing: 2px;
 }
 
 .heart-icon {
@@ -569,13 +562,13 @@ body::before {
 }
 
 .dear-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 32px;
     font-weight: 400;
-    letter-spacing: 4px;
-    color: #000000;
+    letter-spacing: 2px;
+    color: #5a4a3a;
     margin-bottom: 10px;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .we-marry {
@@ -603,13 +596,13 @@ body::before {
 
 /* ===== Location секция ===== */
 .location-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 36px;
     font-weight: 400;
-    letter-spacing: 8px;
-    color: #000000;
+    letter-spacing: 2px;
+    color: #5a4a3a;
     margin-bottom: 10px;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .location-subtitle {
@@ -1239,7 +1232,7 @@ body::before {
     }
 }
 
-/* ===== Иконка управления музыкой на 2-й странице ===== */
+/* ===== Иконка управления музыкой на 2-й странице (ЕДИНЫЙ БЛОК) ===== */
 .music-toggle {
     margin-top: auto !important;
     margin-bottom: clamp(10px, 2vh, 20px) !important;
@@ -1247,12 +1240,12 @@ body::before {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    cursor: pointer;
     opacity: 0;
     animation: fadeInOpacity 1.5s ease-out forwards;
     animation-delay: 1.6s;
     z-index: 30;
     flex-shrink: 0;
+    pointer-events: none;
 }
 
 .music-toggle-icon {
@@ -1268,9 +1261,11 @@ body::before {
     justify-content: center;
     color: #5a4a3a;
     transition: all 0.3s ease;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
-.music-toggle:hover .music-toggle-icon {
+.music-toggle-icon:hover {
     background: rgba(255, 255, 255, 0.5);
     transform: scale(1.1);
 }
@@ -1282,30 +1277,8 @@ body::before {
     letter-spacing: 1px;
     text-align: center;
     pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-/* Отключаем клики по тексту и стрелке */
-.music-toggle-text,
-.swipe-hint {
-    pointer-events: none;
     user-select: none;
-}
-
-/* Курсор-pointer только на иконке */
-.music-toggle-icon {
-    cursor: pointer;
-    pointer-events: auto;
-}
-
-/* Сам контейнер не должен реагировать на клики */
-.music-toggle {
-    pointer-events: none;
-}
-
-/* Но иконка внутри — должна */
-.music-toggle .music-toggle-icon {
-    pointer-events: auto;
+    transition: opacity 0.3s ease;
 }
 
 .swipe-hint {
@@ -1316,6 +1289,8 @@ body::before {
     opacity: 0.7;
     animation: fadeInOpacity 1.5s ease-out forwards;
     animation-delay: 1.8s;
+    pointer-events: none;
+    user-select: none;
 }
 
 .swipe-hint svg {
@@ -1324,22 +1299,18 @@ body::before {
     stroke: currentColor;
 }
 
-/* Когда музыка играет - иконка стоп */
+/* Когда музыка играет */
 .music-toggle.playing .music-toggle-icon {
     background: rgba(139, 115, 85, 0.3);
     border-color: rgba(139, 115, 85, 0.5);
     color: #8B7355;
 }
 
-/* Когда музыка на паузе - иконка play */
+/* Когда музыка на паузе */
 .music-toggle:not(.playing) .music-toggle-icon {
     background: rgba(255, 255, 255, 0.4);
     border-color: rgba(255, 255, 255, 0.6);
     color: #5a4a3a;
-}
-
-.music-toggle:not(.playing) .music-toggle-text {
-    content: 'нажмите, чтобы включить музыку';
 }
 
 /* ===== АДАПТИВНОСТЬ ===== */
@@ -1354,7 +1325,10 @@ body::before {
     }
     .name { font-size: 36px; }
     .wedding-date .day { font-size: 80px; }
-    .location-title { font-size: 32px; letter-spacing: 5px; }
+    .location-title { 
+        font-size: 30px; 
+        letter-spacing: 1px; 
+}
     .location-subtitle { font-size: 22px; }
     
     .content-wrapper {
@@ -1406,6 +1380,10 @@ body::before {
     
     .wishes-block {
         max-width: 280px;
+    }
+    
+    .dear-text {
+        font-size: 28px;
     }
 }
 
