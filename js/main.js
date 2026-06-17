@@ -87,6 +87,8 @@ if (musicToggle) {
 });
 
 function showSection(index) {
+        // 🚫 ЗАПРЕТ возврата на первую страницу
+    if (index === 0) return;
     const sectionsContainer = document.getElementById('sectionsContainer');
     const sections = document.querySelectorAll('.section');
     
@@ -145,7 +147,7 @@ function updateNavigation() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     
-    if (prevBtn) prevBtn.disabled = currentSection === 0;
+    if (prevBtn) prevBtn.disabled = currentSection <= 1; // ← Изменили с === 0 на <= 1
     if (nextBtn) nextBtn.disabled = currentSection === totalSections - 1;
 }
 
@@ -230,11 +232,11 @@ function handleSwipe() {
     }
     
     // Свайп вниз → предыдущая страница
-    if (swipeDistance < -minSwipeDistance) {
-        if (currentSection > 0) {
-            showSection(currentSection - 1);
-        }
+if (swipeDistance < -minSwipeDistance) {
+    if (currentSection > 1) { // ← Изменили с > 0 на > 1
+        showSection(currentSection - 1);
     }
+}
 }
 
 // ===== Обратный отсчёт до свадьбы =====
