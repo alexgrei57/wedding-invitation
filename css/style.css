@@ -479,6 +479,7 @@ body::before {
     letter-spacing: clamp(3px, 1.5vw, 5px);
     color: #000000;
     text-transform: uppercase;
+    margin-bottom: 5px; /* ← Добавить небольшой отступ */
 }
 
 .names-section .day {
@@ -487,7 +488,7 @@ body::before {
     font-weight: 300;
     color: #000000;
     line-height: 1;
-    margin: 5px 0 5px;
+    margin: 0 0 5px; /* ← Убрать верхний margin */
 }
 
 .names-section .year {
