@@ -322,7 +322,7 @@ body::before {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 20px 0 !important;
+    margin: 50px 0 !important;
     opacity: 0.85;
     animation: heartbeat 2s infinite;
 }
@@ -338,9 +338,9 @@ body::before {
 }
 
 .heart-icon svg {
-    width: 100px;
-    height: 100px;
-    filter: drop-shadow(0 3px 6px rgba(139, 115, 85, 0.25));
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(0 2px 5px rgba(139, 115, 85, 0.2));
 }
 
 .tap-hint {
@@ -1257,11 +1257,11 @@ body::before {
 
 @media (max-width: 768px) {
     .main-title { 
-        font-size: 32px; /* ← Увеличить с 24px до 32px */
-        letter-spacing: 6px; /* ← Увеличить с 4px до 6px */
+        font-size: 24px; /* ← Увеличить с 24px до 32px */
+        letter-spacing: 5px; /* ← Увеличить с 4px до 6px */
     }
     .subtitle { 
-        font-size: 44px; /* ← Увеличить с 36px до 44px */
+        font-size: 36px; /* ← Увеличить с 36px до 44px */
     }
     .name { font-size: 36px; }
     .wedding-date .day { font-size: 80px; }
