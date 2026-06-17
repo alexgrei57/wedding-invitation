@@ -93,6 +93,29 @@
     background: rgba(139, 115, 85, 0.5);
 }
 
+/* Секция 2 внутри контейнера — без белой рамки */
+#sectionsContainer .names-section {
+    position: relative !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: auto !important;
+    height: auto !important;
+    margin-bottom: 40px !important;
+    padding: 0 !important;
+}
+
+#sectionsContainer .names-section .content-wrapper {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0;
+    padding: 30px 0 0 0;
+    height: auto;
+    position: relative;
+    z-index: 20;
+}
+
 /* Показываем только активную секцию 2 */
 .names-section.active {
     display: block !important;
