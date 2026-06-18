@@ -1126,8 +1126,8 @@ body::before {
 }
 
 .submit-button:hover {
-    background: #6d5a42 !important;
-    color: #FFFFFF !important;
+    background: #d4c9bb !important;
+    color: #6d5a42 !important;
 }
 
 .submit-button:active,
