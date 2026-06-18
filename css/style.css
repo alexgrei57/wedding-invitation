@@ -271,7 +271,7 @@ body::before {
     border: none !important;
     box-shadow: none !important;
     margin: 0 !important;
-    padding: 50px 15px 30px 15px !important;
+    padding: 80px 15px 30px 15px !important; /* ↑ Увеличил верхний отступ до 80px */
     min-height: 100vh !important;
     height: auto !important;
     position: relative;
@@ -444,7 +444,7 @@ body::before {
     letter-spacing: 6px !important;
     color: #000000;
     margin-top: 0;
-    margin-bottom: 35px !important;
+    margin-bottom: 40px !important; /* ↑ Увеличил отступ */
     text-transform: uppercase;
     text-align: center !important;
     width: 100%;
@@ -454,7 +454,7 @@ body::before {
 .names-section .couple-names {
     text-align: center !important;
     margin-top: 0;
-    margin-bottom: 35px !important;
+    margin-bottom: 40px !important; /* ↑ Увеличил отступ */
     width: 100%;
     display: block;
 }
@@ -1331,12 +1331,12 @@ body::before {
 
 /* ===== Иконка управления музыкой на 2-й странице ===== */
 .music-toggle {
-    margin-top: 40px !important;
+    margin-top: 60px !important; /* ↑ Увеличил отступ */
     margin-bottom: 10px !important;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px; /* ↑ Увеличил gap */
     opacity: 0;
     animation: fadeInOpacity 1.5s ease-out forwards;
     animation-delay: 1.6s;
@@ -1571,32 +1571,29 @@ body::before {
 /* iPhone 6/7/8 Plus, iPhone X (414px) */
 @media (max-width: 414px) {
     .names-section .content-wrapper {
-        padding: 40px 15px 20px 15px !important;
+        padding: 70px 15px 25px 15px !important; /* ↑ Увеличил */
     }
     
     .names-section .top-text {
         font-size: 16px !important;
-        letter-spacing: 5px !important;
-        margin-bottom: 28px !important;
+        margin-bottom: 35px !important;
     }
     
     .names-section .name {
         font-size: 46px !important;
-        letter-spacing: 6px !important;
     }
     
     .names-section .ampersand {
         font-size: 38px !important;
-        margin: 10px 0;
+        margin: 15px 0;
     }
     
     .names-section .couple-names {
-        margin-bottom: 28px !important;
+        margin-bottom: 35px !important;
     }
     
     .names-section .month {
         font-size: 18px !important;
-        letter-spacing: 4px !important;
     }
     
     .names-section .day {
@@ -1605,53 +1602,43 @@ body::before {
     
     .names-section .year {
         font-size: 16px !important;
-        letter-spacing: 4px !important;
     }
     
     .names-section .wedding-date {
-        margin: 22px 0 !important;
+        margin: 30px 0 !important;
     }
     
     .music-toggle {
-        margin-top: 32px !important;
-    }
-    
-    .music-toggle-icon {
-        width: 50px;
-        height: 50px;
+        margin-top: 50px !important;
     }
 }
 
 /* iPhone 6/7/8, iPhone X (375px) */
 @media (max-width: 375px) {
     .names-section .content-wrapper {
-        padding: 35px 15px 18px 15px !important;
+        padding: 60px 15px 20px 15px !important; /* ↑ Увеличил */
     }
     
     .names-section .top-text {
         font-size: 15px !important;
-        letter-spacing: 4px !important;
-        margin-bottom: 25px !important;
+        margin-bottom: 30px !important;
     }
     
     .names-section .name {
         font-size: 42px !important;
-        letter-spacing: 6px !important;
     }
     
     .names-section .ampersand {
         font-size: 34px !important;
-        margin: 10px 0;
+        margin: 12px 0;
     }
     
     .names-section .couple-names {
-        margin-bottom: 25px !important;
+        margin-bottom: 30px !important;
     }
     
     .names-section .month {
         font-size: 17px !important;
-        letter-spacing: 4px !important;
-        margin-bottom: -6px !important;
     }
     
     .names-section .day {
@@ -1660,48 +1647,30 @@ body::before {
     
     .names-section .year {
         font-size: 15px !important;
-        letter-spacing: 4px !important;
     }
     
     .names-section .wedding-date {
-        margin: 20px 0 !important;
+        margin: 25px 0 !important;
     }
     
     .music-toggle {
-        margin-top: 28px !important;
-        margin-bottom: 8px !important;
-    }
-    
-    .music-toggle-icon {
-        width: 48px;
-        height: 48px;
-    }
-    
-    .music-toggle-text {
-        font-size: 10px;
-    }
-    
-    .swipe-hint svg {
-        width: 20px;
-        height: 20px;
+        margin-top: 40px !important;
     }
 }
 
 /* Galaxy S5 и маленькие экраны (360px) */
 @media (max-width: 360px) {
     .names-section .content-wrapper {
-        padding: 30px 12px 15px 12px !important;
+        padding: 55px 12px 18px 12px !important; /* ↑ Увеличил */
     }
     
     .names-section .top-text {
         font-size: 14px !important;
-        letter-spacing: 4px !important;
-        margin-bottom: 22px !important;
+        margin-bottom: 28px !important;
     }
     
     .names-section .name {
         font-size: 40px !important;
-        letter-spacing: 5px !important;
     }
     
     .names-section .ampersand {
@@ -1709,13 +1678,11 @@ body::before {
     }
     
     .names-section .couple-names {
-        margin-bottom: 22px !important;
+        margin-bottom: 28px !important;
     }
     
     .names-section .month {
         font-size: 16px !important;
-        letter-spacing: 4px !important;
-        margin-bottom: -5px !important;
     }
     
     .names-section .day {
@@ -1724,38 +1691,30 @@ body::before {
     
     .names-section .year {
         font-size: 14px !important;
-        letter-spacing: 4px !important;
     }
     
     .names-section .wedding-date {
-        margin: 18px 0 !important;
+        margin: 22px 0 !important;
     }
     
     .music-toggle {
-        margin-top: 25px !important;
-    }
-    
-    .music-toggle-icon {
-        width: 46px;
-        height: 46px;
+        margin-top: 35px !important;
     }
 }
 
 /* Очень маленькие экраны (320px) */
 @media (max-width: 320px) {
     .names-section .content-wrapper {
-        padding: 25px 10px 12px 10px !important;
+        padding: 50px 10px 15px 10px !important; /* ↑ Увеличил */
     }
     
     .names-section .top-text {
         font-size: 13px !important;
-        letter-spacing: 3px !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 25px !important;
     }
     
     .names-section .name {
         font-size: 36px !important;
-        letter-spacing: 5px !important;
     }
     
     .names-section .ampersand {
@@ -1763,13 +1722,11 @@ body::before {
     }
     
     .names-section .couple-names {
-        margin-bottom: 20px !important;
+        margin-bottom: 25px !important;
     }
     
     .names-section .month {
         font-size: 15px !important;
-        letter-spacing: 3px !important;
-        margin-bottom: -4px !important;
     }
     
     .names-section .day {
@@ -1778,24 +1735,14 @@ body::before {
     
     .names-section .year {
         font-size: 13px !important;
-        letter-spacing: 3px !important;
     }
     
     .names-section .wedding-date {
-        margin: 15px 0 !important;
+        margin: 20px 0 !important;
     }
     
     .music-toggle {
-        margin-top: 22px !important;
-    }
-    
-    .music-toggle-icon {
-        width: 44px;
-        height: 44px;
-    }
-    
-    .music-toggle-text {
-        font-size: 9px;
+        margin-top: 30px !important;
     }
 }
 
