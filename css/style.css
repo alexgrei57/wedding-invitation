@@ -271,7 +271,7 @@ body::before {
     border: none !important;
     box-shadow: none !important;
     margin: 0;
-    padding: clamp(15px, 3vh, 30px) 15px !important;
+    padding: clamp(60px, 10vh, 100px) 15px clamp(10px, 2vh, 20px) 15px !important;
     min-height: 100vh !important;
     height: auto !important;
     position: relative;
@@ -440,11 +440,11 @@ body::before {
 /* ===== Names секция - АДАПТИВНЫЕ РАЗМЕРЫ (УВЕЛИЧЕНО) ===== */
 .names-section .top-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(12px, 3.5vw, 16px); /* ↑ было 10px-14px */
-    letter-spacing: clamp(3px, 1.5vw, 8px); /* ↑ было 2px-6px */
+    font-size: clamp(12px, 3.5vw, 16px);
+    letter-spacing: clamp(3px, 1.5vw, 8px);
     color: #000000;
-    margin-top: 20px;
-    margin-bottom: clamp(20px, 5vh, 50px); /* ↑ было 15px-40px */
+    margin-top: 0;
+    margin-bottom: clamp(20px, 5vh, 50px);
     text-transform: uppercase;
     text-align: center !important;
     width: 100%;
@@ -453,8 +453,8 @@ body::before {
 
 .names-section .couple-names {
     text-align: center !important;
-    margin-top: 20px;
-    margin-bottom: clamp(20px, 5vh, 50px); /* ↑ было 15px-40px */
+    margin-top: 0;
+    margin-bottom: clamp(20px, 5vh, 50px);
     width: 100%;
     display: block;
 }
@@ -462,9 +462,9 @@ body::before {
 .names-section .name {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 11vw, 56px); /* ↑ было 28px-52px */
+    font-size: clamp(36px, 11vw, 56px);
     font-weight: 300;
-    letter-spacing: clamp(3px, 2vw, 10px); /* ↑ было 2px-8px */
+    letter-spacing: clamp(3px, 2vw, 10px);
     color: #000000;
     margin: 0;
     text-transform: uppercase;
@@ -475,32 +475,32 @@ body::before {
 .names-section .ampersand {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 10vw, 48px); /* ↑ было 24px-44px */
+    font-size: clamp(32px, 10vw, 48px);
     font-weight: 300;
     color: #1a1a1a;
-    margin: 8px 0; /* ↑ было 5px */
+    margin: 8px 0;
     text-align: center;
     line-height: 1;
 }
 
 .names-section .wedding-date {
     text-align: center !important;
-    margin: clamp(15px, 3vh, 25px) 0 clamp(15px, 3vh, 20px); /* ↑ было 10px-20px */
+    margin: clamp(15px, 3vh, 25px) 0 clamp(15px, 3vh, 20px);
     display: block;
 }
 
 .names-section .month {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(14px, 4vw, 18px); /* ↑ было 12px-16px */
-    letter-spacing: clamp(3px, 1.5vw, 6px); /* ↑ было 2px-5px */
+    font-size: clamp(14px, 4vw, 18px);
+    letter-spacing: clamp(3px, 1.5vw, 6px);
     color: #000000;
     text-transform: uppercase;
-    margin-bottom: -6px;
+    margin-bottom: 0;
 }
 
 .names-section .day {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(60px, 20vw, 120px); /* ↑ было 48px-100px */
+    font-size: clamp(60px, 20vw, 120px);
     font-weight: 300;
     color: #000000;
     line-height: 0.7;
@@ -509,9 +509,9 @@ body::before {
 
 .names-section .year {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(14px, 4vw, 20px); /* ↑ было 12px-18px */
+    font-size: clamp(14px, 4vw, 20px);
     font-weight: 300;
-    letter-spacing: clamp(3px, 1.5vw, 8px); /* ↑ было 2px-6px */
+    letter-spacing: clamp(3px, 1.5vw, 8px);
     color: #000000;
 }
 
@@ -543,7 +543,7 @@ body::before {
 .photo-container {
     width: 100%;
     max-width: 350px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-radius: 10px;
     overflow: visible;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
@@ -569,7 +569,7 @@ body::before {
     color: #5a4a3a;
     margin-bottom: 10px;
     text-transform: none;
-    line-height: 0.8; /* ← Добавлено: уменьшает отступ между строками */
+    line-height: 1.1;
 }
 
 .we-marry {
@@ -685,15 +685,15 @@ body::before {
 
 .timeline-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     padding: 0 20px;
     margin-bottom: 30px;
 }
 
 .timeline-item {
     display: flex;
-    align-items: baseline;
-    margin-bottom: 25px;
+    align-items: center;
+    margin-bottom: 35px;
     text-align: left;
     opacity: 0;
     transform: translateY(20px);
@@ -705,24 +705,55 @@ body::before {
     transform: translateY(0);
 }
 
-/* Задержки для каждого элемента тайминга */
-.timeline-item:nth-child(1) { transition-delay: 0.4s; }
-.timeline-item:nth-child(2) { transition-delay: 0.7s; }
-.timeline-item:nth-child(3) { transition-delay: 1.0s; }
-.timeline-item:nth-child(4) { transition-delay: 1.3s; }
-.timeline-item:nth-child(5) { transition-delay: 1.6s; }
-.timeline-item:nth-child(6) { transition-delay: 1.9s; }
-.timeline-item:nth-child(7) { transition-delay: 2.2s; }
-.timeline-item:nth-child(8) { transition-delay: 2.5s; }
+/* Задержки для каждого элемента тайминга (+0.5s к каждому) */
+.timeline-item:nth-child(1) { transition-delay: 0.7s; }
+.timeline-item:nth-child(2) { transition-delay: 1.0s; }
+.timeline-item:nth-child(3) { transition-delay: 1.3s; }
+.timeline-item:nth-child(4) { transition-delay: 1.6s; }
+.timeline-item:nth-child(5) { transition-delay: 1.9s; }
+.timeline-item:nth-child(6) { transition-delay: 2.2s; }
+.timeline-item:nth-child(7) { transition-delay: 2.5s; }
+.timeline-item:nth-child(8) { transition-delay: 2.8s; }
+
+/* Левая часть: время + название */
+.timeline-left {
+    flex: 0 0 120px;
+    text-align: center;
+    padding-right: 20px;
+}
 
 .timeline-time {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-style: italic;
-    font-weight: 700;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 400;
+    color: #5a4a3a;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.timeline-event-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
     color: #1a1a1a;
-    margin-right: 15px;
-    min-width: 60px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* Центральная часть: вертикальный разделитель */
+.timeline-divider {
+    flex: 0 0 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #A89880, transparent);
+    margin: 0 20px;
+}
+
+/* Правая часть: описание */
+.timeline-right {
+    flex: 1;
+    padding-left: 20px;
 }
 
 .timeline-desc p {
@@ -730,8 +761,12 @@ body::before {
     font-size: 13px;
     line-height: 1.6;
     color: #4a4a4a;
-    font-weight: 400;
-    margin: 0;
+    font-weight: 300;
+    margin: 0 0 8px 0;
+}
+
+.timeline-desc p:last-child {
+    margin-bottom: 0;
 }
 
 .monogram {
@@ -1095,8 +1130,8 @@ body::before {
 
 .footer-sub {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 34px; /* Чуть увеличил для лучшей читаемости рукописного шрифта */
-    font-style: normal; /* Убрал italic, так как шрифт уже курсивный */
+    font-size: 22px;
+    font-style: normal;
     color: #5a4a3a;
     font-weight: 400;
     letter-spacing: 1px;
@@ -1171,7 +1206,7 @@ body::before {
     font-style: normal;
     font-weight: 400;
     color: #5a4a3a;
-    margin-bottom: 2px;
+    margin-bottom: 15px;
     letter-spacing: 1px;
 }
 
@@ -1342,24 +1377,24 @@ body::before {
 
 @media (max-width: 768px) {
     .main-title { 
-        font-size: 32px; /* ↑ было 26px */
+        font-size: 32px;
         letter-spacing: 6px;
     }
     .subtitle { 
-        font-size: 72px; /* ↑ было 68px */
+        font-size: 72px;
     }
-    .name { font-size: 44px; } /* ↑ было 36px */
-    .wedding-date .day { font-size: 100px; } /* ↑ было 80px */
-        .location-title { 
+    .name { font-size: 44px; }
+    .wedding-date .day { font-size: 100px; }
+    .location-title { 
         font-size: 32px; 
         letter-spacing: 5px; 
-}
+    }
     .location-subtitle { font-size: 42px; }
     
     .timeline-main-title { 
         font-size: 52px; 
         letter-spacing: 1px; 
-}
+    }
 
     .content-wrapper {
         padding: 15px 15px;
@@ -1382,7 +1417,7 @@ body::before {
     .faq-block-text { font-size: 11px; }
     
     .countdown-photo-container { height: 70vh; }
-    .countdown-text { font-size: 18px; }
+    .countdown-text { font-size: 30px; }
     .countdown-number { font-size: 36px; }
     .countdown-label { font-size: 10px; }
     .countdown-timer { gap: 10px; }
@@ -1399,11 +1434,11 @@ body::before {
     .radio-label, .checkbox-label { font-size: 12px; }
     
     .footer-main { font-size: 12px; letter-spacing: 3px; }
-    .footer-sub { font-size: 34px; }
+    .footer-sub { font-size: 22px; }
     
     .wishes-title {
         font-size: 58px;
-        margin-bottom: 2px;
+        margin-bottom: 15px;
     }
     
     .wishes-text {
@@ -1423,38 +1458,38 @@ body::before {
 /* Для очень маленьких экранов (iPhone SE, старые Android) */
 @media (max-width: 375px) {
     .names-section .top-text {
-        font-size: 16px !important; /* ↑ было 10px */
-        letter-spacing: 3px !important; /* ↑ было 2px */
-        margin-bottom: 20px !important; /* ↑ было 15px */
+        font-size: 13px !important;
+        letter-spacing: 3px !important;
+        margin-bottom: 20px !important;
     }
     
     .names-section .name {
-        font-size: 52px !important; /* ↑ было 28px */
-        letter-spacing: 3px !important; /* ↑ было 2px */
+        font-size: 38px !important;
+        letter-spacing: 3px !important;
     }
     
     .names-section .ampersand {
-        font-size: 32px !important; /* ↑ было 24px */
+        font-size: 32px !important;
     }
     
     .names-section .couple-names {
-        margin-bottom: 20px !important; /* ↑ было 15px */
+        margin-bottom: 20px !important;
     }
     
     .names-section .month {
-        font-size: 17px !important; /* ↑ было 12px */
+        font-size: 15px !important;
     }
     
     .names-section .day {
-        font-size: 70px !important; /* ↑ было 48px */
+        font-size: 70px !important;
     }
     
     .names-section .year {
-        font-size: 22px !important; /* ↑ было 12px */
+        font-size: 15px !important;
     }
     
     .names-section .wedding-date {
-        margin: 30px 0 !important;
+        margin: 10px 0 !important;
     }
     
     .music-toggle {
@@ -1480,7 +1515,7 @@ body::before {
 /* Для экранов 360px и меньше */
 @media (max-width: 360px) {
     .names-section .name {
-        font-size: 52px !important;
+        font-size: 26px !important;
     }
     
     .names-section .ampersand {
