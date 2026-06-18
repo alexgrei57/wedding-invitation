@@ -1444,7 +1444,7 @@ body::before {
     .names-section .top-text {
         font-size: 17px !important;
         letter-spacing: 5px !important;
-        margin-bottom: 30px !important;
+        margin-bottom: 40px !important;
     }
     
     .names-section .name {
@@ -1571,7 +1571,7 @@ body::before {
 /* iPhone 6/7/8 Plus, iPhone X (414px) */
 @media (max-width: 414px) {
     .names-section .content-wrapper {
-        padding: 70px 15px 25px 15px !important; /* ↑ Увеличил */
+        padding: 60px 15px 25px 15px !important; /* ↑ Увеличил */
     }
     
     .names-section .top-text {
