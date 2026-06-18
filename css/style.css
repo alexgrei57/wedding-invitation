@@ -1565,8 +1565,8 @@ body::before {
     .footer-sub { font-size: 34px; }
     
 .wishes-title {
-    font-size: 42px !important; /* ↓ уменьшаем для мобильных */
-    margin-bottom: 3px !important;
+    font-size: 52px !important; /* ↓ уменьшаем для мобильных */
+    margin-bottom: 15px !important;
     line-height: 0.85 !important;
 }
 
@@ -1579,7 +1579,7 @@ body::before {
 .wishes-text {
     font-size: 13px !important;
     letter-spacing: 1px !important;
-    line-height: 1.3 !important;
+    line-height: 1.6 !important;
     margin-bottom: 3px !important;
 }
     
