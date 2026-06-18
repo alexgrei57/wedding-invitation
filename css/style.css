@@ -1255,8 +1255,9 @@ body::before {
     font-style: normal;
     font-weight: 400;
     color: #5a4a3a;
-    margin-bottom: 15px;
+    margin-bottom: 5px; /* ← уменьшено с 15px */
     letter-spacing: 1px;
+    line-height: 1.1; /* ← добавлено для компактности */
 }
 
 .wishes-block {
@@ -1561,10 +1562,17 @@ body::before {
     .footer-main { font-size: 12px; letter-spacing: 3px; }
     .footer-sub { font-size: 34px; }
     
-    .wishes-title {
-        font-size: 58px;
-        margin-bottom: 15px;
-    }
+.wishes-title {
+    font-size: 58px;
+    margin-bottom: 5px; /* ← уменьшено */
+    line-height: 1.1;
+}
+
+.wishes-title + .wishes-and {
+    margin-top: -10px;
+    margin-bottom: -10px;
+    font-size: 36px;
+}
     
     .wishes-text {
         font-size: 14px;
