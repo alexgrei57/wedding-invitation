@@ -1257,7 +1257,7 @@ body::before {
     color: #5a4a3a !important;
     margin-bottom: 5px !important;
     letter-spacing: 1px !important;
-    line-height: 0.9 !important; /* ↓ было 1.1 — уменьшаем отступ между строками */
+    line-height: 0.65 !important; /* ↓ было 1.1 — уменьшаем отступ между строками */
 }
 
 .wishes-block {
@@ -1517,7 +1517,7 @@ body::before {
         letter-spacing: 5px; 
     }
     
-    .location-subtitle { font-size: 42px; }
+    .location-subtitle { font-size: 52px; }
     
     .timeline-main-title { 
         font-size: 52px; 
@@ -1567,7 +1567,7 @@ body::before {
 .wishes-title {
     font-size: 52px !important; /* ↓ уменьшаем для мобильных */
     margin-bottom: 15px !important;
-    line-height: 0.85 !important;
+    line-height: 0.65 !important;
 }
 
 .wishes-title + .wishes-and {
@@ -1588,7 +1588,7 @@ body::before {
     }
     
     .dear-text {
-        font-size: 42px;
+        font-size: 48px;
     }
 }
 
