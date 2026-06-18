@@ -22,7 +22,7 @@
     src: url('../fonts/SloopScriptPro.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-    font-display: fallback; /* ← изменено с swap на fallback */
+    font-display: fallback;
 }
 
 /* Общий контейнер для страниц 2-9 */
@@ -271,14 +271,14 @@ body::before {
     border: none !important;
     box-shadow: none !important;
     margin: 0;
-    padding: clamp(60px, 10vh, 100px) 15px clamp(10px, 2vh, 20px) 15px !important;
+    padding: clamp(40px, 8vh, 80px) 15px clamp(10px, 2vh, 15px) 15px !important;
     min-height: 100vh !important;
     height: auto !important;
     position: relative;
     z-index: 20;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
     align-items: center !important;
 }
 
@@ -440,11 +440,11 @@ body::before {
 /* ===== Names секция - АДАПТИВНЫЕ РАЗМЕРЫ (УВЕЛИЧЕНО) ===== */
 .names-section .top-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(12px, 3.5vw, 16px);
-    letter-spacing: clamp(3px, 1.5vw, 8px);
+    font-size: clamp(14px, 4vw, 16px);
+    letter-spacing: clamp(4px, 1.5vw, 8px);
     color: #000000;
     margin-top: 0;
-    margin-bottom: clamp(20px, 5vh, 50px);
+    margin-bottom: clamp(15px, 4vh, 30px);
     text-transform: uppercase;
     text-align: center !important;
     width: 100%;
@@ -454,7 +454,7 @@ body::before {
 .names-section .couple-names {
     text-align: center !important;
     margin-top: 0;
-    margin-bottom: clamp(20px, 5vh, 50px);
+    margin-bottom: clamp(15px, 4vh, 30px);
     width: 100%;
     display: block;
 }
@@ -462,9 +462,9 @@ body::before {
 .names-section .name {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 11vw, 56px);
+    font-size: clamp(42px, 12vw, 56px);
     font-weight: 300;
-    letter-spacing: clamp(3px, 2vw, 10px);
+    letter-spacing: clamp(4px, 2.5vw, 10px);
     color: #000000;
     margin: 0;
     text-transform: uppercase;
@@ -475,7 +475,7 @@ body::before {
 .names-section .ampersand {
     display: block;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 10vw, 48px);
+    font-size: clamp(36px, 11vw, 48px);
     font-weight: 300;
     color: #1a1a1a;
     margin: 8px 0;
@@ -485,14 +485,14 @@ body::before {
 
 .names-section .wedding-date {
     text-align: center !important;
-    margin: clamp(15px, 3vh, 25px) 0 clamp(15px, 3vh, 20px);
+    margin: clamp(10px, 3vh, 20px) 0 clamp(10px, 3vh, 15px);
     display: block;
 }
 
 .names-section .month {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(14px, 4vw, 18px);
-    letter-spacing: clamp(3px, 1.5vw, 6px);
+    font-size: clamp(16px, 4.5vw, 18px);
+    letter-spacing: clamp(4px, 1.5vw, 6px);
     color: #000000;
     text-transform: uppercase;
     margin-bottom: 0;
@@ -500,7 +500,7 @@ body::before {
 
 .names-section .day {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(60px, 20vw, 120px);
+    font-size: clamp(72px, 22vw, 120px);
     font-weight: 300;
     color: #000000;
     line-height: 0.7;
@@ -509,9 +509,9 @@ body::before {
 
 .names-section .year {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(14px, 4vw, 20px);
+    font-size: clamp(16px, 4.5vw, 20px);
     font-weight: 300;
-    letter-spacing: clamp(3px, 1.5vw, 8px);
+    letter-spacing: clamp(4px, 1.5vw, 8px);
     color: #000000;
 }
 
@@ -699,12 +699,12 @@ body::before {
     width: 100%;
     max-width: 500px;
     padding: 0 10px;
-    margin: 0 auto 30px; /* ← добавлено margin: 0 auto для центрирования */
+    margin: 0 auto 30px;
 }
 
 .timeline-item {
     display: flex;
-    align-items: center; /* ← вернули центрирование по вертикали */
+    align-items: center;
     margin-bottom: 35px;
     text-align: left;
     opacity: 0;
@@ -717,7 +717,7 @@ body::before {
     transform: translateY(0);
 }
 
-/* Задержки для каждого элемента тайминга (+0.5s к каждому) */
+/* Задержки для каждого элемента тайминга */
 .timeline-item:nth-child(1) { transition-delay: 0.5s; }
 .timeline-item:nth-child(2) { transition-delay: 0.8s; }
 .timeline-item:nth-child(3) { transition-delay: 1.1s; }
@@ -729,9 +729,9 @@ body::before {
 
 /* Левая часть: время + название */
 .timeline-left {
-    flex: 0 0 90px; /* ← уменьшено с 120px */
+    flex: 0 0 90px;
     text-align: center;
-    padding-right: 12px; /* ← уменьшено с 20px */
+    padding-right: 12px;
 }
 
 .timeline-time {
@@ -750,7 +750,6 @@ body::before {
     font-weight: 400;
     letter-spacing: 1px;
     color: #1a1a1a;
-    /*text-transform: uppercase;*/
     line-height: 1.2;
 }
 
@@ -765,7 +764,7 @@ body::before {
 /* Правая часть: описание */
 .timeline-right {
     flex: 1;
-    padding-left: 12px; /* ← уменьшено с 20px */
+    padding-left: 12px;
 }
 
 .timeline-desc p {
@@ -944,7 +943,7 @@ body::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 40% center; /* ← смещаем фокус вправо (50% = центр, 60% = чуть правее) */
+    object-position: 40% center;
     display: block;
 }
 
@@ -1326,12 +1325,12 @@ body::before {
 
 /* ===== Иконка управления музыкой на 2-й странице (ЕДИНЫЙ БЛОК) ===== */
 .music-toggle {
-    margin-top: auto !important;
-    margin-bottom: clamp(10px, 2vh, 20px) !important;
+    margin-top: 30px !important;
+    margin-bottom: clamp(5px, 1.5vh, 15px) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     opacity: 0;
     animation: fadeInOpacity 1.5s ease-out forwards;
     animation-delay: 1.6s;
@@ -1487,21 +1486,22 @@ body::before {
     }
 }
 
-/* Для очень маленьких экранов (iPhone SE, старые Android) */
-@media (max-width: 375px) {
+/* ===== УЛУЧШЕННАЯ АДАПТАЦИЯ ДЛЯ 2-й СТРАНИЦЫ ===== */
+
+/* Для экранов 414px (iPhone 11 Pro Max, iPhone 8 Plus) */
+@media (max-width: 414px) {
     .names-section .top-text {
-        font-size: 13px !important;
-        letter-spacing: 3px !important;
+        font-size: 15px !important;
         margin-bottom: 20px !important;
     }
     
     .names-section .name {
-        font-size: 38px !important;
-        letter-spacing: 3px !important;
+        font-size: 46px !important;
+        letter-spacing: 4px !important;
     }
     
     .names-section .ampersand {
-        font-size: 32px !important;
+        font-size: 38px !important;
     }
     
     .names-section .couple-names {
@@ -1509,15 +1509,15 @@ body::before {
     }
     
     .names-section .month {
-        font-size: 15px !important;
+        font-size: 17px !important;
     }
     
     .names-section .day {
-        font-size: 70px !important;
+        font-size: 88px !important;
     }
     
     .names-section .year {
-        font-size: 15px !important;
+        font-size: 17px !important;
     }
     
     .names-section .wedding-date {
@@ -1525,13 +1525,94 @@ body::before {
     }
     
     .music-toggle {
-        margin-top: auto !important;
-        margin-bottom: 10px !important;
+        margin-top: 25px !important;
+        gap: 5px !important;
     }
     
     .music-toggle-icon {
-        width: 42px !important;
-        height: 42px !important;
+        width: 48px !important;
+        height: 48px !important;
+    }
+    
+    .music-toggle-text {
+        font-size: 10px !important;
+    }
+}
+
+/* Для экранов 390px (iPhone 12/13/14) */
+@media (max-width: 390px) {
+    .names-section .top-text {
+        font-size: 14px !important;
+    }
+    
+    .names-section .name {
+        font-size: 44px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 36px !important;
+    }
+    
+    .names-section .day {
+        font-size: 84px !important;
+    }
+    
+    .names-section .month,
+    .names-section .year {
+        font-size: 16px !important;
+    }
+    
+    .music-toggle {
+        margin-top: 20px !important;
+    }
+}
+
+/* Для экранов 375px (iPhone SE, X, XS) */
+@media (max-width: 375px) {
+    .names-section .top-text {
+        font-size: 13px !important;
+        letter-spacing: 3px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .names-section .name {
+        font-size: 40px !important;
+        letter-spacing: 3px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 34px !important;
+    }
+    
+    .names-section .couple-names {
+        margin-bottom: 15px !important;
+    }
+    
+    .names-section .month {
+        font-size: 15px !important;
+    }
+    
+    .names-section .day {
+        font-size: 76px !important;
+    }
+    
+    .names-section .year {
+        font-size: 15px !important;
+    }
+    
+    .names-section .wedding-date {
+        margin: 8px 0 !important;
+    }
+    
+    .music-toggle {
+        margin-top: 15px !important;
+        margin-bottom: 8px !important;
+        gap: 4px !important;
+    }
+    
+    .music-toggle-icon {
+        width: 44px !important;
+        height: 44px !important;
     }
     
     .music-toggle-text {
@@ -1539,23 +1620,61 @@ body::before {
     }
     
     .swipe-hint svg {
-        width: 20px !important;
-        height: 20px !important;
+        width: 18px !important;
+        height: 18px !important;
     }
 }
 
 /* Для экранов 360px и меньше */
 @media (max-width: 360px) {
     .names-section .name {
-        font-size: 26px !important;
+        font-size: 38px !important;
     }
     
     .names-section .ampersand {
-        font-size: 22px !important;
+        font-size: 32px !important;
     }
     
     .names-section .day {
-        font-size: 44px !important;
+        font-size: 70px !important;
+    }
+    
+    .names-section .month,
+    .names-section .year {
+        font-size: 14px !important;
+    }
+    
+    .music-toggle-icon {
+        width: 42px !important;
+        height: 42px !important;
+    }
+}
+
+/* Для очень маленьких экранов 320px */
+@media (max-width: 320px) {
+    .names-section .top-text {
+        font-size: 12px !important;
+    }
+    
+    .names-section .name {
+        font-size: 34px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 28px !important;
+    }
+    
+    .names-section .day {
+        font-size: 64px !important;
+    }
+    
+    .names-section .month,
+    .names-section .year {
+        font-size: 13px !important;
+    }
+    
+    .music-toggle {
+        margin-top: 12px !important;
     }
     
     .music-toggle-icon {
