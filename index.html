@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=128">
+    <link rel="stylesheet" href="css/style.css?v=129">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -126,10 +126,16 @@
                     <path d="M5 10L15 20L25 10" stroke="#1a1a1a" stroke-width="1.5"/>
                 </svg>
             </div>-->
-<!-- Иконка выключения музыки (появляется когда музыка играет) -->
+<!-- Иконка управления музыкой -->
 <div class="music-toggle playing" id="musicToggle">
     <div class="music-toggle-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Иконка ПЛЕЙ (треугольник) — видна когда музыка на паузе -->
+        <svg class="icon-play" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5L19 12L8 19V5Z" fill="currentColor"/>
+        </svg>
+        
+        <!-- Иконка СТОП (квадратик) — видна когда музыка играет -->
+        <svg class="icon-stop" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/>
         </svg>
     </div>
