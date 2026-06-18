@@ -1494,11 +1494,11 @@ body::before {
     }
     
     .subtitle { 
-        font-size: 72px;
+        font-size: 68px;
     }
     
     .location-title { 
-        font-size: 32px; 
+        font-size: 30px; 
         letter-spacing: 5px; 
     }
     
