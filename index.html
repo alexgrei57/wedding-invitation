@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=144">
+    <link rel="stylesheet" href="css/style.css?v=145">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -268,7 +268,7 @@
 <!-- Секция 7: Пожелания -->
     <section class="section rsvp-section slide-section section-2-9" id="section7">
             <div class="content-wrapper">
-        <h2 class="wishes-title">Пожелания</h2>
+        <h2 class="wishes-title">Пожелания и контакты</h2>
         
         <div class="wishes-block">
             <p class="wishes-text">
@@ -302,8 +302,9 @@
         
         <div class="wishes-block">
             <p class="wishes-text">
-                Будем благодарны, если вы воздержитесь от криков «Горько» на свадьбе.<br>
-                Ведь поцелуй – знак проявления чувств, он не может быть по заказу.
+                Если у Вас  возникли вопросы, не стесняйтесь обращаться к нам, мы обязательно поможем!<br>
+                Алексей <a href="+7 (919) 201-09-92" class="contact-link">+7 (919) 201-09-92</a>
+                Евгения <a href="+7 (900) 487-49-72" class="contact-link">+7 (900) 487-49-72</a>
             </p>
         </div>
     </div>
@@ -471,39 +472,39 @@ async function sendToServer(event) {
     nameError.style.display = 'none';
     nameInput.classList.remove('error', 'valid');
     
-    // ===== ПРОВЕРКА ИМЕНИ =====
-    const name = nameInput.value.trim();
-    
-    // Регулярное выражение: только буквы, пробелы, дефисы, апострофы, слэш
-    const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-'/]+$/;
-    
-    // Проверка на пустое поле
-    if (!name) {
-        nameInput.classList.add('error');
-        nameError.textContent = '✗ Пожалуйста, введите имя';
-        nameError.style.display = 'block';
-        nameInput.focus();
-        return;
-    }
-    
-    // Проверка на спецсимволы и цифры
-    if (!nameRegex.test(name)) {
-        nameInput.classList.add('error');
-        nameError.textContent = '✗ Имя должно содержать только буквы';
-        nameError.style.display = 'block';
-        nameInput.focus();
-        return;
-    }
-    
-    // Проверка что есть хотя бы одна буква (не только пробелы/символы)
-    const hasLetter = /[а-яА-ЯёЁa-zA-Z]/.test(name);
-    if (!hasLetter) {
-        nameInput.classList.add('error');
-        nameError.textContent = '✗ Имя должно содержать хотя бы одну букву';
-        nameError.style.display = 'block';
-        nameInput.focus();
-        return;
-    }
+// ===== ПРОВЕРКА ИМЕНИ =====
+const name = nameInput.value.trim();
+
+// Регулярное выражение: ТОЛЬКО буквы (кириллица и латиница), дефис и апостроф
+const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-']+$/;
+
+// Проверка на пустое поле
+if (!name) {
+    nameInput.classList.add('error');
+    nameError.textContent = '✗ Пожалуйста, введите имя';
+    nameError.style.display = 'block';
+    nameInput.focus();
+    return;
+}
+
+// Проверка на пробелы, цифры и спецсимволы
+if (!nameRegex.test(name)) {
+    nameInput.classList.add('error');
+    nameError.textContent = '✗ Только буквы (без пробелов, цифр и спецсимволов)';
+    nameError.style.display = 'block';
+    nameInput.focus();
+    return;
+}
+
+// Проверка что есть хотя бы одна буква
+const hasLetter = /[а-яА-ЯёЁa-zA-Z]/.test(name);
+if (!hasLetter) {
+    nameInput.classList.add('error');
+    nameError.textContent = '✗ Имя должно содержать хотя бы одну букву';
+    nameError.style.display = 'block';
+    nameInput.focus();
+    return;
+}
     
     // Если всё ок - помечаем как валидное
     nameInput.classList.add('valid');
@@ -577,8 +578,9 @@ function validateName(input) {
     const nameError = document.getElementById('nameError');
     const value = input.value;
     
-    // Регулярное выражение: только буквы, пробелы, дефисы, апострофы, слэш
-    const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-'/]*$/;
+    // Регулярное выражение: ТОЛЬКО буквы (кириллица и латиница), дефис и апостроф
+    // БЕЗ пробелов и БЕЗ цифр
+    const nameRegex = /^[а-яА-ЯёЁa-zA-Z\-']*$/;
     
     if (!value) {
         // Пустое поле - убираем стили
@@ -588,10 +590,10 @@ function validateName(input) {
     }
     
     if (!nameRegex.test(value)) {
-        // Есть запрещённые символы
+        // Есть запрещённые символы (пробелы, цифры, спецсимволы)
         input.classList.add('error');
         input.classList.remove('valid');
-        nameError.textContent = '✗ Недопустимые символы';
+        nameError.textContent = '✗ Только буквы (без пробелов и цифр)';
         nameError.style.display = 'block';
         
         // Удаляем последний введённый символ
