@@ -706,14 +706,14 @@ body::before {
 }
 
 /* Задержки для каждого элемента тайминга */
-.timeline-item:nth-child(1) { transition-delay: 0.5s; }
-.timeline-item:nth-child(2) { transition-delay: 0.8s; }
-.timeline-item:nth-child(3) { transition-delay: 1.1s; }
-.timeline-item:nth-child(4) { transition-delay: 1.4s; }
-.timeline-item:nth-child(5) { transition-delay: 1.7s; }
-.timeline-item:nth-child(6) { transition-delay: 2.0s; }
-.timeline-item:nth-child(7) { transition-delay: 2.3s; }
-.timeline-item:nth-child(8) { transition-delay: 2.6s; }
+.timeline-item:nth-child(1) { transition-delay: 0.4s; }
+.timeline-item:nth-child(2) { transition-delay: 0.7s; }
+.timeline-item:nth-child(3) { transition-delay: 1.0s; }
+.timeline-item:nth-child(4) { transition-delay: 1.3s; }
+.timeline-item:nth-child(5) { transition-delay: 1.6s; }
+.timeline-item:nth-child(6) { transition-delay: 1.9s; }
+.timeline-item:nth-child(7) { transition-delay: 2.2s; }
+.timeline-item:nth-child(8) { transition-delay: 2.5s; }
 
 .timeline-time {
     font-family: 'Playfair Display', serif;
@@ -911,12 +911,13 @@ body::before {
 }
 
 .countdown-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-style: italic;
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
     color: #FFFFFF;
     margin-bottom: 25px;
-    font-weight: 400;
+    letter-spacing: 1px;
 }
 
 .countdown-timer {
@@ -1094,7 +1095,7 @@ body::before {
 
 .footer-sub {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 22px; /* Чуть увеличил для лучшей читаемости рукописного шрифта */
+    font-size: 34px; /* Чуть увеличил для лучшей читаемости рукописного шрифта */
     font-style: normal; /* Убрал italic, так как шрифт уже курсивный */
     color: #5a4a3a;
     font-weight: 400;
@@ -1398,7 +1399,7 @@ body::before {
     .radio-label, .checkbox-label { font-size: 12px; }
     
     .footer-main { font-size: 12px; letter-spacing: 3px; }
-    .footer-sub { font-size: 22px; }
+    .footer-sub { font-size: 34px; }
     
     .wishes-title {
         font-size: 58px;
