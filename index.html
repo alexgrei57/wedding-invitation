@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=151">
+    <link rel="stylesheet" href="css/style.css?v=152">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -349,24 +349,20 @@
         
         <!-- ===== ОБНОВЛЕНО: форма с id для полей ===== -->
         <form class="rsvp-form" id="rsvpForm" onsubmit="sendToServer(event)">
-            <div class="form-group">
-                <!--<label class="form-label">Имя и фамилия</label>-->
-                <p class="form-hint">Если Вы будете со своей парой, укажите оба имени</p>
-                <input 
+<div class="form-group">
+    <p class="form-hint">Если Вы будете со своей парой, укажите оба имени</p>
+    <input 
         type="text" 
         id="guestName" 
         class="form-input" 
-        placeholder="Иван Иванов/Мария Иванова" 
-        required
-        pattern="^[а-яА-ЯёЁa-zA-Z\s\-'/]+$"
-        title="Только буквы, пробелы, дефисы и апострофы"
+        placeholder="Иван Иванов"
         oninput="validateName(this)"
+        autocomplete="off"
     >
-        <!--<p class="form-error-message" id="nameError" style="display: none; color: #f44336; font-size: 11px; margin-top: 5px; font-family: 'Montserrat', sans-serif;">
+    <p class="form-error-message" id="nameError" style="display: none; color: #f44336; font-size: 11px; margin-top: 5px; font-family: 'Montserrat', sans-serif; text-align: left;">
         ✗ Имя должно содержать только буквы
-    </p>-->
-
-            </div>
+    </p>
+</div>
 
                 <!-- НОВОЕ: Поле для детей -->
     <div class="form-group">
@@ -453,7 +449,7 @@
     </div>
 
     <!-- ===== ДОБАВЛЕНО: Функция отправки формы в Supabase ===== -->
-    <script>
+<script>
 async function sendToServer(event) {
     event.preventDefault();
     
@@ -470,56 +466,74 @@ async function sendToServer(event) {
     nameError.style.display = 'none';
     nameInput.classList.remove('error', 'valid');
     
-// ===== ПРОВЕРКА ИМЕНИ =====
-const rawName = nameInput.value;
-const name = rawName.trim(); // Убираем пробелы в начале и конце
-
-// Регулярное выражение: буквы, дефис, апостроф
-const nameRegex = /^[а-яА-ЯёЁa-zA-Z\-']+$/;
-const nameWithSpacesRegex = /^[а-яА-ЯёЁa-zA-Z\-']+(?:\s+[а-яА-ЯёЁa-zA-Z\-']+)*$/;
-
-// Проверка на пустое поле
-if (!name) {
-    nameInput.classList.add('error');
-    nameError.textContent = '✗ Пожалуйста, введите имя';
-    nameError.style.display = 'block';
-    nameInput.focus();
-    return;
-}
-
-// Проверка что нет двойных пробелов
-if (/\s{2,}/.test(name)) {
-    nameInput.classList.add('error');
-    nameError.textContent = '✗ Только один пробел между словами';
-    nameError.style.display = 'block';
-    nameInput.focus();
-    return;
-}
-
-// Проверка что нет пробелов в начале или конце (хотя trim это уберёт)
-if (rawName !== rawName.trim()) {
-    nameInput.classList.add('error');
-    nameError.textContent = '✗ Пробелы в начале или конце недопустимы';
-    nameError.style.display = 'block';
-    nameInput.focus();
-    return;
-}
-
-// Проверка что каждое "слово" содержит только буквы
-const words = name.split(/\s+/);
-for (let word of words) {
-    if (!nameRegex.test(word)) {
+    // ===== ПРОВЕРКА ИМЕНИ =====
+    const rawName = nameInput.value;
+    const name = rawName.trim();
+    
+    // Проверка на пустое поле
+    if (!name) {
         nameInput.classList.add('error');
-        nameError.textContent = '✗ Некорректное имя';
+        nameError.textContent = '✗ Пожалуйста, введите имя и фамилию';
         nameError.style.display = 'block';
         nameInput.focus();
         return;
     }
-}
-
-// Если всё ок - помечаем как валидное
-nameInput.classList.add('valid');
-// ==================================
+    
+    // Проверка что нет двойных пробелов
+    if (/\s{2,}/.test(name)) {
+        nameInput.classList.add('error');
+        nameError.textContent = '✗ Допускается только один пробел между именем и фамилией';
+        nameError.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+    
+    // Проверка что пробел не в начале или конце
+    if (rawName.startsWith(' ') || rawName.endsWith(' ')) {
+        nameInput.classList.add('error');
+        nameError.textContent = '✗ Пробел в начале или конце недопустим';
+        nameError.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+    
+    // Разделяем на слова по пробелу
+    const words = name.split(' ');
+    
+    // Проверяем что есть минимум 2 слова (имя и фамилия)
+    if (words.length < 2) {
+        nameInput.classList.add('error');
+        nameError.textContent = '✗ Введите имя и фамилию через пробел';
+        nameError.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+    
+    // Проверяем что максимум 2 слова (только имя и фамилия)
+    if (words.length > 2) {
+        nameInput.classList.add('error');
+        nameError.textContent = '✗ Можно ввести только имя и фамилию';
+        nameError.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+    
+    // Проверяем что каждое слово содержит только буквы, дефис и апостроф
+    const wordRegex = /^[а-яА-ЯёЁa-zA-Z\-']+$/;
+    for (let word of words) {
+        if (!wordRegex.test(word)) {
+            nameInput.classList.add('error');
+            nameError.textContent = '✗ Имя и фамилия должны содержать только буквы';
+            nameError.style.display = 'block';
+            nameInput.focus();
+            return;
+        }
+    }
+    
+    // Если всё ок - помечаем как валидное
+    nameInput.classList.add('valid');
+    nameError.style.display = 'none';
+    // ==================================
     
     // Блокируем кнопку и показываем загрузку
     const originalBtnText = submitBtn.textContent;
@@ -590,7 +604,6 @@ function validateName(input) {
     const value = input.value;
     
     // Разрешены: буквы, дефис, апостроф, пробел
-    // Запрещены: цифры, спецсимволы (@, #, $, %, и т.д.)
     const allowedChars = /^[а-яА-ЯёЁa-zA-Z\s\-']*$/;
     
     if (!value) {
@@ -611,11 +624,48 @@ function validateName(input) {
         return;
     }
     
+    // Проверяем что нет двойных пробелов
+    if (/\s{2,}/.test(value)) {
+        input.classList.add('error');
+        input.classList.remove('valid');
+        nameError.textContent = '✗ Допускается только один пробел';
+        nameError.style.display = 'block';
+        
+        // Убираем лишние пробелы - оставляем только один
+        input.value = value.replace(/\s+/g, ' ');
+        return;
+    }
+    
+    // Проверяем что пробел не в начале
+    if (value.startsWith(' ')) {
+        input.classList.add('error');
+        input.classList.remove('valid');
+        nameError.textContent = '✗ Пробел в начале недопустим';
+        nameError.style.display = 'block';
+        
+        // Убираем пробел в начале
+        input.value = value.trimStart();
+        return;
+    }
+    
+    // Проверяем что есть максимум 2 слова (имя и фамилия)
+    const words = value.trim().split(/\s+/);
+    if (words.length > 2) {
+        input.classList.add('error');
+        input.classList.remove('valid');
+        nameError.textContent = '✗ Можно ввести только имя и фамилию';
+        nameError.style.display = 'block';
+        
+        // Оставляем только первые 2 слова
+        input.value = words.slice(0, 2).join(' ');
+        return;
+    }
+    
     // Всё ок
     input.classList.remove('error');
     nameError.style.display = 'none';
 }
-    </script>
+</script>
     <!-- ======================================================= -->
 
     <script src="js/main.js"></script>
