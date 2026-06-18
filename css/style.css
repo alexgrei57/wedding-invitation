@@ -685,9 +685,9 @@ body::before {
 
 .timeline-container {
     width: 100%;
-    max-width: 600px;
-    padding: 0 20px;
-    margin-bottom: 30px;
+    max-width: 500px;
+    padding: 0 10px;
+    margin: 0 auto 30px; /* ← добавлено margin: 0 auto для центрирования */
 }
 
 .timeline-item {
@@ -717,14 +717,14 @@ body::before {
 
 /* Левая часть: время + название */
 .timeline-left {
-    flex: 0 0 120px;
+    flex: 0 0 90px; /* ← уменьшено с 120px */
     text-align: center;
-    padding-right: 20px;
+    padding-right: 12px; /* ← уменьшено с 20px */
 }
 
 .timeline-time {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 42px;
+    font-size: 36px; /* ← уменьшено с 42px */
     font-style: normal;
     font-weight: 400;
     color: #5a4a3a;
@@ -744,16 +744,16 @@ body::before {
 
 /* Центральная часть: вертикальный разделитель */
 .timeline-divider {
-    flex: 0 0 2px;
+    flex: 0 0 1px; /* ← уменьшено с 2px */
     height: 80px;
     background: linear-gradient(to bottom, transparent, #A89880, transparent);
-    margin: 0 20px;
+    margin: 0 12px; /* ← уменьшено с 20px */
 }
 
 /* Правая часть: описание */
 .timeline-right {
     flex: 1;
-    padding-left: 20px;
+    padding-left: 12px; /* ← уменьшено с 20px */
 }
 
 .timeline-desc p {
@@ -932,6 +932,7 @@ body::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 55% center; /* ← смещаем фокус вправо (50% = центр, 60% = чуть правее) */
     display: block;
 }
 
@@ -1211,7 +1212,7 @@ body::before {
 }
 
 .wishes-block {
-    margin-bottom: 15px;
+    margin-bottom: 0;
     max-width: 320px;
 }
 
