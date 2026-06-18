@@ -12,7 +12,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
             border-radius: 10px;
@@ -54,16 +54,19 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            font-size: 13px;
         }
         .desktop-table th, .desktop-table td {
-            padding: 12px;
+            padding: 10px 8px;
             text-align: left;
             border-bottom: 1px solid #D4C4B0;
+            vertical-align: top;
         }
         .desktop-table th {
             background: #F5F1EB;
             font-weight: 600;
             color: #1a1a1a;
+            white-space: nowrap;
         }
         
         /* Карточки для мобильных */
@@ -174,7 +177,10 @@
                 <thead>
                     <tr>
                         <th>№</th>
-                        <th>ФИО</th>
+                        <th>ФИО взрослого</th>
+                        <th>Взрослый</th>
+                        <th>ФИО ребенка</th>
+                        <th>Ребенок</th>
                         <th>Присутствие</th>
                         <th>Напитки</th>
                         <th>Дата</th>
@@ -229,6 +235,17 @@
             location.reload();
         }
         
+        // Безопасное экранирование для HTML
+        function escapeHtml(text) {
+            if (!text) return '';
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+        
         async function loadGuests() {
             const { data: guests, error } = await supabaseClient
                 .from('guests')
@@ -248,19 +265,26 @@
             mobileCards.innerHTML = '';
             
             if (guests.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
                 mobileCards.innerHTML = '<p style="text-align: center; color: #999;">Пока нет анкет</p>';
                 return;
             }
             
             guests.forEach((guest, index) => {
+                const isAdult = guest.is_adult || 'Да';
+                const childName = guest.child_name || '-';
+                const isChild = guest.is_child || 'Нет';
+                
                 // Таблица (десктоп)
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${guest.number || index + 1}</td>
-                    <td>${guest.name}</td>
-                    <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${guest.attendance}</td>
-                    <td>${guest.drinks || '-'}</td>
+                    <td>${escapeHtml(guest.name)}</td>
+                    <td class="yes">${escapeHtml(isAdult)}</td>
+                    <td>${escapeHtml(childName)}</td>
+                    <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
+                    <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
+                    <td>${escapeHtml(guest.drinks) || '-'}</td>
                     <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
                 `;
                 tbody.appendChild(row);
@@ -271,15 +295,24 @@
                 card.innerHTML = `
                     <div class="guest-card-header">
                         <span class="guest-number">№${guest.number || index + 1}</span>
-                        <span class="guest-name">${guest.name}</span>
+                        <span class="guest-name">${escapeHtml(guest.name)}</span>
+                    </div>
+                    <div class="guest-info">
+                        <span class="guest-info-label">Взрослый:</span>
+                        <span class="yes">${escapeHtml(isAdult)}</span>
+                    </div>
+                    <div class="guest-info">
+                        <span class="guest-info-label">Ребенок:</span>
+                        <span>${escapeHtml(childName)}</span>
+                        <span class="${isChild === 'Да' ? 'yes' : 'no'}" style="margin-left: 8px;">(${escapeHtml(isChild)})</span>
                     </div>
                     <div class="guest-info">
                         <span class="guest-info-label">Присутствие:</span>
-                        <span class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${guest.attendance}</span>
+                        <span class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</span>
                     </div>
                     <div class="guest-info">
                         <span class="guest-info-label">Напитки:</span>
-                        <span>${guest.drinks || '-'}</span>
+                        <span>${escapeHtml(guest.drinks) || '-'}</span>
                     </div>
                     <div class="guest-info">
                         <span class="guest-info-label">Дата:</span>

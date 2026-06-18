@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=131">
+    <link rel="stylesheet" href="css/style.css?v=132">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -356,6 +356,12 @@
                 <p class="form-hint">Если Вы будете со своей парой, укажите оба имени</p>
                 <input type="text" id="guestName" class="form-input" placeholder="Иван Иванов/Мария Иванова" required>
             </div>
+
+                <!-- НОВОЕ: Поле для детей -->
+    <div class="form-group">
+        <label class="form-label">Если вы будете со своими детьми, укажите их имена</label>
+        <input type="text" id="childName" class="form-input" placeholder="Имя и фамилия ребенка">
+    </div>
             
             <div class="form-group">
                 <label class="form-label">Подтвердите своё присутствие:</label>
@@ -452,17 +458,22 @@ async function sendToServer(event) {
     // Блокируем кнопку и показываем загрузку
     const originalBtnText = submitBtn.textContent;
     submitBtn.disabled = true;
-    submitBtn.textContent = '⏳ Отправка...';
+    submitBtn.textContent = ' Отправка...';
     submitBtn.style.opacity = '0.7';
     
     try {
         const name = document.getElementById('guestName').value.trim();
+        const childName = document.getElementById('childName').value.trim();
         const attendance = document.querySelector('input[name="attendance"]:checked').value;
         const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
             .map(cb => cb.value)
             .join(', ');
         
-        // ⏱ Добавляем таймаут 30 секунд
+        // Определяем признаки
+        const isAdult = 'Да';
+        const isChild = childName ? 'Да' : 'Нет';
+        
+        //  Добавляем таймаут 30 секунд
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 30000);
         
@@ -470,6 +481,9 @@ async function sendToServer(event) {
             .from('guests')
             .insert([{ 
                 name: name, 
+                is_adult: isAdult,
+                child_name: childName || null,
+                is_child: isChild,
                 attendance: attendance, 
                 drinks: drinks || 'Не выбрано' 
             }])
@@ -483,6 +497,9 @@ async function sendToServer(event) {
         formSuccess.style.display = 'block';
         form.reset();
         formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Убираем фокус с кнопки
+        submitBtn.blur();
         
     } catch (error) {
         console.error('Ошибка отправки:', error);
