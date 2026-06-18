@@ -963,7 +963,7 @@ body::before {
     font-style: normal;
     font-weight: 400;
     color: #FFFFFF;
-    margin-bottom: 25px;
+    margin-bottom: 0;
     letter-spacing: 1px;
 }
 
