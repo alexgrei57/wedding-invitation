@@ -496,6 +496,8 @@ body::before {
     color: #000000;
     text-transform: uppercase;
     margin-bottom: 0;
+    margin-bottom: -8px !important; /* ← отрицательный отступ подтягивает число ближе */
+    line-height: 0.8; /* ← уменьшаем высоту строки */
 }
 
 .names-section .day {
@@ -1516,7 +1518,7 @@ body::before {
     }
     
     .names-section .year {
-        font-size: 15px !important;
+        font-size: 20px !important;
     }
     
     .names-section .wedding-date {
