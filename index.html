@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=148">
+    <link rel="stylesheet" href="css/style.css?v=149">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -473,10 +473,12 @@ async function sendToServer(event) {
     nameInput.classList.remove('error', 'valid');
     
 // ===== ПРОВЕРКА ИМЕНИ =====
-const name = nameInput.value.trim();
+const rawName = nameInput.value;
+const name = rawName.trim(); // Убираем пробелы в начале и конце
 
-// Регулярное выражение: ТОЛЬКО буквы (кириллица и латиница), дефис и апостроф
-const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-']+$/;
+// Регулярное выражение: буквы, дефис, апостроф
+const nameRegex = /^[а-яА-ЯёЁa-zA-Z\-']+$/;
+const nameWithSpacesRegex = /^[а-яА-ЯёЁa-zA-Z\-']+(?:\s+[а-яА-ЯёЁa-zA-Z\-']+)*$/;
 
 // Проверка на пустое поле
 if (!name) {
@@ -487,28 +489,39 @@ if (!name) {
     return;
 }
 
-// Проверка на пробелы, цифры и спецсимволы
-if (!nameRegex.test(name)) {
+// Проверка что нет двойных пробелов
+if (/\s{2,}/.test(name)) {
     nameInput.classList.add('error');
-    nameError.textContent = '✗ Только буквы (без пробелов, цифр и спецсимволов)';
+    nameError.textContent = '✗ Только один пробел между словами';
     nameError.style.display = 'block';
     nameInput.focus();
     return;
 }
 
-// Проверка что есть хотя бы одна буква
-const hasLetter = /[а-яА-ЯёЁa-zA-Z]/.test(name);
-if (!hasLetter) {
+// Проверка что нет пробелов в начале или конце (хотя trim это уберёт)
+if (rawName !== rawName.trim()) {
     nameInput.classList.add('error');
-    nameError.textContent = '✗ Имя должно содержать хотя бы одну букву';
+    nameError.textContent = '✗ Пробелы в начале или конце недопустимы';
     nameError.style.display = 'block';
     nameInput.focus();
     return;
 }
-    
-    // Если всё ок - помечаем как валидное
-    nameInput.classList.add('valid');
-    // ==================================
+
+// Проверка что каждое "слово" содержит только буквы
+const words = name.split(/\s+/);
+for (let word of words) {
+    if (!nameRegex.test(word)) {
+        nameInput.classList.add('error');
+        nameError.textContent = '✗ Некорректное имя';
+        nameError.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+}
+
+// Если всё ок - помечаем как валидное
+nameInput.classList.add('valid');
+// ==================================
     
     // Блокируем кнопку и показываем загрузку
     const originalBtnText = submitBtn.textContent;
@@ -578,22 +591,21 @@ function validateName(input) {
     const nameError = document.getElementById('nameError');
     const value = input.value;
     
-    // Регулярное выражение: ТОЛЬКО буквы (кириллица и латиница), дефис и апостроф
-    // БЕЗ пробелов и БЕЗ цифр
-    const nameRegex = /^[а-яА-ЯёЁa-zA-Z\-']*$/;
+    // Разрешены: буквы, дефис, апостроф, пробел
+    // Запрещены: цифры, спецсимволы (@, #, $, %, и т.д.)
+    const allowedChars = /^[а-яА-ЯёЁa-zA-Z\s\-']*$/;
     
     if (!value) {
-        // Пустое поле - убираем стили
         input.classList.remove('error', 'valid');
         nameError.style.display = 'none';
         return;
     }
     
-    if (!nameRegex.test(value)) {
-        // Есть запрещённые символы (пробелы, цифры, спецсимволы)
+    // Если есть запрещённые символы (цифры, @, #, $ и т.д.)
+    if (!allowedChars.test(value)) {
         input.classList.add('error');
         input.classList.remove('valid');
-        nameError.textContent = '✗ Только буквы (без пробелов и цифр)';
+        nameError.textContent = '✗ Только буквы (без цифр и спецсимволов)';
         nameError.style.display = 'block';
         
         // Удаляем последний введённый символ

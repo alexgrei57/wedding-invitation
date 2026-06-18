@@ -1250,34 +1250,35 @@ body::before {
 }
 
 .wishes-title {
-    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 58px;
-    font-style: normal;
-    font-weight: 400;
-    color: #5a4a3a;
-    margin-bottom: 5px; /* ← уменьшено с 15px */
-    letter-spacing: 1px;
-    line-height: 1.1; /* ← добавлено для компактности */
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive !important;
+    font-size: 48px !important; /* ↓ было 58px */
+    font-style: normal !important;
+    font-weight: 400 !important;
+    color: #5a4a3a !important;
+    margin-bottom: 5px !important;
+    letter-spacing: 1px !important;
+    line-height: 0.9 !important; /* ↓ было 1.1 — уменьшаем отступ между строками */
 }
 
 .wishes-block {
-    margin-bottom: 0;
-    max-width: 320px;
+    max-width: 280px;
+    margin-bottom: 3px !important;
 }
 
 .wishes-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    color: #5a4a3a;
-    text-transform: uppercase;
-    line-height: 1.8;
-    text-align: center;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 14px !important; /* ↓ было 16px */
+    font-weight: 400 !important;
+    letter-spacing: 2px !important;
+    color: #5a4a3a !important;
+    text-transform: uppercase !important;
+    line-height: 1.4 !important; /* ↓ было 1.8 */
+    text-align: center !important;
+    margin-bottom: 5px !important;
 }
 
 .wishes-divider {
-    margin: 0;
+    margin: 2px 0 !important; /* ↓ уменьшаем отступ разделителя */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1285,6 +1286,7 @@ body::before {
 
 .wishes-divider svg {
     opacity: 0.6;
+    max-height: 20px !important; /* ↓ уменьшаем размер разделителя */
 }
 
 /* ===== Музыка ===== */
@@ -1563,9 +1565,9 @@ body::before {
     .footer-sub { font-size: 34px; }
     
 .wishes-title {
-    font-size: 58px;
-    margin-bottom: 5px; /* ← уменьшено */
-    line-height: 1.1;
+    font-size: 42px !important; /* ↓ уменьшаем для мобильных */
+    margin-bottom: 3px !important;
+    line-height: 0.85 !important;
 }
 
 .wishes-title + .wishes-and {
@@ -1574,10 +1576,12 @@ body::before {
     font-size: 36px;
 }
     
-    .wishes-text {
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
+.wishes-text {
+    font-size: 13px !important;
+    letter-spacing: 1px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 3px !important;
+}
     
     .wishes-block {
         max-width: 280px;
