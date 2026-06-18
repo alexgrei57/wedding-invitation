@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=141">
+    <link rel="stylesheet" href="css/style.css?v=142">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -354,7 +354,20 @@
             <div class="form-group">
                 <!--<label class="form-label">Имя и фамилия</label>-->
                 <p class="form-hint">Если Вы будете со своей парой, укажите оба имени</p>
-                <input type="text" id="guestName" class="form-input" placeholder="Иван Иванов/Мария Иванова" required>
+                <input 
+        type="text" 
+        id="guestName" 
+        class="form-input" 
+        placeholder="Иван Иванов/Мария Иванова" 
+        required
+        pattern="^[а-яА-ЯёЁa-zA-Z\s\-'/]+$"
+        title="Только буквы, пробелы, дефисы и апострофы"
+        oninput="validateName(this)"
+    >
+        <p class="form-error-message" id="nameError" style="display: none; color: #f44336; font-size: 11px; margin-top: 5px; font-family: 'Montserrat', sans-serif;">
+        ✗ Имя должно содержать только буквы
+    </p>
+
             </div>
 
                 <!-- НОВОЕ: Поле для детей -->
@@ -450,19 +463,60 @@ async function sendToServer(event) {
     const formSuccess = document.getElementById('formSuccess');
     const formError = document.getElementById('formError');
     const form = document.getElementById('rsvpForm');
+    const nameInput = document.getElementById('guestName');
+    const nameError = document.getElementById('nameError');
     
     // Скрываем предыдущие сообщения
     formSuccess.style.display = 'none';
     formError.style.display = 'none';
+    nameError.style.display = 'none';
+    nameInput.classList.remove('error', 'valid');
+    
+    // ===== ПРОВЕРКА ИМЕНИ =====
+    const name = nameInput.value.trim();
+    
+    // Регулярное выражение: только буквы, пробелы, дефисы, апострофы, слэш
+    const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-'/]+$/;
+    
+    // Проверка на пустое поле
+    if (!name) {
+        nameInput.classList.add('error');
+        nameError.textContent = '✗ Пожалуйста, введите имя';
+        nameError.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+    
+    // Проверка на спецсимволы и цифры
+    if (!nameRegex.test(name)) {
+        nameInput.classList.add('error');
+        nameError.textContent = '✗ Имя должно содержать только буквы';
+        nameError.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+    
+    // Проверка что есть хотя бы одна буква (не только пробелы/символы)
+    const hasLetter = /[а-яА-ЯёЁa-zA-Z]/.test(name);
+    if (!hasLetter) {
+        nameInput.classList.add('error');
+        nameError.textContent = '✗ Имя должно содержать хотя бы одну букву';
+        nameError.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+    
+    // Если всё ок - помечаем как валидное
+    nameInput.classList.add('valid');
+    // ==================================
     
     // Блокируем кнопку и показываем загрузку
     const originalBtnText = submitBtn.textContent;
     submitBtn.disabled = true;
-    submitBtn.textContent = ' Отправка...';
+    submitBtn.textContent = '⏳ Отправка...';
     submitBtn.style.opacity = '0.7';
     
     try {
-        const name = document.getElementById('guestName').value.trim();
         const childName = document.getElementById('childName').value.trim();
         const attendance = document.querySelector('input[name="attendance"]:checked').value;
         const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
@@ -473,7 +527,7 @@ async function sendToServer(event) {
         const isAdult = 'Да';
         const isChild = childName ? 'Да' : 'Нет';
         
-        //  Добавляем таймаут 30 секунд
+        // ⏱ Добавляем таймаут 30 секунд
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 30000);
         
@@ -496,6 +550,7 @@ async function sendToServer(event) {
         // Успех
         formSuccess.style.display = 'block';
         form.reset();
+        nameInput.classList.remove('valid');
         formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
         // Убираем фокус с кнопки
@@ -516,6 +571,38 @@ async function sendToServer(event) {
         submitBtn.textContent = originalBtnText;
         submitBtn.style.opacity = '1';
     }
+}
+
+// Проверка имени при вводе (в реальном времени)
+function validateName(input) {
+    const nameError = document.getElementById('nameError');
+    const value = input.value;
+    
+    // Регулярное выражение: только буквы, пробелы, дефисы, апострофы, слэш
+    const nameRegex = /^[а-яА-ЯёЁa-zA-Z\s\-'/]*$/;
+    
+    if (!value) {
+        // Пустое поле - убираем стили
+        input.classList.remove('error', 'valid');
+        nameError.style.display = 'none';
+        return;
+    }
+    
+    if (!nameRegex.test(value)) {
+        // Есть запрещённые символы
+        input.classList.add('error');
+        input.classList.remove('valid');
+        nameError.textContent = '✗ Недопустимые символы';
+        nameError.style.display = 'block';
+        
+        // Удаляем последний введённый символ
+        input.value = value.slice(0, -1);
+        return;
+    }
+    
+    // Всё ок
+    input.classList.remove('error');
+    nameError.style.display = 'none';
 }
     </script>
     <!-- ======================================================= -->

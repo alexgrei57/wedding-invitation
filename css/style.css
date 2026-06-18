@@ -444,7 +444,7 @@ body::before {
     letter-spacing: 6px !important;
     color: #000000;
     margin-top: 0;
-    margin-bottom: 40px !important; /* ↑ Увеличил отступ */
+    margin-bottom: 55px !important; /* ↑ Увеличил отступ */
     text-transform: uppercase;
     text-align: center !important;
     width: 100%;
@@ -1087,6 +1087,16 @@ body::before {
     color: #9a8a7a;
 }
 
+.form-input.error {
+    border-color: #f44336 !important;
+    background: rgba(255, 200, 200, 0.3) !important;
+}
+
+.form-input.valid {
+    border-color: #4CAF50 !important;
+    background: rgba(200, 255, 200, 0.3) !important;
+}
+
 .radio-group, .checkbox-group {
     display: flex;
     flex-direction: column;
@@ -1446,7 +1456,7 @@ body::before {
     .names-section .top-text {
         font-size: 17px !important;
         letter-spacing: 5px !important;
-        margin-bottom: 40px !important;
+        margin-bottom: 55px !important;
     }
     
     .names-section .name {
@@ -1578,7 +1588,7 @@ body::before {
     
     .names-section .top-text {
         font-size: 16px !important;
-        margin-bottom: 35px !important;
+        margin-bottom: 55px !important;
     }
     
     .names-section .name {
@@ -1623,7 +1633,7 @@ body::before {
     
     .names-section .top-text {
         font-size: 15px !important;
-        margin-bottom: 30px !important;
+        margin-bottom: 45px !important;
     }
     
     .names-section .name {
@@ -1668,7 +1678,7 @@ body::before {
     
     .names-section .top-text {
         font-size: 14px !important;
-        margin-bottom: 28px !important;
+        margin-bottom: 40px !important;
     }
     
     .names-section .name {
@@ -1712,7 +1722,7 @@ body::before {
     
     .names-section .top-text {
         font-size: 13px !important;
-        margin-bottom: 25px !important;
+        margin-bottom: 35px !important;
     }
     
     .names-section .name {
