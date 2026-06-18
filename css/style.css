@@ -638,31 +638,32 @@ body::before {
 .map-button {
     display: inline-block;
     padding: 14px 40px;
-    background: #d4c9bb !important;
-    color: #6d5a42 !important;
+    background: rgba(255, 255, 255, 0.5) !important; /* ← как у поля ввода */
+    color: #5a4a3a !important; /* ← чуть темнее для читаемости */
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important; /* ← добавлена рамка */
     cursor: pointer;
-    transition: none !important;
+    transition: all 0.3s ease !important;
     margin-bottom: 15px;
     -webkit-tap-highlight-color: transparent !important;
     -webkit-touch-callout: none;
 }
 
 .map-button:hover {
-    background: #6d5a42 !important;
-    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.7) !important; /* ← светлее при наведении */
+    color: #5a4a3a !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .map-button:active,
 .map-button:focus,
 .map-button:visited {
-    background: #d4c9bb !important;
-    color: #6d5a42 !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    color: #5a4a3a !important;
     outline: none !important;
     box-shadow: none !important;
 }
@@ -1114,38 +1115,39 @@ body::before {
 .submit-button {
     width: 100%;
     padding: 14px;
-    background: #d4c9bb !important;
-    color: #6d5a42 !important;
+    background: rgba(255, 255, 255, 0.5) !important; /* ← как у поля ввода */
+    color: #5a4a3a !important; /* ← чуть темнее для читаемости */
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important; /* ← добавлена рамка */
     border-radius: 5px;
     cursor: pointer;
-    transition: none !important;
+    transition: all 0.3s ease !important;
     margin-top: 10px;
     -webkit-tap-highlight-color: transparent !important;
     -webkit-touch-callout: none;
 }
 
 .submit-button:hover {
-    background: #d4c9bb !important;
-    color: #6d5a42 !important;
+    background: rgba(255, 255, 255, 0.7) !important; /* ← светлее при наведении */
+    color: #5a4a3a !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .submit-button:active,
 .submit-button:focus,
 .submit-button:visited {
-    background: #d4c9bb !important;
-    color: #6d5a42 !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    color: #5a4a3a !important;
     outline: none !important;
     box-shadow: none !important;
 }
 
 .submit-button:disabled {
-    background: #d4c9bb !important;
-    color: #6d5a42 !important;
+    background: rgba(255, 255, 255, 0.3) !important; /* ← более прозрачная */
+    color: #5a4a3a !important;
     opacity: 0.7 !important;
     cursor: not-allowed;
 }
