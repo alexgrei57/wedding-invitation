@@ -22,7 +22,7 @@
     src: url('../fonts/SloopScriptPro.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback; /* ← изменено с swap на fallback */
 }
 
 /* Общий контейнер для страниц 2-9 */
