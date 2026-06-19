@@ -486,38 +486,19 @@ body::before {
 
 .names-section .wedding-date {
     text-align: center !important;
-    margin: 30px 0 !important;
+    margin: 35px 0 !important;
     display: block;
 }
 
-.names-section .month {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px !important;
-    letter-spacing: 5px !important;
-    color: #000000;
-    text-transform: uppercase;
-    margin-bottom: -12px !important;
-    line-height: 0.9;
-    display: block;
-}
-
-.names-section .day {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 120px !important;
-    font-weight: 300;
-    color: #000000;
-    line-height: 0.7;
-    margin: 0;
-    display: block;
-}
-
-.names-section .year {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px !important;
-    font-weight: 300;
-    letter-spacing: 5px !important;
-    color: #000000;
-    margin-top: 8px !important;
+.names-section .full-date {
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive !important;
+    font-size: 28px !important;
+    font-style: italic !important;
+    font-weight: 400;
+    color: #8B7355 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
     display: block;
 }
 
@@ -1476,6 +1457,9 @@ body::before {
         margin-bottom: 30px !important;
     }
     
+    .names-section .full-date {
+    font-size: 24px !important;
+}
     .names-section .month {
         font-size: 19px !important;
         letter-spacing: 5px !important;
@@ -1661,6 +1645,10 @@ body::before {
         margin-bottom: 30px !important;
     }
     
+    .names-section .full-date {
+    font-size: 22px !important;
+}
+
     .names-section .month {
         font-size: 17px !important;
     }
@@ -1705,6 +1693,10 @@ body::before {
         margin-bottom: 28px !important;
     }
     
+    .names-section .full-date {
+    font-size: 20px !important;
+}
+
     .names-section .month {
         font-size: 16px !important;
     }

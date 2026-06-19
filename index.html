@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=153">
+    <link rel="stylesheet" href="css/style.css?v=154">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -115,11 +115,9 @@
                 <span class="ampersand">&</span>
                 <span class="name">ЕВГЕНИЯ</span>
             </h1>
-            <div class="wedding-date">
-                <p class="month">СЕНТЯБРЬ</p>
-                <p class="day">12</p>
-                <p class="year">2026</p>
-            </div>
+<div class="wedding-date">
+    <p class="full-date" id="fullDate"></p>
+</div>
             <!--<div class="scroll-indicator" onclick="showSection(2)">
                 <svg width="30" height="20" viewBox="0 0 30 20" fill="none">
                     <path d="M5 5L15 15L25 5" stroke="#1a1a1a" stroke-width="1.5"/>
@@ -670,5 +668,27 @@ function validateName(input) {
     <!-- ======================================================= -->
 
     <script src="js/main.js"></script>
+    <script>
+// Форматируем дату свадьбы
+function formatWeddingDate() {
+    const dateElement = document.getElementById('fullDate');
+    if (!dateElement) return;
+    
+    const weddingDate = new Date('2026-09-12'); // Дата свадьбы
+    
+    const daysOfWeek = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+    const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    
+    const dayOfWeek = daysOfWeek[weddingDate.getDay()];
+    const day = weddingDate.getDate();
+    const month = months[weddingDate.getMonth()];
+    const year = weddingDate.getFullYear();
+    
+    dateElement.textContent = `${dayOfWeek}, ${day} ${month}, ${year}`;
+}
+
+// Вызываем после загрузки страницы
+document.addEventListener('DOMContentLoaded', formatWeddingDate);
+</script>
 </body>
 </html>
