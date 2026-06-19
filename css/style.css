@@ -492,10 +492,10 @@ body::before {
 
 .names-section .full-date {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive !important;
-    font-size: 28px !important;
+    font-size: 36px !important;
     font-style: italic !important;
     font-weight: 400;
-    color: #8B7355 !important;
+    color: #786246 !important;
     letter-spacing: 1px !important;
     line-height: 1.4 !important;
     margin: 0 !important;
@@ -1458,7 +1458,7 @@ body::before {
     }
     
     .names-section .full-date {
-    font-size: 24px !important;
+    font-size: 38px !important;
 }
     .names-section .month {
         font-size: 19px !important;
@@ -1475,7 +1475,7 @@ body::before {
     }
     
     .names-section .wedding-date {
-        margin: 25px 0 !important;
+        margin: 42px 0 !important;
     }
     
     .music-toggle {
@@ -1613,7 +1613,7 @@ body::before {
     }
     
     .names-section .wedding-date {
-        margin: 30px 0 !important;
+        margin: 42px 0 !important;
     }
     
     .music-toggle {
@@ -1646,7 +1646,7 @@ body::before {
     }
     
     .names-section .full-date {
-    font-size: 22px !important;
+    font-size: 36px !important;
 }
 
     .names-section .month {
@@ -1662,7 +1662,7 @@ body::before {
     }
     
     .names-section .wedding-date {
-        margin: 25px 0 !important;
+        margin: 40px 0 !important;
     }
     
     .music-toggle {
@@ -1694,7 +1694,7 @@ body::before {
     }
     
     .names-section .full-date {
-    font-size: 20px !important;
+    font-size: 22px !important;
 }
 
     .names-section .month {
@@ -1710,7 +1710,7 @@ body::before {
     }
     
     .names-section .wedding-date {
-        margin: 22px 0 !important;
+        margin: 32px 0 !important;
     }
     
     .music-toggle {
