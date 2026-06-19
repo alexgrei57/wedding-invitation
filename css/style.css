@@ -931,7 +931,7 @@ body::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 32% center;
+    object-position: 35% center;
     display: block;
 }
 
@@ -1580,7 +1580,7 @@ body::before {
     .faq-block-text { font-size: 11px; }
     
     .countdown-photo-container { height: 70vh; }
-    .countdown-text { font-size: 30px; }
+    .countdown-text { font-size: 37px; }
     .countdown-number { font-size: 36px; }
     .countdown-label { font-size: 10px; }
     .countdown-timer { gap: 10px; }
