@@ -1238,7 +1238,7 @@ body::before {
     color: #5a4a3a !important;
     margin-bottom: 30px !important;
     letter-spacing: 1px !important;
-    line-height: 1 !important;
+    line-height: 0.60 !important;
 }
 
 /* Контейнер для пожеланий */
@@ -1251,7 +1251,7 @@ body::before {
 /* Элемент пожелания (аналог timeline-item) */
 .wishes-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* ← Изменил с center на flex-start */
     margin-bottom: 30px;
     text-align: left;
 }
@@ -1261,6 +1261,7 @@ body::before {
     flex: 0 0 120px;
     text-align: center;
     padding-right: 15px;
+    padding-top: 5px; /* ← Добавил отступ сверху */
 }
 
 .wishes-title-item {
@@ -1271,6 +1272,7 @@ body::before {
     color: #8B7355 !important;
     line-height: 1.2 !important;
     margin: 0 !important;
+    margin-top: 5px !important; /* ← Добавил небольшой отступ сверху для выравнивания с первой строкой описания */
 }
 
 /* Вертикальный разделитель */
@@ -1601,6 +1603,7 @@ body::before {
 .wishes-title {
     font-size: 42px !important;
     margin-bottom: 25px !important;
+    line-height: 0.8 !important;
 }
 
 .wishes-item {
@@ -1610,6 +1613,7 @@ body::before {
 .wishes-left {
     flex: 0 0 100px;
     padding-right: 12px;
+    padding-top: 3px;
 }
 
 .wishes-title-item {
@@ -1723,12 +1727,14 @@ body::before {
         margin-top: 40px !important;
     }
 
-    .wishes-title {
+.wishes-title {
     font-size: 38px !important;
+    line-height: 0.75 !important;
 }
 
 .wishes-left {
     flex: 0 0 90px;
+    padding-top: 2px;
 }
 
 .wishes-title-item {
