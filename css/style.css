@@ -1675,7 +1675,7 @@ body::before {
     }
     
     .music-toggle {
-        margin-top: 50px !important;
+        margin-top: 10px !important;
     }
 }
 
@@ -1738,7 +1738,7 @@ body::before {
 }
 
 .wishes-title-item {
-    font-size: 28px !important;
+    font-size: 24px !important;
 }
 
 .wishes-divider-vertical {
