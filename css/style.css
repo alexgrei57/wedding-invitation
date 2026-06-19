@@ -262,7 +262,7 @@ body::before {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 20vh;
+    padding-top: clamp(15vh, 20vh, 25vh);
 }
 
 /* ===== Names секция - АДАПТИВНАЯ ===== */
@@ -306,9 +306,9 @@ body::before {
 
 .main-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 44px;
+    font-size: clamp(32px, 8vw, 44px);
     font-weight: 600;
-    letter-spacing: 14px;
+    letter-spacing: clamp(8px, 2vw, 14px);
     color: #5a4a3a;
     margin-bottom: 0;
     text-transform: uppercase;
@@ -316,12 +316,12 @@ body::before {
 
 .subtitle {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-    font-size: 60px;
+    font-size: clamp(48px, 12vw, 60px);
     font-style: normal;
     font-weight: 400;
     color: #5a4a3a;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
+    margin-bottom: clamp(10px, 2vh, 15px);
+    letter-spacing: clamp(1px, 0.5vw, 2px);
 }
 
 .heart-icon {
@@ -329,7 +329,7 @@ body::before {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 20px 0 !important;
+    margin: clamp(15px, 3vh, 20px) 0 !important;
     opacity: 0.8;
     animation: heartbeat 2s infinite;
 }
@@ -345,8 +345,8 @@ body::before {
 }
 
 .heart-icon svg {
-    width: 80px;
-    height: 80px;
+    width: clamp(60px, 15vw, 80px);
+    height: clamp(60px, 15vw, 80px);
 }
 
 .fingerprint-heart {
@@ -357,13 +357,13 @@ body::before {
 
 .tap-hint {
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: clamp(10px, 2.5vw, 12px);
     color: #6a5a4a;
     line-height: 1.6;
     margin: 0 !important;
     padding: 0;
     cursor: default;
-    letter-spacing: 1px;
+    letter-spacing: clamp(0.5px, 0.2vw, 1px);
     font-weight: 400;
     pointer-events: none;
 }
@@ -1467,6 +1467,35 @@ body::before {
 
 /* ===== АДАПТАЦИЯ: ПЛАНШЕТЫ И БОЛЬШИЕ ТЕЛЕФОНЫ (768px) ===== */
 @media (max-width: 768px) {
+    /* Первая страница */
+    .hero-section .content-wrapper {
+        padding-top: clamp(12vh, 18vh, 22vh);
+    }
+    
+    .main-title { 
+        font-size: clamp(24px, 6vw, 32px);
+        letter-spacing: clamp(4px, 1.5vw, 6px);
+    }
+    
+    .subtitle { 
+        font-size: clamp(44px, 11vw, 60px);
+    }
+    
+    .heart-icon svg {
+        width: clamp(55px, 14vw, 70px);
+        height: clamp(55px, 14vw, 70px);
+    }
+    
+    .heart-icon {
+        margin: clamp(12px, 2.5vh, 18px) 0 !important;
+    }
+    
+    .tap-hint {
+        font-size: clamp(9px, 2.2vw, 11px);
+        letter-spacing: clamp(0.3px, 0.15vw, 0.8px);
+    }
+    
+    /* Вторая страница */
     .names-section .content-wrapper {
         padding: clamp(50px, 8vh, 70px) 15px clamp(20px, 3vh, 30px) 15px !important;
     }
@@ -1520,24 +1549,7 @@ body::before {
         height: clamp(48px, 10vw, 52px);
     }
     
-    .main-title { 
-        font-size: clamp(26px, 6vw, 32px);
-        letter-spacing: clamp(5px, 1.5vw, 6px);
-    }
-    
-    .subtitle { 
-        font-size: clamp(52px, 12vw, 68px);
-    }
-    
-    .heart-icon svg {
-        width: clamp(65px, 15vw, 75px);
-        height: clamp(65px, 15vw, 75px);
-    }
-    
-    .tap-hint {
-        font-size: clamp(11px, 2.5vw, 12px);
-    }
-    
+    /* Третья страница */
     .dear-text {
         font-size: clamp(32px, 7vw, 42px);
     }
@@ -1547,6 +1559,7 @@ body::before {
         line-height: 1.7;
     }
     
+    /* Четвёртая страница */
     .location-title { 
         font-size: clamp(26px, 6vw, 30px); 
         letter-spacing: clamp(4px, 1vw, 5px); 
@@ -1565,6 +1578,7 @@ body::before {
         font-size: clamp(11px, 2.5vw, 12px);
     }
     
+    /* Пятая страница */
     .timeline-main-title { 
         font-size: clamp(40px, 9vw, 52px); 
         letter-spacing: 1px; 
@@ -1590,6 +1604,7 @@ body::before {
         height: clamp(65px, 15vw, 80px);
     }
     
+    /* Шестая страница */
     .dresscode-title { 
         font-size: clamp(34px, 8vw, 38px); 
         letter-spacing: clamp(4px, 1vw, 4px); 
@@ -1612,6 +1627,7 @@ body::before {
         height: clamp(36px, 8vw, 40px);
     }
     
+    /* Седьмая страница */
     .wishes-title {
         font-size: clamp(38px, 9vw, 42px) !important;
         line-height: 0.75 !important;
@@ -1640,6 +1656,7 @@ body::before {
         font-size: clamp(12px, 3vw, 13px);
     }
     
+    /* Восьмая страница */
     .countdown-photo-container { 
         height: clamp(65vh, 70vh, 75vh); 
     }
@@ -1664,6 +1681,7 @@ body::before {
         min-width: clamp(47px, 12vw, 50px); 
     }
     
+    /* Девятая страница */
     .rsvp-title { 
         font-size: clamp(30px, 7vw, 32px); 
         letter-spacing: clamp(4px, 1vw, 5px); 
@@ -1704,6 +1722,7 @@ body::before {
         font-size: clamp(30px, 7vw, 34px); 
     }
     
+    /* Общие стили */
     .content-wrapper {
         padding: clamp(16px, 3vw, 20px);
         margin: 0 clamp(12px, 2vw, 15px);
@@ -1734,6 +1753,29 @@ body::before {
 
 /* ===== АДАПТАЦИЯ: СРЕДНИЕ ТЕЛЕФОНЫ (480px) ===== */
 @media (max-width: 480px) {
+    /* Первая страница */
+    .hero-section .content-wrapper {
+        padding-top: clamp(10vh, 16vh, 20vh);
+    }
+    
+    .main-title { 
+        font-size: clamp(22px, 6vw, 28px);
+    }
+    
+    .subtitle { 
+        font-size: clamp(40px, 11vw, 52px);
+    }
+    
+    .heart-icon svg {
+        width: clamp(50px, 13vw, 65px);
+        height: clamp(50px, 13vw, 65px);
+    }
+    
+    .tap-hint {
+        font-size: clamp(9px, 2vw, 10px);
+    }
+    
+    /* Вторая страница */
     .names-section .content-wrapper {
         padding: clamp(45px, 8vh, 60px) 15px clamp(18px, 3vh, 25px) 15px !important;
     }
@@ -1778,6 +1820,34 @@ body::before {
 
 /* ===== АДАПТАЦИЯ: МАЛЕНЬКИЕ ТЕЛЕФОНЫ (375px) ===== */
 @media (max-width: 375px) {
+    /* Первая страница */
+    .hero-section .content-wrapper {
+        padding-top: clamp(8vh, 14vh, 18vh);
+    }
+    
+    .main-title { 
+        font-size: clamp(20px, 5.5vw, 26px);
+        letter-spacing: clamp(3px, 1vw, 5px);
+    }
+    
+    .subtitle { 
+        font-size: clamp(36px, 10vw, 48px);
+    }
+    
+    .heart-icon svg {
+        width: clamp(45px, 12vw, 60px);
+        height: clamp(45px, 12vw, 60px);
+    }
+    
+    .heart-icon {
+        margin: clamp(10px, 2vh, 15px) 0 !important;
+    }
+    
+    .tap-hint {
+        font-size: clamp(8px, 2vw, 9px);
+    }
+    
+    /* Вторая страница */
     .names-section .content-wrapper {
         padding: clamp(40px, 8vh, 55px) 15px clamp(15px, 3vh, 22px) 15px !important;
     }
@@ -1822,6 +1892,30 @@ body::before {
 
 /* ===== АДАПТАЦИЯ: ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (320px) ===== */
 @media (max-width: 320px) {
+    /* Первая страница */
+    .hero-section .content-wrapper {
+        padding-top: 8vh;
+    }
+    
+    .main-title { 
+        font-size: 18px;
+        letter-spacing: 3px;
+    }
+    
+    .subtitle { 
+        font-size: 34px;
+    }
+    
+    .heart-icon svg {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .tap-hint {
+        font-size: 8px;
+    }
+    
+    /* Вторая страница */
     .names-section .content-wrapper {
         padding: 35px 12px 15px 12px !important;
     }
