@@ -1232,42 +1232,91 @@ body::before {
 
 .wishes-title {
     font-family: 'Sloop Script Pro', 'Playfair Display', cursive !important;
-    font-size: 48px !important; /* ↓ было 58px */
+    font-size: 48px !important;
     font-style: normal !important;
     font-weight: 400 !important;
     color: #5a4a3a !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 30px !important;
     letter-spacing: 1px !important;
-    line-height: 0.65 !important; /* ↓ было 1.1 — уменьшаем отступ между строками */
+    line-height: 1 !important;
 }
 
-.wishes-block {
-    max-width: 280px;
-    margin-bottom: 3px !important;
+/* Контейнер для пожеланий */
+.wishes-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.wishes-text {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 14px !important; /* ↓ было 16px */
-    font-weight: 400 !important;
-    letter-spacing: 2px !important;
-    color: #5a4a3a !important;
-    text-transform: uppercase !important;
-    line-height: 1.4 !important; /* ↓ было 1.8 */
-    text-align: center !important;
-    margin-bottom: 5px !important;
-}
-
-.wishes-divider {
-    margin: 2px 0 !important; /* ↓ уменьшаем отступ разделителя */
+/* Элемент пожелания (аналог timeline-item) */
+.wishes-item {
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
+    text-align: left;
 }
 
-.wishes-divider svg {
-    opacity: 0.6;
-    max-height: 20px !important; /* ↓ уменьшаем размер разделителя */
+/* Левая часть: название */
+.wishes-left {
+    flex: 0 0 120px;
+    text-align: center;
+    padding-right: 15px;
+}
+
+.wishes-title-item {
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive !important;
+    font-size: 36px !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    color: #8B7355 !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+}
+
+/* Вертикальный разделитель */
+.wishes-divider-vertical {
+    flex: 0 0 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #A89880, transparent);
+    margin: 0 15px;
+}
+
+/* Правая часть: описание */
+.wishes-right {
+    flex: 1;
+    padding-left: 15px;
+}
+
+.wishes-desc {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    color: #4a4a4a !important;
+    font-weight: 300 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    text-align: left !important;
+}
+
+.wishes-desc p {
+    margin: 0 0 8px 0;
+}
+
+.wishes-desc p:last-child {
+    margin-bottom: 0;
+}
+
+/* Ссылки контактов */
+.contact-link {
+    color: #8B7355;
+    text-decoration: none;
+    border-bottom: 1px solid #8B7355;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #5a4a3a;
+    border-bottom-color: #5a4a3a;
 }
 
 /* ===== Музыка ===== */
@@ -1548,28 +1597,33 @@ body::before {
     .footer-main { font-size: 12px; letter-spacing: 3px; }
     .footer-sub { font-size: 34px; }
     
+/* Пожелания на мобильных */
 .wishes-title {
-    font-size: 52px !important; /* ↓ уменьшаем для мобильных */
-    margin-bottom: 15px !important;
-    line-height: 0.65 !important;
+    font-size: 42px !important;
+    margin-bottom: 25px !important;
 }
 
-.wishes-title + .wishes-and {
-    margin-top: -10px;
-    margin-bottom: -10px;
-    font-size: 36px;
+.wishes-item {
+    margin-bottom: 25px;
 }
-    
-.wishes-text {
-    font-size: 13px !important;
-    letter-spacing: 1px !important;
-    line-height: 1.6 !important;
-    margin-bottom: 3px !important;
+
+.wishes-left {
+    flex: 0 0 100px;
+    padding-right: 12px;
 }
-    
-    .wishes-block {
-        max-width: 280px;
-    }
+
+.wishes-title-item {
+    font-size: 32px !important;
+}
+
+.wishes-divider-vertical {
+    height: 70px;
+    margin: 0 12px;
+}
+
+.wishes-desc {
+    font-size: 12px !important;
+}
     
     .dear-text {
         font-size: 48px;
@@ -1668,6 +1722,22 @@ body::before {
     .music-toggle {
         margin-top: 40px !important;
     }
+
+    .wishes-title {
+    font-size: 38px !important;
+}
+
+.wishes-left {
+    flex: 0 0 90px;
+}
+
+.wishes-title-item {
+    font-size: 28px !important;
+}
+
+.wishes-divider-vertical {
+    height: 60px;
+}
 }
 
 /* Galaxy S5 и маленькие экраны (360px) */
@@ -1758,7 +1828,7 @@ body::before {
     }
     
     .music-toggle {
-        margin-top: 30px !important;
+        margin-top: 5px !important;
     }
 }
 
