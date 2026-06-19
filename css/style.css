@@ -271,7 +271,7 @@ body::before {
     border: none !important;
     box-shadow: none !important;
     margin: 0 !important;
-    padding: 80px 15px 30px 15px !important; /* ↑ Увеличил верхний отступ до 80px */
+    padding: 80px 15px 30px 15px !important;
     min-height: 100vh !important;
     height: auto !important;
     position: relative;
@@ -282,14 +282,12 @@ body::before {
     align-items: center !important;
 }
 
-/* Верхняя часть с текстом - не сжимается */
 .names-section .top-text,
 .names-section .couple-names,
 .names-section .wedding-date {
     flex-shrink: 0;
 }
 
-/* Names секция */
 .names-section {
     padding: 0;
     z-index: 15;
@@ -444,7 +442,7 @@ body::before {
     letter-spacing: 6px !important;
     color: #000000;
     margin-top: 0;
-    margin-bottom: 55px !important; /* ↑ Увеличил отступ */
+    margin-bottom: 55px !important;
     text-transform: uppercase;
     text-align: center !important;
     width: 100%;
@@ -454,7 +452,7 @@ body::before {
 .names-section .couple-names {
     text-align: center !important;
     margin-top: 0;
-    margin-bottom: 40px !important; /* ↑ Увеличил отступ */
+    margin-bottom: 40px !important;
     width: 100%;
     display: block;
 }
@@ -619,14 +617,14 @@ body::before {
 .map-button {
     display: inline-block;
     padding: 14px 40px;
-    background: rgba(255, 255, 255, 0.5) !important; /* ← как у поля ввода */
-    color: #5a4a3a !important; /* ← чуть темнее для читаемости */
+    background: rgba(255, 255, 255, 0.5) !important;
+    color: #5a4a3a !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.6) !important; /* ← добавлена рамка */
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
     cursor: pointer;
     transition: all 0.3s ease !important;
     margin-bottom: 15px;
@@ -635,7 +633,7 @@ body::before {
 }
 
 .map-button:hover {
-    background: rgba(255, 255, 255, 0.7) !important; /* ← светлее при наведении */
+    background: rgba(255, 255, 255, 0.7) !important;
     color: #5a4a3a !important;
     border-color: rgba(255, 255, 255, 0.8) !important;
 }
@@ -705,7 +703,6 @@ body::before {
     transform: translateY(0);
 }
 
-/* Задержки для каждого элемента тайминга */
 .timeline-item:nth-child(1) { transition-delay: 0.3s; }
 .timeline-item:nth-child(2) { transition-delay: 0.6s; }
 .timeline-item:nth-child(3) { transition-delay: 0.9s; }
@@ -715,7 +712,6 @@ body::before {
 .timeline-item:nth-child(7) { transition-delay: 2.1s; }
 .timeline-item:nth-child(8) { transition-delay: 2.4s; }
 
-/* Левая часть: время + название */
 .timeline-left {
     flex: 0 0 90px;
     text-align: center;
@@ -741,7 +737,6 @@ body::before {
     line-height: 1.2;
 }
 
-/* Центральная часть: вертикальный разделитель */
 .timeline-divider {
     flex: 0 0 1px;
     height: 80px;
@@ -749,7 +744,6 @@ body::before {
     margin: 0 12px;
 }
 
-/* Правая часть: описание */
 .timeline-right {
     flex: 1;
     padding-left: 12px;
@@ -1106,13 +1100,13 @@ body::before {
 .submit-button {
     width: 100%;
     padding: 14px;
-    background: rgba(255, 255, 255, 0.5) !important; /* ← как у поля ввода */
-    color: #5a4a3a !important; /* ← чуть темнее для читаемости */
+    background: rgba(255, 255, 255, 0.5) !important;
+    color: #5a4a3a !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border: 1px solid rgba(255, 255, 255, 0.6) !important; /* ← добавлена рамка */
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease !important;
@@ -1122,7 +1116,7 @@ body::before {
 }
 
 .submit-button:hover {
-    background: rgba(255, 255, 255, 0.7) !important; /* ← светлее при наведении */
+    background: rgba(255, 255, 255, 0.7) !important;
     color: #5a4a3a !important;
     border-color: rgba(255, 255, 255, 0.8) !important;
 }
@@ -1137,7 +1131,7 @@ body::before {
 }
 
 .submit-button:disabled {
-    background: rgba(255, 255, 255, 0.3) !important; /* ← более прозрачная */
+    background: rgba(255, 255, 255, 0.3) !important;
     color: #5a4a3a !important;
     opacity: 0.7 !important;
     cursor: not-allowed;
@@ -1241,27 +1235,24 @@ body::before {
     line-height: 0.60 !important;
 }
 
-/* Контейнер для пожеланий */
 .wishes-container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
 
-/* Элемент пожелания (аналог timeline-item) */
 .wishes-item {
     display: flex;
-    align-items: flex-start; /* ← Изменил с center на flex-start */
+    align-items: flex-start;
     margin-bottom: 30px;
     text-align: left;
 }
 
-/* Левая часть: название */
 .wishes-left {
     flex: 0 0 120px;
     text-align: center;
     padding-right: 15px;
-    padding-top: 5px; /* ← Добавил отступ сверху */
+    padding-top: 5px;
 }
 
 .wishes-title-item {
@@ -1272,10 +1263,9 @@ body::before {
     color: #8B7355 !important;
     line-height: 1.2 !important;
     margin: 0 !important;
-    margin-top: 5px !important; /* ← Добавил небольшой отступ сверху для выравнивания с первой строкой описания */
+    margin-top: 5px !important;
 }
 
-/* Вертикальный разделитель */
 .wishes-divider-vertical {
     flex: 0 0 1px;
     height: 80px;
@@ -1283,7 +1273,6 @@ body::before {
     margin: 0 15px;
 }
 
-/* Правая часть: описание */
 .wishes-right {
     flex: 1;
     padding-left: 15px;
@@ -1308,7 +1297,6 @@ body::before {
     margin-bottom: 0;
 }
 
-/* Ссылки контактов */
 .contact-link {
     color: #8B7355;
     text-decoration: none;
@@ -1378,12 +1366,12 @@ body::before {
 
 /* ===== Иконка управления музыкой на 2-й странице ===== */
 .music-toggle {
-    margin-top: 60px !important; /* ↑ Увеличил отступ */
+    margin-top: 60px !important;
     margin-bottom: 10px !important;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* ↑ Увеличил gap */
+    gap: 10px;
     opacity: 0;
     animation: fadeInOpacity 1.5s ease-out forwards;
     animation-delay: 1.6s;
@@ -1414,7 +1402,6 @@ body::before {
     transform: scale(1.1);
 }
 
-/* ===== Переключение иконок Play/Stop ===== */
 .music-toggle-icon .icon-play,
 .music-toggle-icon .icon-stop {
     display: none;
@@ -1466,375 +1453,414 @@ body::before {
     stroke: currentColor;
 }
 
-/* Когда музыка играет */
 .music-toggle.playing .music-toggle-icon {
     background: rgba(139, 115, 85, 0.3);
     border-color: rgba(139, 115, 85, 0.5);
     color: #8B7355;
 }
 
-/* Когда музыка на паузе */
 .music-toggle:not(.playing) .music-toggle-icon {
     background: rgba(255, 255, 255, 0.4);
     border-color: rgba(255, 255, 255, 0.6);
     color: #5a4a3a;
 }
 
-/* ===== АДАПТИВНОСТЬ ДЛЯ 2-й СТРАНИЦЫ ===== */
-
-/* Планшеты и большие телефоны (768px и меньше) */
+/* ===== АДАПТАЦИЯ: ПЛАНШЕТЫ И БОЛЬШИЕ ТЕЛЕФОНЫ (768px) ===== */
 @media (max-width: 768px) {
     .names-section .content-wrapper {
-        padding: 45px 15px 25px 15px !important;
+        padding: clamp(50px, 8vh, 70px) 15px clamp(20px, 3vh, 30px) 15px !important;
     }
     
     .names-section .top-text {
-        font-size: 17px !important;
-        letter-spacing: 5px !important;
-        margin-bottom: 55px !important;
+        font-size: clamp(15px, 3.5vw, 17px) !important;
+        letter-spacing: clamp(4px, 1vw, 5px) !important;
+        margin-bottom: clamp(40px, 6vh, 55px) !important;
     }
     
     .names-section .name {
-        font-size: 50px !important;
-        letter-spacing: 7px !important;
+        font-size: clamp(40px, 10vw, 50px) !important;
+        letter-spacing: clamp(5px, 1.5vw, 7px) !important;
     }
     
     .names-section .ampersand {
-        font-size: 40px !important;
-        margin: 12px 0;
+        font-size: clamp(34px, 9vw, 40px) !important;
+        margin: clamp(12px, 2vh, 15px) 0;
     }
     
     .names-section .couple-names {
-        margin-bottom: 30px !important;
+        margin-bottom: clamp(30px, 5vh, 40px) !important;
     }
     
     .names-section .full-date {
-    font-size: 38px !important;
-}
+        font-size: clamp(30px, 8vw, 38px) !important;
+    }
+    
     .names-section .month {
-        font-size: 19px !important;
-        letter-spacing: 5px !important;
+        font-size: clamp(16px, 4vw, 19px) !important;
     }
     
     .names-section .day {
-        font-size: 110px !important;
+        font-size: clamp(80px, 20vw, 110px) !important;
     }
     
     .names-section .year {
-        font-size: 17px !important;
-        letter-spacing: 5px !important;
+        font-size: clamp(15px, 3.5vw, 17px) !important;
     }
     
     .names-section .wedding-date {
-        margin: 42px 0 !important;
+        margin: clamp(35px, 6vh, 42px) 0 !important;
     }
     
     .music-toggle {
-        margin-top: 35px !important;
+        margin-top: clamp(30px, 5vh, 40px) !important;
     }
     
     .music-toggle-icon {
-        width: 52px;
-        height: 52px;
+        width: clamp(48px, 10vw, 52px);
+        height: clamp(48px, 10vw, 52px);
     }
     
     .main-title { 
-        font-size: 32px;
-        letter-spacing: 6px;
+        font-size: clamp(26px, 6vw, 32px);
+        letter-spacing: clamp(5px, 1.5vw, 6px);
     }
     
     .subtitle { 
-        font-size: 68px;
+        font-size: clamp(52px, 12vw, 68px);
+    }
+    
+    .heart-icon svg {
+        width: clamp(65px, 15vw, 75px);
+        height: clamp(65px, 15vw, 75px);
+    }
+    
+    .tap-hint {
+        font-size: clamp(11px, 2.5vw, 12px);
+    }
+    
+    .dear-text {
+        font-size: clamp(32px, 7vw, 42px);
+    }
+    
+    .invitation-text p {
+        font-size: clamp(12px, 3vw, 13px);
+        line-height: 1.7;
     }
     
     .location-title { 
-        font-size: 30px; 
-        letter-spacing: 5px; 
+        font-size: clamp(26px, 6vw, 30px); 
+        letter-spacing: clamp(4px, 1vw, 5px); 
     }
     
-    .location-subtitle { font-size: 52px; }
+    .location-subtitle { 
+        font-size: clamp(26px, 6vw, 32px); 
+    }
+    
+    .location-text p {
+        font-size: clamp(12px, 3vw, 13px);
+    }
+    
+    .map-button {
+        padding: clamp(12px, 3vw, 14px) clamp(30px, 8vw, 40px);
+        font-size: clamp(11px, 2.5vw, 12px);
+    }
     
     .timeline-main-title { 
-        font-size: 52px; 
+        font-size: clamp(40px, 9vw, 52px); 
         letter-spacing: 1px; 
     }
-
+    
+    .timeline-time {
+        font-size: clamp(52px, 12vw, 70px);
+    }
+    
+    .timeline-event-name {
+        font-size: clamp(14px, 3.5vw, 16px);
+    }
+    
+    .timeline-desc p {
+        font-size: clamp(12px, 3vw, 13px);
+    }
+    
+    .timeline-left {
+        flex: 0 0 clamp(85px, 20vw, 90px);
+    }
+    
+    .timeline-divider {
+        height: clamp(65px, 15vw, 80px);
+    }
+    
+    .dresscode-title { 
+        font-size: clamp(34px, 8vw, 38px); 
+        letter-spacing: clamp(4px, 1vw, 4px); 
+    }
+    
+    .dresscode-title .dresscode-code { 
+        font-size: clamp(38px, 9vw, 42px); 
+    }
+    
+    .dresscode-main-text { 
+        font-size: clamp(17px, 4vw, 18px); 
+    }
+    
+    .dresscode-text { 
+        font-size: clamp(12px, 2.8vw, 12px); 
+    }
+    
+    .color-swatch {
+        width: clamp(36px, 8vw, 40px);
+        height: clamp(36px, 8vw, 40px);
+    }
+    
+    .wishes-title {
+        font-size: clamp(38px, 9vw, 42px) !important;
+        line-height: 0.75 !important;
+    }
+    
+    .wishes-left {
+        flex: 0 0 clamp(90px, 22vw, 100px);
+        padding-right: 12px;
+        padding-top: 3px;
+    }
+    
+    .wishes-title-item {
+        font-size: clamp(28px, 7vw, 32px) !important;
+    }
+    
+    .wishes-divider-vertical {
+        height: clamp(65px, 15vw, 70px);
+        margin: 0 12px;
+    }
+    
+    .wishes-desc {
+        font-size: clamp(12px, 2.8vw, 12px) !important;
+    }
+    
+    .contact-link {
+        font-size: clamp(12px, 3vw, 13px);
+    }
+    
+    .countdown-photo-container { 
+        height: clamp(65vh, 70vh, 75vh); 
+    }
+    
+    .countdown-text { 
+        font-size: clamp(26px, 6vw, 30px); 
+    }
+    
+    .countdown-number { 
+        font-size: clamp(34px, 8vw, 36px); 
+    }
+    
+    .countdown-label { 
+        font-size: clamp(9px, 2.2vw, 10px); 
+    }
+    
+    .countdown-timer { 
+        gap: clamp(9px, 2vw, 10px); 
+    }
+    
+    .countdown-item { 
+        min-width: clamp(47px, 12vw, 50px); 
+    }
+    
+    .rsvp-title { 
+        font-size: clamp(30px, 7vw, 32px); 
+        letter-spacing: clamp(4px, 1vw, 5px); 
+    }
+    
+    .rsvp-subtitle { 
+        font-size: clamp(42px, 9vw, 52px); 
+    }
+    
+    .rsvp-intro { 
+        font-size: clamp(11px, 2.5vw, 11px); 
+    }
+    
+    .form-label { 
+        font-size: clamp(13px, 3.2vw, 14px); 
+    }
+    
+    .form-input { 
+        font-size: clamp(12px, 2.8vw, 12px); 
+        padding: clamp(11px, 2.5vw, 12px) clamp(13px, 3vw, 15px);
+    }
+    
+    .radio-label, .checkbox-label { 
+        font-size: clamp(12px, 2.8vw, 12px); 
+    }
+    
+    .submit-button {
+        font-size: clamp(12px, 3vw, 13px);
+        padding: clamp(13px, 3vw, 14px);
+    }
+    
+    .footer-main { 
+        font-size: clamp(11px, 2.5vw, 12px); 
+        letter-spacing: clamp(2.5px, 0.8vw, 3px); 
+    }
+    
+    .footer-sub { 
+        font-size: clamp(30px, 7vw, 34px); 
+    }
+    
     .content-wrapper {
-        padding: 15px 15px;
-        margin: 0 10px;
+        padding: clamp(16px, 3vw, 20px);
+        margin: 0 clamp(12px, 2vw, 15px);
     }
     
     .section, .slide-section {
         padding: 0 !important;
     }
     
-    .dresscode-title { font-size: 38px; letter-spacing: 4px; }
-    .dresscode-title .dresscode-code { font-size: 42px; }
-    .dresscode-main-text { font-size: 18px; }
-    .dresscode-text { font-size: 12px; }
-    .dresscode-photo { height: 150px; }
-    
-    .faq-title { font-size: 40px; }
-    .faq-subtitle { font-size: 11px; letter-spacing: 2px; }
-    .faq-block-title { font-size: 18px; letter-spacing: 3px; }
-    .faq-block-text { font-size: 11px; }
-    
-    .countdown-photo-container { height: 70vh; }
-    .countdown-text { font-size: 37px; }
-    .countdown-number { font-size: 36px; }
-    .countdown-label { font-size: 10px; }
-    .countdown-timer { gap: 10px; }
-    .countdown-item { min-width: 50px; }
-    
-    .rsvp-title { 
-        font-size: 32px; 
-        letter-spacing: 5px; 
+    .faq-title { 
+        font-size: clamp(34px, 8vw, 40px); 
     }
-    .rsvp-subtitle { font-size: 52px; }
-    .rsvp-intro { font-size: 11px; }
-    .form-label { font-size: 14px; }
-    .form-input { font-size: 12px; }
-    .radio-label, .checkbox-label { font-size: 12px; }
     
-    .footer-main { font-size: 12px; letter-spacing: 3px; }
-    .footer-sub { font-size: 34px; }
+    .faq-subtitle { 
+        font-size: clamp(11px, 2.5vw, 11px); 
+        letter-spacing: clamp(2px, 0.5vw, 2px); 
+    }
     
-/* Пожелания на мобильных */
-.wishes-title {
-    font-size: 42px !important;
-    margin-bottom: 25px !important;
-    line-height: 0.8 !important;
-}
-
-.wishes-item {
-    margin-bottom: 25px;
-}
-
-.wishes-left {
-    flex: 0 0 100px;
-    padding-right: 12px;
-    padding-top: 3px;
-}
-
-.wishes-title-item {
-    font-size: 24px !important;
-}
-
-.wishes-divider-vertical {
-    height: 70px;
-    margin: 0 12px;
-}
-
-.wishes-desc {
-    font-size: 12px !important;
-}
+    .faq-block-title { 
+        font-size: clamp(17px, 4vw, 18px); 
+        letter-spacing: clamp(3px, 0.8vw, 3px); 
+    }
     
-    .dear-text {
-        font-size: 48px;
+    .faq-block-text { 
+        font-size: clamp(11px, 2.5vw, 11px); 
     }
 }
 
-/* iPhone 6/7/8 Plus, iPhone X (414px) */
-@media (max-width: 414px) {
+/* ===== АДАПТАЦИЯ: СРЕДНИЕ ТЕЛЕФОНЫ (480px) ===== */
+@media (max-width: 480px) {
     .names-section .content-wrapper {
-        padding: 60px 15px 25px 15px !important; /* ↑ Увеличил */
+        padding: clamp(45px, 8vh, 60px) 15px clamp(18px, 3vh, 25px) 15px !important;
     }
     
     .names-section .top-text {
-        font-size: 16px !important;
-        margin-bottom: 55px !important;
+        font-size: clamp(14px, 3.5vw, 16px) !important;
+        margin-bottom: clamp(35px, 6vh, 50px) !important;
     }
     
     .names-section .name {
-        font-size: 46px !important;
+        font-size: clamp(36px, 10vw, 46px) !important;
     }
     
     .names-section .ampersand {
-        font-size: 38px !important;
-        margin: 15px 0;
+        font-size: clamp(30px, 9vw, 38px) !important;
     }
     
-    .names-section .couple-names {
-        margin-bottom: 35px !important;
-    }
-    
-    .names-section .month {
-        font-size: 18px !important;
+    .names-section .full-date {
+        font-size: clamp(26px, 8vw, 34px) !important;
     }
     
     .names-section .day {
-        font-size: 100px !important;
+        font-size: clamp(70px, 20vw, 95px) !important;
     }
     
-    .names-section .year {
-        font-size: 16px !important;
+    .music-toggle {
+        margin-top: clamp(25px, 5vh, 35px) !important;
     }
     
-    .names-section .wedding-date {
-        margin: 42px 0 !important;
+    .wishes-title {
+        font-size: clamp(34px, 9vw, 40px) !important;
+    }
+    
+    .wishes-title-item {
+        font-size: clamp(26px, 7vw, 30px) !important;
+    }
+    
+    .wishes-left {
+        flex: 0 0 clamp(85px, 22vw, 95px);
+    }
+}
+
+/* ===== АДАПТАЦИЯ: МАЛЕНЬКИЕ ТЕЛЕФОНЫ (375px) ===== */
+@media (max-width: 375px) {
+    .names-section .content-wrapper {
+        padding: clamp(40px, 8vh, 55px) 15px clamp(15px, 3vh, 22px) 15px !important;
+    }
+    
+    .names-section .top-text {
+        font-size: clamp(13px, 3.5vw, 15px) !important;
+        margin-bottom: clamp(30px, 6vh, 45px) !important;
+    }
+    
+    .names-section .name {
+        font-size: clamp(34px, 10vw, 42px) !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: clamp(28px, 9vw, 34px) !important;
+    }
+    
+    .names-section .full-date {
+        font-size: clamp(24px, 8vw, 32px) !important;
+    }
+    
+    .names-section .day {
+        font-size: clamp(65px, 20vw, 85px) !important;
+    }
+    
+    .music-toggle {
+        margin-top: clamp(20px, 5vh, 30px) !important;
+    }
+    
+    .wishes-title {
+        font-size: clamp(32px, 9vw, 38px) !important;
+    }
+    
+    .wishes-title-item {
+        font-size: clamp(24px, 7vw, 28px) !important;
+    }
+    
+    .wishes-left {
+        flex: 0 0 clamp(80px, 22vw, 90px);
+    }
+}
+
+/* ===== АДАПТАЦИЯ: ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (320px) ===== */
+@media (max-width: 320px) {
+    .names-section .content-wrapper {
+        padding: 35px 12px 15px 12px !important;
+    }
+    
+    .names-section .top-text {
+        font-size: 13px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .names-section .name {
+        font-size: 32px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 26px !important;
+    }
+    
+    .names-section .full-date {
+        font-size: 22px !important;
+    }
+    
+    .names-section .day {
+        font-size: 60px !important;
     }
     
     .music-toggle {
         margin-top: 20px !important;
     }
-}
-
-/* iPhone 6/7/8, iPhone X (375px) */
-@media (max-width: 375px) {
-    .names-section .content-wrapper {
-        padding: 60px 15px 20px 15px !important; /* ↑ Увеличил */
-    }
     
-    .names-section .top-text {
-        font-size: 15px !important;
-        margin-bottom: 45px !important;
-    }
-    
-    .names-section .name {
-        font-size: 42px !important;
-    }
-    
-    .names-section .ampersand {
-        font-size: 34px !important;
-        margin: 12px 0;
-    }
-    
-    .names-section .couple-names {
-        margin-bottom: 30px !important;
-    }
-    
-    .names-section .full-date {
-    font-size: 36px !important;
-}
-
-    .names-section .month {
-        font-size: 17px !important;
-    }
-    
-    .names-section .day {
-        font-size: 90px !important;
-    }
-    
-    .names-section .year {
-        font-size: 15px !important;
-    }
-    
-    .names-section .wedding-date {
-        margin: 40px 0 !important;
-    }
-    
-    .music-toggle {
-        margin-top: 40px !important;
-    }
-
-.wishes-title {
-    font-size: 38px !important;
-    line-height: 0.75 !important;
-}
-
-.wishes-left {
-    flex: 0 0 90px;
-    padding-top: 2px;
-}
-
-.wishes-title-item {
-    font-size: 28px !important;
-}
-
-.wishes-divider-vertical {
-    height: 60px;
-}
-}
-
-/* Galaxy S5 и маленькие экраны (360px) */
-@media (max-width: 360px) {
-    .names-section .content-wrapper {
-        padding: 55px 12px 18px 12px !important; /* ↑ Увеличил */
-    }
-    
-    .names-section .top-text {
-        font-size: 14px !important;
-        margin-bottom: 40px !important;
-    }
-    
-    .names-section .name {
-        font-size: 40px !important;
-    }
-    
-    .names-section .ampersand {
-        font-size: 32px !important;
-    }
-    
-    .names-section .couple-names {
-        margin-bottom: 28px !important;
-    }
-    
-    .names-section .full-date {
-    font-size: 22px !important;
-}
-
-    .names-section .month {
-        font-size: 16px !important;
-    }
-    
-    .names-section .day {
-        font-size: 85px !important;
-    }
-    
-    .names-section .year {
-        font-size: 14px !important;
-    }
-    
-    .names-section .wedding-date {
-        margin: 32px 0 !important;
-    }
-    
-    .music-toggle {
-        margin-top: 35px !important;
-    }
-}
-
-/* Очень маленькие экраны (320px) */
-@media (max-width: 320px) {
-    .names-section .content-wrapper {
-        padding: 50px 10px 15px 10px !important; /* ↑ Увеличил */
-    }
-    
-    .names-section .top-text {
-        font-size: 13px !important;
-        margin-bottom: 35px !important;
-    }
-    
-    .names-section .name {
-        font-size: 36px !important;
-    }
-    
-    .names-section .ampersand {
+    .wishes-title {
         font-size: 30px !important;
     }
     
-    .names-section .couple-names {
-        margin-bottom: 25px !important;
+    .wishes-title-item {
+        font-size: 22px !important;
     }
     
-    .names-section .month {
-        font-size: 15px !important;
-    }
-    
-    .names-section .day {
-        font-size: 75px !important;
-    }
-    
-    .names-section .year {
-        font-size: 13px !important;
-    }
-    
-    .names-section .wedding-date {
-        margin: 20px 0 !important;
-    }
-    
-    .music-toggle {
-        margin-top: 5px !important;
+    .wishes-left {
+        flex: 0 0 75px;
     }
 }
 
@@ -1874,12 +1900,10 @@ img.clickable {
     -webkit-transform: translateZ(0);
 }
 
-/* Последняя секция без нижнего отступа */
 #section9.slide-section {
     margin-bottom: 0 !important;
 }
 
-/* Страницы 3-9 — без фиксированного позиционирования, в потоке */
 .slide-section.section-3-9 {
     position: relative !important;
     transform: none !important;
