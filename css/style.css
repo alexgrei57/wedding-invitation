@@ -1894,25 +1894,25 @@ body::before {
 @media (max-width: 320px) {
     /* Первая страница */
     .hero-section .content-wrapper {
-        padding-top: 8vh;
+        padding-top: 24vh;
     }
     
     .main-title { 
-        font-size: 18px;
+        font-size: 28px;
         letter-spacing: 3px;
     }
     
     .subtitle { 
-        font-size: 34px;
+        font-size: 60px;
     }
     
     .heart-icon svg {
-        width: 42px;
-        height: 42px;
+        width: 70px;
+        height: 70px;
     }
     
     .tap-hint {
-        font-size: 8px;
+        font-size: 12px;
     }
     
     /* Вторая страница */
