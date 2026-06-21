@@ -824,6 +824,7 @@ body::before {
 .color-palette {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -839,6 +840,7 @@ body::before {
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     transition: transform 0.3s ease;
     flex-shrink: 0;
+    margin: 5px; /* ← Добавьте это для равномерного распределения */
 }
 
 .color-swatch:hover {
@@ -1300,13 +1302,12 @@ body::before {
 .contact-link {
     color: #8B7355;
     text-decoration: none;
-    border-bottom: 1px solid #8B7355;
+    border-bottom: none;
     transition: all 0.3s ease;
 }
 
 .contact-link:hover {
     color: #5a4a3a;
-    border-bottom-color: #5a4a3a;
 }
 
 /* ===== Музыка ===== */
