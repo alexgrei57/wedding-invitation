@@ -554,7 +554,7 @@ body::before {
     color: #5a4a3a;
     margin-bottom: 10px;
     text-transform: none;
-    line-height: 1.1;
+    line-height: 0.9;
 }
 
 .we-marry {
@@ -576,7 +576,7 @@ body::before {
     font-size: 13px;
     line-height: 1.8;
     color: #3a3a3a;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-weight: 300;
 }
 
@@ -732,7 +732,7 @@ body::before {
     font-family: 'Cormorant Garamond', serif;
     font-size: 16px;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 0;
     color: #1a1a1a;
     line-height: 1.2;
 }
@@ -807,7 +807,7 @@ body::before {
     font-weight: 400;
     color: #1a1a1a;
     margin-bottom: 20px;
-    letter-spacing: 1px;
+    letter-spacing: 0;
 }
 
 .dresscode-text {
@@ -816,7 +816,7 @@ body::before {
     line-height: 1.7;
     color: #3a3a3a;
     font-weight: 300;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     max-width: 320px;
     text-align: center;
 }
@@ -1916,7 +1916,7 @@ body::before {
     /* ===== Страница 7: Пожелания ===== */
     .wishes-title {
         font-size: 42px !important;
-        line-height: 0.75 !important;
+        line-height: 0.6 !important;
     }
     
     .wishes-left {
@@ -2041,29 +2041,29 @@ body::before {
 @media (max-width: 480px) {
     /* ===== Страница 1: Приветствие ===== */
     .hero-section .content-wrapper {
-        padding-top: 16vh;
+        padding-top: 26vh;
     }
     
     .main-title { 
-        font-size: 28px;
+        font-size: 30px;
         letter-spacing: 5px;
     }
     
     .subtitle { 
-        font-size: 52px;
+        font-size: 68px;
     }
     
     .heart-icon svg {
-        width: 65px;
-        height: 65px;
+        width: 75px;
+        height: 75px;
     }
     
     .heart-icon {
-        margin: 15px 0 !important;
+        margin: 25px 0 !important;
     }
     
     .tap-hint {
-        font-size: 10px;
+        font-size: 12px;
     }
     
     /* ===== Страница 2: Имена и дата ===== */
@@ -2111,7 +2111,7 @@ body::before {
     }
     
     .music-toggle {
-        margin-top: 30px !important;
+        margin-top: 45px !important;
     }
     
     .music-toggle-icon {
@@ -2121,7 +2121,7 @@ body::before {
     
     /* ===== Страница 3: Фото и текст ===== */
     .dear-text {
-        font-size: 36px;
+        font-size: 50px;
     }
     
     .invitation-text p {
@@ -2135,7 +2135,7 @@ body::before {
     }
     
     .location-subtitle { 
-        font-size: 28px; 
+        font-size: 52px; 
     }
     
     .location-text p {
@@ -2149,7 +2149,7 @@ body::before {
     
     /* ===== Страница 5: Тайминг ===== */
     .timeline-main-title { 
-        font-size: 44px; 
+        font-size: 52px; 
     }
     
     .timeline-time {
@@ -2196,7 +2196,7 @@ body::before {
     
     /* ===== Страница 7: Пожелания ===== */
     .wishes-title {
-        font-size: 38px !important;
+        font-size: 52px !important;
     }
     
     .wishes-left {
@@ -2204,7 +2204,7 @@ body::before {
     }
     
     .wishes-title-item {
-        font-size: 30px !important;
+        font-size: 23px !important;
     }
     
     .wishes-divider-vertical {
@@ -2225,7 +2225,7 @@ body::before {
     }
     
     .countdown-text { 
-        font-size: 28px; 
+        font-size: 33px; 
     }
     
     .countdown-number { 
@@ -2250,7 +2250,7 @@ body::before {
     }
     
     .rsvp-subtitle { 
-        font-size: 46px; 
+        font-size: 52px; 
     }
     
     .rsvp-intro { 
@@ -2280,7 +2280,7 @@ body::before {
     }
     
     .footer-sub { 
-        font-size: 32px; 
+        font-size: 38px; 
     }
     
     /* ===== Общие стили для всех страниц ===== */
