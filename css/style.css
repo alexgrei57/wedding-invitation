@@ -2005,9 +2005,21 @@ body::before {
         max-width: 600px;
         margin-bottom: 10px;
     }
+
+    .rsvp-form {
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
+}
     
+.form-hint {
+    font-size: 13px;
+    font-weight: 300;
+    margin-bottom: 8px;
+}
+
     .form-label { 
-        font-size: 14px; 
+        font-size: 18px; 
     }
     
     .form-input { 
@@ -2016,7 +2028,7 @@ body::before {
     }
     
     .radio-label, .checkbox-label { 
-        font-size: 12px; 
+        font-size: 16px; 
     }
     
     .submit-button {
@@ -2030,7 +2042,7 @@ body::before {
     }
     
     .footer-sub { 
-        font-size: 34px; 
+        font-size: 42px; 
     }
     
     /* ===== Общие стили для всех страниц ===== */
