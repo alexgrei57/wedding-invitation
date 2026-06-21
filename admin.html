@@ -249,16 +249,17 @@
             <table class="desktop-table">
                 <thead>
                     <tr>
-                        <th>№</th>
-                        <th>ФИО взрослого</th>
-                        <th>Взрослый</th>
-                        <th>ФИО ребенка</th>
-                        <th>Ребенок</th>
-                        <th>Присутствие</th>
-                        <th>Напитки</th>
-                        <th>Дата</th>
-                        <th>Действия</th>
-                    </tr>
+    <th>№</th>
+    <th>ФИО взрослого</th>
+    <th>Взрослый</th>
+    <th>ФИО ребенка</th>
+    <th>Ребенок</th>
+    <th>Присутствие</th>
+    <th>Напитки</th>
+    <th>Крепкий алкоголь (уточнение)</th>
+    <th>Дата</th>
+    <th>Действия</th>
+</tr>
                 </thead>
                 <tbody id="guestsBody"></tbody>
             </table>
@@ -285,7 +286,8 @@
             
             <label>Напитки (через запятую)</label>
             <textarea id="editDrinks" placeholder="Напитки" rows="3"></textarea>
-            
+            <label>Уточнение по крепкому алкоголю (если выбран)</label>
+<input type="text" id="editStrongDetails" placeholder="Например: виски, коньяк">
             <div class="modal-buttons">
                 <button onclick="closeEditModal()" class="cancel-btn">Отмена</button>
                 <button onclick="saveEdit()" class="save-btn">Сохранить</button>
@@ -378,20 +380,26 @@
                 
                 // Таблица (десктоп)
                 const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${guest.number || index + 1}</td>
-                    <td>${escapeHtml(guest.name)}</td>
-                    <td class="yes">${escapeHtml(isAdult)}</td>
-                    <td>${escapeHtml(childName)}</td>
-                    <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
-                    <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
-                    <td>${escapeHtml(guest.drinks) || '-'}</td>
-                    <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
-                    <td>
-                        <button onclick="editGuest('${guest.id}')" class="action-btn edit-btn">Ред.</button>
-                        <button onclick="deleteGuest('${guest.id}')" class="action-btn delete-btn">Удал.</button>
-                    </td>
-                `;
+const strongDetails = guest.strong_drink_details || '-';
+const strongDisplay = strongDetails !== '-' 
+    ? `<span style="color: #8B7355; font-weight: 500;">${escapeHtml(strongDetails)}</span>` 
+    : '-';
+
+row.innerHTML = `
+    <td>${guest.number || index + 1}</td>
+    <td>${escapeHtml(guest.name)}</td>
+    <td class="yes">${escapeHtml(isAdult)}</td>
+    <td>${escapeHtml(childName)}</td>
+    <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
+    <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
+    <td>${escapeHtml(guest.drinks) || '-'}</td>
+    <td>${strongDisplay}</td>
+    <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
+    <td>
+        <button onclick="editGuest('${guest.id}')" class="action-btn edit-btn">Ред.</button>
+        <button onclick="deleteGuest('${guest.id}')" class="action-btn delete-btn">Удал.</button>
+    </td>
+`;
                 tbody.appendChild(row);
                 
                 // Карточка (мобильная)
@@ -419,6 +427,12 @@
                         <span class="guest-info-label">Напитки:</span>
                         <span>${escapeHtml(guest.drinks) || '-'}</span>
                     </div>
+                    ${strongDetails !== '-' ? `
+<div class="guest-info">
+    <span class="guest-info-label">Крепкий алкоголь:</span>
+    <span style="color: #8B7355; font-weight: 500;">${escapeHtml(strongDetails)}</span>
+</div>
+` : ''}
                     <div class="guest-info">
                         <span class="guest-info-label">Дата:</span>
                         <span>${new Date(guest.created_at).toLocaleString('ru-RU')}</span>
@@ -450,6 +464,7 @@
             document.getElementById('editChildName').value = guest.child_name || '';
             document.getElementById('editAttendance').value = guest.attendance || '';
             document.getElementById('editDrinks').value = guest.drinks || '';
+            document.getElementById('editStrongDetails').value = guest.strong_drink_details || '';
             document.getElementById('editModal').style.display = 'block';
         }
         
@@ -463,6 +478,8 @@
             const childName = document.getElementById('editChildName').value.trim();
             const attendance = document.getElementById('editAttendance').value;
             const drinks = document.getElementById('editDrinks').value;
+            const strongDetails = document.getElementById('editStrongDetails').value.trim();
+
             
             // Автоматически определяем признаки
             const isAdult = 'Да';
@@ -481,7 +498,8 @@
                     is_adult: isAdult,
                     is_child: isChild,
                     attendance, 
-                    drinks 
+                    drinks,
+                    strong_drink_details: strongDetails || null 
                 })
                 .eq('id', id);
             

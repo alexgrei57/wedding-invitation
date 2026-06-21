@@ -9,7 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=178">
+    <link rel="stylesheet" href="css/style.css?v=179">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -395,31 +395,41 @@
                 </div>
             </div>
             
-            <div class="form-group">
-                <label class="form-label">Ваши предпочтения в напитках:</label>
-                <div class="checkbox-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="Вино белое">
-                        <span>Вино белое</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="Вино красное">
-                        <span>Вино красное</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="Игристое">
-                        <span>Игристое</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="Крепкий алкоголь">
-                        <span>Крепкий алкоголь</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="drinks" value="Безалкогольные напитки">
-                        <span>Безалкогольные напитки</span>
-                    </label>
-                </div>
-            </div>
+<div class="form-group">
+    <label class="form-label">Ваши предпочтения в напитках:</label>
+    <div class="checkbox-group">
+        <label class="checkbox-label">
+            <input type="checkbox" name="drinks" value="Вино белое">
+            <span>Вино белое</span>
+        </label>
+        <label class="checkbox-label">
+            <input type="checkbox" name="drinks" value="Вино красное">
+            <span>Вино красное</span>
+        </label>
+        <label class="checkbox-label">
+            <input type="checkbox" name="drinks" value="Игристое">
+            <span>Игристое</span>
+        </label>
+        <label class="checkbox-label">
+            <input type="checkbox" name="drinks" value="Крепкий алкоголь" id="strongAlcoholCheck">
+            <span>Крепкий алкоголь</span>
+        </label>
+        <!-- Текстовое поле для уточнения крепкого алкоголя -->
+        <div id="strongAlcoholDetails" style="display: none; margin-left: 28px; margin-top: -5px; margin-bottom: 5px;">
+            <input 
+                type="text" 
+                id="strongDrinkDetails" 
+                class="form-input" 
+                placeholder="Уточните (например: виски, коньяк)"
+                style="font-size: 12px; padding: 8px 12px;"
+            >
+        </div>
+        <label class="checkbox-label">
+            <input type="checkbox" name="drinks" value="Безалкогольные напитки">
+            <span>Безалкогольные напитки</span>
+        </label>
+    </div>
+</div>
             
             <button type="submit" class="submit-button" id="submitBtn">ОТПРАВИТЬ</button>
             <p class="form-success" id="formSuccess" style="display: none; text-align: center; color: #015022; margin-top: 15px; font-family: 'Montserrat', sans-serif; font-size: 13px;">
@@ -567,17 +577,21 @@ async function sendToServer(event) {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 30000);
         
-        const { data, error } = await supabaseClient
-            .from('guests')
-            .insert([{ 
-                name: name, 
-                is_adult: isAdult,
-                child_name: childName || null,
-                is_child: isChild,
-                attendance: attendance, 
-                drinks: drinks || 'Не выбрано' 
-            }])
-            .abortSignal(controller.signal);
+// Получаем уточнение по крепкому алкоголю
+const strongDrinkDetails = document.getElementById('strongDrinkDetails').value.trim();
+
+const { data, error } = await supabaseClient
+    .from('guests')
+    .insert([{ 
+        name: name, 
+        is_adult: isAdult,
+        child_name: childName || null,
+        is_child: isChild,
+        attendance: attendance, 
+        drinks: drinks || 'Не выбрано',
+        strong_drink_details: strongDrinkDetails || null
+    }])
+    .abortSignal(controller.signal);
         
         clearTimeout(timeoutId);
         
@@ -702,5 +716,25 @@ function formatWeddingDate() {
 // Вызываем после загрузки страницы
 document.addEventListener('DOMContentLoaded', formatWeddingDate);
 </script>
+
+<script>
+// Показывать поле уточнения крепкого алкоголя только когда чекбокс отмечен
+document.addEventListener('DOMContentLoaded', function() {
+    const strongCheck = document.getElementById('strongAlcoholCheck');
+    const strongDetails = document.getElementById('strongAlcoholDetails');
+    
+    if (strongCheck && strongDetails) {
+        strongCheck.addEventListener('change', function() {
+            if (this.checked) {
+                strongDetails.style.display = 'block';
+            } else {
+                strongDetails.style.display = 'none';
+                document.getElementById('strongDrinkDetails').value = '';
+            }
+        });
+    }
+});
+</script>
+
 </body>
 </html>

@@ -183,6 +183,7 @@
                         <th>Ребенок</th>
                         <th>Присутствие</th>
                         <th>Напитки</th>
+                        <th>Крепкий алкоголь (уточнение)</th>
                         <th>Дата</th>
                     </tr>
                 </thead>
@@ -276,17 +277,22 @@
                 const isChild = guest.is_child || 'Нет';
                 
                 // Таблица (десктоп)
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${guest.number || index + 1}</td>
-                    <td>${escapeHtml(guest.name)}</td>
-                    <td class="yes">${escapeHtml(isAdult)}</td>
-                    <td>${escapeHtml(childName)}</td>
-                    <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
-                    <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
-                    <td>${escapeHtml(guest.drinks) || '-'}</td>
-                    <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
-                `;
+                const strongDetails = guest.strong_drink_details || '-';
+const strongDisplay = strongDetails !== '-' 
+    ? `<span style="color: #8B7355; font-weight: 500;">${escapeHtml(strongDetails)}</span>` 
+    : '-';
+
+row.innerHTML = `
+    <td>${guest.number || index + 1}</td>
+    <td>${escapeHtml(guest.name)}</td>
+    <td class="yes">${escapeHtml(isAdult)}</td>
+    <td>${escapeHtml(childName)}</td>
+    <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
+    <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
+    <td>${escapeHtml(guest.drinks) || '-'}</td>
+    <td>${strongDisplay}</td>
+    <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
+`;
                 tbody.appendChild(row);
                 
                 // Карточка (мобильная)
@@ -314,6 +320,12 @@
                         <span class="guest-info-label">Напитки:</span>
                         <span>${escapeHtml(guest.drinks) || '-'}</span>
                     </div>
+                    ${strongDetails !== '-' ? `
+<div class="guest-info">
+    <span class="guest-info-label">Крепкий алкоголь:</span>
+    <span style="color: #8B7355; font-weight: 500;">${escapeHtml(strongDetails)}</span>
+</div>
+` : ''}
                     <div class="guest-info">
                         <span class="guest-info-label">Дата:</span>
                         <span>${new Date(guest.created_at).toLocaleString('ru-RU')}</span>
