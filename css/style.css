@@ -1465,267 +1465,267 @@ body::before {
     color: #5a4a3a;
 }
 
-/* ===== АДАПТАЦИЯ: ПЛАНШЕТЫ И БОЛЬШИЕ ТЕЛЕФОНЫ (768px) ===== */
-@media (max-width: 768px) {
-    /* Первая страница */
+/* ===== АДАПТАЦИЯ: ПЛАНШЕТЫ АЛЬБОМНАЯ ОРИЕНТАЦИЯ (769-1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* ===== Страница 1: Приветствие ===== */
     .hero-section .content-wrapper {
-        padding-top: clamp(12vh, 18vh, 22vh);
+        padding-top: 16vh;
     }
     
     .main-title { 
-        font-size: clamp(24px, 6vw, 32px);
-        letter-spacing: clamp(4px, 1.5vw, 6px);
+        font-size: 38px;
+        letter-spacing: 10px;
     }
     
     .subtitle { 
-        font-size: clamp(44px, 11vw, 60px);
+        font-size: 56px;
     }
     
     .heart-icon svg {
-        width: clamp(55px, 14vw, 70px);
-        height: clamp(55px, 14vw, 70px);
+        width: 75px;
+        height: 75px;
     }
     
     .heart-icon {
-        margin: clamp(12px, 2.5vh, 18px) 0 !important;
+        margin: 20px 0 !important;
     }
     
     .tap-hint {
-        font-size: clamp(9px, 2.2vw, 11px);
-        letter-spacing: clamp(0.3px, 0.15vw, 0.8px);
+        font-size: 12px;
+        letter-spacing: 1px;
     }
     
-    /* Вторая страница */
+    /* ===== Страница 2: Имена и дата ===== */
     .names-section .content-wrapper {
-        padding: clamp(50px, 8vh, 70px) 15px clamp(20px, 3vh, 30px) 15px !important;
+        padding: 55px 20px 25px 20px !important;
     }
     
     .names-section .top-text {
-        font-size: clamp(15px, 3.5vw, 17px) !important;
-        letter-spacing: clamp(4px, 1vw, 5px) !important;
-        margin-bottom: clamp(40px, 6vh, 55px) !important;
+        font-size: 18px !important;
+        letter-spacing: 6px !important;
+        margin-bottom: 45px !important;
     }
     
     .names-section .name {
-        font-size: clamp(40px, 10vw, 50px) !important;
-        letter-spacing: clamp(5px, 1.5vw, 7px) !important;
+        font-size: 52px !important;
+        letter-spacing: 8px !important;
     }
     
     .names-section .ampersand {
-        font-size: clamp(34px, 9vw, 40px) !important;
-        margin: clamp(12px, 2vh, 15px) 0;
+        font-size: 42px !important;
+        margin: 14px 0;
     }
     
     .names-section .couple-names {
-        margin-bottom: clamp(30px, 5vh, 40px) !important;
+        margin-bottom: 38px !important;
     }
     
     .names-section .full-date {
-        font-size: clamp(30px, 8vw, 38px) !important;
+        font-size: 40px !important;
     }
     
     .names-section .month {
-        font-size: clamp(16px, 4vw, 19px) !important;
+        font-size: 20px !important;
     }
     
     .names-section .day {
-        font-size: clamp(80px, 20vw, 110px) !important;
+        font-size: 115px !important;
     }
     
     .names-section .year {
-        font-size: clamp(15px, 3.5vw, 17px) !important;
+        font-size: 18px !important;
     }
     
     .names-section .wedding-date {
-        margin: clamp(35px, 6vh, 42px) 0 !important;
+        margin: 38px 0 !important;
     }
     
     .music-toggle {
-        margin-top: clamp(30px, 5vh, 40px) !important;
+        margin-top: 38px !important;
     }
     
     .music-toggle-icon {
-        width: clamp(48px, 10vw, 52px);
-        height: clamp(48px, 10vw, 52px);
+        width: 54px;
+        height: 54px;
     }
     
-    /* Третья страница */
+    /* ===== Страница 3: Фото и текст ===== */
     .dear-text {
-        font-size: clamp(32px, 7vw, 42px);
+        font-size: 42px;
     }
     
     .invitation-text p {
-        font-size: clamp(12px, 3vw, 13px);
-        line-height: 1.7;
+        font-size: 14px;
+        line-height: 1.8;
     }
     
-    /* Четвёртая страница */
+    /* ===== Страница 4: Локация ===== */
     .location-title { 
-        font-size: clamp(26px, 6vw, 30px); 
-        letter-spacing: clamp(4px, 1vw, 5px); 
+        font-size: 36px; 
+        letter-spacing: 6px; 
     }
     
     .location-subtitle { 
-        font-size: clamp(26px, 6vw, 32px); 
+        font-size: 34px; 
     }
     
     .location-text p {
-        font-size: clamp(12px, 3vw, 13px);
+        font-size: 14px;
     }
     
     .map-button {
-        padding: clamp(12px, 3vw, 14px) clamp(30px, 8vw, 40px);
-        font-size: clamp(11px, 2.5vw, 12px);
+        padding: 15px 42px;
+        font-size: 13px;
     }
     
-    /* Пятая страница */
+    /* ===== Страница 5: Тайминг ===== */
     .timeline-main-title { 
-        font-size: clamp(40px, 9vw, 52px); 
-        letter-spacing: 1px; 
+        font-size: 54px; 
+        letter-spacing: 2px; 
     }
     
     .timeline-time {
-        font-size: clamp(52px, 12vw, 70px);
+        font-size: 72px;
     }
     
     .timeline-event-name {
-        font-size: clamp(14px, 3.5vw, 16px);
+        font-size: 17px;
     }
     
     .timeline-desc p {
-        font-size: clamp(12px, 3vw, 13px);
+        font-size: 14px;
     }
     
     .timeline-left {
-        flex: 0 0 clamp(85px, 20vw, 90px);
+        flex: 0 0 95px;
     }
     
     .timeline-divider {
-        height: clamp(65px, 15vw, 80px);
+        height: 82px;
     }
     
-    /* Шестая страница */
+    /* ===== Страница 6: Dress Code ===== */
     .dresscode-title { 
-        font-size: clamp(34px, 8vw, 38px); 
-        letter-spacing: clamp(4px, 1vw, 4px); 
+        font-size: 42px; 
+        letter-spacing: 5px; 
     }
     
     .dresscode-title .dresscode-code { 
-        font-size: clamp(38px, 9vw, 42px); 
+        font-size: 44px; 
     }
     
     .dresscode-main-text { 
-        font-size: clamp(17px, 4vw, 18px); 
+        font-size: 19px; 
     }
     
     .dresscode-text { 
-        font-size: clamp(12px, 2.8vw, 12px); 
+        font-size: 13px; 
     }
     
     .color-swatch {
-        width: clamp(36px, 8vw, 40px);
-        height: clamp(36px, 8vw, 40px);
+        width: 42px;
+        height: 42px;
     }
     
-    /* Седьмая страница */
+    /* ===== Страница 7: Пожелания ===== */
     .wishes-title {
-        font-size: clamp(38px, 9vw, 42px) !important;
-        line-height: 0.75 !important;
+        font-size: 46px !important;
+        line-height: 0.7 !important;
     }
     
     .wishes-left {
-        flex: 0 0 clamp(90px, 22vw, 100px);
-        padding-right: 12px;
-        padding-top: 3px;
+        flex: 0 0 110px;
+        padding-right: 15px;
+        padding-top: 4px;
     }
     
     .wishes-title-item {
-        font-size: clamp(28px, 7vw, 32px) !important;
+        font-size: 34px !important;
     }
     
     .wishes-divider-vertical {
-        height: clamp(65px, 15vw, 70px);
-        margin: 0 12px;
+        height: 75px;
+        margin: 0 15px;
     }
     
     .wishes-desc {
-        font-size: clamp(12px, 2.8vw, 12px) !important;
+        font-size: 13px !important;
     }
     
     .contact-link {
-        font-size: clamp(12px, 3vw, 13px);
+        font-size: 14px;
     }
     
-    /* Восьмая страница */
+    /* ===== Страница 8: Обратный отсчёт ===== */
     .countdown-photo-container { 
-        height: clamp(65vh, 70vh, 75vh); 
+        height: 72vh; 
     }
     
     .countdown-text { 
-        font-size: clamp(26px, 6vw, 30px); 
+        font-size: 32px; 
     }
     
     .countdown-number { 
-        font-size: clamp(34px, 8vw, 36px); 
+        font-size: 40px; 
     }
     
     .countdown-label { 
-        font-size: clamp(9px, 2.2vw, 10px); 
+        font-size: 11px; 
     }
     
     .countdown-timer { 
-        gap: clamp(9px, 2vw, 10px); 
+        gap: 12px; 
     }
     
     .countdown-item { 
-        min-width: clamp(47px, 12vw, 50px); 
+        min-width: 55px; 
     }
     
-    /* Девятая страница */
+    /* ===== Страница 9: Анкета ===== */
     .rsvp-title { 
-        font-size: clamp(30px, 7vw, 32px); 
-        letter-spacing: clamp(4px, 1vw, 5px); 
+        font-size: 36px; 
+        letter-spacing: 6px; 
     }
     
     .rsvp-subtitle { 
-        font-size: clamp(42px, 9vw, 52px); 
+        font-size: 54px; 
     }
     
     .rsvp-intro { 
-        font-size: clamp(11px, 2.5vw, 11px); 
+        font-size: 12px; 
     }
     
     .form-label { 
-        font-size: clamp(13px, 3.2vw, 14px); 
+        font-size: 15px; 
     }
     
     .form-input { 
-        font-size: clamp(12px, 2.8vw, 12px); 
-        padding: clamp(11px, 2.5vw, 12px) clamp(13px, 3vw, 15px);
+        font-size: 13px; 
+        padding: 13px 16px;
     }
     
     .radio-label, .checkbox-label { 
-        font-size: clamp(12px, 2.8vw, 12px); 
+        font-size: 13px; 
     }
     
     .submit-button {
-        font-size: clamp(12px, 3vw, 13px);
-        padding: clamp(13px, 3vw, 14px);
+        font-size: 14px;
+        padding: 15px;
     }
     
     .footer-main { 
-        font-size: clamp(11px, 2.5vw, 12px); 
-        letter-spacing: clamp(2.5px, 0.8vw, 3px); 
+        font-size: 13px; 
+        letter-spacing: 4px; 
     }
     
     .footer-sub { 
-        font-size: clamp(30px, 7vw, 34px); 
+        font-size: 36px; 
     }
     
-    /* Общие стили */
+    /* ===== Общие стили для всех страниц ===== */
     .content-wrapper {
-        padding: clamp(16px, 3vw, 20px);
-        margin: 0 clamp(12px, 2vw, 15px);
+        padding: 22px;
+        margin: 0 18px;
     }
     
     .section, .slide-section {
@@ -1733,173 +1733,34 @@ body::before {
     }
     
     .faq-title { 
-        font-size: clamp(34px, 8vw, 40px); 
+        font-size: 44px; 
     }
     
     .faq-subtitle { 
-        font-size: clamp(11px, 2.5vw, 11px); 
-        letter-spacing: clamp(2px, 0.5vw, 2px); 
+        font-size: 12px; 
+        letter-spacing: 3px; 
     }
     
     .faq-block-title { 
-        font-size: clamp(17px, 4vw, 18px); 
-        letter-spacing: clamp(3px, 0.8vw, 3px); 
+        font-size: 19px; 
+        letter-spacing: 4px; 
     }
     
     .faq-block-text { 
-        font-size: clamp(11px, 2.5vw, 11px); 
+        font-size: 12px; 
     }
 }
 
-/* ===== АДАПТАЦИЯ: СРЕДНИЕ ТЕЛЕФОНЫ (480px) ===== */
-@media (max-width: 480px) {
-    /* Первая страница */
+/* ===== АДАПТАЦИЯ: ПЛАНШЕТЫ И БОЛЬШИЕ ТЕЛЕФОНЫ (до 768px) ===== */
+@media (max-width: 768px) {
+    /* ===== Страница 1: Приветствие ===== */
     .hero-section .content-wrapper {
-        padding-top: clamp(10vh, 16vh, 20vh);
+        padding-top: 18vh;
     }
     
     .main-title { 
-        font-size: clamp(22px, 6vw, 28px);
-    }
-    
-    .subtitle { 
-        font-size: clamp(40px, 11vw, 52px);
-    }
-    
-    .heart-icon svg {
-        width: clamp(50px, 13vw, 65px);
-        height: clamp(50px, 13vw, 65px);
-    }
-    
-    .tap-hint {
-        font-size: clamp(9px, 2vw, 10px);
-    }
-    
-    /* Вторая страница */
-    .names-section .content-wrapper {
-        padding: clamp(45px, 8vh, 60px) 15px clamp(18px, 3vh, 25px) 15px !important;
-    }
-    
-    .names-section .top-text {
-        font-size: clamp(14px, 3.5vw, 16px) !important;
-        margin-bottom: clamp(35px, 6vh, 50px) !important;
-    }
-    
-    .names-section .name {
-        font-size: clamp(36px, 10vw, 46px) !important;
-    }
-    
-    .names-section .ampersand {
-        font-size: clamp(30px, 9vw, 38px) !important;
-    }
-    
-    .names-section .full-date {
-        font-size: clamp(26px, 8vw, 34px) !important;
-    }
-    
-    .names-section .day {
-        font-size: clamp(70px, 20vw, 95px) !important;
-    }
-    
-    .music-toggle {
-        margin-top: clamp(25px, 5vh, 35px) !important;
-    }
-    
-    .wishes-title {
-        font-size: clamp(34px, 9vw, 40px) !important;
-    }
-    
-    .wishes-title-item {
-        font-size: clamp(26px, 7vw, 30px) !important;
-    }
-    
-    .wishes-left {
-        flex: 0 0 clamp(85px, 22vw, 95px);
-    }
-}
-
-/* ===== АДАПТАЦИЯ: МАЛЕНЬКИЕ ТЕЛЕФОНЫ (375px) ===== */
-@media (max-width: 375px) {
-    /* Первая страница */
-    .hero-section .content-wrapper {
-        padding-top: clamp(8vh, 14vh, 18vh);
-    }
-    
-    .main-title { 
-        font-size: clamp(20px, 5.5vw, 26px);
-        letter-spacing: clamp(3px, 1vw, 5px);
-    }
-    
-    .subtitle { 
-        font-size: clamp(36px, 10vw, 48px);
-    }
-    
-    .heart-icon svg {
-        width: clamp(45px, 12vw, 60px);
-        height: clamp(45px, 12vw, 60px);
-    }
-    
-    .heart-icon {
-        margin: clamp(10px, 2vh, 15px) 0 !important;
-    }
-    
-    .tap-hint {
-        font-size: clamp(8px, 2vw, 9px);
-    }
-    
-    /* Вторая страница */
-    .names-section .content-wrapper {
-        padding: clamp(40px, 8vh, 55px) 15px clamp(15px, 3vh, 22px) 15px !important;
-    }
-    
-    .names-section .top-text {
-        font-size: clamp(13px, 3.5vw, 15px) !important;
-        margin-bottom: clamp(30px, 6vh, 45px) !important;
-    }
-    
-    .names-section .name {
-        font-size: clamp(34px, 10vw, 42px) !important;
-    }
-    
-    .names-section .ampersand {
-        font-size: clamp(28px, 9vw, 34px) !important;
-    }
-    
-    .names-section .full-date {
-        font-size: clamp(24px, 8vw, 32px) !important;
-    }
-    
-    .names-section .day {
-        font-size: clamp(65px, 20vw, 85px) !important;
-    }
-    
-    .music-toggle {
-        margin-top: clamp(20px, 5vh, 30px) !important;
-    }
-    
-    .wishes-title {
-        font-size: clamp(32px, 9vw, 38px) !important;
-    }
-    
-    .wishes-title-item {
-        font-size: clamp(24px, 7vw, 28px) !important;
-    }
-    
-    .wishes-left {
-        flex: 0 0 clamp(80px, 22vw, 90px);
-    }
-}
-
-/* ===== АДАПТАЦИЯ: ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (320px) ===== */
-@media (max-width: 320px) {
-    /* Первая страница */
-    .hero-section .content-wrapper {
-        padding-top: 24vh;
-    }
-    
-    .main-title { 
-        font-size: 28px;
-        letter-spacing: 3px;
+        font-size: 32px;
+        letter-spacing: 6px;
     }
     
     .subtitle { 
@@ -1911,97 +1772,1074 @@ body::before {
         height: 70px;
     }
     
-    .tap-hint {
-        font-size: 12px;
+    .heart-icon {
+        margin: 18px 0 !important;
     }
     
-    /* Вторая страница */
+    .tap-hint {
+        font-size: 11px;
+        letter-spacing: 0.8px;
+    }
+    
+    /* ===== Страница 2: Имена и дата ===== */
     .names-section .content-wrapper {
-        padding: 35px 12px 15px 12px !important;
+        padding: 60px 15px 25px 15px !important;
     }
     
     .names-section .top-text {
-        font-size: 13px !important;
-        margin-bottom: 30px !important;
+        font-size: 17px !important;
+        letter-spacing: 5px !important;
+        margin-bottom: 50px !important;
     }
     
     .names-section .name {
-        font-size: 32px !important;
+        font-size: 50px !important;
+        letter-spacing: 7px !important;
     }
     
     .names-section .ampersand {
-        font-size: 26px !important;
+        font-size: 40px !important;
+        margin: 14px 0;
+    }
+    
+    .names-section .couple-names {
+        margin-bottom: 35px !important;
     }
     
     .names-section .full-date {
-        font-size: 22px !important;
+        font-size: 38px !important;
+    }
+    
+    .names-section .month {
+        font-size: 19px !important;
     }
     
     .names-section .day {
-        font-size: 60px !important;
+        font-size: 105px !important;
+    }
+    
+    .names-section .year {
+        font-size: 17px !important;
+    }
+    
+    .names-section .wedding-date {
+        margin: 40px 0 !important;
+    }
+    
+    .music-toggle {
+        margin-top: 35px !important;
+    }
+    
+    .music-toggle-icon {
+        width: 52px;
+        height: 52px;
+    }
+    
+    /* ===== Страница 3: Фото и текст ===== */
+    .dear-text {
+        font-size: 40px;
+    }
+    
+    .invitation-text p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+    
+    /* ===== Страница 4: Локация ===== */
+    .location-title { 
+        font-size: 30px; 
+        letter-spacing: 5px; 
+    }
+    
+    .location-subtitle { 
+        font-size: 32px; 
+    }
+    
+    .location-text p {
+        font-size: 13px;
+    }
+    
+    .map-button {
+        padding: 14px 40px;
+        font-size: 12px;
+    }
+    
+    /* ===== Страница 5: Тайминг ===== */
+    .timeline-main-title { 
+        font-size: 50px; 
+        letter-spacing: 1px; 
+    }
+    
+    .timeline-time {
+        font-size: 68px;
+    }
+    
+    .timeline-event-name {
+        font-size: 16px;
+    }
+    
+    .timeline-desc p {
+        font-size: 13px;
+    }
+    
+    .timeline-left {
+        flex: 0 0 90px;
+    }
+    
+    .timeline-divider {
+        height: 78px;
+    }
+    
+    /* ===== Страница 6: Dress Code ===== */
+    .dresscode-title { 
+        font-size: 38px; 
+        letter-spacing: 4px; 
+    }
+    
+    .dresscode-title .dresscode-code { 
+        font-size: 42px; 
+    }
+    
+    .dresscode-main-text { 
+        font-size: 18px; 
+    }
+    
+    .dresscode-text { 
+        font-size: 12px; 
+    }
+    
+    .color-swatch {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* ===== Страница 7: Пожелания ===== */
+    .wishes-title {
+        font-size: 42px !important;
+        line-height: 0.75 !important;
+    }
+    
+    .wishes-left {
+        flex: 0 0 100px;
+        padding-right: 12px;
+        padding-top: 3px;
+    }
+    
+    .wishes-title-item {
+        font-size: 32px !important;
+    }
+    
+    .wishes-divider-vertical {
+        height: 70px;
+        margin: 0 12px;
+    }
+    
+    .wishes-desc {
+        font-size: 12px !important;
+    }
+    
+    .contact-link {
+        font-size: 13px;
+    }
+    
+    /* ===== Страница 8: Обратный отсчёт ===== */
+    .countdown-photo-container { 
+        height: 70vh; 
+    }
+    
+    .countdown-text { 
+        font-size: 30px; 
+    }
+    
+    .countdown-number { 
+        font-size: 36px; 
+    }
+    
+    .countdown-label { 
+        font-size: 10px; 
+    }
+    
+    .countdown-timer { 
+        gap: 10px; 
+    }
+    
+    .countdown-item { 
+        min-width: 50px; 
+    }
+    
+    /* ===== Страница 9: Анкета ===== */
+    .rsvp-title { 
+        font-size: 32px; 
+        letter-spacing: 5px; 
+    }
+    
+    .rsvp-subtitle { 
+        font-size: 52px; 
+    }
+    
+    .rsvp-intro { 
+        font-size: 11px; 
+    }
+    
+    .form-label { 
+        font-size: 14px; 
+    }
+    
+    .form-input { 
+        font-size: 12px; 
+        padding: 12px 15px;
+    }
+    
+    .radio-label, .checkbox-label { 
+        font-size: 12px; 
+    }
+    
+    .submit-button {
+        font-size: 13px;
+        padding: 14px;
+    }
+    
+    .footer-main { 
+        font-size: 12px; 
+        letter-spacing: 3px; 
+    }
+    
+    .footer-sub { 
+        font-size: 34px; 
+    }
+    
+    /* ===== Общие стили для всех страниц ===== */
+    .content-wrapper {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+    .section, .slide-section {
+        padding: 0 !important;
+    }
+    
+    .faq-title { 
+        font-size: 40px; 
+    }
+    
+    .faq-subtitle { 
+        font-size: 11px; 
+        letter-spacing: 2px; 
+    }
+    
+    .faq-block-title { 
+        font-size: 18px; 
+        letter-spacing: 3px; 
+    }
+    
+    .faq-block-text { 
+        font-size: 11px; 
+    }
+}
+
+/* ===== АДАПТАЦИЯ: СРЕДНИЕ ТЕЛЕФОНЫ (до 480px) ===== */
+@media (max-width: 480px) {
+    /* ===== Страница 1: Приветствие ===== */
+    .hero-section .content-wrapper {
+        padding-top: 16vh;
+    }
+    
+    .main-title { 
+        font-size: 28px;
+        letter-spacing: 5px;
+    }
+    
+    .subtitle { 
+        font-size: 52px;
+    }
+    
+    .heart-icon svg {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .heart-icon {
+        margin: 15px 0 !important;
+    }
+    
+    .tap-hint {
+        font-size: 10px;
+    }
+    
+    /* ===== Страница 2: Имена и дата ===== */
+    .names-section .content-wrapper {
+        padding: 50px 15px 20px 15px !important;
+    }
+    
+    .names-section .top-text {
+        font-size: 16px !important;
+        margin-bottom: 42px !important;
+    }
+    
+    .names-section .name {
+        font-size: 44px !important;
+        letter-spacing: 6px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 36px !important;
+        margin: 12px 0;
+    }
+    
+    .names-section .couple-names {
+        margin-bottom: 30px !important;
+    }
+    
+    .names-section .full-date {
+        font-size: 34px !important;
+    }
+    
+    .names-section .month {
+        font-size: 17px !important;
+    }
+    
+    .names-section .day {
+        font-size: 90px !important;
+    }
+    
+    .names-section .year {
+        font-size: 16px !important;
+    }
+    
+    .names-section .wedding-date {
+        margin: 35px 0 !important;
+    }
+    
+    .music-toggle {
+        margin-top: 30px !important;
+    }
+    
+    .music-toggle-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    /* ===== Страница 3: Фото и текст ===== */
+    .dear-text {
+        font-size: 36px;
+    }
+    
+    .invitation-text p {
+        font-size: 12px;
+    }
+    
+    /* ===== Страница 4: Локация ===== */
+    .location-title { 
+        font-size: 26px; 
+        letter-spacing: 4px; 
+    }
+    
+    .location-subtitle { 
+        font-size: 28px; 
+    }
+    
+    .location-text p {
+        font-size: 12px;
+    }
+    
+    .map-button {
+        padding: 12px 35px;
+        font-size: 11px;
+    }
+    
+    /* ===== Страница 5: Тайминг ===== */
+    .timeline-main-title { 
+        font-size: 44px; 
+    }
+    
+    .timeline-time {
+        font-size: 60px;
+    }
+    
+    .timeline-event-name {
+        font-size: 15px;
+    }
+    
+    .timeline-desc p {
+        font-size: 12px;
+    }
+    
+    .timeline-left {
+        flex: 0 0 85px;
+    }
+    
+    .timeline-divider {
+        height: 70px;
+    }
+    
+    /* ===== Страница 6: Dress Code ===== */
+    .dresscode-title { 
+        font-size: 34px; 
+    }
+    
+    .dresscode-title .dresscode-code { 
+        font-size: 38px; 
+    }
+    
+    .dresscode-main-text { 
+        font-size: 17px; 
+    }
+    
+    .dresscode-text { 
+        font-size: 12px; 
+    }
+    
+    .color-swatch {
+        width: 38px;
+        height: 38px;
+    }
+    
+    /* ===== Страница 7: Пожелания ===== */
+    .wishes-title {
+        font-size: 38px !important;
+    }
+    
+    .wishes-left {
+        flex: 0 0 95px;
+    }
+    
+    .wishes-title-item {
+        font-size: 30px !important;
+    }
+    
+    .wishes-divider-vertical {
+        height: 65px;
+    }
+    
+    .wishes-desc {
+        font-size: 12px !important;
+    }
+    
+    .contact-link {
+        font-size: 12px;
+    }
+    
+    /* ===== Страница 8: Обратный отсчёт ===== */
+    .countdown-photo-container { 
+        height: 68vh; 
+    }
+    
+    .countdown-text { 
+        font-size: 28px; 
+    }
+    
+    .countdown-number { 
+        font-size: 34px; 
+    }
+    
+    .countdown-label { 
+        font-size: 9px; 
+    }
+    
+    .countdown-timer { 
+        gap: 9px; 
+    }
+    
+    .countdown-item { 
+        min-width: 48px; 
+    }
+    
+    /* ===== Страница 9: Анкета ===== */
+    .rsvp-title { 
+        font-size: 30px; 
+    }
+    
+    .rsvp-subtitle { 
+        font-size: 46px; 
+    }
+    
+    .rsvp-intro { 
+        font-size: 11px; 
+    }
+    
+    .form-label { 
+        font-size: 13px; 
+    }
+    
+    .form-input { 
+        font-size: 12px; 
+        padding: 11px 13px;
+    }
+    
+    .radio-label, .checkbox-label { 
+        font-size: 12px; 
+    }
+    
+    .submit-button {
+        font-size: 12px;
+        padding: 13px;
+    }
+    
+    .footer-main { 
+        font-size: 11px; 
+    }
+    
+    .footer-sub { 
+        font-size: 32px; 
+    }
+    
+    /* ===== Общие стили для всех страниц ===== */
+    .content-wrapper {
+        padding: 18px;
+        margin: 0 13px;
+    }
+    
+    .faq-title { 
+        font-size: 36px; 
+    }
+    
+    .faq-subtitle { 
+        font-size: 11px; 
+    }
+    
+    .faq-block-title { 
+        font-size: 17px; 
+    }
+    
+    .faq-block-text { 
+        font-size: 11px; 
+    }
+}
+
+/* ===== АДАПТАЦИЯ: МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 375px) ===== */
+@media (max-width: 375px) {
+    /* ===== Страница 1: Приветствие ===== */
+    .hero-section .content-wrapper {
+        padding-top: 14vh;
+    }
+    
+    .main-title { 
+        font-size: 26px;
+        letter-spacing: 4px;
+    }
+    
+    .subtitle { 
+        font-size: 46px;
+    }
+    
+    .heart-icon svg {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .heart-icon {
+        margin: 12px 0 !important;
+    }
+    
+    .tap-hint {
+        font-size: 9px;
+    }
+    
+    /* ===== Страница 2: Имена и дата ===== */
+    .names-section .content-wrapper {
+        padding: 45px 15px 18px 15px !important;
+    }
+    
+    .names-section .top-text {
+        font-size: 15px !important;
+        margin-bottom: 38px !important;
+    }
+    
+    .names-section .name {
+        font-size: 40px !important;
+        letter-spacing: 5px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 32px !important;
+        margin: 10px 0;
+    }
+    
+    .names-section .couple-names {
+        margin-bottom: 28px !important;
+    }
+    
+    .names-section .full-date {
+        font-size: 30px !important;
+    }
+    
+    .names-section .month {
+        font-size: 16px !important;
+    }
+    
+    .names-section .day {
+        font-size: 80px !important;
+    }
+    
+    .names-section .year {
+        font-size: 15px !important;
+    }
+    
+    .names-section .wedding-date {
+        margin: 30px 0 !important;
+    }
+    
+    .music-toggle {
+        margin-top: 25px !important;
+    }
+    
+    .music-toggle-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    /* ===== Страница 3: Фото и текст ===== */
+    .dear-text {
+        font-size: 32px;
+    }
+    
+    .invitation-text p {
+        font-size: 12px;
+    }
+    
+    /* ===== Страница 4: Локация ===== */
+    .location-title { 
+        font-size: 24px; 
+        letter-spacing: 4px; 
+    }
+    
+    .location-subtitle { 
+        font-size: 26px; 
+    }
+    
+    .location-text p {
+        font-size: 12px;
+    }
+    
+    .map-button {
+        padding: 12px 32px;
+        font-size: 11px;
+    }
+    
+    /* ===== Страница 5: Тайминг ===== */
+    .timeline-main-title { 
+        font-size: 40px; 
+    }
+    
+    .timeline-time {
+        font-size: 54px;
+    }
+    
+    .timeline-event-name {
+        font-size: 14px;
+    }
+    
+    .timeline-desc p {
+        font-size: 12px;
+    }
+    
+    .timeline-left {
+        flex: 0 0 80px;
+    }
+    
+    .timeline-divider {
+        height: 65px;
+    }
+    
+    /* ===== Страница 6: Dress Code ===== */
+    .dresscode-title { 
+        font-size: 32px; 
+    }
+    
+    .dresscode-title .dresscode-code { 
+        font-size: 36px; 
+    }
+    
+    .dresscode-main-text { 
+        font-size: 16px; 
+    }
+    
+    .dresscode-text { 
+        font-size: 11px; 
+    }
+    
+    .color-swatch {
+        width: 36px;
+        height: 36px;
+    }
+    
+    /* ===== Страница 7: Пожелания ===== */
+    .wishes-title {
+        font-size: 36px !important;
+    }
+    
+    .wishes-left {
+        flex: 0 0 90px;
+    }
+    
+    .wishes-title-item {
+        font-size: 28px !important;
+    }
+    
+    .wishes-divider-vertical {
+        height: 60px;
+    }
+    
+    .wishes-desc {
+        font-size: 11px !important;
+    }
+    
+    .contact-link {
+        font-size: 12px;
+    }
+    
+    /* ===== Страница 8: Обратный отсчёт ===== */
+    .countdown-photo-container { 
+        height: 65vh; 
+    }
+    
+    .countdown-text { 
+        font-size: 26px; 
+    }
+    
+    .countdown-number { 
+        font-size: 32px; 
+    }
+    
+    .countdown-label { 
+        font-size: 9px; 
+    }
+    
+    .countdown-timer { 
+        gap: 8px; 
+    }
+    
+    .countdown-item { 
+        min-width: 45px; 
+    }
+    
+    /* ===== Страница 9: Анкета ===== */
+    .rsvp-title { 
+        font-size: 28px; 
+    }
+    
+    .rsvp-subtitle { 
+        font-size: 42px; 
+    }
+    
+    .rsvp-intro { 
+        font-size: 10px; 
+    }
+    
+    .form-label { 
+        font-size: 13px; 
+    }
+    
+    .form-input { 
+        font-size: 11px; 
+        padding: 10px 12px;
+    }
+    
+    .radio-label, .checkbox-label { 
+        font-size: 11px; 
+    }
+    
+    .submit-button {
+        font-size: 12px;
+        padding: 12px;
+    }
+    
+    .footer-main { 
+        font-size: 11px; 
+    }
+    
+    .footer-sub { 
+        font-size: 30px; 
+    }
+    
+    /* ===== Общие стили для всех страниц ===== */
+    .content-wrapper {
+        padding: 16px;
+        margin: 0 12px;
+    }
+    
+    .faq-title { 
+        font-size: 34px; 
+    }
+    
+    .faq-subtitle { 
+        font-size: 10px; 
+    }
+    
+    .faq-block-title { 
+        font-size: 16px; 
+    }
+    
+    .faq-block-text { 
+        font-size: 10px; 
+    }
+}
+
+/* ===== АДАПТАЦИЯ: ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 320px) ===== */
+@media (max-width: 320px) {
+    /* ===== Страница 1: Приветствие ===== */
+    .hero-section .content-wrapper {
+        padding-top: 12vh;
+    }
+    
+    .main-title { 
+        font-size: 22px;
+        letter-spacing: 3px;
+    }
+    
+    .subtitle { 
+        font-size: 40px;
+    }
+    
+    .heart-icon svg {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .heart-icon {
+        margin: 10px 0 !important;
+    }
+    
+    .tap-hint {
+        font-size: 9px;
+    }
+    
+    /* ===== Страница 2: Имена и дата ===== */
+    .names-section .content-wrapper {
+        padding: 40px 12px 15px 12px !important;
+    }
+    
+    .names-section .top-text {
+        font-size: 14px !important;
+        margin-bottom: 32px !important;
+    }
+    
+    .names-section .name {
+        font-size: 36px !important;
+        letter-spacing: 4px !important;
+    }
+    
+    .names-section .ampersand {
+        font-size: 28px !important;
+        margin: 8px 0;
+    }
+    
+    .names-section .couple-names {
+        margin-bottom: 24px !important;
+    }
+    
+    .names-section .full-date {
+        font-size: 26px !important;
+    }
+    
+    .names-section .month {
+        font-size: 14px !important;
+    }
+    
+    .names-section .day {
+        font-size: 70px !important;
+    }
+    
+    .names-section .year {
+        font-size: 14px !important;
+    }
+    
+    .names-section .wedding-date {
+        margin: 25px 0 !important;
     }
     
     .music-toggle {
         margin-top: 20px !important;
     }
     
-    .wishes-title {
-        font-size: 30px !important;
+    .music-toggle-icon {
+        width: 44px;
+        height: 44px;
     }
     
-    .wishes-title-item {
-        font-size: 22px !important;
+    /* ===== Страница 3: Фото и текст ===== */
+    .dear-text {
+        font-size: 28px;
+    }
+    
+    .invitation-text p {
+        font-size: 11px;
+    }
+    
+    /* ===== Страница 4: Локация ===== */
+    .location-title { 
+        font-size: 22px; 
+        letter-spacing: 3px; 
+    }
+    
+    .location-subtitle { 
+        font-size: 24px; 
+    }
+    
+    .location-text p {
+        font-size: 11px;
+    }
+    
+    .map-button {
+        padding: 10px 28px;
+        font-size: 10px;
+    }
+    
+    /* ===== Страница 5: Тайминг ===== */
+    .timeline-main-title { 
+        font-size: 36px; 
+    }
+    
+    .timeline-time {
+        font-size: 48px;
+    }
+    
+    .timeline-event-name {
+        font-size: 13px;
+    }
+    
+    .timeline-desc p {
+        font-size: 11px;
+    }
+    
+    .timeline-left {
+        flex: 0 0 75px;
+    }
+    
+    .timeline-divider {
+        height: 60px;
+    }
+    
+    /* ===== Страница 6: Dress Code ===== */
+    .dresscode-title { 
+        font-size: 30px; 
+    }
+    
+    .dresscode-title .dresscode-code { 
+        font-size: 34px; 
+    }
+    
+    .dresscode-main-text { 
+        font-size: 15px; 
+    }
+    
+    .dresscode-text { 
+        font-size: 11px; 
+    }
+    
+    .color-swatch {
+        width: 34px;
+        height: 34px;
+    }
+    
+    /* ===== Страница 7: Пожелания ===== */
+    .wishes-title {
+        font-size: 32px !important;
     }
     
     .wishes-left {
-        flex: 0 0 75px;
+        flex: 0 0 85px;
     }
-}
-
-.music-control, .navigation, .section-indicators {
-    display: none !important;
-}
-
-html, body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
-
-* {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-*::-webkit-scrollbar {
-    display: none;
-}
-
-img {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    pointer-events: none;
-}
-
-img.clickable {
-    pointer-events: auto;
-}
-
-.section, .slide-section {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-}
-
-#section9.slide-section {
-    margin-bottom: 0 !important;
-}
-
-.slide-section.section-3-9 {
-    position: relative !important;
-    transform: none !important;
-    visibility: visible !important;
-    z-index: 1;
-    margin: 0;
+    
+    .wishes-title-item {
+        font-size: 26px !important;
+    }
+    
+    .wishes-divider-vertical {
+        height: 55px;
+    }
+    
+    .wishes-desc {
+        font-size: 11px !important;
+    }
+    
+    .contact-link {
+        font-size: 11px;
+    }
+    
+    /* ===== Страница 8: Обратный отсчёт ===== */
+    .countdown-photo-container { 
+        height: 62vh; 
+    }
+    
+    .countdown-text { 
+        font-size: 24px; 
+    }
+    
+    .countdown-number { 
+        font-size: 30px; 
+    }
+    
+    .countdown-label { 
+        font-size: 8px; 
+    }
+    
+    .countdown-timer { 
+        gap: 7px; 
+    }
+    
+    .countdown-item { 
+        min-width: 42px; 
+    }
+    
+    /* ===== Страница 9: Анкета ===== */
+    .rsvp-title { 
+        font-size: 26px; 
+    }
+    
+    .rsvp-subtitle { 
+        font-size: 38px; 
+    }
+    
+    .rsvp-intro { 
+        font-size: 10px; 
+    }
+    
+    .form-label { 
+        font-size: 12px; 
+    }
+    
+    .form-input { 
+        font-size: 11px; 
+        padding: 10px 11px;
+    }
+    
+    .radio-label, .checkbox-label { 
+        font-size: 11px; 
+    }
+    
+    .submit-button {
+        font-size: 11px;
+        padding: 11px;
+    }
+    
+    .footer-main { 
+        font-size: 10px; 
+    }
+    
+    .footer-sub { 
+        font-size: 28px; 
+    }
+    
+    /* ===== Общие стили для всех страниц ===== */
+    .content-wrapper {
+        padding: 14px;
+        margin: 0 10px;
+    }
+    
+    .faq-title { 
+        font-size: 32px; 
+    }
+    
+    .faq-subtitle { 
+        font-size: 10px; 
+    }
+    
+    .faq-block-title { 
+        font-size: 15px; 
+    }
+    
+    .faq-block-text { 
+        font-size: 10px; 
+    }
 }
