@@ -1845,12 +1845,18 @@ body::before {
     
     /* ===== Страница 3: Фото и текст ===== */
     .dear-text {
-        font-size: 40px;
+        font-size: 58px;
+    }
+
+        .invitation-text {
+        max-width: 600px;
+        padding: 0 25px;
     }
     
     .invitation-text p {
         font-size: 13px;
         line-height: 1.7;
+        margin-bottom: 16px;
     }
     
     /* ===== Страница 4: Локация ===== */
