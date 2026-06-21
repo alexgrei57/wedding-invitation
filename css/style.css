@@ -1548,6 +1548,10 @@ body::before {
         width: 54px;
         height: 54px;
     }
+
+        .music-toggle-text {
+        font-size: 14px;
+    }
     
     /* ===== Страница 3: Фото и текст ===== */
     .dear-text {
@@ -1755,45 +1759,45 @@ body::before {
 @media (max-width: 768px) {
     /* ===== Страница 1: Приветствие ===== */
     .hero-section .content-wrapper {
-        padding-top: 18vh;
+        padding-top: 30vh;
     }
     
     .main-title { 
-        font-size: 32px;
+        font-size: 50px;
         letter-spacing: 6px;
     }
     
     .subtitle { 
-        font-size: 60px;
+        font-size: 110px;
     }
     
     .heart-icon svg {
-        width: 70px;
-        height: 70px;
+        width: 100px;
+        height: 100px;
     }
     
     .heart-icon {
-        margin: 18px 0 !important;
+        margin: 28px 0 !important;
     }
     
     .tap-hint {
-        font-size: 11px;
+        font-size: 16px;
         letter-spacing: 0.8px;
     }
     
     /* ===== Страница 2: Имена и дата ===== */
     .names-section .content-wrapper {
-        padding: 60px 15px 25px 15px !important;
+        padding: 80px 15px 25px 15px !important;
     }
     
     .names-section .top-text {
-        font-size: 17px !important;
+        font-size: 20px !important;
         letter-spacing: 5px !important;
-        margin-bottom: 50px !important;
+        margin-bottom: 120px !important;
     }
     
     .names-section .name {
-        font-size: 50px !important;
+        font-size: 70px !important;
         letter-spacing: 7px !important;
     }
     
@@ -1803,11 +1807,11 @@ body::before {
     }
     
     .names-section .couple-names {
-        margin-bottom: 35px !important;
+        margin-bottom: 50px !important;
     }
     
     .names-section .full-date {
-        font-size: 38px !important;
+        font-size: 52px !important;
     }
     
     .names-section .month {
@@ -1823,16 +1827,20 @@ body::before {
     }
     
     .names-section .wedding-date {
-        margin: 40px 0 !important;
+        margin: 50px 0 !important;
     }
     
     .music-toggle {
-        margin-top: 35px !important;
+        margin-top: 90px !important;
     }
     
     .music-toggle-icon {
-        width: 52px;
-        height: 52px;
+        width: 62px;
+        height: 62px;
+    }
+
+        .music-toggle-text {
+        font-size: 13px;
     }
     
     /* ===== Страница 3: Фото и текст ===== */
@@ -2119,6 +2127,10 @@ body::before {
         width: 50px;
         height: 50px;
     }
+
+        .music-toggle-text {
+        font-size: 11px;
+    }
     
     /* ===== Страница 3: Фото и текст ===== */
     .dear-text {
@@ -2389,6 +2401,10 @@ body::before {
         width: 48px;
         height: 48px;
     }
+
+        .music-toggle-text {
+        font-size: 11px;
+    }
     
     /* ===== Страница 3: Фото и текст ===== */
     .dear-text {
@@ -2658,6 +2674,10 @@ body::before {
     .music-toggle-icon {
         width: 44px;
         height: 44px;
+    }
+
+        .music-toggle-text {
+        font-size: 11px;
     }
     
     /* ===== Страница 3: Фото и текст ===== */
