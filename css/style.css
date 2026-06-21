@@ -1854,9 +1854,9 @@ body::before {
     }
     
     .invitation-text p {
-        font-size: 13px;
+        font-size: 17px;
         line-height: 1.7;
-        margin-bottom: 16px;
+        margin-bottom: 10px;
     }
     
     /* ===== Страница 4: Локация ===== */
@@ -1866,11 +1866,17 @@ body::before {
     }
     
     .location-subtitle { 
-        font-size: 32px; 
+        font-size: 68px; 
+    }
+    
+    .location-text {
+        max-width: 600px;
+        margin-bottom: 18px;
     }
     
     .location-text p {
-        font-size: 13px;
+        font-size: 17px;
+        line-height: 1.8;
     }
     
     .map-button {
@@ -1880,7 +1886,7 @@ body::before {
     
     /* ===== Страница 5: Тайминг ===== */
     .timeline-main-title { 
-        font-size: 50px; 
+        font-size: 68px; 
         letter-spacing: 1px; 
     }
     
@@ -1890,11 +1896,11 @@ body::before {
     }
     
     .timeline-event-name {
-        font-size: 16px;
+        font-size: 18px;
     }
     
     .timeline-desc p {
-        font-size: 13px;
+        font-size: 16px;
     }
     
     .timeline-left {
@@ -1907,20 +1913,22 @@ body::before {
     
     /* ===== Страница 6: Dress Code ===== */
     .dresscode-title { 
-        font-size: 38px; 
+        font-size: 50px; 
         letter-spacing: 4px; 
     }
     
     .dresscode-title .dresscode-code { 
-        font-size: 42px; 
+        font-size: 50px; 
     }
     
     .dresscode-main-text { 
-        font-size: 18px; 
+        font-size: 22px; 
     }
     
     .dresscode-text { 
-        font-size: 12px; 
+        font-size: 17px;
+        max-width: 600px;
+        margin-bottom: 10px;
     }
     
     .color-swatch {
@@ -1930,18 +1938,18 @@ body::before {
     
     /* ===== Страница 7: Пожелания ===== */
     .wishes-title {
-        font-size: 42px !important;
+        font-size: 68px !important;
         line-height: 0.6 !important;
     }
     
     .wishes-left {
-        flex: 0 0 100px;
+        flex: 0 0 140px;
         padding-right: 12px;
         padding-top: 3px;
     }
     
     .wishes-title-item {
-        font-size: 32px !important;
+        font-size: 36px !important;
     }
     
     .wishes-divider-vertical {
@@ -1950,7 +1958,7 @@ body::before {
     }
     
     .wishes-desc {
-        font-size: 12px !important;
+        font-size: 16px !important;
     }
     
     .contact-link {
@@ -1963,7 +1971,7 @@ body::before {
     }
     
     .countdown-text { 
-        font-size: 30px; 
+        font-size: 45px; 
     }
     
     .countdown-number { 
@@ -1989,11 +1997,13 @@ body::before {
     }
     
     .rsvp-subtitle { 
-        font-size: 52px; 
+        font-size: 68px; 
     }
     
     .rsvp-intro { 
-        font-size: 11px; 
+        font-size: 16px;
+        max-width: 600px;
+        margin-bottom: 10px;
     }
     
     .form-label { 
