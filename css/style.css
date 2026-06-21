@@ -1803,7 +1803,7 @@ body::before {
     .main-title { font-size: 22px; letter-spacing: 3px; }
     .subtitle { font-size: 40px; }
     .heart-icon svg { width: 55px; height: 55px; }
-    .heart-icon { margin: 10px 0 !important; }
+    .heart-icon { margin: 70px 0 !important; }
     .tap-hint { font-size: 9px; }
     
     /* Страница 2: Имена и дата */
@@ -1822,12 +1822,12 @@ body::before {
     .music-toggle-text { font-size: 11px; }
     
     /* Страница 3: Фото и текст */
-    .dear-text { font-size: 28px; }
+    .dear-text { font-size: 36px; }
     .invitation-text p { font-size: 11px; }
     
     /* Страница 4: Локация */
     .location-title { font-size: 22px; letter-spacing: 3px; }
-    .location-subtitle { font-size: 24px; }
+    .location-subtitle { font-size: 36px; }
     .location-text p { font-size: 11px; }
     .map-button { padding: 10px 28px; font-size: 10px; }
     
@@ -1849,10 +1849,10 @@ body::before {
     /* Страница 7: Пожелания */
     .wishes-title { font-size: 32px !important; }
     .wishes-left { flex: 0 0 85px; }
-    .wishes-title-item { font-size: 26px !important; }
+    .wishes-title-item { font-size: 21px !important; }
     .wishes-divider-vertical { height: 55px; }
-    .wishes-desc { font-size: 11px !important; }
-    .contact-link { font-size: 11px; }
+    .wishes-desc { font-size: 10px !important; }
+    .contact-link { font-size: 10px; }
     
     /* Страница 8: Обратный отсчёт */
     .countdown-photo-container { height: 62vh; }
