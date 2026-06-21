@@ -2843,3 +2843,52 @@ body::before {
         font-size: 10px; 
     }
 }
+
+/* ===== СКРЫТИЕ НАВИГАЦИИ, ИНДИКАТОРОВ И ИКОНКИ МУЗЫКИ ===== */
+.music-control, .navigation, .section-indicators {
+    display: none !important;
+}
+
+html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+* {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+img.clickable {
+    pointer-events: auto;
+}
+
+.section, .slide-section {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+#section9.slide-section {
+    margin-bottom: 0 !important;
+}
+
+.slide-section.section-3-9 {
+    position: relative !important;
+    transform: none !important;
+    visibility: visible !important;
+    z-index: 1;
+    margin: 0;
+}
