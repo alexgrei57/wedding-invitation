@@ -9,7 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=188">
+    <link rel="stylesheet" href="css/style.css?v=190">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -409,31 +409,40 @@
     <label class="form-label">Ваши предпочтения в напитках:</label>
     <div class="checkbox-group">
         <label class="checkbox-label">
-            <input type="checkbox" name="drinks" value="Вино белое">
+            <input type="checkbox" name="drinks" value="Вино белое" id="whiteWineCheck">
             <span>Вино белое</span>
         </label>
+        <div id="whiteWineDetails" style="display: none; margin-left: 28px; margin-top: -5px; margin-bottom: 5px;">
+            <input type="text" id="whiteWineType" class="form-input" 
+                   placeholder="Уточните (например:сухое/полусухое/полусладкое)"
+                   style="font-size: 12px; padding: 8px 12px;">
+        </div>
+        
         <label class="checkbox-label">
-            <input type="checkbox" name="drinks" value="Вино красное">
+            <input type="checkbox" name="drinks" value="Вино красное" id="redWineCheck">
             <span>Вино красное</span>
         </label>
+        <div id="redWineDetails" style="display: none; margin-left: 28px; margin-top: -5px; margin-bottom: 5px;">
+            <input type="text" id="redWineType" class="form-input" 
+                   placeholder="Уточните (например:сухое/полусухое/полусладкое)"
+                   style="font-size: 12px; padding: 8px 12px;">
+        </div>
+        
         <label class="checkbox-label">
             <input type="checkbox" name="drinks" value="Игристое">
             <span>Игристое</span>
         </label>
+        
         <label class="checkbox-label">
             <input type="checkbox" name="drinks" value="Крепкий алкоголь" id="strongAlcoholCheck">
             <span>Крепкий алкоголь</span>
         </label>
-        <!-- Текстовое поле для уточнения крепкого алкоголя -->
         <div id="strongAlcoholDetails" style="display: none; margin-left: 28px; margin-top: -5px; margin-bottom: 5px;">
-            <input 
-                type="text" 
-                id="strongDrinkDetails" 
-                class="form-input" 
-                placeholder="Уточните (например: виски, коньяк)"
-                style="font-size: 12px; padding: 8px 12px;"
-            >
+            <input type="text" id="strongDrinkDetails" class="form-input" 
+                   placeholder="Уточните (например: водка/коньяк/виски)"
+                   style="font-size: 12px; padding: 8px 12px;">
         </div>
+        
         <label class="checkbox-label">
             <input type="checkbox" name="drinks" value="Безалкогольные напитки">
             <span>Безалкогольные напитки</span>
@@ -600,8 +609,16 @@ async function sendToServer(event) {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 30000);
         
-// Получаем уточнение по крепкому алкоголю
+// Получаем уточнения по напиткам
+const whiteWineType = document.getElementById('whiteWineType').value.trim();
+const redWineType = document.getElementById('redWineType').value.trim();
 const strongDrinkDetails = document.getElementById('strongDrinkDetails').value.trim();
+
+// Формируем единое уточнение по вину
+const wineDetails = [];
+if (whiteWineType) wineDetails.push('Белое: ' + whiteWineType);
+if (redWineType) wineDetails.push('Красное: ' + redWineType);
+const wineDetailsStr = wineDetails.join('; ') || null;
 
 const { data, error } = await supabaseClient
     .from('guests')
@@ -612,6 +629,7 @@ const { data, error } = await supabaseClient
         is_child: isChild,
         attendance: attendance, 
         drinks: drinks || 'Не выбрано',
+        wine_details: wineDetailsStr,
         strong_drink_details: strongDrinkDetails || null
     }])
     .abortSignal(controller.signal);
@@ -741,8 +759,32 @@ document.addEventListener('DOMContentLoaded', formatWeddingDate);
 </script>
 
 <script>
-// Показывать поле уточнения крепкого алкоголя только когда чекбокс отмечен
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
+    // Функция для обработки чекбокса и поля уточнения
+    function setupWineToggle(checkId, detailsId, inputId) {
+        const check = document.getElementById(checkId);
+        const details = document.getElementById(detailsId);
+        const input = document.getElementById(inputId);
+        
+        if (check && details && input) {
+            check.addEventListener('change', function() {
+                if (this.checked) {
+                    details.style.display = 'block';
+                } else {
+                    details.style.display = 'none';
+                    input.value = '';
+                }
+            });
+        }
+    }
+    
+    // Белое вино
+    setupWineToggle('whiteWineCheck', 'whiteWineDetails', 'whiteWineType');
+    
+    // Красное вино
+    setupWineToggle('redWineCheck', 'redWineDetails', 'redWineType');
+    
+    // Крепкий алкоголь
     const strongCheck = document.getElementById('strongAlcoholCheck');
     const strongDetails = document.getElementById('strongAlcoholDetails');
     
@@ -756,7 +798,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
+})();
 </script>
 
 </body>

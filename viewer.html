@@ -183,6 +183,7 @@
                         <th>Ребенок</th>
                         <th>Присутствие</th>
                         <th>Напитки</th>
+                        <th>Вино (уточнение)</th>
                         <th>Крепкий алкоголь (уточнение)</th>
                         <th>Дата</th>
                     </tr>
@@ -266,7 +267,7 @@
             mobileCards.innerHTML = '';
             
             if (guests.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
                 mobileCards.innerHTML = '<p style="text-align: center; color: #999;">Пока нет анкет</p>';
                 return;
             }
@@ -277,7 +278,13 @@
                 const isChild = guest.is_child || 'Нет';
                 
                 // Таблица (десктоп)
-                const strongDetails = guest.strong_drink_details || '-';
+const row = document.createElement('tr');
+const wineDetails = guest.wine_details || '-';
+const wineDisplay = wineDetails !== '-' 
+    ? `<span style="color: #8B7355; font-weight: 500;">${escapeHtml(wineDetails)}</span>` 
+    : '-';
+
+const strongDetails = guest.strong_drink_details || '-';
 const strongDisplay = strongDetails !== '-' 
     ? `<span style="color: #8B7355; font-weight: 500;">${escapeHtml(strongDetails)}</span>` 
     : '-';
@@ -290,6 +297,7 @@ row.innerHTML = `
     <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
     <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
     <td>${escapeHtml(guest.drinks) || '-'}</td>
+    <td>${wineDisplay}</td>
     <td>${strongDisplay}</td>
     <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
 `;
@@ -320,7 +328,13 @@ row.innerHTML = `
                         <span class="guest-info-label">Напитки:</span>
                         <span>${escapeHtml(guest.drinks) || '-'}</span>
                     </div>
-                    ${strongDetails !== '-' ? `
+                    ${wineDetails !== '-' ? `
+<div class="guest-info">
+    <span class="guest-info-label">Вино:</span>
+    <span style="color: #8B7355; font-weight: 500;">${escapeHtml(wineDetails)}</span>
+</div>
+` : ''}
+${strongDetails !== '-' ? `
 <div class="guest-info">
     <span class="guest-info-label">Крепкий алкоголь:</span>
     <span style="color: #8B7355; font-weight: 500;">${escapeHtml(strongDetails)}</span>

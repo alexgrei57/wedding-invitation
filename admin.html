@@ -248,7 +248,7 @@
             <!-- Таблица для десктопа -->
             <table class="desktop-table">
                 <thead>
-                    <tr>
+<tr>
     <th>№</th>
     <th>ФИО взрослого</th>
     <th>Взрослый</th>
@@ -256,6 +256,7 @@
     <th>Ребенок</th>
     <th>Присутствие</th>
     <th>Напитки</th>
+    <th>Вино (уточнение)</th>
     <th>Крепкий алкоголь (уточнение)</th>
     <th>Дата</th>
     <th>Действия</th>
@@ -285,8 +286,10 @@
             <textarea id="editAttendance" placeholder="Присутствие" rows="2"></textarea>
             
             <label>Напитки (через запятую)</label>
-            <textarea id="editDrinks" placeholder="Напитки" rows="3"></textarea>
-            <label>Уточнение по крепкому алкоголю (если выбран)</label>
+<textarea id="editDrinks" placeholder="Напитки" rows="3"></textarea>
+<label>Уточнение по вину (сухое/полусухое/полусладкое)</label>
+<input type="text" id="editWineDetails" placeholder="Например: Белое: сухое; Красное: полусладкое">
+<label>Уточнение по крепкому алкоголю (если выбран)</label>
 <input type="text" id="editStrongDetails" placeholder="Например: виски, коньяк">
             <div class="modal-buttons">
                 <button onclick="closeEditModal()" class="cancel-btn">Отмена</button>
@@ -368,7 +371,7 @@
             mobileCards.innerHTML = '';
             
             if (guests.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
                 mobileCards.innerHTML = '<p style="text-align: center; color: #999;">Пока нет анкет</p>';
                 return;
             }
@@ -380,6 +383,11 @@
                 
                 // Таблица (десктоп)
                 const row = document.createElement('tr');
+const wineDetails = guest.wine_details || '-';
+const wineDisplay = wineDetails !== '-' 
+    ? `<span style="color: #8B7355; font-weight: 500;">${escapeHtml(wineDetails)}</span>` 
+    : '-';
+
 const strongDetails = guest.strong_drink_details || '-';
 const strongDisplay = strongDetails !== '-' 
     ? `<span style="color: #8B7355; font-weight: 500;">${escapeHtml(strongDetails)}</span>` 
@@ -393,6 +401,7 @@ row.innerHTML = `
     <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
     <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
     <td>${escapeHtml(guest.drinks) || '-'}</td>
+    <td>${wineDisplay}</td>
     <td>${strongDisplay}</td>
     <td>${new Date(guest.created_at).toLocaleString('ru-RU')}</td>
     <td>
@@ -427,7 +436,13 @@ row.innerHTML = `
                         <span class="guest-info-label">Напитки:</span>
                         <span>${escapeHtml(guest.drinks) || '-'}</span>
                     </div>
-                    ${strongDetails !== '-' ? `
+                    ${wineDetails !== '-' ? `
+<div class="guest-info">
+    <span class="guest-info-label">Вино:</span>
+    <span style="color: #8B7355; font-weight: 500;">${escapeHtml(wineDetails)}</span>
+</div>
+` : ''}
+${strongDetails !== '-' ? `
 <div class="guest-info">
     <span class="guest-info-label">Крепкий алкоголь:</span>
     <span style="color: #8B7355; font-weight: 500;">${escapeHtml(strongDetails)}</span>
@@ -464,6 +479,7 @@ row.innerHTML = `
             document.getElementById('editChildName').value = guest.child_name || '';
             document.getElementById('editAttendance').value = guest.attendance || '';
             document.getElementById('editDrinks').value = guest.drinks || '';
+            document.getElementById('editWineDetails').value = guest.wine_details || '';
             document.getElementById('editStrongDetails').value = guest.strong_drink_details || '';
             document.getElementById('editModal').style.display = 'block';
         }
@@ -478,6 +494,7 @@ row.innerHTML = `
             const childName = document.getElementById('editChildName').value.trim();
             const attendance = document.getElementById('editAttendance').value;
             const drinks = document.getElementById('editDrinks').value;
+            const wineDetails = document.getElementById('editWineDetails').value.trim();
             const strongDetails = document.getElementById('editStrongDetails').value.trim();
 
             
@@ -499,6 +516,7 @@ row.innerHTML = `
                     is_child: isChild,
                     attendance, 
                     drinks,
+                    wine_details: wineDetails || null,
                     strong_drink_details: strongDetails || null 
                 })
                 .eq('id', id);
