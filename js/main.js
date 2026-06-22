@@ -1,5 +1,5 @@
 let currentSection = 0;
-const totalSections = 9;
+const totalSections = 10;
 
 // ===== Глобальная функция для клика по сердцу =====
 function changeSection(targetIndex) {

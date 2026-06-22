@@ -1451,6 +1451,57 @@ body::before {
     color: #5a4a3a;
 }
 
+/* ===== Farewell секция (До встречи) ===== */
+.farewell-title {
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive !important;
+    font-size: 52px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    color: #5a4a3a !important;
+    margin-bottom: 25px !important;
+    letter-spacing: 1px !important;
+}
+
+.farewell-photo-container {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.farewell-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.farewell-footer {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.farewell-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #000000;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.farewell-sub {
+    font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
+    font-size: 34px;
+    font-style: normal;
+    color: #5a4a3a;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
 /* ===== АДАПТАЦИЯ: ПЛАНШЕТЫ АЛЬБОМНАЯ ОРИЕНТАЦИЯ (769-1024px) ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
     /* Страница 1: Приветствие */
@@ -1625,6 +1676,12 @@ body::before {
     .faq-subtitle { font-size: 11px; letter-spacing: 2px; }
     .faq-block-title { font-size: 18px; letter-spacing: 3px; }
     .faq-block-text { font-size: 11px; }
+
+    /* Страница 10: До встречи */
+    .farewell-title { font-size: 68px !important; }
+    .farewell-photo-container { max-width: 450px; }
+    .farewell-main { font-size: 12px; letter-spacing: 3px; }
+    .farewell-sub { font-size: 42px; }
 }
 
 /* ===== АДАПТАЦИЯ: СРЕДНИЕ ТЕЛЕФОНЫ (до 480px) ===== */
@@ -1710,6 +1767,12 @@ body::before {
     .faq-subtitle { font-size: 11px; }
     .faq-block-title { font-size: 17px; }
     .faq-block-text { font-size: 11px; }
+
+    /* Страница 10: До встречи */
+    .farewell-title { font-size: 52px !important; }
+    .farewell-photo-container { max-width: 320px; }
+    .farewell-main { font-size: 11px; }
+    .farewell-sub { font-size: 38px; }
 }
 
 /* ===== АДАПТАЦИЯ: МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 375px) ===== */
@@ -1795,6 +1858,12 @@ body::before {
     .faq-subtitle { font-size: 10px; }
     .faq-block-title { font-size: 16px; }
     .faq-block-text { font-size: 10px; }
+
+    /* Страница 10: До встречи */
+    .farewell-title { font-size: 50px !important; }
+    .farewell-photo-container { max-width: 300px; }
+    .farewell-main { font-size: 11px; }
+    .farewell-sub { font-size: 36px; }
 }
 
 /* ===== АДАПТАЦИЯ: ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 320px) ===== */
@@ -1880,6 +1949,12 @@ body::before {
     .faq-subtitle { font-size: 10px; }
     .faq-block-title { font-size: 15px; }
     .faq-block-text { font-size: 10px; }
+
+    /* Страница 10: До встречи */
+    .farewell-title { font-size: 38px !important; }
+    .farewell-photo-container { max-width: 260px; }
+    .farewell-main { font-size: 10px; }
+    .farewell-sub { font-size: 28px; }
 }
 
 /* ===== АДАПТАЦИЯ ПО ВЫСОТЕ ЭКРАНА ===== */
