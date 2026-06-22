@@ -1682,6 +1682,8 @@ body::before {
     .farewell-photo-container { max-width: 450px; }
     .farewell-main { font-size: 12px; letter-spacing: 3px; }
     .farewell-sub { font-size: 42px; }
+
+
 }
 
 /* ===== АДАПТАЦИЯ: СРЕДНИЕ ТЕЛЕФОНЫ (до 480px) ===== */
@@ -2043,14 +2045,24 @@ img.clickable {
     -webkit-transform: translateZ(0);
 }
 
-#section9.slide-section {
-    margin-bottom: 0 !important;
-}
-
 .slide-section.section-3-9 {
     position: relative !important;
     transform: none !important;
     visibility: visible !important;
     z-index: 1;
     margin: 0;
+}
+
+/* 10-я страница — такие же отступы как у 3-9 */
+#section10 {
+    margin-bottom: 40px !important;
+}
+
+#section10 .content-wrapper {
+    margin: 20px 15px;
+    padding: 20px 20px;
+}
+
+#section10.slide-section {
+    margin-bottom: 2px !important;
 }
