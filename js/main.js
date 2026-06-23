@@ -190,7 +190,7 @@ function animateTimeline() {
     timelineItems.forEach((item, index) => {
         setTimeout(() => {
             item.classList.add('visible');
-        }, index * 300); // 300ms между каждым элементом
+        }, index * 150); // 300ms между каждым элементом
     });
 }
 
