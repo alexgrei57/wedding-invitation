@@ -1465,7 +1465,7 @@ body::before {
 .farewell-photo-container {
     width: 100%;
     max-width: 350px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
