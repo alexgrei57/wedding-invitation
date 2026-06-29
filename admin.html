@@ -255,6 +255,7 @@
     <th>ФИО ребенка</th>
     <th>Ребенок</th>
     <th>Присутствие</th>
+    <th>2-й день (13.09)</th>
     <th>Напитки</th>
     <th>Вино (уточнение)</th>
     <th>Крепкий алкоголь (уточнение)</th>
@@ -283,9 +284,17 @@
             <input type="text" id="editChildName" placeholder="Имя ребенка">
             
             <label>Присутствие</label>
-            <textarea id="editAttendance" placeholder="Присутствие" rows="2"></textarea>
-            
-            <label>Напитки (через запятую)</label>
+<textarea id="editAttendance" placeholder="Присутствие" rows="2"></textarea>
+
+<label>2-й день (13 сентября)</label>
+<select id="editSecondDay" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #D4C4B0; border-radius: 5px; font-size: 14px;">
+    <option value="">Не указано</option>
+    <option value="Да, обязательно!">Да, обязательно!</option>
+    <option value="Пока не уверен(а)">Пока не уверен(а)</option>
+    <option value="К сожалению, нет">К сожалению, нет</option>
+</select>
+
+<label>Напитки (через запятую)</label>
 <textarea id="editDrinks" placeholder="Напитки" rows="3"></textarea>
 <label>Уточнение по вину (сухое/полусухое/полусладкое)</label>
 <input type="text" id="editWineDetails" placeholder="Например: Белое: сухое; Красное: полусладкое">
@@ -371,7 +380,7 @@
             mobileCards.innerHTML = '';
             
             if (guests.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="12" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
                 mobileCards.innerHTML = '<p style="text-align: center; color: #999;">Пока нет анкет</p>';
                 return;
             }
@@ -383,6 +392,11 @@
                 
                 // Таблица (десктоп)
                 const row = document.createElement('tr');
+const secondDay = guest.second_day || '-';
+const secondDayDisplay = secondDay !== '-' 
+    ? `<span style="color: ${secondDay.includes('Да') ? '#4CAF50' : (secondDay.includes('К сожалению') ? '#f44336' : '#8B7355')}; font-weight: 500;">${escapeHtml(secondDay)}</span>` 
+    : '-';
+
 const wineDetails = guest.wine_details || '-';
 const wineDisplay = wineDetails !== '-' 
     ? `<span style="color: #8B7355; font-weight: 500;">${escapeHtml(wineDetails)}</span>` 
@@ -400,6 +414,7 @@ row.innerHTML = `
     <td>${escapeHtml(childName)}</td>
     <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
     <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
+    <td>${secondDayDisplay}</td>
     <td>${escapeHtml(guest.drinks) || '-'}</td>
     <td>${wineDisplay}</td>
     <td>${strongDisplay}</td>
@@ -429,13 +444,19 @@ row.innerHTML = `
                         <span class="${isChild === 'Да' ? 'yes' : 'no'}" style="margin-left: 8px;">(${escapeHtml(isChild)})</span>
                     </div>
                     <div class="guest-info">
-                        <span class="guest-info-label">Присутствие:</span>
-                        <span class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</span>
-                    </div>
-                    <div class="guest-info">
-                        <span class="guest-info-label">Напитки:</span>
-                        <span>${escapeHtml(guest.drinks) || '-'}</span>
-                    </div>
+    <span class="guest-info-label">Присутствие:</span>
+    <span class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</span>
+</div>
+${secondDay !== '-' ? `
+<div class="guest-info">
+    <span class="guest-info-label">2-й день:</span>
+    <span style="color: ${secondDay.includes('Да') ? '#4CAF50' : (secondDay.includes('К сожалению') ? '#f44336' : '#8B7355')}; font-weight: 500;">${escapeHtml(secondDay)}</span>
+</div>
+` : ''}
+<div class="guest-info">
+    <span class="guest-info-label">Напитки:</span>
+    <span>${escapeHtml(guest.drinks) || '-'}</span>
+</div>
                     ${wineDetails !== '-' ? `
 <div class="guest-info">
     <span class="guest-info-label">Вино:</span>
@@ -478,6 +499,7 @@ ${strongDetails !== '-' ? `
             document.getElementById('editName').value = guest.name || '';
             document.getElementById('editChildName').value = guest.child_name || '';
             document.getElementById('editAttendance').value = guest.attendance || '';
+            document.getElementById('editSecondDay').value = guest.second_day || '';
             document.getElementById('editDrinks').value = guest.drinks || '';
             document.getElementById('editWineDetails').value = guest.wine_details || '';
             document.getElementById('editStrongDetails').value = guest.strong_drink_details || '';
@@ -493,6 +515,7 @@ ${strongDetails !== '-' ? `
             const name = document.getElementById('editName').value.trim();
             const childName = document.getElementById('editChildName').value.trim();
             const attendance = document.getElementById('editAttendance').value;
+            const secondDay = document.getElementById('editSecondDay').value;
             const drinks = document.getElementById('editDrinks').value;
             const wineDetails = document.getElementById('editWineDetails').value.trim();
             const strongDetails = document.getElementById('editStrongDetails').value.trim();
@@ -514,7 +537,8 @@ ${strongDetails !== '-' ? `
                     child_name: childName || null,
                     is_adult: isAdult,
                     is_child: isChild,
-                    attendance, 
+                    attendance,
+                    second_day: secondDay || null,
                     drinks,
                     wine_details: wineDetails || null,
                     strong_drink_details: strongDetails || null 

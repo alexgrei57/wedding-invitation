@@ -9,7 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=197">
+    <link rel="stylesheet" href="css/style.css?v=199">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -405,6 +405,24 @@
                     </label>
                 </div>
             </div>
+    <!-- НОВОЕ: Второй день -->
+<div class="form-group">
+    <label class="form-label">Планируете ли Вы быть на втором дне (13 сентября)?</label>
+    <div class="radio-group">
+        <label class="radio-label">
+            <input type="radio" name="secondDay" value="Да, обязательно!">
+            <span>Да, обязательно!</span>
+        </label>
+        <label class="radio-label">
+            <input type="radio" name="secondDay" value="Пока не уверен(а)">
+            <span>Пока не уверен(а)</span>
+        </label>
+        <label class="radio-label">
+            <input type="radio" name="secondDay" value="К сожалению, нет">
+            <span>К сожалению, нет</span>
+        </label>
+    </div>
+</div>
             
 <div class="form-group">
     <label class="form-label">Ваши предпочтения в напитках:</label>
@@ -598,6 +616,11 @@ async function sendToServer(event) {
     try {
         const childName = document.getElementById('childName').value.trim();
         const attendance = document.querySelector('input[name="attendance"]:checked').value;
+
+        // Получаем ответ про второй день (может быть не выбран)
+        const secondDayRadio = document.querySelector('input[name="secondDay"]:checked');
+        const secondDay = secondDayRadio ? secondDayRadio.value : null;
+
         const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
             .map(cb => cb.value)
             .join(', ');
@@ -629,6 +652,7 @@ const { data, error } = await supabaseClient
         child_name: childName || null,
         is_child: isChild,
         attendance: attendance, 
+        second_day: secondDay,
         drinks: drinks || 'Не выбрано',
         wine_details: wineDetailsStr,
         strong_drink_details: strongDrinkDetails || null

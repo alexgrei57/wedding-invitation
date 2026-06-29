@@ -35,3 +35,6 @@ yarn-error.log*
 
 # Old server file (using netlify/functions instead)
 server.js
+
+
+print-invitation.html

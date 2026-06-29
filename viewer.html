@@ -182,6 +182,7 @@
                         <th>ФИО ребенка</th>
                         <th>Ребенок</th>
                         <th>Присутствие</th>
+                        <th>2-й день (13.09)</th>
                         <th>Напитки</th>
                         <th>Вино (уточнение)</th>
                         <th>Крепкий алкоголь (уточнение)</th>
@@ -267,7 +268,7 @@
             mobileCards.innerHTML = '';
             
             if (guests.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: #999;">Пока нет анкет</td></tr>';
                 mobileCards.innerHTML = '<p style="text-align: center; color: #999;">Пока нет анкет</p>';
                 return;
             }
@@ -279,6 +280,11 @@
                 
                 // Таблица (десктоп)
 const row = document.createElement('tr');
+const secondDay = guest.second_day || '-';
+const secondDayDisplay = secondDay !== '-' 
+    ? `<span style="color: ${secondDay.includes('Да') ? '#4CAF50' : (secondDay.includes('К сожалению') ? '#f44336' : '#8B7355')}; font-weight: 500;">${escapeHtml(secondDay)}</span>` 
+    : '-';
+
 const wineDetails = guest.wine_details || '-';
 const wineDisplay = wineDetails !== '-' 
     ? `<span style="color: #8B7355; font-weight: 500;">${escapeHtml(wineDetails)}</span>` 
@@ -296,6 +302,7 @@ row.innerHTML = `
     <td>${escapeHtml(childName)}</td>
     <td class="${isChild === 'Да' ? 'yes' : 'no'}">${escapeHtml(isChild)}</td>
     <td class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</td>
+    <td>${secondDayDisplay}</td>
     <td>${escapeHtml(guest.drinks) || '-'}</td>
     <td>${wineDisplay}</td>
     <td>${strongDisplay}</td>
@@ -321,13 +328,19 @@ row.innerHTML = `
                         <span class="${isChild === 'Да' ? 'yes' : 'no'}" style="margin-left: 8px;">(${escapeHtml(isChild)})</span>
                     </div>
                     <div class="guest-info">
-                        <span class="guest-info-label">Присутствие:</span>
-                        <span class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</span>
-                    </div>
-                    <div class="guest-info">
-                        <span class="guest-info-label">Напитки:</span>
-                        <span>${escapeHtml(guest.drinks) || '-'}</span>
-                    </div>
+    <span class="guest-info-label">Присутствие:</span>
+    <span class="${guest.attendance.includes('Да') ? 'yes' : 'no'}">${escapeHtml(guest.attendance)}</span>
+</div>
+${secondDay !== '-' ? `
+<div class="guest-info">
+    <span class="guest-info-label">2-й день:</span>
+    <span style="color: ${secondDay.includes('Да') ? '#4CAF50' : (secondDay.includes('К сожалению') ? '#f44336' : '#8B7355')}; font-weight: 500;">${escapeHtml(secondDay)}</span>
+</div>
+` : ''}
+<div class="guest-info">
+    <span class="guest-info-label">Напитки:</span>
+    <span>${escapeHtml(guest.drinks) || '-'}</span>
+</div>
                     ${wineDetails !== '-' ? `
 <div class="guest-info">
     <span class="guest-info-label">Вино:</span>
