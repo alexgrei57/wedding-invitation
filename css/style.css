@@ -722,7 +722,7 @@ body::before {
     text-align: left;
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    transition: opacity 0.10s ease, transform 0.10s ease;
 }
 
 .timeline-item.visible {
@@ -730,7 +730,7 @@ body::before {
     transform: translateY(0);
 }
 
-.timeline-item:nth-child(1) { transition-delay: 0.05s; }
+.timeline-item:nth-child(1) { transition-delay: 0s; }
 .timeline-item:nth-child(2) { transition-delay: 0.10s; }
 .timeline-item:nth-child(3) { transition-delay: 0.15s; }
 .timeline-item:nth-child(4) { transition-delay: 0.20s; }
