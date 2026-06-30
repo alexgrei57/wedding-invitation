@@ -468,7 +468,7 @@ body::before {
     font-family: 'Sloop Script Pro', cursive;
     font-size: 18px !important;
     letter-spacing: 6px !important;
-    color: #000000;
+    color: #786246;
     margin-top: 0;
     margin-bottom: 55px !important;
     text-align: center !important;
@@ -1541,7 +1541,7 @@ body::before {
     
     /* Страница 2: Имена и дата */
     .names-section .content-wrapper { padding: 55px 20px 25px 20px !important; }
-    .names-section .top-text { font-size: 18px !important; letter-spacing: 6px !important; margin-bottom: 45px !important; }
+    .names-section .top-text { font-size: 30px !important; letter-spacing: 6px !important; margin-bottom: 45px !important; }
     .names-section .name { font-size: 52px !important; letter-spacing: 8px !important; }
     .names-section .ampersand { font-size: 42px !important; margin: 14px 0; }
     .names-section .couple-names { margin-bottom: 38px !important; }
@@ -1627,7 +1627,7 @@ body::before {
     
     /* Страница 2: Имена и дата */
     .names-section .content-wrapper { padding: 80px 15px 25px 15px !important; }
-    .names-section .top-text { font-size: 20px !important; letter-spacing: 5px !important; margin-bottom: 120px !important; }
+    .names-section .top-text { font-size: 30px !important; letter-spacing: 5px !important; margin-bottom: 120px !important; }
     .names-section .name { font-size: 70px !important; letter-spacing: 7px !important; }
     .names-section .ampersand { font-size: 40px !important; margin: 14px 0; }
     .names-section .couple-names { margin-bottom: 50px !important; }
@@ -1725,7 +1725,7 @@ body::before {
     
     /* Страница 2: Имена и дата */
     .names-section .content-wrapper { padding: 50px 15px 20px 15px !important; }
-    .names-section .top-text { font-size: 16px !important; margin-bottom: 42px !important; }
+    .names-section .top-text { font-size: 30px !important; margin-bottom: 42px !important; }
     .names-section .name { font-size: 44px !important; letter-spacing: 6px !important; }
     .names-section .ampersand { font-size: 36px !important; margin: 12px 0; }
     .names-section .couple-names { margin-bottom: 30px !important; }
@@ -1816,7 +1816,7 @@ body::before {
     
     /* Страница 2: Имена и дата */
     .names-section .content-wrapper { padding: 45px 15px 18px 15px !important; }
-    .names-section .top-text { font-size: 15px !important; margin-bottom: 38px !important; }
+    .names-section .top-text { font-size:24px !important; margin-bottom: 38px !important; }
     .names-section .name { font-size: 40px !important; letter-spacing: 5px !important; }
     .names-section .ampersand { font-size: 32px !important; margin: 10px 0; }
     .names-section .couple-names { margin-bottom: 28px !important; }
