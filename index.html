@@ -9,7 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <link rel="preload" href="fonts/SloopScriptPro.otf" as="font" type="font/otf" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=199">
+    <link rel="stylesheet" href="css/style.css?v=200">
     <link rel="preload" as="image" href="images/start_page.webp">
     <link rel="preload" as="image" href="images/couple-photo.webp">
     <link rel="preload" as="image" href="images/couple-photo2.webp">
@@ -142,12 +142,13 @@
         </svg>
     </div>
     <span class="music-toggle-text">нажмите, чтобы выключить музыку</span>
-    <div class="swipe-hint">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M7 5L12 10L17 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </div>
+    <div class="swipe-hint swipe-hint-animated" onclick="changeSection(1)">
+    <svg width="45" height="45" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 8L12 13L17 8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 13L12 18L17 13" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: #8B7355; margin-top: 8px; letter-spacing: 2px;">СВАЙПНИТЕ ВНИЗ</p>
+</div>
 </div>
         </div>
     </section>
@@ -201,7 +202,7 @@
         <div class="timeline-divider"></div>
         <div class="timeline-right">
             <div class="timeline-desc">
-                <p>Встречаемся, знакомимся, наслаждаемся фуршетом, настраиваемся на весёлую свадьбу.</p>
+                <p>Встречаемся, знакомимся, настраиваемся на свадьбу.</p>
             </div>
         </div>
     </div>
@@ -227,7 +228,7 @@
         <div class="timeline-divider"></div>
         <div class="timeline-right">
             <div class="timeline-desc">
-                <p>Время вкусной еды, музыки, приятных пожеланий и танцев.</p>
+                <p>Время вкусной еды, музыки и танцев.</p>
             </div>
         </div>
     </div>
@@ -261,7 +262,7 @@
        </div>
 
        <p class="dresscode-text" style="margin-top: 15px; font-style: italic;">
-    + цвета для мужчин:
+    + дополнительные цвета для мужчин:
 </p>
 <div class="color-palette" style="max-width: 180px; margin-top: 10px;">
     <div class="color-swatch" style="background: #1a1a1a;" title="Черный"></div>
@@ -296,7 +297,7 @@
                 </div>
             </div>
 
-            <!-- Блок 2: Бутылочка -->
+            <!-- Блок 2: Цветы -->
             <div class="wishes-item">
                 <div class="wishes-left">
                     <p class="wishes-title-item">Цветы</p>
@@ -304,7 +305,7 @@
                 <div class="wishes-divider-vertical"></div>
                 <div class="wishes-right">
                     <div class="wishes-desc">
-                        <p>Лучшим сюрпризом для нас будет, если вместо цветов Вы подарите нам бутылочку своего любимого напитка с пожеланием по какому поводу нам стоит её открыть.</p>
+                        <p>Обещаем: без цветов в руках вы будете выглядеть гораздо элегантнее, а мы — гораздо счастливее 😊</p>
                     </div>
                 </div>
             </div>
@@ -317,7 +318,7 @@
                 <div class="wishes-divider-vertical"></div>
                 <div class="wishes-right">
 <div class="wishes-desc">
-    <p>Если у вас возникли вопросы, не стесняйтесь обращаться к нам, мы обязательно поможем!</p>
+    <p>Если у вас возникли вопросы, обращайтесь, мы обязательно поможем!</p>
     <p style="margin-top: 8px;">
         Алексей <a href="tel:+79192010992" class="contact-link">+7 (919) 201-09-92</a><br>
         Евгения <a href="tel:+79004874972" class="contact-link">+7 (900) 487-49-72</a>
@@ -376,7 +377,7 @@
         type="text" 
         id="guestName" 
         class="form-input" 
-        placeholder="Иван Иванов"
+        placeholder="Петр Петров"
         oninput="validateName(this)"
         autocomplete="off"
         required
