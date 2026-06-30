@@ -471,7 +471,6 @@ body::before {
     color: #000000;
     margin-top: 0;
     margin-bottom: 55px !important;
-    text-transform: uppercase;
     text-align: center !important;
     width: 100%;
     display: block;
