@@ -6,6 +6,13 @@
     <title>Генератор превью</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+                /* Подключаем Sloop Script Pro локально */
+        @font-face {
+            font-family: 'Sloop Script Pro';
+            src: url('fonts/SloopScriptPro.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -55,25 +62,13 @@
             height: 100%;
         }
         
-        /* Заголовок "ВЫ ПОЛУЧИЛИ" как на первой странице */
-        .main-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 48px;
-            font-weight: 300;
-            letter-spacing: 8px;
-            color: white;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-        }
-        
         /* "Приглашение!" курсивом */
         .subtitle {
-            font-family: 'Sloop Script Pro', 'Playfair Display', cursive;
-            font-size: 72px;
-            font-style: italic;
+            font-family: 'Sloop Script Pro', 'Great Vibes', cursive;
+            font-size: 90px;
             color: #5a4a3a;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
     </style>
 </head>
