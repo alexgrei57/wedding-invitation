@@ -229,6 +229,41 @@
                 margin-bottom: 15px;
             }
         }
+
+        .table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.table-wrapper table {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.table-wrapper th:last-child,
+.table-wrapper td:last-child {
+    position: sticky;
+    right: 0;
+    background: white;
+    z-index: 2;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+}
+
+.table-wrapper td,
+.table-wrapper th {
+    padding: 8px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.table-wrapper td:nth-child(6),
+.table-wrapper td:nth-child(8) {
+    white-space: normal;
+    min-width: 120px;
+    max-width: 150px;
+}
     </style>
 </head>
 <body>
@@ -246,6 +281,7 @@
             <button onclick="logout()" class="logout-btn">Выйти</button>
             
             <!-- Таблица для десктопа -->
+            <div class="table-wrapper">
             <table class="desktop-table">
                 <thead>
 <tr>
@@ -265,6 +301,7 @@
                 </thead>
                 <tbody id="guestsBody"></tbody>
             </table>
+            </div>
             
             <!-- Карточки для мобильных -->
             <div class="mobile-cards" id="mobileCards"></div>
